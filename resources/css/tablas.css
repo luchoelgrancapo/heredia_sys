@@ -1,0 +1,112 @@
+/* tabla-------------------*/
+#mitabla {
+    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
+    font-family: "Arial", Arial, Arial, arial;
+    font-size: 12px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+@media print {
+    #mitabla th {
+        font-size: 11px !important;
+    }
+}
+
+@media print {
+    #mitabla td {
+      font-size: 10px !important;
+    }
+}
+
+#mitabla td {
+    border: 1px solid #ddd;
+    padding: 1px;
+    
+}
+
+#mitabla tr:nth-child(even){background-color: #f2f2f2;}
+
+#mitabla tr:hover {background-color: #ddd;}
+
+#mitabla th {
+  border: 1px solid #ddd;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+    background-color:  #239b56;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+#div1 {
+     overflow:scroll;
+     height:200px;
+     width:500px;
+}
+#div1 table {
+    width:500px;
+    background-color:lightgray;
+}    
+
+
+/*---------------cuadros----------*/
+    .box1 {
+   font-family: arial;
+        font-size: 11px;
+width:100%;
+margin:0% 10%;
+padding:10px;
+align-content:  right;
+border:2px solid black;
+border-bottom: 0px;
+border-right: 0px;
+}
+.box2 {
+ font-family: arial;
+        font-size: 11px;
+margin:2% 15%;
+padding:5px;
+border:2px solid black;
+}
+
+.box3 {
+   font-family: arial;
+        font-size: 11px;
+width:100%;
+margin:0% 0% 0% 0%;
+padding:1px;
+border:2px solid black;
+}
+.box4 {
+   font-family: arial;
+        font-size: 11px;
+width:100%;
+margin:0% 0% 0% 0%;
+padding-top:40px;
+border:2px solid black;
+border-top: 0px;
+}
+
+.panel  {
+    font-family: "Arial", Arial, Arial, arial; 
+        font-size: 12px;
+}
+
+
+    /*----inputs----------
+input[type="date"] {
+width: 30%;  font-family: "Arial", Arial, Arial, arial; font-size: 11px; border: none;
+}
+
+select {
+      width: 40%; height: 22px; border: none;  font-family: "Arial", Arial, Arial, arial; font-size: 11px;
+}
+--*/
+#modale {
+ 
+  border: 5px solid #3c8dbc;
+  border-radius: 10px;
+  font-family: "Arial", Arial, Arial, arial;
+ 
+}
