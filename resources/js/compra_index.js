@@ -127,6 +127,8 @@ function fechadecompra(filtro)
                         html += "<span class='btn-warning btn-xs'>Pago con Caja</span>";  } 
                         if (caja==2) {  
                         html += "<span class='btn-warning btn-xs'>Orden de pago</span>";  }
+                        if (caja==0) {  
+                        html += "<span class='btn-warning btn-xs'>Otro</span>";  }
                         html += "</td><td align='center'><b>"+registros[i]["compra_id"]+"</b></td>";                                           
                         html += "<td align='right' > Subtotal:"+numberFormat(Number(registros[i]["compra_subtotal"]).toFixed(2))+"<br>Desc: "+Number(registros[i]["compra_descuento"]).toFixed(2)+"<br> DescGlobal: "+Number(registros[i]["compra_descglobal"]).toFixed(2)+"<br>";
                         html += "<b>Total:"+numberFormat(Number(registros[i]["compra_totalfinal"]).toFixed(2))+"</b></td>";
@@ -276,6 +278,8 @@ function compraproveedor(e)
                         html += "<span class='btn-warning btn-xs'>Pago con Caja</span>";  } 
                         if (caja==2) {  
                         html += "<span class='btn-warning btn-xs'>Orden de pago</span>";  }
+                        if (caja==0) {  
+                        html += "<span class='btn-warning btn-xs'>Otro</span>";  }
                         html += "</td><td align='center'>"+registros[i]["compra_id"]+"</b></td>";                                          
                         html += "<td align='right'> Subtotal:"+numberFormat(Number(registros[i]["compra_subtotal"]).toFixed(2))+"<br>Desc: "+Number(registros[i]["compra_descuento"]).toFixed(2)+"<br> DescGlobal: "+Number(registros[i]["compra_descglobal"]).toFixed(2)+"<br>";
                         html += "<b>Total:"+numberFormat(Number(registros[i]["compra_totalfinal"]).toFixed(2))+"</b></td>";

@@ -14,49 +14,9 @@
 <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('resources/js/inventario.js'); ?>"></script> 
 
-<style type="text/css">
-
-
-p {
-    font-family: Arial;
-    font-size: 7pt;
-    line-height: 120%;   /*esta es la propiedad para el interlineado*/
-    color: #000;
-    padding: 10px;
-}
-
-div {
-margin-top: 1px;
-margin-right: 1px;
-margin-bottom: 1px;
-margin-left: 10px;
-margin: 1px;
-}
-
-
-table{
-width : 17cm;
-margin : 1 1 1px 1;
-padding : 1 1 1 1;
-border-spacing : 0 0;
-border-collapse : collapse;
-font-family: Arial narrow;
-font-size: 7pt;  
-
-td {
-    border:hidden;
-}
-}
-
-td#comentario {
-vertical-align : bottom;
-border-spacing : 1;
-}
-
-</style>
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 <input type="text" value="<?php echo base_url(); ?>" id="base_url" hidden>
 <!-------------------------------------------------------->
 <table class="table" style="width: 20cm; padding: 0;" >
@@ -82,10 +42,9 @@ border-spacing : 1;
             <center>
                 <br>
                 <br>
-                <font size="2" face="arial"><b>KARDEX DE EXISTENCIA</b></font> <br>
+                <b>KARDEX DE EXISTENCIA</b><br>
                 <!--<font size="1" face="arial"><b>FISICO - VALORADO</b></font> <br>-->
-                <font size="1" face="arial"><b><?php echo $producto[0]['producto_codigobarra']." ".$producto[0]['producto_nombre']; ?></b></font>
-
+                <b>(<?php echo $producto[0]['producto_codigobarra'].") ".$producto[0]['producto_nombre']; ?></b>
 
             </center>
         </td>
@@ -129,13 +88,13 @@ border-spacing : 1;
 <!---------------------------------- panel oculto para busqueda--------------------------------------------------------->
 <!--<form method="post" onclick="ventas_por_fecha()">-->
 <div class="panel panel-primary col-md-12 no-print" id='buscador_oculto'    >
-    <br>
-    <center>            
+    
+    <div class="row">      
         <div class="col-md-2">
-            Desde: <input type="date" class="btn btn-warning btn-sm form-control" id="fecha_desde" value="<?php echo date("Y-m-d");?>" name="fecha_desde" required="true">
+            Desde: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_desde" value="<?php echo date("Y-m-d");?>" name="fecha_desde" required="true">
         </div>
         <div class="col-md-2">
-            Hasta: <input type="date" class="btn btn-warning btn-sm form-control" id="fecha_hasta" value="<?php echo date("Y-m-d");?>"  name="fecha_hasta" required="true">
+            Hasta: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_hasta" value="<?php echo date("Y-m-d");?>"  name="fecha_hasta" required="true">
         </div>
         
 <!--        <div class="col-md-2">
@@ -159,16 +118,16 @@ border-spacing : 1;
         
         <br>
         <div class="col-md-3">
-
-            <button class="btn btn-sm btn-facebook btn-sm btn-block"  onclick="mostrar_kardex(<?php echo $producto_id;?>)">
-                <h4>
-                <span class="fa fa-search"></span>   Buscar
-                </h4>
+<br>
+            <button class="btn btn-sm btn-primary btn-sm btn-block form-control"  onclick="mostrar_kardex(<?php echo $producto_id;?>)">
+                
+                <i class="fa fa-search"></i>   Buscar
+                
           </button>
             <br>
         </div>
         
-    </center>    
+       </div>    
     <br>    
 </div>
 <!--</form>-->
@@ -181,8 +140,7 @@ border-spacing : 1;
 <div class="container  table-responsive" style='padding: 0;' >
     
 
-    <table class="table table-responsive" id="mitabla" style="font-size:10px" style="width: 18cm;" >
-    <tr style="font-family: Arial narrow">
+    <table class="table table-responsive" id="tabla_detalle">
         <th rowspan="2">
             FECHA
         </th>
@@ -201,7 +159,7 @@ border-spacing : 1;
 
 
     </tr>
-    <tr style="font-family: Arial narrow">
+    <tr>
         <th>
             Nº<br>INGRESO              
         </th>

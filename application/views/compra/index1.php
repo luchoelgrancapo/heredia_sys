@@ -73,7 +73,7 @@
 
         <!--este es INICIO del Titulo buscador-->
         <div class="box-header">
-                <h4><b>Compras</b> <small class="badge badge-secondary" id="pillados"></small></h4>
+                <h4><b>COMPRAS</b> <small class="badge badge-secondary" id="pillados"></small></h4>
         </div>
         <!--este es FIN del Titulo buscador-->
     </div>
@@ -129,7 +129,7 @@
         
         <!-------------------- CATEGORIAS------------------------------------->
        
-            <div class="panel panel-primary col-md-12 no-print" id='buscador_oculto' style='font-family: Arial; display:none; padding-bottom: 10px;'>
+            <div class="panel panel-primary col-md-12 no-print" id='buscador_oculto'>
                 <br>
                 <div class="row">         
                     <div class="col-md-3">

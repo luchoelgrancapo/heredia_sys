@@ -33,74 +33,36 @@
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->
 
-<link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
-<link href="<?php echo base_url('resources/css/mitablaventas.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 
 <!-------------------------------------------------------->
-<table class="table" style="width: 20cm; padding: 0;" >
-    <tr>
-        <td style="width: 6cm; padding: 0; line-height:10px;" >
-                
-            <center>
-                               
-                    <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60"><br>
-                    <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
-                    <!--<font size="2" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
-                    <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
-                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
-                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
-                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
-                    <!--<font size="1" face="Arial"><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
-                
 
-            </center>                      
-        </td>
-                   
-        <td style="width: 6cm; padding: 0" > 
             <center>
             
-                <br><br>
-                <font size="3" face="arial"><b>INVENTARIO FISICO VALORADO</b></font> <br>
+                
+                <h3><b>INVENTARIO FISICO VALORADO</b></h3>
                 <!--<font size="3" face="arial"><b>Nº 00<?php echo $venta[0]['venta_id']; ?></b></font> <br>-->
-                <font size="1" face="arial"><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
+                <p><?php echo date("d/m/Y H:i:s"); ?></p>
 
             </center>
-        </td>
-        <td style="width: 4cm; padding: 0" >
-<!--                ______________________________                
-                   
-                                
-                <div id="datos_recorrido">
-                    
-                </div>
-                
-                ______________________________-->
-        </td>
-    </tr>
-     
-    
-    
-</table>
-<div class="box-header no-print">
-            <h3 class="box-title"></h3>
+       
+<div class="info-box no-print" style="min-height: 30px">
+           
             <div class="box-tools no-print">
-                <form action="<?php echo site_url('inventario/generar_excel'); ?>" method="POST">
+                
                 <button class="btn btn-success btn-sm" onclick="actualizar_inventario()" type="button"><span class="fa fa-cubes"></span> Actualizar</button>
                 <?php if($rolusuario[27-1]['rolusuario_asignado'] == 1){ ?>
                 <button class="btn btn-primary btn-sm" onclick="tabla_inventario()" type="button"><span class="fa fa-list"></span> Mostrar todo</button>
 
                 <button class="btn btn-info btn-sm" onclick="tabla_inventario_existencia()" type="button"><span class="fa fa-list-ol" title="Ver Produtos con Existencia"></span> Con Existencia</button>
                 <?php } if($rolusuario[28-1]['rolusuario_asignado'] == 1){ ?>
-                <button class="btn btn-facebook btn-sm" onclick="mostrar_duplicados()" type="button"><span class="fa fa-copy"></span> Prod. Duplicados</button>
+                <button class="btn btn-secondary btn-sm" onclick="mostrar_duplicados()" type="button"><span class="fa fa-copy"></span> Prod. Duplicados</button>
                 
-                <button class="btn btn-danger btn-sm" id="excel"  type="submit"><span class="fa fa-file-excel-o"></span> Exportar Excel</button>
+                <button class="btn btn-danger btn-sm" id="excel" onclick="generarexcel()"  type="button"><span class="fa fa-file-excel-o"></span> Exportar Excel</button>
                 <?php } ?>
-                </form>
+              
             </div>
 </div>
-
-
-
 
 
 
@@ -108,9 +70,10 @@
 <div class="row">
     <div class="col-md-12">
             <!--------------------- parametro de buscador --------------------->
-                  <div class="input-group no-print"> <span class="input-group-addon">Buscar</span>
-                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese el nombre, precio, código"   onkeypress="validar(event,1)" >
-                  </div>
+             <div class="input-group-prepend no-print">
+                    <span class="input-group-text"><i class="fas fa-search"></i> Buscar</span>
+                    <input id="filtrar" autocomplete="off" type="text" class="form-control" placeholder="Ingrese el nombre, precio, código"   onkeypress="validar(event,1)" >
+            </div>  
             <!--------------------- fin parametro de buscador ---------------------> 
             <div class="box">
            

@@ -103,7 +103,7 @@ function tabla_inventario(){
             //alert(tamanio);
 
              html = "";            
-                    html += "<table class='table table-striped table-bordered' id='mitabla'>";
+                    html += "<table class='table table-striped table-bordered' id='tabla_detalle'>";
                     html += "<tr>";
                     html += "	<th>#</th>";
                     html += "	<th>Imagen</th>";
@@ -136,7 +136,7 @@ function tabla_inventario(){
                                 
                     html += "             	<td>"+(i+1)+"</td>";
                     html += "             	<td><img src='"+ base_url+"resources/images/productos/thumb_"+inv[i]["producto_foto"]+"' width='50' height='50' class='img-circle'</td>";
-                    html += "             	<td><font size='3'><b>"+ inv[i]["producto_nombre"]+"</b></font> <sub>";
+                    html += "             	<td><b>"+ inv[i]["producto_nombre"]+"</b> <sub>";
                     
                     html += "             	<a href='"+base_url+"producto/edit2/"+inv[i]["producto_id"]+"' target='_blank' class='no-print'>["+inv[i]["producto_id"]+"] </a></sub>";
                     html += "    <br>";
@@ -147,7 +147,7 @@ function tabla_inventario(){
                     //html += "     <button type='button' class='btn btn-info btn-xs' data-toggle='modal' data-target='#myModal"+inv[i]["producto_id"]+"'>Kardex</button>";
                     
                     html += "             	</td>";
-                    html += "             	<td><center><font size='2'><b>"+inv[i]["producto_codigobarra"]+"</b><br> </font>";
+                    html += "             	<td><center><b>"+inv[i]["producto_codigobarra"]+"</b><br> ";
                     html += "	"+ inv[i]["producto_codigo"]+"</center></td>";
                     html += "	<td><center>"+ inv[i]["producto_costo"]+"</center></td>";
 
@@ -155,8 +155,8 @@ function tabla_inventario(){
                     html += "	<td><center>"+ inv[i]["ventas"]+"</center></td>";
                     html += "	<td><center>"+ inv[i]["pedidos"]+"</center></td>";
                     
-                    html += "             	<td><center> <font size='3'><b>"+ existencia.toFixed(2)+"</b></font></center></td>";
-                    html += "             	<td><center> <font size='2'><b>"+ total.toFixed(2)+"</b></font></center></td>";
+                    html += "             	<td><center><b>"+ existencia.toFixed(2)+"</b></center></td>";
+                    html += "             	<td><center><b>"+ total.toFixed(2)+"</b></center></td>";
                     
 
                     html += "</tr>";
@@ -209,7 +209,7 @@ function tabla_inventario(){
             //alert(tamanio);
 
              html = "";            
-                    html += "<table class='table table-striped table-bordered' id='mitabla' >";
+                    html += "<table class='table table-striped table-bordered' id='tabla_detalle' >";
                     html += "<tr>";
                     html += "	<th>#</th>";
 //                    html += "	<th>Imagen</th>";
@@ -250,14 +250,14 @@ function tabla_inventario(){
                                     total_final += total;
                                     existencia = parseFloat(inv[i]["existencia"]);                                                    
                         html += "             	<td "+margen+">"+(i+1)+"</td>";
-                        html += "             	<td "+margen+"><font size='0.5'>"+ inv[i]["producto_nombre"]+"</font>";
-                        html += "             	<td "+margen+" style='background: red'><center><font size='1'>"+inv[i]["producto_codigo"]+"</font> </center></td>";
-                        html += "             	<td "+margen+"><font size='0.5'><center>"+ inv[i]["categoria_nombre"]+"</center></font> </td>";
-                        html += "             	<td "+margen+"><font size='0.5'><center>"+ inv[i]["producto_unidad"]+"</center></font> </td>";
+                        html += "             	<td "+margen+">"+ inv[i]["producto_nombre"]+"";
+                        html += "             	<td "+margen+" style='background: red'><center>"+inv[i]["producto_codigo"]+" </center></td>";
+                        html += "             	<td "+margen+"><center>"+ inv[i]["categoria_nombre"]+"</center> </td>";
+                        html += "             	<td "+margen+"><center>"+ inv[i]["producto_unidad"]+"</center> </td>";
 
                         html += "	<td "+margen+"><center>"+ Number(inv[i]["producto_costo"]).toFixed(2)+"</center></td>";
-                        html += "             	<td "+margen+"><center> <font size='1'><b>"+ existencia.toFixed(2)+"</b></font></center></td>";
-                        html += "             	<td "+margen+"><center> <font size='1'><b>"+ total.toFixed(2)+"</b></font></center></td>";
+                        html += "             	<td "+margen+"><center> <b>"+ existencia.toFixed(2)+"</b></center></td>";
+                        html += "             	<td "+margen+"><center> <b>"+ total.toFixed(2)+"</b></center></td>";
 
                         factor = 0;
                         producto_factor = 0;
@@ -418,7 +418,7 @@ function tabla_inventario_existencia(){
             //alert(tamanio);
 
              html = "";            
-                    html += "<table class='table table-striped table-bordered' id='mitabla'>";
+                    html += "<table class='table table-striped table-bordered' id='tabla_detalle'>";
                     html += "<tr>";
                     html += "    <th>#</th>";
                     html += "    <th>Imagen</th>";
@@ -451,7 +451,7 @@ function tabla_inventario_existencia(){
                                 
                     html += "                 <td>"+(i+1)+"</td>";
                     html += "                 <td><img src='"+ base_url+"resources/images/productos/thumb_"+inv[i]["producto_foto"]+"' width='50' height='50' class='img-circle'</td>";
-                    html += "                 <td><font size='3'><b>"+ inv[i]["producto_nombre"]+"</b></font> <sub>";
+                    html += "                 <td><b>"+ inv[i]["producto_nombre"]+"</b> <sub>";
                     
                     html += "                 <a href='"+base_url+"producto/edit2/"+inv[i]["producto_id"]+"' target='_blank' class='no-print'>["+inv[i]["producto_id"]+"] </a></sub>";
                     html += "    <br>";
@@ -462,7 +462,7 @@ function tabla_inventario_existencia(){
                     //html += "     <button type='button' class='btn btn-info btn-xs' data-toggle='modal' data-target='#myModal"+inv[i]["producto_id"]+"'>Kardex</button>";
                     
                     html += "                 </td>";
-                    html += "                 <td><center><font size='2'><b>"+inv[i]["producto_codigobarra"]+"</b><br> </font>";
+                    html += "                 <td><center><b>"+inv[i]["producto_codigobarra"]+"</b><br> ";
                     html += "    "+ inv[i]["producto_codigo"]+"</center></td>";
                     html += "    <td><center>"+ inv[i]["producto_costo"]+"</center></td>";
 
@@ -470,8 +470,8 @@ function tabla_inventario_existencia(){
                     html += "    <td><center>"+ inv[i]["ventas"]+"</center></td>";
                     html += "    <td><center>"+ inv[i]["pedidos"]+"</center></td>";
                     
-                    html += "                 <td><center> <font size='3'><b>"+ existencia.toFixed(2)+"</b></font></center></td>";
-                    html += "                 <td><center> <font size='2'><b>"+ total.toFixed(2)+"</b></font></center></td>";
+                    html += "                 <td><center> <b>"+ existencia.toFixed(2)+"</b></center></td>";
+                    html += "                 <td><center> <b>"+ total.toFixed(2)+"</b></center></td>";
                     
 
                     html += "</tr>";
@@ -524,7 +524,7 @@ function tabla_inventario_existencia(){
             //alert(tamanio);
 
              html = "";            
-                    html += "<table class='table table-striped table-bordered' id='mitabla' >";
+                    html += "<table class='table table-striped table-bordered' id='tabla_detalle' >";
                     html += "<tr>";
                     html += "    <th>#</th>";
 //                    html += "    <th>Imagen</th>";
@@ -565,14 +565,14 @@ function tabla_inventario_existencia(){
                                     total_final += total;
                                     existencia = parseFloat(inv[i]["existencia"]);                                                    
                         html += "                 <td "+margen+">"+(i+1)+"</td>";
-                        html += "                 <td "+margen+"><font size='0.5'>"+ inv[i]["producto_nombre"]+"</font>";
-                        html += "                 <td "+margen+" style='background: red'><center><font size='1'>"+inv[i]["producto_codigo"]+"</font> </center></td>";
-                        html += "                 <td "+margen+"><font size='0.5'><center>"+ inv[i]["categoria_nombre"]+"</center></font> </td>";
-                        html += "                 <td "+margen+"><font size='0.5'><center>"+ inv[i]["producto_unidad"]+"</center></font> </td>";
+                        html += "                 <td "+margen+">"+ inv[i]["producto_nombre"]+"";
+                        html += "                 <td "+margen+" style='background: red'><center>"+inv[i]["producto_codigo"]+" </center></td>";
+                        html += "                 <td "+margen+"><center>"+ inv[i]["categoria_nombre"]+"</center> </td>";
+                        html += "                 <td "+margen+"><center>"+ inv[i]["producto_unidad"]+"</center> </td>";
 
                         html += "    <td "+margen+"><center>"+ Number(inv[i]["producto_costo"]).toFixed(2)+"</center></td>";
-                        html += "                 <td "+margen+"><center> <font size='1'><b>"+ existencia.toFixed(2)+"</b></font></center></td>";
-                        html += "                 <td "+margen+"><center> <font size='1'><b>"+ total.toFixed(2)+"</b></font></center></td>";
+                        html += "                 <td "+margen+"><center> <b>"+ existencia.toFixed(2)+"</b></center></td>";
+                        html += "                 <td "+margen+"><center> <b>"+ total.toFixed(2)+"</b></center></td>";
 
                         factor = 0;
                         producto_factor = 0;
@@ -785,7 +785,7 @@ function mostrar_duplicados()
             //alert(tamanio);
 
              html = "";            
-                    html += "<table class='table table-striped table-bordered' id='mitabla'>";
+                    html += "<table class='table table-striped table-bordered' id='tabla_detalle'>";
                     html += "<tr>";
                     html += "	<th>#</th>";
                     html += "	<th>Imagen</th>";
@@ -816,14 +816,14 @@ function mostrar_duplicados()
                                 
                     html += "             	<td>"+(i+1)+"</td>";
                     html += "             	<td><img src='"+ base_url+"resources/images/productos/thumb_"+inv[i]["producto_foto"]+"' width='50' height='50' class='img-circle'</td>";
-                    html += "             	<td><font size='3'><b>"+ inv[i]["producto_nombre"]+"</b></font> <sub>";
+                    html += "             	<td><b>"+ inv[i]["producto_nombre"]+"</b> <sub>";
                     
                     html += "             	<a href='"+base_url+"producto/edit2/"+inv[i]["producto_id"]+"' target='_blank'>["+inv[i]["producto_id"]+"] </a></sub>";
                     html += "    <br>";
                     html += "    <small>" + inv[i]["producto_unidad"]+" | "+inv[i]["producto_marca"]+" | "+inv[i]["producto_industria"];
                     html += "   <span class='badge span-alert'> <a href='"+base_url+"inventario/kardex/"+inv[i]["producto_id"]+"' target='_blank'> Kardex</a> </span></small>";
                     html += "             	</td>";
-                    html += "             	<td><center><font size='2'><b>"+inv[i]["producto_codigobarra"]+"</b><br> </font>";
+                    html += "             	<td><center><b>"+inv[i]["producto_codigobarra"]+"</b><br> ";
                     html += "	"+ inv[i]["producto_codigo"]+"</center></td>";
                     html += "	<td><center>"+ inv[i]["producto_costo"]+"</center></td>";
 
@@ -831,8 +831,8 @@ function mostrar_duplicados()
                     html += "	<td><center>"+ inv[i]["ventas"]+"</center></td>";
                     html += "	<td><center>"+ inv[i]["pedidos"]+"</center></td>";
                     
-                    html += "             	<td><center> <font size='3'><b>"+ existencia.toFixed(2)+"</b></font></center></td>";
-                    html += "             	<td><center> <font size='2'><b>"+total.toFixed(2)+"</b></font></center></td>";
+                    html += "             	<td><center> <b>"+ existencia.toFixed(2)+"</b></center></td>";
+                    html += "             	<td><center> <b>"+total.toFixed(2)+"</b></center></td>";
                     html += "</tr>";
                 } // end for (i = 0 ....)
             } //end if (inv != null){                
@@ -988,3 +988,126 @@ function mostrar_kardex(producto_id){
     
 }
 
+function generarexcel(){
+    var base_url = document.getElementById('base_url').value;
+    var controlador = base_url+'inventario/generar_excel';    
+    
+
+     //parametro = document.getElementById('filtrar').value;   
+     //controlador = base_url+'ingreso/buscarallingreso/';
+    var showLabel = true;
+    
+    var reportitle = moment(Date.now()).format("DD/MM/YYYY H_m_s");
+    //document.getElementById('loader').style.display = 'block'; //muestra el bloque del loader
+
+    $.ajax({url: controlador,
+           type:"POST",
+           data:{},
+           success:function(result){
+                var factura = JSON.parse(result);
+                var tam = factura.length;
+              
+                var mensaje = "";
+                
+                html = "";
+                if (tam>0){
+                  /* **************INICIO Generar Excel JavaScript************** */
+                    var CSV = 'sep=,' + '\r\n\n';
+                    //This condition will generate the Label/Header
+                    if (showLabel) {
+                        var row = "";
+
+                        //This loop will extract the label from 1st index of on array
+                        
+
+                            //Now convert each value to string and comma-seprated
+                            
+                            row += 'N°' + ',';
+                            row += 'DESCRIPCION' + ',';
+                            row += 'CODIGO' + ',';
+                            row += 'CATEGORIA' + ',';
+                            row += 'UNIDAD' + ',';
+                            row += 'COSTO' + ',';
+                            row += 'SALDO' + ',';
+                            row += 'TOTAL' + ',';
+       
+                        row = row.slice(0, -1);
+
+                        //append Label row with line break
+                        CSV += row + '\r\n';
+                    }
+                    
+                    //1st loop is to extract each row
+                    for (var i = 0; i < tam; i++) {
+                        var row = "";
+                        //2nd loop will extract each column and convert it in string comma-seprated
+                        
+                            row += 'i+1,';
+                            row += '"' +factura[i]["producto_nombre"]+ '",';
+                            row += '"' +factura[i]["producto_codigo"]+ '",';
+                            row += '"' +factura[i]["categoria_nombre"]+ '",';
+                            row += '"' +factura[i]["producto_unidad"]+ '",';
+                            row += '"' +Number(factura[i]["producto_costo"]).toFixed(2)+ '",';
+                            row += '"' +Number(factura[i]["existencia"]).toFixed(2)+ '",';
+                            row += '"' +Number(factura[i]["producto_costo"]*factura[i]["existencia"]).toFixed(2)+ '",';
+                           
+
+                        
+                        row.slice(0, row.length - 1);
+
+                        //add a line break after each row
+                        CSV += row + '\r\n';
+                    }
+                    
+                    if (CSV == '') {        
+                        alert("Invalid data");
+                        return;
+                    }
+                    
+                    //Generate a file name
+                    var fileName = "Inventario_";
+                    //this will remove the blank-spaces from the title and replace it with an underscore
+                    fileName += reportitle.replace(/ /g,"_");   
+
+                    //Initialize file format you want csv or xls
+                    var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
+                    // Now the little tricky part.
+                    // you can use either>> window.open(uri);
+                    // but this will not work in some browsers
+                    // or you will not get the correct file extension    
+
+                    //this trick will generate a temp <a /> tag
+                    var link = document.createElement("a");    
+                    link.href = uri;
+
+                    //set the visibility hidden so it will not effect on your web-layout
+                    link.style = "visibility:hidden";
+                    link.download = fileName + ".csv";
+
+                    //this part will append the anchor tag and remove it after automatic click
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    /* **************F I N  Generar Excel JavaScript************** */
+                   
+                   
+                   
+                   
+                   //document.getElementById('loader').style.display = 'none';
+            }
+         //document.getElementById('loader').style.display = 'none'; //ocultar el bloque del loader
+        },
+        error:function(respuesta){
+           // alert("Algo salio mal...!!!");
+           html = "";
+           $("#tabla_factura").html(html);
+        },
+        complete: function (jqXHR, textStatus) {
+            //document.getElementById('loader').style.display = 'none'; //ocultar el bloque del loader 
+            //tabla_inventario();
+        }
+        
+    });   
+
+}

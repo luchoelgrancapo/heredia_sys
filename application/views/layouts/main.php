@@ -131,6 +131,11 @@
                                 <i class="fas fa-cart-arrow-down"></i> <p>Ventas</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('inventario');?>" class="nav-link">
+                                <i class="fas fa-cubes"></i> <p>Inventario</p>
+                            </a>
+                        </li>
                         
                     </ul>
                     </nav>
