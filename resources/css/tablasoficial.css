@@ -4,7 +4,15 @@
     border-collapse: collapse;
     width: 100%;
 }
-
+#mitabla th {
+    border: white 1px solid;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+    font-size: 16px;
+}
 #mitabla td {
     border: 1px solid #ddd;
     padding-top: 0px;
@@ -28,16 +36,59 @@
     }
 }*/
 
-#mitabla tr:nth-child(even){background-color: #f1f1f1;}
+#mitabla tr:nth-child(odd){background-color: #fff;}
+#mitabla tr:nth-child(even){background-color: #fff;}
 
-#mitabla tr:hover {background-color: lightgreen;}
+#mitabla tr:hover {background-color: rgba(52, 58, 64, 0.3);}
 
-#mitabla th {
+/**** TABLA DETALLE****/
+
+/* tabla-------------------*/
+#tabla_detalle {
+    
+    border-collapse: collapse;
+    width: 100%;
+}
+#tabla_detalle th {
     border: white 1px solid;
     padding-top: 1px;
     padding-bottom: 1px;
+    padding-left: 2px;
+    padding-right:  2px;
     text-align: center;
     background-color: #343a40;
     color: white;
-    font-size: 16px;
+    font-size: 12px;
 }
+#tabla_detalle td {
+    border: 1px solid #ddd;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right:  0px;
+
+    font-size: 12px;
+}
+
+/*@media print {
+    #mitabla th {
+        background-color: green !important;
+        color: white !important;
+       /* -webkit-print-color-adjust: exact; */
+   /* }
+}
+
+@media print {
+    #mitabla td {
+        background-color: red !important;
+        color: yellow !important;
+    }
+}*/
+
+#tabla_detalle tr:nth-child(odd){background-color: #fff;}
+#tabla_detalle tr:nth-child(even){background-color: #fff;}
+
+#tabla_detalle tr:hover {background-color: rgba(52, 58, 64, 0.3);}
+
+
+

@@ -181,6 +181,7 @@ class Compra_model extends CI_Model
                 and c.proveedor_id = p.proveedor_id
                 and c.usuario_id = u.usuario_id
                 and c.tipotrans_id = t.tipotrans_id
+                and c.compra_placamovil IS NULL
                 ".$condicion." 
             ORDER BY c.compra_fecha DESC, c.compra_hora DESC
         ")->result_array();
@@ -364,7 +365,7 @@ class Compra_model extends CI_Model
 
     function get_compra_sin_nombre($usuario_id)
     {
-         $sql = "SELECT p.*, 'NO DEFINIDO' as proveedor_nombre,'NO DEFINIDO' as proveedor_codigo, '0' as proveedor_autorizacion, '0' as proveedor_nit, '0' as proveedor_razon, e.estado_descripcion from compra p, estado e  where p.usuario_id = ".$usuario_id." and p.estado_id = e.estado_id and p.proveedor_id=0";
+         $sql = "SELECT p.*, 'NO DEFINIDO' as proveedor_nombre,'NO DEFINIDO' as proveedor_codigo, '0' as proveedor_autorizacion, '0' as proveedor_nit, '0' as proveedor_razon, e.estado_descripcion from compra p, estado e  where p.usuario_id = ".$usuario_id." and p.estado_id = e.estado_id and (p.proveedor_id=0 or p.compra_placamovil=1)";
         $result = $this->db->query($sql)->result_array();
         return $result;          
     }

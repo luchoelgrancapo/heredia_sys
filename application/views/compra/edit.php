@@ -99,27 +99,24 @@ function final(){
     
 </script>
 <style type="text/css">
-body {
-  font-family: "Arial", Arial, Arial, arial;
-}
+
     input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
     
 }
-input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Arial, arial;
-
+input[type=number] { -moz-appearance:textfield; 
     font-size: 15px;}
 </style> 
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <!--------------------- CABCERA -------------------------->
 
 <div class="box-header">
-    <h1 class="box-title"><b>DETALLE COMPRA COD: <?php echo "000".$compra_id; ?></b></h1>
+    <h3><b>DETALLE COMPRA COD: <?php echo "00".$compra_id; ?></b></h3>
 </div>
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
 <input type="hidden" name="compra_idie" id="compra_idie" value="<?php echo $compra_id; ?>">
@@ -127,102 +124,41 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
 <input type="hidden" name="modificar_detalle" id="modificar_detalle" value="<?php echo $rolusuario[6-1]['rolusuario_asignado']; ?>">
 <input type="hidden" name="eliminar_detalle" id="eliminar_detalle" value="<?php echo $rolusuario[7-1]['rolusuario_asignado']; ?>">
 
-<div class="container" style="margin-left: 0;">
+<div class="row container" style="margin-left: 0;">
    
-    <div class="panel panel-primary col-md-4" >
-      
-        <b>Proveedor:</b> <span id="provedordecompra"><?php echo $compra[0]['proveedor_nombre']; ?></span> <br>
+    <div class="info-box col-md-4" >
+      <div class="info-box-content">      
+        <b>Proveedor: <span class="text-secondary" id="provedordecompra"><?php echo $compra[0]['proveedor_nombre']; ?></span></b>
         
-        <b>Código Proveedor:</b> <span id="provedorcodigo" ><?php echo $compra[0]['proveedor_codigo']; ?></span> <label id="prove_iden" ><input id="prove_id" type="hidden" style="padding: 0px;" value="<?php echo $compra[0]['proveedor_id']; ?>"></label><br>
-        <b>Fecha:</b> <span id="fechacompra" ><?php echo date('d/m/Y',strtotime($compra[0]['compra_fecha'])) ; ?></span>
-     
+        <b>Código Proveedor: <span class="text-secondary" id="provedorcodigo" ><?php echo $compra[0]['proveedor_codigo']; ?></span> <label id="prove_iden" ><input id="prove_id" type="hidden" style="padding: 0px;" value="<?php echo $compra[0]['proveedor_id']; ?>"></label></b>
+        <b>Fecha: <span class="text-secondary" id="fechacompra" ><?php echo date('d/m/Y',strtotime($compra[0]['compra_fecha'])) ; ?></span></b>
+      </div>
      
     </div>
 
     <div class="col-md-4">
-    <div class="box-tools">
+    <div class="info-box">
         <center>            
-            <a href="#" data-toggle="modal" data-target="#modalproveedor"class="btn btn-success btn-foursquarexs" title="Registrar nuevo Proveedor"><font size="5"><span class="fa fa-user-plus"></span></font><br><small>Proveedor</small></a>
-            <a href="#" data-toggle="modal" data-target="#modalbuscar" class="btn btn-warning btn-foursquarexs" title="Buscar Proveedores"><font size="5"><span class="fa fa-search"></span></font><br><small>Buscar Prov.</small></a>
-            <a href="#" data-toggle="modal" data-target="#modalproducto" class="btn btn-primary btn-foursquarexs" title="Registrar nuevo Producto"><font size="5"><span class="fa fa-plus-circle"></span></font><br><small>Nuevo Prod</small></a> 
+            <a href="#" data-toggle="modal" data-target="#modalbuscar" class="btn bg-primary btn-app" title="Buscar Proveedores"><i class="fa fa-search"></i>Buscar Proveedor</a>
+            <a href="#" data-toggle="modal" data-target="#modalproveedor"class="btn bg-success btn-app" title="Registrar nuevo Proveedor"><i class="fa fa-user-plus"></i>Registrar Proveedor</a>
+            <a href="#" data-toggle="modal" data-target="#modalproducto" class="btn bg-dark btn-app" title="Registrar nuevo Producto"><i class="fa fa-plus-circle"></i>Nuevo Producto</a> 
        
         </center>  
 
     </div>
-
-    <br>            
-     </div> 
-     <div class="col-md-4">
-            <?php 
-            $cont = 0;
-                          $subtotal = 0;
-                          $descuento = 0;
-                          $totalfinal = 0;
-                          $total_ultimo = 0;
-                           
-                        foreach($detalle_compra as $d){;
-                                 
-                          $subtotal += $d['detallecomp_subtotal'];
-                          $descuento += $d['detallecomp_descuento'];
-                          $totalfinal += $d['detallecomp_total'];
-                          
-                          }?>
-                          <?php       
-                                if ($bandera==1) {
-                                    if ($compra[0]['compra_descglobal']==0) {
-                                       $total_ultimo = $totalfinal;
-                                    } else {
-                                       $total_ultimo = $subtotal-$compra[0]['compra_descglobal'];
-                                    }
-                                
-                                }  else {
-                                  $total_ultimo = $totalfinal;
-                                }     ?>  
-              <div class="row">
-           <div class="panel panel-primary col-md-12" id="detalleco" style="font-family: "Arial", Arial, Arial, arial;">
-               <table>       
-                
-                <tr>
-                        <td>Sub Total Bs:</td>
-                        <td></td>
-                        <td><?php echo number_format($subtotal,2,'.',','); ?></td>
-
-                </tr>             
-                <tr>
-                        <td>Descuento:</td>
-                        <td></td>
-                        <td><?php echo number_format($descuento,2,'.',',');?></td>
-                    
-                </tr>
-                <tr>
-                        <td>Descuento Global:</td>
-                        <td style="width: 30px;"></td>
-                        <td><?php  $compra_descglobal= $compra[0]['compra_descglobal']; echo number_format($compra_descglobal,2,'.',',');?>
-
-                    
-                        </td>
-                    
-                </tr>
-                
-                <tr>
-                        <th><b>TOTAL FINAL:</b></th>
-                        <td></td>
-                        <th><font size="3"><b> <?php echo number_format($total_ultimo,2,'.',',');?></b></font></th>
-                       
-                </tr>
-
-        </table>
-        </div>
-        </div>
-     </div> 
+    </div> 
+    <div class="col-md-4 info-box" id="detalleco">
+           
+           
+    </div> 
 </div>
 
 <!--------------------- FIN CABERECA -------------------------->
- <div class="box-tools" >
+ <div class="box-tools row">
 
          <!--<span class="btn btn-info" style="margin-right: 50%">Agrupar Detalle <input  type="checkbox"  id="agrupar" name="agrupar" value="1" checked></span>-->  
          
-        <span style="margin-right: 40%">Buscar Productos</span>  
+        <span>Buscar Productos</span>  
          <label class="btn btn-info btn-xs" > <input  class="btn btn-xs" type="checkbox"  id="agrupar" name="agrupar" value="1" checked> Agrupar</label>  
                 <?php if($bandera==1) { ?>
                
@@ -284,7 +220,7 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
         <!---------------------------------FIN MODAL DE CAMBIAR FECHA------------------------->
 
             <a href="#" data-toggle="modal" data-target="#modalcobrar" class="btn btn-xs btn-success" >
-                <i class="fa fa-money "></i> Finalizar Cambios
+                <i class="fa fa-money"></i> Finalizar Cambios
             </a>
         
  <?php  } ?>
@@ -295,21 +231,21 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
     if($provi==0) { ?>
         
         
-        <label id="provedorboton"><a  onclick="myFunction()" href="#" class="btn btn-xs btn-success" ><i class="fa fa-money "></i>
+        <label id="provedorboton"><a class="btn btn-xs btn-success"  onclick="myFunction()" href="#" ><i class="far fa-money"></i>
                Finalizar compra 
             </a></label>
             
   <?php  } else { ?>          
-            <label id="provedorboton"><a   href="#"  data-toggle="modal" data-target="#modalcobrar" class="btn btn-xs btn-success" >
-                <i class="fa fa-money"></i>
+            <label id="provedorboton"><a  class="btn btn-xs btn-success"  href="#"  data-toggle="modal" data-target="#modalcobrar">
+                <i class="far fa-money"></i>
                Finalizar compra 
             </a></label>
  <?php  }  } ?>
  <?php  } ?>
              
 
-             <a href="#" data-toggle="modal" data-target="#aviso" class="btn btn-xs btn-danger" >
-                 <i class="fa fa-sign-out "></i>
+             <a class="btn btn-xs btn-danger" href="#" data-toggle="modal" data-target="#aviso">
+                 <i class="far fa-sign-out"></i>
                Salir  
             </a>
 
@@ -347,12 +283,13 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
            
 </div>
 <div class="row">
-    <div class="col-md-12">
+   
         
         <div class="col-md-4" style="padding-left:0px;">
                         
-      <div class="input-group"> <span class="input-group-addon" onclick="ocultar_busqueda();">Buscar</span>
-        <input id="comprar" type="text" class="form-control"  placeholder="Ingresa el nombre de producto, código o descripción"  onkeypress="compravalidar(event)">
+      <div class="input-group-prepend">
+        <span class="input-group-text" onclick="ocultar_busqueda();"><i class="fas fa-search"></i> Buscar</span>
+        <input id="comprar" type="text" class="form-control" autocomplete="off" placeholder="Ingresa el nombre de producto, código o descripción"  onkeypress="compravalidar(event)">
       </div>
       <!-------------------- CATEGORIAS------------------------------------->
 <div class="container" id="categoria">
@@ -368,7 +305,7 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
                                 
             
           
-                <table class="table table-striped" id="mitabla">
+                <table class="table table-striped" id="tabla_detalle">
                     
                      <tr>
                                                 <th>#</th>
@@ -384,8 +321,9 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
             </div>
          <div class="col-md-8" style="padding-left:0px; padding-right:0px;">
     <!--------------------- parametro de buscador --------------------->
-              <div class="input-group"> <span class="input-group-addon">Buscar</span>
-                <input id="filtrar" type="text" class="form-control" placeholder="Ingrese la compra, producto, costo"> 
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-list"></i> Filtrar</span>
+                <input id="filtrar" type="text" autocomplete="off" class="form-control" placeholder="Ingrese la compra, producto, costo"> 
               </div>
                 
         <!--------------------- fin parametro de buscador --------------------->
@@ -393,7 +331,7 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
        
             
             <div class="box-body table-responsive" style="padding-left:0px;">
-                <table class="table table-striped table-condensed" id="mitabla">
+                <table class="table table-striped table-condensed" id="tabla_detalle">
                   <tr>
                     <th colspan="7"></th>
                     <th colspan="2">Descuento</th>
@@ -451,88 +389,9 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
         </div>    
         <!----------------------------------- fin Botones ---------------------------------->
     </div>
-</div> 
+
 </div>
 
-<div class="col-md-6">
-
-<!----------- tabla detalle compra ----------------------------------->
-        
-      
-        
-    <!----------- fin tabla detalle cuenta ----------------------------------->
-         <!-- DATOS PARA INSERTAR A COMPRA
-<form action="<?php echo base_url('compra/editar/'); ?>"  method="POST" class="form">
-<div class="box">
-    <div class="box-body">
-              
-         
-
-            DATOS DESPEGABLES DE CHOFER COMPRA 
-<div class="box collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Mas</h3>
-              <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-plus"></i></button>
-                
-              </div>
-            </div>
-            <div class="box-body" style="display: none;">
-                <div class="box"> <h3 class="box-title">Detalle Chofer</h3>
-                     <div class="box-body">
-                        <div class="row clearfix">
-                        <div class="col-md-6">
-                        <label for="compra_chofer" class="control-label">Chofer(C)</label>
-                        <div class="form-group">
-                            <input type="text" name="compra_chofer" value="<?php echo $this->input->post('compra_chofer'); ?>" class="form-control" id="compra_chofer" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="compra_placamovil" class="control-label">Placa movil(C)</label>
-                        <div class="form-group">
-                            <input type="text" name="compra_placamovil" value="<?php echo $this->input->post('compra_placamovil'); ?>" class="form-control" id="compra_placamovil" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="compra_fechallegada" class="control-label">Fecha llegada(C)</label>
-                        <div class="form-group">
-                            <input type="text" name="compra_fechallegada" value="<?php echo $this->input->post('compra_fechallegada'); ?>" class="has-datepicker form-control" id="compra_fechallegada" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="compra_horallegada" class="control-label">Hora llegada(C)</label>
-                        <div class="form-group">
-                            <input type="text" name="compra_horallegada" value="<?php echo $this->input->post('compra_horallegada'); ?>" class="form-control" id="compra_horallegada" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-               <button type="submit" class="btn btn-info" >
-                <i class="fa fa-plus "></i>
-               Agregar Datos<br>
-            </button>
-            
-        </div>
-  
- 
-                </div> ---------/.box-body
-            
-          </div>
-    FIN DATOS DESPEGABLES DE CHOFER COMPRA             
-          
-</div></form>
- FIN DATOS PARA INSERTAR A COMPRA------------------------------------>   
-
-
-
-    </div>
-
-
-
-    <!----------------------------INSERTA LOS VALORES Q SE DIERON EN LOS CALCULOS------------------------------------->
-
-             
-        </form>
         </div>
 
 
@@ -1096,18 +955,18 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
 
                 <tr>
                         <td>Compra Bs</td>
-                        <td><input class="btn btn-default" type="text" size="8" readonly id="compra_subtotal" name="compra_subtotal" value="<?php echo number_format($subtotal,2,'.',','); ?>"></td>
+                        <td><input class="btn btn-default" type="text" size="8" readonly id="compra_subtotal" name="compra_subtotal" value="0"></td>
                     
                 </tr>                
                 <tr>
                         <td>Descuento Bs</td>
-                        <td><input class="btn btn-default" type="text" size="8" readonly id="compra_descuento" name="compra_descuento" value="<?php echo number_format($descuento,2,'.',','); ?>"></td>
+                        <td><input class="btn btn-default" type="text" size="8" readonly id="compra_descuento" name="compra_descuento" value="0"></td>
                     
                 </tr>
                 <tr>                      
                         <td><b>Subtotal Bs</b></td>
                         <td>
-                              <input class="btn btn-default" id="compra_total" size="8" name="compra_total" value="<?php echo $totalfinal; ?>" readonly="true">
+                              <input class="btn btn-default" id="compra_total" size="8" name="compra_total" value="0" readonly="true">
                         </td>
                 </tr>
                 <tr>                      
@@ -1119,7 +978,7 @@ input[type=number] { -moz-appearance:textfield; font-family: "Arial", Arial, Ari
                 <tr>                      
                         <td><b>Total Final Bs</b></td>
                         <td>
-                              <input class="btn btn-default" id="compra_totalfinal" size="8" name="compra_totalfinal" value="<?php echo $total_ultimo; ?>" readonly="true">
+                              <input class="btn btn-default" id="compra_totalfinal" size="8" name="compra_totalfinal" value="0" readonly="true">
                         </td>
                 </tr>
                 <tr>                      
