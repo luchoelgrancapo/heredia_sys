@@ -156,31 +156,32 @@ function fechadecompra(filtro)
                         html += "<a href='"+base_url+"compra/nota/"+registros[i]["compra_id"]+"' target='_blank' class='btn btn-success btn-xs' title='Nota de Compra'><span class='fa fa-print'></span></a>";
                         if (Number(registros[i]["elestado"])==1) {
                         html += " <a href='"+base_url+"compra/borrarauxycopiar/"+registros[i]["compra_id"]+"'  class='btn btn-info btn-xs' title='Modificar Compra'><span class='fas fa-edit'></span></a>";
-                        html += " <a href='#' data-toggle='modal' data-target='#anularmodal"+registros[i]["compra_id"]+"' class='btn btn-xs btn-warning' title='Anular Compra' ><i class='fa fa-minus-circle'></i></a>";
+                        html += " <a href='#' data-toggle='modal' data-target='#anularmodal"+registros[i]["compra_id"]+"' class='btn btn-xs btn-danger' title='Anular Compra' ><i class='fa fa-ban'></i></a>";
                         /*****modal anula compra ***/
                         }
                         html += "  <div class='modal fade' id='anularmodal"+registros[i]["compra_id"]+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>";
 
                         html += "          <div class='modal-dialog' role='document'>";
                         html += "            <div class='modal-content'>";
-                        html += "              <div class='modal-header'>";
+                        html += "              <div class='modal-header bg-danger'>";
+                        html += "                <h4><b>ADVERTENCIA </b></h4> ";
                         html += "              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>";
-                        html += "                    <span aria-hidden='true'>&times;</span>";
+                        html += "                    <span aria-hidden='true'>x</span>";
                         html += "                </button>";
-                        html += "                <h4><b> <em class='fa fa-minus-circle'></em> Desea anular la compra No.: "+registros[i]["compra_id"]+"?</b></h4> ";
                         html += "              </div>";
                         html += "              <div class='modal-body' align='center'>";
                                        
                                  
+                        html += "               <h4> Desea anular la compra No.: <b>"+registros[i]["compra_id"]+"? </b></4><br>";
                         html += "               <h4> Esta compra puede tener una orden de Pago, tomar en cuenta. </4></div>";
                                   
                         html += "              <div class='modal-footer' align='right'>";
 
-                        html += "            <a href='"+base_url+"compra/anular/"+registros[i]["compra_id"]+"' class='btn btn-xs btn-warning' >";
-                        html += "              <h5><span class='fa fa-check'></span>   Anular </h5>";
+                        html += "            <a href='"+base_url+"compra/anular/"+registros[i]["compra_id"]+"' class='btn btn-warning' >";
+                        html += "              <i class='fa fa-check'></i>   Anular";
                         html += "            </a> ";
-                        html += "            <button class='btn btn-xs btn-danger' data-dismiss='modal'>";
-                        html += "                <h5><span class='fa fa-close'></span>   Cancelar </h5>";
+                        html += "            <button class='btn btn-danger' data-dismiss='modal'>";
+                        html += "                <i class='fa fa-times'></i>   Cancelar";
                         html += "            </button>                   ";
                         html += "        </div>";
                         html += "            </div>";
@@ -308,31 +309,32 @@ function compraproveedor(e)
 
                         if (Number(registros[i]["elestado"])==1) {
                         html += " <a href='"+base_url+"compra/borrarauxycopiar/"+registros[i]["compra_id"]+"'  class='btn btn-info btn-xs' title='Modificar Compra'><span class='fas fa-edit'></span></a>";
-                        html += " <a href='#' data-toggle='modal' data-target='#anularmodal"+registros[i]["compra_id"]+"' class='btn btn-xs btn-warning' title='Anular Compra' ><i class='fa fa-minus-circle'></i></a>";
+                        html += " <a href='#' data-toggle='modal' data-target='#anularmodal"+registros[i]["compra_id"]+"' class='btn btn-xs btn-danger' title='Anular Compra' ><i class='fa fa-ban'></i></a>";
                         }
                         /*****modal anula compra ***/
                         html += "  <div class='modal fade' id='anularmodal"+registros[i]["compra_id"]+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>";
 
                         html += "          <div class='modal-dialog' role='document'>";
                         html += "            <div class='modal-content'>";
-                        html += "              <div class='modal-header'>";
+                        html += "              <div class='modal-header bg-danger'>";
+                        html += "                <h4><b>ADVERTENCIA </b></h4> ";
                         html += "              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>";
-                        html += "                    <span aria-hidden='true'>&times;</span>";
+                        html += "                    <span aria-hidden='true'>x</span>";
                         html += "                </button>";
-                        html += "                <h4><b> <em class='fa fa-minus-circle'></em> Desea anular la compra No.: "+registros[i]["compra_id"]+"?</b></h4> ";
                         html += "              </div>";
                         html += "              <div class='modal-body' align='center'>";
-
+                                       
                                  
-                        html += "                <h4>Esta compra puede tener una orden de Pago, tomar en cuenta. </h4></div>";
+                        html += "               <h4> Desea anular la compra No.: <b>"+registros[i]["compra_id"]+" </b>?</4><br>";
+                        html += "               <h4> Esta compra puede tener una orden de Pago, tomar en cuenta. </4></div>";
                                   
                         html += "              <div class='modal-footer' align='right'>";
 
-                        html += "            <a href='"+base_url+"compra/anular/"+registros[i]["compra_id"]+"' class='btn btn-xs btn-warning'  type='submit'>";
-                        html += "                <h5><span class='fa fa-check'></span>   Anular </h5>";
+                        html += "            <a href='"+base_url+"compra/anular/"+registros[i]["compra_id"]+"' class='btn btn-warning' >";
+                        html += "              <i class='fa fa-check'></i>   Anular";
                         html += "            </a> ";
-                        html += "            <button class='btn btn-xs btn-danger' data-dismiss='modal'>";
-                        html += "                <h5><span class='fa fa-close'></span>   Cancelar </h5>";
+                        html += "            <button class='btn btn-danger' data-dismiss='modal'>";
+                        html += "                <i class='fa fa-times'></i>   Cancelar";
                         html += "            </button>                   ";
                         html += "        </div>";
                         html += "            </div>";

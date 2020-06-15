@@ -342,7 +342,7 @@ function tabla_inventario(){
 
     //                    html += "             	<td "+margen+" ><center style='line-height:70%'> <sub> "+ existencia +"<br>"+inv[i]["producto_unidad"]+"</sub></center></td>";
 
-                        html += "<td> <a href='"+base_url+"inventario/kardex/"+inv[i]["producto_id"]+"' target='_blank' class='btn btn-warning btn-xs no-print'><fa class='fa fa-list'> </fa> Kardex</a></small> </td>";
+                        html += "<td> <a href='"+base_url+"inventario/kardex/"+inv[i]["producto_id"]+"' target='_blank' class='btn btn-warning btn-xs no-print'><fa class='fas fa-exchange-alt'> </fa> Kardex</a></small> </td>";
                         //html += "<td><a href='"+base_url++"'>kardex</a></td>";
                         html += "</tr>";
                    
@@ -657,7 +657,7 @@ function tabla_inventario_existencia(){
 
     //                    html += "                 <td "+margen+" ><center style='line-height:70%'> <sub> "+ existencia +"<br>"+inv[i]["producto_unidad"]+"</sub></center></td>";
 
-                        html += "<td> <a href='"+base_url+"inventario/kardex/"+inv[i]["producto_id"]+"' target='_blank' class='btn btn-warning btn-xs no-print'><fa class='fa fa-list'> </fa> Kardex</a></small> </td>";
+                        html += "<td> <a href='"+base_url+"inventario/kardex/"+inv[i]["producto_id"]+"' target='_blank' class='btn btn-warning btn-xs no-print'><fa class='fas fa-exchange-alt'> </fa> Kardex</a></small> </td>";
                         //html += "<td><a href='"+base_url++"'>kardex</a></td>";
                         html += "</tr>";
                    

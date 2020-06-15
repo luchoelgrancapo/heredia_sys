@@ -255,7 +255,7 @@ function tablaproductos()
                        var descgral = 0;
                        var totalfinal = 0;
                         html = "";
-                        html += "<table class='table table-striped table-condensed' id='mitablaventas'>";
+                        html += "<table class='table table-striped table-condensed' id='tabla_detalle'>";
                         html += "                    <tr>";
                         html += "                            <th style='padding:0'>#</th>";
                         html += "                            <th style='padding:0'>Descripción</th>";
@@ -287,7 +287,7 @@ function tablaproductos()
                            total_detalle+= parseFloat(registros[i]["detalleven_total"]);
                            
                             if (i == 0){
-                                color = "style='background-color: orange; padding:0; color: black;'"
+                                color = "style='background-color: white; padding:0; color: black;'"
                                 fuente = "2";
                             }
                             else {
@@ -302,9 +302,9 @@ function tablaproductos()
 
 //************************ INICIO CARACTERISTICAS ***************************
 
-html += "  <button class='btn btn-primary btn-xs' title='Registrar/modificar preferencias y características' type='button' data-toggle='collapse' data-target='#caracteristicas"+registros[i]["detalleven_id"]+"' aria-expanded='false' aria-controls='caracteristicas"+registros[i]["detalleven_id"]+"'><i class='fa fa-edit'></i></button>";
+//html += "  <button class='btn btn-primary btn-xs' title='Registrar/modificar preferencias y características' type='button' data-toggle='collapse' data-target='#caracteristicas"+registros[i]["detalleven_id"]+"' aria-expanded='false' aria-controls='caracteristicas"+registros[i]["detalleven_id"]+"'><i class='fa fa-edit'></i></button>";
 
-html += "  <a href='#' data-toggle='modal' onclick='iniciar_preferencia("+registros[i]["detalleven_id"]+")' data-target='#modalpreferencia' class='btn btn-xs btn-success' style=''><i class='fa fa-tasks'></i></a>";
+//html += "  <a href='#' data-toggle='modal' onclick='iniciar_preferencia("+registros[i]["detalleven_id"]+")' data-target='#modalpreferencia' class='btn btn-xs btn-success' style=''><i class='fa fa-tasks'></i></a>";
 
 
 html += "<div class='row'>";
@@ -425,7 +425,7 @@ html += "  </div>";
                         html += "			<button onclick='reducir(1,"+registros[i]["detalleven_id"]+")' class='btn btn-facebook btn-xs'><span class='fa fa-minus'></span></a></button>";                       
                         //html += "                              		<span class='btn btn-default  btn-xs'> "+registros[i]["detalleven_cantidad"]+"</span>";
                         
-                        html += "                       <input size='1' name='cantidad' class='btn btn-default btn-xs' id='cantidad"+registros[i]["detalleven_id"]+"' value='"+registros[i]["detalleven_cantidad"]+"'   onKeyUp ='cambiarcantidadjs(event,"+JSON.stringify(registros[i])+")' >";
+                        html += "                       <input size='3' name='cantidad' class='btn btn-secondary btn-xs' id='cantidad"+registros[i]["detalleven_id"]+"' value='"+registros[i]["detalleven_cantidad"]+"'   onKeyUp ='cambiarcantidadjs(event,"+JSON.stringify(registros[i])+")' >";
                         //onkeypress ='seleccionar_cantidad(cantidad"+registros[i]["detalleven_id"]+")'
                         html += "                       <input size='1' name='productodet_id' id='productodet_"+registros[i]["detalleven_id"]+"' value='"+registros[i]["producto_id"]+"' hidden>";
                         html += "                       <button onclick='ingresorapidojs(1,"+JSON.stringify(registros[i])+")' class='btn btn-facebook btn-xs'><span class='fa fa-plus'></span></a></button>";
@@ -434,7 +434,7 @@ html += "  </div>";
                     
 
                         html += "</td>";
-                        html += "<td align='right' "+color+"><input size='5' name='precio' id='precio"+registros[i]["detalleven_id"]+"' value='"+parseFloat(registros[i]["detalleven_precio"]).toFixed(2)+"' onKeyUp ='actualizarprecios(event,"+registros[i]["detalleven_id"]+")'></td>";
+                        html += "<td align='right' "+color+"><input size='8' name='precio' id='precio"+registros[i]["detalleven_id"]+"' value='"+parseFloat(registros[i]["detalleven_precio"]).toFixed(2)+"' onKeyUp ='actualizarprecios(event,"+registros[i]["detalleven_id"]+")'></td>";
                         
                         html += "                       <td align='right' "+color+"><font size='3' ><b>"+parseFloat(registros[i]["detalleven_total"]).toFixed(2)+"</b></font></td>";
 
@@ -1321,7 +1321,7 @@ function tablaresultados(opcion)
                     $("#encontrados").val("- "+n+" -");
                     html = "";
                     
-                   html += "                <table class='table  table-condensed table-striped' id='mitabla'>";
+                   html += "                <table class='table  table-condensed table-striped' id='tabla_detalle'>";
                    html += "                <tr>";
                    html += "                <th>#</th> ";
                    html += "                <th>Descripción</th>";
@@ -1375,7 +1375,7 @@ function tablaresultados(opcion)
                         html += "<input type='text' id='input_unidad"+registros[i]["producto_id"]+"' value='"+registros[i]["producto_unidad"]+"' hidden>";
                         html += "<input type='text' id='input_unidadfactor"+registros[i]["producto_id"]+"' value='"+registros[i]["producto_unidadfactor"]+"' hidden>";
                         
-                        html += "<button class='btn btn-danger btn-xs' type='text' style='padding:0;' title='Compra rápida' id='button"+registros[i]["producto_id"]+"' onclick='registrar_ingreso_rapido("+JSON.stringify(registros[i])+")'>- <fa class='fa fa-bolt'></fa> -</button>";
+                        html += "<button class='btn btn-danger btn-xs' type='text' style='padding:0;' title='Compra rápida' id='button"+registros[i]["producto_id"]+"' onclick='registrar_ingreso_rapido("+JSON.stringify(registros[i])+")'>- <fa class='fa fa-shopping-basket'></fa> -</button>";
                         
                        if(! esMobil()){
                         html += "</td>";
@@ -1385,7 +1385,7 @@ function tablaresultados(opcion)
                         
                         html += "<center> ";                        
 //                        html += "   <select class='btn btn-facebook' style='font-size:10px; face=arial narrow;' id='select_factor"+registros[i]["producto_id"]+"' name='select_factor"+registros[i]["producto_id"]+"' onchange='mostrar_saldo("+registros[i]["existencia"]+","+registros[i]["producto_id"]+")'>";
-                        html += "   <select class='btn btn-facebook' style='font-size:12px; font-family: Arial; padding:0; background: black;' id='select_factor"+registros[i]["producto_id"]+"' name='select_factor"+registros[i]["producto_id"]+"' onchange='mostrar_saldo("+JSON.stringify(registros[i])+")'>";
+                        html += "   <select class='btn btn-warning btn-xs'  id='select_factor"+registros[i]["producto_id"]+"' name='select_factor"+registros[i]["producto_id"]+"' onchange='mostrar_saldo("+JSON.stringify(registros[i])+")'>";
                         
                         if (rol_precioventa==1){
                             
@@ -1470,7 +1470,7 @@ function tablaresultados(opcion)
                                   html +=     "<button class='btn btn-success btn-xs' onclick='ingresorapidojs(1,"+JSON.stringify(registros[i])+")'><b>- 1 -</b></button>";                                  
                                   html +=     "<button class='btn btn-info btn-xs' onclick='ingresorapidojs(2,"+JSON.stringify(registros[i])+")'><b>- 2 -</b></button>";
                                   html +=     "<button class='btn btn-primary btn-xs' onclick='ingresorapidojs(5,"+JSON.stringify(registros[i])+")'><b>- 5 -</b></button>";
-                                  html +=     "<button class='btn btn-warning btn-xs' onclick='ingresorapidojs(10,"+JSON.stringify(registros[i])+")'><b>- 10 -</b></button> ";
+                                  html +=     "<button class='btn btn-secondary btn-xs' onclick='ingresorapidojs(10,"+JSON.stringify(registros[i])+")'><b>- 10 -</b></button> ";
                                   html += "</div>";   
 
                             }            
@@ -1497,9 +1497,9 @@ function tablaresultados(opcion)
                         //html += "<div id='input_existencia"+registros[i]["producto_id"]+"'> <center><font size='3'><b>"+existencia+"</b></font><br>"+registros[i]["producto_unidad"]+"</center></div>";
                     
                         if (parseFloat(registros[i]["existencia"])>0){
-                             html += "<button type='button' class='btn btn-facebook btn-xl btn-block' style='padding:0;' data-toggle='modal' data-target='#myModal"+registros[i]["producto_id"]+"'  title='Añadir al detalle' onclick='focus_cantidad("+registros[i]["producto_id"]+")' >"+mensajeboton+ 
-                                    "<center style='line-height:10px;'><font size='2'><span class='btn btn-xs btn-danger' style='padding:0;'> <b>"+formato_numerico(existencia)+"</font><br><font size='1'><sub>"+registros[i]["producto_unidad"]+"</sub></font></b></span></center>"+
-                                       "<em style='font-size:20px;' class='fa fa-cart-arrow-down'></em></button>";                             
+                             html += "<button type='button' class='btn bg-indigo btn-xl btn-block' style='padding:0;' data-toggle='modal' data-target='#myModal"+registros[i]["producto_id"]+"'  title='Añadir al detalle' onclick='focus_cantidad("+registros[i]["producto_id"]+")' >"+mensajeboton+ 
+                                    "<center style='line-height:10px;'><font size='3'><b>"+formato_numerico(existencia)+"</font><br><font size='2'><sub>"+registros[i]["producto_unidad"]+"</sub></font></b></center>"+
+                                       "<em style='font-size:12px;' class='fa fa-cart-plus'></em></button>";                             
                         }
                         
                             
@@ -2367,7 +2367,7 @@ function tabla_ventas(filtro)
                         
                         
                 
-                    html += "                       <td style='max-width: 5cm; padding:0;'><font size='3'><b> "+nombre_cliente+"</b></font><sub>  ["+v[i]['cliente_id']+"]</sub>";
+                    html += "                       <td style='max-width: 5cm; padding:0;'><b> "+nombre_cliente+"</b> ["+v[i]['cliente_id']+"]";
                     html += "                           <br>Razón Soc.: "+v[i]['cliente_razon'];
                     html += "                           <br>NIT: "+v[i]['cliente_nit'];
                     html += "                           <br>Telefono(s): "+v[i]['cliente_telefono'];
@@ -2378,13 +2378,13 @@ function tabla_ventas(filtro)
                     html += "                           Sub Total "+v[i]['moneda_descripcion']+': '+Number(v[i]['venta_subtotal']).toFixed(2)+"<br>";
                     html += "                           Desc. "+v[i]['moneda_descripcion']+': '+Number(v[i]['venta_descuento']).toFixed(2)+"<br>";
                     html += "                           <!--<span class='btn btn-facebook'>-->";
-                    html += "                           <font size='3' face='Arial narrow'> <b>Total "+v[i]['moneda_descripcion']+': '+Number(v[i]['venta_total']).toFixed(2)+"</b></font><br>";
+                    html += "                           <b>Total "+v[i]['moneda_descripcion']+': '+Number(v[i]['venta_total']).toFixed(2)+"</b></font><br>";
                     html += "                           <!--</span>-->";
                     html += "                               Efectivo "+v[i]['moneda_descripcion']+": "+Number(v[i]['venta_efectivo']).toFixed(2)+"<br>";
                     html += "                               Cambio "+v[i]['moneda_descripcion']+": "+Number(v[i]['venta_cambio']).toFixed(2);
                     html += "                       </td>";
 
-                    html += "                       <td align='center' style='padding:0;'><font size='3'><b> 00"+v[i]['venta_id']+"</b></font>";
+                    html += "                       <td align='center' style='padding:0;'><b>"+v[i]['venta_id']+"</b>";
                     html += "                           <br><img src='"+base_url+"resources/images/usuarios/thumb_"+v[i]['usuario_imagen']+"' class='img-circle' width='35' height='35'>";
                     html += "                           <br>Vend.: "+v[i]['usuario_nombre'];
                    
@@ -2396,7 +2396,7 @@ function tabla_ventas(filtro)
                     
                     html += "                       <td align='center'  style='padding:0;' bgcolor='"+v[i]['estado_color']+"'>"+v[i]['forma_nombre'];
                     html += "                           <br> "+v[i]['tipotrans_nombre'];
-                    html += "                           <br><br><span class='btn btn-facebook btn-xs' ><b>"+v[i]['estado_descripcion']+"</b></span> ";
+                    html += "                           <br><br>"+v[i]['estado_descripcion']+" ";
                     html += "                       </td>";
 
                     html += "                       <td style='padding:0;'><center>"+formato_fecha(v[i]['venta_fecha']);
@@ -2413,10 +2413,10 @@ function tabla_ventas(filtro)
 
                     html += "                       <td class='no-print' style='padding:0;'>";
 //                    html += "                           <a href='"+base_url+"venta/edit/"+v[i]['venta_id']+"' class='btn btn-info btn-xs no-print' target='_blank' title='Modifica los datos generales de la venta'><span class='fa fa-pencil'></span></a>";
-                    html += "                           <a href='"+base_url+"venta/modificar_venta/"+v[i]['venta_id']+"' class='btn btn-facebook btn-xs no-print' target='_blank' title='Modificar el detalle/cliente de la venta'><span class='fa fa-edit'></span></a>";
 //                    html += "                           <a href='"+base_url+"venta/nota_venta/"+v[i]['venta_id']+"' class='btn btn-success btn-xs'><span class='fa fa-print'></span></a> ";
                     html += "                           <a href='"+base_url+"factura/imprimir_recibo/"+v[i]['venta_id']+"' class='btn btn-success btn-xs' target='_blank' title='Imprimir nota de venta'><span class='fa fa-print'></span></a> ";
-                    html += "                           <a href='"+base_url+"factura/certificado_garantia/"+v[i]['venta_id']+"' class='btn btn-success btn-xs' target='_blank' title='Imprimir certificado de garantia' style='background-color: purple'> <span class='fa fa-lock'></span> </a> ";
+                    html += "                           <a href='"+base_url+"venta/modificar_venta/"+v[i]['venta_id']+"' class='btn btn-info btn-xs no-print' target='_blank' title='Modificar el detalle/cliente de la venta'><span class='fa fa-edit'></span></a>";
+                    //html += "                           <a href='"+base_url+"factura/certificado_garantia/"+v[i]['venta_id']+"' class='btn btn-success btn-xs' target='_blank' title='Imprimir certificado de garantia' style='background-color: purple'> <span class='fa fa-lock'></span> </a> ";
                     
                     if (parametro_modulorestaurante==1){
                     html += "                           <a href='"+base_url+"factura/comanda_boucher/"+v[i]['venta_id']+"' class='btn btn-primary btn-xs' target='_blank' title='Imprimir comanda'><span class='fa fa-list'></span></a> ";
@@ -2425,7 +2425,7 @@ function tabla_ventas(filtro)
                         html += " <a href='"+base_url+"factura/imprimir_factura/"+v[i]['venta_id']+"/0' target='_blank' class='btn btn-warning btn-xs' title='Ver/anular factura'><span class='fa fa-list-alt'></span></a> ";
                     }
                     else{                        
-                        html += " <button class='btn btn-facebook btn-xs' style='background-color:#000;' title='Generar factura' onclick='cargar_factura("+JSON.stringify(v[i])+");'><span class='fa fa-modx'></span></button> ";
+                        html += " <button class='btn bg-secondary btn-xs' title='Generar factura' onclick='cargar_factura("+JSON.stringify(v[i])+");'><span class='fas fa-file-invoice-dollar'></span></button> ";
                     }
                     
                     html += "<br><br>";
@@ -2446,19 +2446,21 @@ function tabla_ventas(filtro)
                     html += "                                 <div class='modal-dialog' role='document'>";
                     html += "                                       <br><br>";
                     html += "                                   <div class='modal-content'>";
-                    html += "                                     <div class='modal-header'>";
-                    html += "                                       <h1 class='modal-title' id='myModalLabel'>ADVERTENCIA</h1>";
+                    html += "                                     <div class='modal-header bg-danger'>";
+                    html += "                                       <h4 class='modal-title' id='myModalLabel'>ADVERTENCIA</h4>";
+                    html += "              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>";
+                    html += "                    <span aria-hidden='true'>x</span>";
+                    html += "                </button>";
                     html += "                                     </div>";
                     html += "                                     <div class='modal-body'>";
                     html += "                                         <div class='panel panel-primary'>";
                     html += "                                             ";
                     html += "                                         <center>";
                     html += "                                      <!------------------------------------------------------------------->";
-                    html += "                                      <h1 style='font-size: 80px'> <b> <em class='fa fa-trash'></em></b></h1> ";
                     html += "                                      <h4>";
                     html += "                                          ";
-                    html += "                                          ¿Desea anular la venta? <b> <br>";
-                    html += "                                          Trans.: "+v[i]['venta_id']+"<br>";
+                    html += "                                          Desea anular la venta";
+                    html += "                                          No.: <b>"+v[i]['venta_id']+" </b>?<br>";
                     if ((v[i]['pedido_id'])>0){
                             html += "<b class='btn btn-warning'><b> ADVERTENCIA: Se restablecera el PEDIDO Nº: "+v[i]['pedido_id']+" a PENDIENTE</b> </b>" ;
                     }
@@ -2473,9 +2475,9 @@ function tabla_ventas(filtro)
                     html += "                                     </div>";
                     html += "                                     <div class='modal-footer aligncenter'>";
                     html += "                                         <center>";                                        
-                    html += "                                           <a href='"+base_url+"venta/anular_venta/"+v[i]['venta_id']+"' class='btn btn-danger  btn-sm'><em class='fa fa-pencil'></em> Si </a>";
+                    html += "                                           <a href='"+base_url+"venta/anular_venta/"+v[i]['venta_id']+"' class='btn btn-warning'><i class='fa fa-check'></i> Anular </a>";
 
-                    html += "                                           <a href='#' class='btn btn-success btn-sm' data-dismiss='modal'><em class='fa fa-times'></em> No </a>";
+                    html += "                                           <a href='#' class='btn btn-danger' data-dismiss='modal'><i class='fa fa-times'></i> Cancelar </a>";
                     html += "                                         </center>";
 
                     html += "                                     </div>";

@@ -36,7 +36,7 @@
 </script>
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->    
-<link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 <input type="text" id="parametro_modoventas" value="<?php echo $parametro[0]['parametro_modoventas']; ?>" name="parametro_modoventas"  hidden>
 <input type="text" id="parametro_anchoboton" value="<?php echo $parametro[0]['parametro_anchoboton']; ?>" name="parametro_anchoboton"  hidden>
 <input type="text" id="parametro_altoboton" value="<?php echo $parametro[0]['parametro_altoboton']; ?>" name="parametro_altobotono"  hidden>
@@ -57,13 +57,32 @@
 <input type="text" value="" id="parametro" hidden>
 
 
+<br>
 
-
-<div class="box-header no-print">
-<h3 class="box-title">Ventas</h3>
+<div class="row">
+    
+    <div class="col-md-6">
+<h4 class="box-title"><b>VENTAS</b> <small class="badge badge-secondary" id="pillados"></small></h4>
+</div>
+        <!---------------- BOTONES --------->
+    <div class="col-md-6">
             	<div class="box-tools">                    
-                    <?php if($rolusuario[23-1]['rolusuario_asignado'] == 1){ ?>
-                    <select  class="btn btn-facebook btn-sm" id="select_ventas" onchange="buscar_ventas()">
+                     <a href="<?php echo site_url('venta/ventas'); ?>" class="btn bg-success btn-app"><i class="fa fa-cart-arrow-down"></i> Ventas</a>
+                    <button class="btn bg-pink btn-app" onclick="verificar_ventas()"><i class="fa fa-binoculars"></i> Verificar </button>
+                   
+                </div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+            <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                   <input id="filtrar" type="text" autocomplete="off" onkeypress="validar(event,10)" class="form-control" placeholder="Ingrese usuario, cliente, fecha">
+            </div>
+</div>
+<div class="col-md-6">
+    <?php if($rolusuario[23-1]['rolusuario_asignado'] == 1){ ?>
+                    <select  class="btn btn-secondary" id="select_ventas" onchange="buscar_ventas()">
 <!--                        <option value="1">-- SELECCIONE UNA OPCION --</option>-->
                         <option value="1">Ventas de Hoy</option>
                         <option value="2">Ventas de Ayer</option>
@@ -72,25 +91,23 @@
                         <option value="5">Ventas por fecha</option>
                     </select>
                     <?php } ?>
-                    <button class="btn btn-warning btn-sm" onclick="verificar_ventas()"><span class="fa fa-binoculars"></span> Verificar </button>
-                    <a href="<?php echo site_url('venta/ventas'); ?>" class="btn btn-success btn-sm"><span class="fa fa-cart-arrow-down"></span> Ventas</a>
-                </div>
+</div>
 </div>
 <!---------------------------------- panel oculto para busqueda--------------------------------------------------------->
 <!--<form method="post">-->
+<br>
 <div class="panel panel-primary col-md-12 no-print" id='buscador_oculto' style='display:none;'>
-    <br>
-    <center>            
+                <div class="row">     
         <div class="col-md-2">
-            Desde: <input type="date" class="btn btn-warning btn-sm form-control" id="fecha_desde" value="<?php echo date("Y-m-d");?>" name="fecha_desde" required="true">
+            Desde: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_desde" value="<?php echo date("Y-m-d");?>" name="fecha_desde" required="true">
         </div>
         <div class="col-md-2">
-            Hasta: <input type="date" class="btn btn-warning btn-sm form-control" id="fecha_hasta" value="<?php echo date("Y-m-d");?>"  name="fecha_hasta" required="true">
+            Hasta: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_hasta" value="<?php echo date("Y-m-d");?>"  name="fecha_hasta" required="true">
         </div>
         
         <div class="col-md-2">
             Tipo:             
-            <select  class="btn btn-warning btn-sm form-control" id="estado_id" required="true">
+            <select  class="btn btn-secondary btn-sm form-control" id="estado_id" required="true">
                 <?php foreach($estado as $es){?>
                     <option value="<?php echo $es['estado_id']; ?>"><?php echo $es['estado_descripcion']; ?></option>
                 <?php } ?>
@@ -99,7 +116,7 @@
         
         <div class="col-md-2">
             Usuario:             
-            <select  class="btn btn-warning btn-sm form-control" id="usuario_id">
+            <select  class="btn btn-secondary btn-sm form-control" id="usuario_id">
                     <option value="0">-- TODOS --</option>
                 <?php foreach($usuario as $us){?>
                     <option value="<?php echo $us['usuario_id']; ?>"><?php echo $us['usuario_nombre']; ?></option>
@@ -109,18 +126,21 @@
         
         <br>
         <div class="col-md-3">
-
-            <button class="btn btn-sm btn-facebook btn-sm btn-block"   onclick="ventas_por_fecha()">
-                <h4>
-                <span class="fa fa-search"></span>   Buscar
-                </h4>
+<br>
+            <button class="btn btn-sm btn-primary form-control"   onclick="ventas_por_fecha()">
+             
+                <i class="fa fa-search"></i>   Buscar
+                
             </button>
             
             <br>
         </div>
-        
-    </center>    
-    <br>    
+          
+          <br>    
+            </div>
+
+
+<br> 
 </div>
 <!--</form>-->
 <!------------------------------------------------------------------------------------------->
@@ -129,11 +149,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <!--------------------- parametro de buscador --------------------->
-            <div class="input-group no-print"> <span class="input-group-addon">Buscar</span>
-                <input id="filtrar" type="text" onkeypress="validar(event,10)" class="form-control" placeholder="Ingrese usuario, cliente, fecha">
-            </div>
-        <!--------------------- fin parametro de buscador --------------------->
+        
             
 <!--------------------- inicio loader ------------------------->
 <div class="row" id='oculto' style='display:block;'>
