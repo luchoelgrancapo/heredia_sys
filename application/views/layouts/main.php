@@ -7,7 +7,7 @@
         ?>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Luisman <?php if(isset($page_title)){ echo " - ".$page_title; }?> </title>
+        <title>HEREDIA_SYS <?php if(isset($page_title)){ echo " - ".$page_title; }?> </title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap 3.3.6 -->
@@ -123,17 +123,37 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo site_url('compra');?>" class="nav-link">
-                                <i class="fas fa-shopping-basket"></i> <p>Compras</p>
+                                <i class="nav-icon fas fa-shopping-basket fa-fw"></i> <p>Compras</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo site_url('venta');?>" class="nav-link">
-                                <i class="fas fa-cart-arrow-down"></i> <p>Ventas</p>
+                                <i class="nav-icon fas fa-cart-arrow-down fa-fw"></i> <p>Ventas</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo site_url('inventario');?>" class="nav-link">
-                                <i class="fas fa-cubes"></i> <p>Inventario</p>
+                                <i class="nav-icon fas fa-cubes fa-fw"></i> <p>Inventario</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('ingreso');?>" class="nav-link">
+                                <i class="nav-icon fas fa-hand-holding-usd fa-fw"></i> <p>Ingresos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('egreso');?>" class="nav-link">
+                                <i class="nav-icon fas fa-hand-holding-usd fa-fw"></i> <p>Egresos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('producto');?>" class="nav-link">
+                                <i class="nav-icon fas fa-gifts fa-fw"></i> <p>Productos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('cliente');?>" class="nav-link">
+                                <i class="nav-icon fas fa-users fa-fw"></i> <p>Clientes</p>
                             </a>
                         </li>
                         

@@ -1,36 +1,145 @@
+/* tabla-------------------*/
 #mitabla {
-    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
-   
-    font-size: 10px;
+    
     border-collapse: collapse;
     width: 100%;
-    padding : 0 0 0 0;
 }
-
-#mitabla td, #mitabla th {
-    border: 1px solid #ddd;
-    padding: 8px;
-    
-}
-
-#mitabla tr:nth-child(even){background-color: #f2f2f2;}
-
-#mitabla tr:hover {background-color: #ddd;}
-
 #mitabla th {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    border: white 1px solid;
+    padding-top: 1px;
+    padding-bottom: 1px;
     text-align: center;
-    background-color: red;
+    background-color: #343a40;
     color: white;
-    font-size: 11px;
+    font-size: 16px;
 }
-#div1 {
-     overflow:scroll;
-     height:200px;
-     width:500px;
+#mitabla td {
+    border: 1px solid #ddd;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    font-size: 14px;
 }
-#div1 table {
-    width:500px;
-    background-color:lightgray;
-}    
+
+/*@media print {
+    #mitabla th {
+        background-color: green !important;
+        color: white !important;
+       /* -webkit-print-color-adjust: exact; */
+   /* }
+}
+
+@media print {
+    #mitabla td {
+        background-color: red !important;
+        color: yellow !important;
+    }
+}*/
+
+#mitabla tr:nth-child(odd){background-color: #fff;}
+#mitabla tr:nth-child(even){background-color: #fff;}
+
+#mitabla tr:hover {background-color: rgba(52, 58, 64, 0.3);}
+
+/**** TABLA DETALLE****/
+
+/* tabla-------------------*/
+#tabla_detalle {
+    
+    border-collapse: collapse;
+    width: 100%;
+}
+#tabla_detalle th {
+    border: white 1px solid;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 2px;
+    padding-right:  2px;
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+    font-size: 12px;
+}
+#tabla_detalle td {
+    border: 1px solid #ddd;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right:  0px;
+
+    font-size: 12px;
+}
+
+/*@media print {
+    #mitabla th {
+        background-color: green !important;
+        color: white !important;
+       /* -webkit-print-color-adjust: exact; */
+   /* }
+}
+
+@media print {
+    #mitabla td {
+        background-color: red !important;
+        color: yellow !important;
+    }
+}*/
+
+#tabla_detalle tr:nth-child(odd){background-color: #fff;}
+#tabla_detalle tr:nth-child(even){background-color: #fff;}
+
+#tabla_detalle tr:hover {background-color: rgba(52, 58, 64, 0.3);}
+
+/**** TABLA MODAL FINALIZAR****/
+
+/* tabla-------------------*/
+#tabla_fin {
+    
+    border-collapse: collapse;
+    width: 100%;
+}
+#tabla_fin th {
+    border: white 1px solid;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 2px;
+    padding-right:  2px;
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+    font-size: 12px;
+}
+#tabla_fin td {
+    border: 1px solid #ddd;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right:  0px;
+
+    font-size: 14px;
+}
+
+/*@media print {
+    #mitabla th {
+        background-color: green !important;
+        color: white !important;
+       /* -webkit-print-color-adjust: exact; */
+   /* }
+}
+
+@media print {
+    #mitabla td {
+        background-color: red !important;
+        color: yellow !important;
+    }
+}*/
+
+#tabla_fin tr:nth-child(odd){background-color: #fff;}
+#tabla_fin tr:nth-child(even){background-color: #fff;}
+
+/*#tabla_detalle tr:hover {background-color: rgba(52, 58, 64, 0.3);}
+
+
+
+
+

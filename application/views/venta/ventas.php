@@ -714,7 +714,7 @@ window.onkeydown = compruebaTecla;
                                 <div class="row">
                                         
                                     
-                                    <div class="col-md-6" style="padding: 0;">
+                                    <div class="col-md-6" >
 <!--                                        <h4 class="modal-title" id="myModalLabel"><b>FECHA DE ENTREGA</b></h4>
                                         <?php                                                     
                                             $fecha = date('Y-m-d'); 
@@ -722,8 +722,9 @@ window.onkeydown = compruebaTecla;
                                         ?>
                                         
                                         <input type="datetime-local" id="fechahora_entrega" name="fechahora_entrega" value="<?php echo $fecha."T".$hora;?>" required>-->
-                                        <h5 class="modal-title" id="myModalLabel"><b>FORMA DE PAGO</b></h5>                                        
-                                        <select id="forma_pago"  name="forma_pago" class="btn btn-default btn-xs" style="width: 120px;">
+                                        <label for="forma_pago" class="control-label" >Forma Pago</label> 
+                                        <div class="form-group">                                      
+                                        <select id="forma_pago"  name="forma_pago"class="form-control" >
                                             <?php
                                                 foreach($forma_pago as $forma){ ?>
                                                     <option value="<?php echo $forma['forma_id']; ?>"><?php echo $forma['forma_nombre']; ?></option>                                                   
@@ -731,19 +732,21 @@ window.onkeydown = compruebaTecla;
                                                                                                     
                                          </select>
                                     </div>
+                                    </div>
                                     
-                                    <div class="col-md-6" style="padding: 0;">
-                                        <center>
-                                            
-                                        <h5 class="modal-title" id="myModalLabel"><b>TIPO TRANS</b></h5>                                        
-                                        <select id="tipo_transaccion" name="tipo_transaccion" class="btn btn-default btn-xs"  onchange="mostrar_ocultar()"  style="width: 120px;">
+                                    <div class="col-md-6">
+                                        
+                                         <div class="form-group">   
+                                        <label for="tipo_transaccion" class="control-label">Tipo de Trans.</label>                                        
+                                        <select id="tipo_transaccion" name="tipo_transaccion" class="form-control"  onchange="mostrar_ocultar()"  >
                                             <?php
                                                 foreach($tipo_transaccion as $tipo){ ?>
                                                     <option value="<?php echo $tipo['tipotrans_id']; ?>"><?php echo $tipo['tipotrans_nombre']; ?></option>                                                   
                                             <?php } ?>
  
                                          </select>
-                                        </center>
+                                       
+                                    </div>
                                     </div>
                                     
                                     <?php 
@@ -791,7 +794,7 @@ window.onkeydown = compruebaTecla;
     $subtotal = $total_detalle - $total_descuento; 
     $efectivo = $subtotal;
     $cambio = 0.00;
-    $ancho_boton = 10;
+    $ancho_boton = 8;
     ?>
 
             <div hidden="true">        
@@ -804,47 +807,44 @@ window.onkeydown = compruebaTecla;
             
             
             <div class="col-md-12">
-            <!--<form action="<?php echo base_url('hotel/checkout/'.$pedido_id."/".$habitacion_id); ?>"  method="POST" class="form">-->
+           
                 <div class="box">
 
             <div class="box-body table-responsive table-condensed">
-            <!--<form method="post" name="descuento">-->                
             
-            
-            
-            <table class="table table-striped table-condensed" id="tabla_detalle">
+            <table class="table table-striped table-condensed" id="tabla_fin">
                 
                 <tr>
-                        <td  style="padding: 0" >Total Bs</td>
-                        <td align="right">
-                            <input class="btn btn-danger btn-foursquarexs" style="padding: 0; background-color: black; font-size: 20px;" id="venta_total" size="<?php echo $ancho_boton; ?>"  name="venta_total" value="<?php echo number_format(0.00,2,'.',','); ?>" readonly="true">
+                        <td   >Total Bs</td>
+                        <td>
+                            <input class="btn btn-default btn-foursquarexs"  id="venta_total" size="<?php echo $ancho_boton; ?>"  name="venta_total" value="<?php echo number_format(0.00,2,'.',','); ?>" readonly="true">
                         </td>
                     
                     
                 </tr>                
-                <tr style="padding: 0">
-                        <td style="padding: 0">Descuento Bs</td>
-                        <td align="right" style="padding: 0">
-                            <input class="btn btn-foursquarexs" style="padding: 0" id="venta_descuentoparc" size="<?php echo $ancho_boton; ?>"  name="venta_descuentoparc" value="<?php echo number_format(0.00,2,'.',','); ?>" readonly="true">
+                <tr >
+                        <td >Descuento Bs</td>
+                        <td  >
+                            <input class="btn btn-foursquarexs"  id="venta_descuentoparc" size="<?php echo $ancho_boton; ?>"  name="venta_descuentoparc" value="<?php echo number_format(0.00,2,'.',','); ?>" readonly="true">
                         </td>
                     
                 </tr>
 
                         
-                <tr style="padding: 0">
-                        <td align="right" style="padding: 0"><b>Sub Total Bs</b></td>
-                        <td align="right" style="padding: 0">                
+                <tr >
+                        <td  ><b>Sub Total Bs</b></td>
+                        <td  >                
                             
-                            <input class="btn btn-foursquarexs"  style="padding: 0" id="venta_subtotal" size="<?php echo $ancho_boton; ?>"  name="venta_subtotal" value="<?php echo number_format($subtotal,2,'.',','); ?>" readonly="true">
+                            <input class="btn btn-foursquarexs"   id="venta_subtotal" size="<?php echo $ancho_boton; ?>"  name="venta_subtotal" value="<?php echo number_format($subtotal,2,'.',','); ?>" readonly="true">
                         </td>
 
                 </tr>
 
-                <tr style="padding: 0">                      
-                        <td style="padding: 0">Descuento Bs</td>
-                        <td align="right" style="padding: 0">
-                            <input class="btn btn-info"  style="padding: 0" id="venta_descuento" name="venta_descuento" size="<?php echo $ancho_boton; ?>" value="<?php echo $descuento; ?>" onKeyUp="calculardesc()" onclick="seleccionar(4)">
-                            <select id="tipo_descuento" onchange="calculardesc()">
+                <tr >                      
+                        <td >Descuento Bs</td>
+                        <td  >
+                            <input class="btn btn-info"   id="venta_descuento" name="venta_descuento" size="<?php echo $ancho_boton; ?>" value="<?php echo $descuento; ?>" onKeyUp="calculardesc()" onclick="seleccionar(4)">
+                            <select id="tipo_descuento" class="btn btn-secondary" onchange="calculardesc()">
                                 <option value="1">Bs</option>
                                 <option value="2">%</option>
                                 
@@ -852,26 +852,26 @@ window.onkeydown = compruebaTecla;
                         </td>
                 </tr>
 
-                <tr style="padding: 0">                      
-                        <td style="padding: 0"><b>Total Final Bs</b></td>
-                        <td align="right" style="padding: 0">
+                <tr  >                      
+                        <td class="bg-black" ><b>Total Final Bs</b></td>
+                        <td  >
 
-                              <input class="btn btn-foursquarexs" style="font-size: 20px; padding: 0;" id="venta_totalfinal" size="<?php echo $ancho_boton; ?>" name="venta_totalfinal" value="<?php echo $totalfinal; ?>" readonly="true">
+                              <input class="btn bg-black btn-foursquarexs"  id="venta_totalfinal" size="<?php echo $ancho_boton; ?>" name="venta_totalfinal" value="<?php echo $totalfinal; ?>" readonly="true">
 
                         </td>
                 </tr>
 
-                <tr style="padding: 0">                      
-                        <td style="padding: 0">Efectivo Bs</td>
-                        <td align="right" style="padding: 0">
-                            <input class="btn" style="padding:0; background-color:yellow; font-size:20px;" id="venta_efectivo" size="<?php echo $ancho_boton; ?>" name="venta_efectivo" value="<?php echo $efectivo; ?>"  onKeyUp="calcularcambio(event)"  onclick="seleccionar(5)">
+                <tr >                      
+                        <td >Efectivo Bs</td>
+                        <td >
+                            <input class="btn btn-info" id="venta_efectivo" size="<?php echo $ancho_boton; ?>" name="venta_efectivo" value="<?php echo $efectivo; ?>"  onKeyUp="calcularcambio(event)"  onclick="seleccionar(5)">
                         </td>
                 </tr>
                 
-                <tr style="padding: 0">                      
-                    <td style="padding: 0"><b>Cambio Bs</b></td>
-                        <td align="right" style="padding: 0;">
-                            <input class="btn btn-danger  btn-foursquarexs" style="padding: 0; background-color: black; font-size: 20px;"  id="venta_cambio" size="<?php echo $ancho_boton; ?>" name="venta_cambio" value="<?php echo number_format($cambio,2,'.',','); ?>" readonly="true" required min="0">
+                <tr >                      
+                    <td ><b>Cambio Bs</b></td>
+                        <td>
+                            <input class="btn btn-default  btn-foursquarexs"  id="venta_cambio" size="<?php echo $ancho_boton; ?>" name="venta_cambio" value="<?php echo number_format($cambio,2,'.',','); ?>" readonly="true" required min="0">
                         </td>
                 </tr>
                 
@@ -896,10 +896,10 @@ window.onkeydown = compruebaTecla;
            <!-- ************************************* datos credito ************************************************-->
                 
             <div class="row" id='creditooculto'  style='display:none;'>
-                                    
+                   <div class="row">                 
                 <div class="col-md-4">
-                    <h5 class="modal-title" id="myModalLabel"><b>Nº CUOTAS</b></h5>
-
+                    
+                    <label for="cuotas" class="control-label">Nº CUOTAS</label>
                     <select name="cuotas"  class="form-control input-sm" id="cuotas">
                         <?php for($i=1;$i<=36;$i++){ ?>
                             <option value="<?php echo $i; ?>"><?php echo $i; ?> CUOTA (S)</option>
@@ -909,7 +909,9 @@ window.onkeydown = compruebaTecla;
 
                 
                 <div class="col-md-4">
-                    <h5 class="modal-title" id="myModalLabel"><b>MODALIDAD</b></h5>
+                    
+                   <label for="modalidad" class="control-label">MODALIDAD</label>
+
                     <select class="form-control input-sm" id="modalidad" name="modalidad">                       
                         <option value="MENSUAL">MENSUAL</option>
                         <option value="SEMANAL">SEMANAL</option>
@@ -917,7 +919,7 @@ window.onkeydown = compruebaTecla;
                 </div>
                 
                 <div class="col-md-4">
-                    <h5 class="modal-title" id="myModalLabel"><b>DIA PAGO</b></h5>
+                    <label for="dia_pago" class="control-label">DIA PAGO</label>
                     <select class="form-control input-sm" id="dia_pago" name="dia_pago">
                         
                     <?php for($dia=1; $dia<=31; $dia++){?>
@@ -926,12 +928,12 @@ window.onkeydown = compruebaTecla;
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <h5 class="modal-title" id="myModalLabel"><b>INTERES</b></h5>
+                    <label for="credito_interes" class="control-label">INTERES</label>
                     <input type="text"  class="form-control  input-sm" value="<?php echo 0.00; ?>" name="credito_interes" id="credito_interes">
                 </div>
 
                 <div class="col-md-4">
-                    <h5 class="modal-title" id="myModalLabel"><b>CUOTA INIC. Bs</b></h5>
+                    <label for="cuota_inicial" class="control-label">CUOTA INIC. Bs</label>
                     <input type="text" class="form-control  input-sm"  value="0.00"name="cuota_inicial" id="cuota_inicial" >
                 </div>
 
@@ -942,14 +944,14 @@ window.onkeydown = compruebaTecla;
                 -->
                 <?php  $fecha = date('Y-m-d'); ?>
                 <div class="col-md-4">
-                    
-                    <h5 class="modal-title" id="myModalLabel"><b>FECHA INICIAL</b></h5>
+                    <label for="fecha_inicio" class="control-label">FECHA INICIAL</label>
                     <input type="date" class="form-control  input-sm"  value="<?php echo $fecha; ?>" name="fecha_inicio" id="fecha_inicio">
                     
                 </div>
                 
+          
            </div>
-           
+            </div>
            <!--************************************* fin datos credito ************************************************-->           
                  
                 
@@ -961,20 +963,27 @@ window.onkeydown = compruebaTecla;
                 </h4>
             </button>
             -->
+            <br>
+            <div class="row">
+            <div class="col-md-6">  
             <button class="btn btn-lg btn-success btn-sm btn-block" id="boton_finalizar" data-dismiss="modal" onclick="finalizarventa()" style="display: block;">
                 
                 <span class="fa fa-money-bill-alt"></span>   Finalizar Venta  
                
             </button>
-
+        </div>
+        <div class="col-md-6">  
             <button class="btn btn-lg btn-danger btn-sm btn-block" data-dismiss="modal">
                 
-                <span class="fa fa-close"></span>   Cancelar  
+                <span class="fa fa-ban"></span>   Cancelar  
                 
             </button>
+        </div>
+        </div>
     <!--</form>-->
         </div>
         </div>
+
 <!-- </form>-->
 
         

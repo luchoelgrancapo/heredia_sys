@@ -287,6 +287,7 @@ function tablatotales(total_detalle,descuento,subtotal)
    $('#compra_descuento').val(descuento.toFixed(2));
    $('#compra_total').val(parcial.toFixed(2));
     $("#compra_totalfinal").val(totalfinal.toFixed(2));
+    $("#credito_monto").val(totalfinal.toFixed(2));
     //$("#venta_glogal").val(globaly);
      
 

@@ -849,6 +849,7 @@ input[type=number] { -moz-appearance:textfield;
     <div class="modal-dialog" role="document">
         <div class="modal-content">
          <div class="modal-header">
+         </div>
                <form action="<?php echo base_url('compra/finalizarcompra/'.$compra_id); ?>"  method="POST" class="form" name="descuento" id="descuento">              
 
 <input type="hidden" name="banderafin" id="banderafin" value="<?php echo $bandera; ?>">
@@ -957,9 +958,9 @@ input[type=number] { -moz-appearance:textfield;
                         </td>
                 </tr>
                 <tr>                      
-                        <td class="bg-warning"><b>Total Final Bs</b></td>
+                        <td class="bg-black"><b>Total Final Bs</b></td>
                         <td>
-                              <input class="btn btn-warning" id="compra_totalfinal" size="8" name="compra_totalfinal" value="0" readonly="true">
+                              <input class="btn bg-black" id="compra_totalfinal" size="8" name="compra_totalfinal" value="0" readonly="true">
                         </td>
                 </tr>
                 <tr>                      
@@ -993,7 +994,7 @@ input[type=number] { -moz-appearance:textfield;
                         <div class="form-group">
                         <label for="credito_numpagos" class="control-label">N de pagos</label>
                             <input type="number" step="1" min="1" id="credito_numpagos" class="form-control" name="credito_numpagos" value="1" >
-                            <input type="hidden" id="credito_monto"  name="credito_monto" value="<?php echo $totalfinal; ?>" >
+                            <input type="hidden" id="credito_monto"  name="credito_monto" value="" >
                             <input type="hidden" name="compra_id" value="<?php echo $compra_id; ?>">
                         </div></div>
                         
