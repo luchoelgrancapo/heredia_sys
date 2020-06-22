@@ -359,11 +359,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <?php 
  
           echo $this->session->flashdata('msg'); ?>
-            
-         
-              
-       
-       
+
               <?php if($diaslic['dias'] < 0){ ?>
                <div class="login-error">
                 
