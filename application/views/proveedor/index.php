@@ -74,35 +74,37 @@
         </div>
         
 </div>
+<br>
 <div class="row">
         <div class="col-md-6">
-
-
-        <!--este es INICIO del BREADCRUMB buscador-->
-<!--        <div class="row">
-            <ol class="breadcrumb">
-                <li><a href="<?php echo site_url('admin/dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
-                <li><a href="<?php echo site_url('cliente')?>">Clientes</a></li>
-                <li class="active"><b>Proveedores: </b></li>
-                <input style="border-width: 0; background-color: #DEDEDE" id="pillados" type="text"  size="5" value="-<?php echo $total ?>-" readonly="true">
-            </ol>
-        </div>-->
-        <div class="box-header">
-            <font size='4' face='Arial'><b>Proveedores</b></font>
-            <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($proveedor); ?></font> 
+    <div class="box-header">
+               <h4><b>PROVEEDORES</b> <small class="badge badge-secondary">Registros Encontrados: <?php echo sizeof($proveedor); ?></small></h4>
         </div>
+    </div>
+        <div class="col-md-6">
+        
+            <div class="box-tools no-print">
+        <center>            
+            <a href="<?php echo site_url('proveedor/add'); ?>" class="btn bg-success btn-app"><i class="fa fa-truck"></i>Registrar</a>
+            <button data-toggle="modal" data-target="#modalbuscar" class="btn bg-primary btn-app" onclick="fechadecompra('and 1')" ><i class="fa fa-search"></i>Ver Todos</button>
+            <?php
+            if($rol[113-1]['rolusuario_asignado'] == 1){ ?>
+            <a href="#" onclick="imprimir_proveedor()" class="btn bg-warning btn-app"><i class="fa fa-print"></i>Imprimir</a>
+            <?php } ?>
+            <!--<a href="" class="btn btn-info btn-foursquarexs"><span class="fa fa-cubes"></span>Productos</small></a>-->            
+        </center>            
+    </div>
+    </div>
+  
 
         <!--este es FIN del BREADCRUMB buscador-->
  
         <!--este es INICIO de input buscador-->
-        <div class="col-md-12 no-print">
-            <div class="input-group">
-                      <span class="input-group-addon"> 
-                        Buscar 
-                      </span>           
-                <input id="filtrar" type="text" class="form-control" placeholder="Ingrese el código, nombre, contacto, nit"  >
-            </div></div>
-           
+        <div class="col-md-6">
+            <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input id="filtrar" autocomplete="off" type="text" class="form-control" placeholder="Ingresa el nombre de proveedor" >
+            </div>
             
         <!--este es FIN de input buscador-->
 
@@ -115,22 +117,10 @@
         
     </div>
     <!---------------- BOTONES --------->
-    <div class="col-md-6">
-        
-            <div class="box-tools no-print">
-        <center>            
-            <a href="<?php echo site_url('proveedor/add'); ?>" class="btn btn-success btn-foursquarexs"><font size="5"><span class="fa fa-user-plus"></span></font><br><small>Registrar</small></a>
-            <button data-toggle="modal" data-target="#modalbuscar" class="btn btn-warning btn-foursquarexs" onclick="fechadecompra('and 1')" ><font size="5"><span class="fa fa-search"></span></font><br><small>Ver Todos</small></button>
-            <?php
-            if($rol[113-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="#" onclick="imprimir_proveedor()" class="btn btn-info btn-foursquarexs"><font size="5"><span class="fa fa-print"></span></font><br><small>Imprimir</small></a>
-            <?php } ?>
-            <!--<a href="" class="btn btn-info btn-foursquarexs"><font size="5"><span class="fa fa-cubes"></span></font><br><small>Productos</small></a>-->            
-        </center>            
-    </div>
-    </div>
+
     <!---------------- FIN BOTONES --------->
 </div>
+<br>
 <div class="row">
     <div class="col-md-12">
         
@@ -189,7 +179,7 @@
                     <!------------------------ FIN modal para MOSTRAR imagen REAL ------------------->
                                     </div>
                                     <div><?php
-                                        echo "<font size='3' face='Arial'><b>".$p['proveedor_nombre']."</b></font><br>";
+                                        echo "<b>".$p['proveedor_nombre']."</b><br>";
                                         echo "<b>CODIGO: </b>".$p['proveedor_codigo']."<br>";
                                         echo "<b>DIRECC.: </b>".$p['proveedor_direccion']."<br>";
                                         echo "<b>EMAIL: </b>".$p['proveedor_email'];
@@ -205,7 +195,7 @@
 
                             <!--<td><?php //echo $p['proveedor_autorizacion']; ?></td>-->
                             <td class="no-print">
-                            <a href="<?php echo site_url('proveedor/edit/'.$p['proveedor_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span></a> 
+                            <a href="<?php echo site_url('proveedor/edit/'.$p['proveedor_id']); ?>" class="btn btn-info btn-xs"><span class="fas fa-edit"></span></a> 
                             <!--<a href="<?php echo site_url('proveedor/remove/'.$p['proveedor_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span></a>-->
                         </td>
                     </tr>

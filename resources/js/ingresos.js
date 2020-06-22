@@ -82,12 +82,17 @@ function fechadeingreso(filtro)
 {   
       
    var base_url    = document.getElementById('base_url').value;
-    var controlador = base_url+"ingreso/buscarfecha";
-    
+   var controlador = base_url+"ingreso/buscarfecha";
+   var categoria = document.getElementById('categoria_id').value;
+   if (categoria==0) {
+       var categ = " ";
+   }else{
+       var categ = " and i.ingreso_categoria='"+categoria+"' ";
+   }
     
     $.ajax({url: controlador,
            type:"POST",
-           data:{filtro:filtro},
+           data:{filtro:filtro,categ:categ},
           
            success:function(resul){     
               
@@ -122,13 +127,15 @@ function fechadeingreso(filtro)
                         html += "<td align='right'>"+Number(registros[i]["ingreso_monto"]).toFixed(2)+"</td>"; 
                         html += "<td>"+registros[i]["ingreso_moneda"]+"</td>"; 
                         html += "<td>"+registros[i]["usuario_nombre"]+"</td>"; 
-                        html += "<td  class='no-print'><a href='"+base_url+"ingreso/pdf/"+registros[i]["ingreso_id"]+"' title='Carta' target='_blank' class='btn btn-success btn-xs'><span class='fa fa-print'></a>";
-                        html += "<a href='"+base_url+"ingreso/boucher/"+registros[i]["ingreso_id"]+"' title='Bouche' target='_blank' class='btn btn-facebook btn-xs'><span class='fa fa-print'></a>";
-                        if (registros[i]["factura_id"]>0) {
+                        html += "<td  class='no-print'><a href='"+base_url+"ingreso/imprimir/"+registros[i]["ingreso_id"]+"' title='Carta' target='_blank' class='btn btn-success btn-xs'><span class='fa fa-print'></a>";
+                       
+//                        html += "<a href='"+base_url+"ingreso/boucher/"+registros[i]["ingreso_id"]+"' title='Bouche' target='_blank' class='btn btn-facebook btn-xs'><span class='fa fa-print'></a>";
+                        
+                       if (registros[i]["factura_id"]>0) {
                         html += "<a href='"+base_url+"factura/imprimir_factura_id/"+registros[i]["factura_id"]+"/2' title='Factura' target='_blank' class='btn btn-warning btn-xs'><span class='fa fa-list'></a>";
                         }
-                        html += "<a href='"+base_url+"ingreso/edit/"+registros[i]["ingreso_id"]+"'  class='btn btn-info btn-xs'><span class='fa fa-pencil'></a>";
-                        html += "<a class='btn btn-danger btn-xs' data-toggle='modal' data-target='#myModal"+i+"' title='Eliminar'><span class='fa fa-trash'></span></a>";
+                        html += " <a href='"+base_url+"ingreso/edit/"+registros[i]["ingreso_id"]+"'  class='btn btn-info btn-xs'><span class='fas fa-edit'></a>";
+                        html += " <a class='btn bg-danger btn-xs' data-toggle='modal' data-target='#myModal"+i+"' title='Eliminar'><span class='fas fa-trash'></span></a>";
                         html += "<!------------------------ INICIO modal para confirmar eliminación ------------------->";
                         html += "<div class='modal fade' id='myModal"+i+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel"+i+"'>";
                         html += "<div class='modal-dialog' role='document'>";

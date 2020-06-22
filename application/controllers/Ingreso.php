@@ -46,13 +46,13 @@ class Ingreso extends CI_Controller{
             $data['rol'] = $this->session_data['rol'];
             $data['empresa'] = $this->Empresa_model->get_empresa(1);
         $data['ingresos'] = $this->Ingreso_model->get_all_ingresos();
-        $data['categoria_ingreso'] = $this->Categoria_ingreso_model->get_all_categoria_ingreso();
+        $data['all_categoria_ingreso'] = $this->Categoria_ingreso_model->get_all_categoria_ingreso();
         $data['page_title'] = "Ingreso";
         $data['_view'] = 'ingreso/index';
         $this->load->view('layouts/main',$data);
             }
            
-    }
+    } 
 
      function buscarfecha()
     {
@@ -64,12 +64,13 @@ class Ingreso extends CI_Controller{
         if ($this->input->is_ajax_request()) {
             
             $filtro = $this->input->post('filtro');
+            $categoria = $this->input->post('categ');
             
            if ($filtro == null){
             $result = $this->Ingreso_model->get_all_ingresos($params);
             }
             else{
-            $result = $this->Ingreso_model->fechaingreso($filtro);            
+            $result = $this->Ingreso_model->fechaingreso($filtro,$categoria);            
             }
            echo json_encode($result);
             
@@ -301,9 +302,10 @@ class Ingreso extends CI_Controller{
 
 public function pdf($ingreso_id){
     if($this->acceso(58)){
-      $data['ingresos'] = $this->Ingreso_model->get_ingresos($ingreso_id);
-       $data['empresa'] = $this->Empresa_model->get_empresa(1);
-       $data['page_title'] = "Ingreso"; 
+        $data['parametro'] =  $parametros = $this->Parametro_model->get_parametros();
+        $data['ingresos'] = $this->Ingreso_model->get_ingresos($ingreso_id);
+        $data['empresa'] = $this->Empresa_model->get_empresa(1);
+        $data['page_title'] = "Ingreso"; 
              $data['_view'] = 'ingreso/recibo';
             $this->load->view('layouts/main',$data);
        
@@ -314,7 +316,8 @@ public function boucher($ingreso_id){
             
     if($this->acceso(58)){
 
-      $data['ingreso'] = $this->Ingreso_model->get_ingresos($ingreso_id);
+       $data['parametro'] =  $parametros = $this->Parametro_model->get_parametros();
+       $data['ingreso'] = $this->Ingreso_model->get_ingresos($ingreso_id);
        $data['empresa'] = $this->Empresa_model->get_empresa(1);
        $data['page_title'] = "Ingreso"; 
              $data['_view'] = 'ingreso/reciboboucher';
@@ -322,6 +325,28 @@ public function boucher($ingreso_id){
             }
             
     }
+    
+/*************** funcion para mostrar la vista de la factura******************/
+function imprimir($ingreso_id){
+    
+        if($this->acceso(58)){
+        //**************** inicio contenido ***************            
+                
+            $parametros = $this->Parametro_model->get_parametros();
+
+            if (sizeof($parametros)>0){
+                
+                if ($parametros[0]['parametro_tipoimpresora']=="FACTURADORA")
+                    $this->boucher($ingreso_id);
+                else
+                    $this->pdf($ingreso_id);
+            }
+
+        //**************** fin contenido ***************
+        } 
+                
+} 
+    
     /*
      * Deleting ingreso
      */

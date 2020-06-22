@@ -30,13 +30,13 @@
             <center>
                                
                     <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60"><br>
-                    <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
-                    <!--<font size="2" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
-                    <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
-                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
-                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
-                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
-                    <!--<font size="1" face="Arial"><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
+                    <font  ><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
+                    <!--<font size="2" ><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
+                    <!--<font  ><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
+                    <!--<font  ><?php echo $factura[0]['factura_sucursal'];?><br>-->
+                    <font  ><?php echo $empresa[0]['empresa_direccion']; ?><br>
+                    <font  ><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
+                    <!--<font  ><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
                 
 
             </center>                      
@@ -46,9 +46,9 @@
             <center>
             
                 <br><br>
-                <font size="3" face="arial"><b>INGRESOS</b></font> <br>
+                <font  ><b>INGRESOS</b></font> <br>
                 
-                <font size="1" face="arial"><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
+                <font  ><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
 
             </center>
         </td>
@@ -69,24 +69,39 @@
         
 </div>
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
- <div class="col-md-6 no-print">
-             <div class="box-header">
-                <font size='4' face='Arial'><b>Ingresos</b></font>
-                <br><font size='2' face='Arial' id="pillados"></font>
+<br>
+<div class="row">
+ <div class="col-md-6">
+    <div class="box-header">
+               <h4><b>INGRESOS</b> <small class="badge badge-secondary" id="pillados"></small></h4>
         </div>
+    </div>
+    <div class="col-md-6">
         
-           <div class="row">
-        <div class="col-md-8 no-print">
+    <div class="box-tools">
+         
+            <a href="<?php echo site_url('ingreso/add'); ?>" class="btn bg-success btn-app"><i class="fas fa-hand-holding-usd"></i>Registrar Ingreso</a>
+            
+            <button data-toggle="modal" data-target="#modalbuscar" class="btn bg-primary btn-app" onclick="fechadeingreso('and 1')" ><i class="fa fa-search"></i>Ver Todos</button>
+            
+            <a href="#" onclick="imprimir()" class="btn bg-warning btn-app"><i class="fa fa-print"></i>Imprimir</a>
+             
+                  
+    </div>
+    </div>
+        <div class="col-md-6">
        <!--------------------- parametro de buscador --------------------->
-                  <div class="input-group"> <span class="input-group-addon">Buscar</span>
-                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese la descripción">
-                  </div>
+       <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input id="filtrar" autocomplete="off" type="text" class="form-control" placeholder="Ingresa el nombre de proveedor" >
+            </div>
+                 
             <!--------------------- fin parametro de buscador --------------------->
           </div>
-      <div class="col-md-4 no-print">
-      <div  class="box-tools" >
+      <div class="col-md-2">
+      
                           
-                    <select  class="btn btn-primary btn-sm" id="select_compra" onchange="buscar_ingresos()">
+                    <select  class="btn btn-secondary" id="select_compra" onchange="buscar_ingresos()">
                         <option value="0">Elija Fechas</option>
                         <option value="1">Ingresos de Hoy</option>
                         <option value="2">Ingresos de Ayer</option>
@@ -96,48 +111,54 @@
                     </select>
             
 
-      </div>
     </div>
+        <div class="col-md-3">
+                                   
+              <div class="form-group">                      
+                                        
+              <select name="categoria_id" id="categoria_id" class="btn btn-secondary" >
+                <option value="0">- Todas -</option>
+                <?php 
+                foreach($all_categoria_ingreso as $categoria_ingreso)
+                {
+                  $selected = ($categoria_ingreso['categoria_cating'] == $this->input->post('ingreso_categoria')) ? ' selected="selected"' : "";
+
+                  echo '<option value="'.$categoria_ingreso['categoria_cating'].'" '.$selected.'>'.$categoria_ingreso['categoria_cating'].'</option>';
+                } 
+                ?>
+              </select>
+                                    </div>
+                                    </div>
+                               
 </div>
-</div>
-<div class="col-md-6 no-print">
-        
-    <div class="box-tools">
-        <center>    
-            <a href="<?php echo site_url('ingreso/add'); ?>" class="btn btn-success btn-foursquarexs"><font size="5"><span class="fa fa-money"></span></font><br><small>Registrar Ingreso</small></a>
-            
-            <button data-toggle="modal" data-target="#modalbuscar" class="btn btn-warning btn-foursquarexs" onclick="fechadeingreso('and 1')" ><font size="5"><span class="fa fa-search"></span></font><br><small>Ver Todos</small></button>
-            
-            <a href="#" onclick="imprimir()" class="btn btn-info btn-foursquarexs"><font size="5"><span class="fa fa-print"></span></font><br><small>Imprimir</small></a>
-             
-        </center>            
-    </div>
-    </div> 
+
+
      
 <div class="panel panel-primary col-md-12" id='buscador_oculto' style='display:none;'>
     <br>
-    <center>            
-        <div class="col-md-2">
-            Desde: <input type="date" class="btn btn-primary btn-sm form-control" id="fecha_desde" name="fecha_desde" required="true">
+         <div class="row">  
+        <div class="col-md-3">
+            Desde: <input type="date" class="btn btn-secondary  form-control" id="fecha_desde" name="fecha_desde" required="true">
         </div>
-        <div class="col-md-2">
-            Hasta: <input type="date" class="btn btn-primary btn-sm form-control" id="fecha_hasta" name="fecha_hasta" required="true">
+        <div class="col-md-3">
+            Hasta: <input type="date" class="btn btn-secondary form-control" id="fecha_hasta" name="fecha_hasta" required="true">
         </div>
         
       
         
         <div class="col-md-3">
             <?php if($rol[57-1]['rolusuario_asignado'] == 1){ ?>
-            <button class="btn btn-sm btn-primary btn-sm btn-block"  onclick="buscar_por_fechas()">
-                <h4>
+                <br>
+            <button class="btn  btn-primary  btn-block"  onclick="buscar_por_fechas()">
+                
                 <span class="fa fa-search"></span>   Buscar Ingresos  
-                </h4>
+                
             </button>
             <?php } ?>
             <br>
         </div>
-        
-    </center>    
+        </div>
+    
     <br>    
 </div>
  <div class="col-md-12">         

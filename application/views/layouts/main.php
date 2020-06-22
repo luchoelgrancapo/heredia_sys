@@ -156,6 +156,11 @@
                                 <i class="nav-icon fas fa-users fa-fw"></i> <p>Clientes</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('proveedor');?>" class="nav-link">
+                                <i class="nav-icon fas fa-truck fa-fw"></i> <p>Proveedores</p>
+                            </a>
+                        </li>
                         
                     </ul>
                     </nav>

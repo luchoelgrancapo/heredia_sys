@@ -81,19 +81,25 @@ function facturar(mensualidad){
             <div class="panel-body">
 
 				<div class="box-body">
-          		<div class="row clearfix">
-          			<div id="clinit" style="display: none">
+          		
+          			<div id="clinit" style="display: none" >
+                  <div class="row">
                         <div class="col-md-3">
                         <label for="nit" class="control-label">Nit</label>
+                        <div class="form-group">
                         <input type="text" name="nit" value="" class="form-control" id="nit" />
-                       
+                       </div>
                     </div>
                     <div class="col-md-3">
                         <label for="razon" class="control-label">Razon</label>
+                        <div class="form-group">
                         <input type="text" name="razon" value="" class="form-control" id="razon" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);"/>
                        
                     </div>
                     </div>
+                    </div>
+                    </div>
+                    <div class="row clearfix">
 							<div class="col-md-4">
 								<label for="ingreso_nombre" class="control-label">Nombre</label>
 								<div class="form-group">

@@ -100,13 +100,13 @@ class Verificar extends CI_Controller
 
 
             } else {
-                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">USUARIO no es valido' . $result . '</div>');
+                $this->session->set_flashdata('msg', '<<div class="login-error"> <h4>USUARIO NO ES VALIDOd' . $result . '</h4></div>');
                 redirect('login');
             }
 
         }
         else {
-            $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">USUARIO o CONTRASEÑA no son validos' . $result . '</div>');
+            $this->session->set_flashdata('msg', '<div class="login-error"> <h4> USUARIO o CONTRASEÑA NO VALIDOS' . $result . '</h4></div>');
             redirect('login');
         }
 

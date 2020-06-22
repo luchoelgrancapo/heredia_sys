@@ -69,24 +69,38 @@
         
 </div>
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
- <div class="col-md-6 no-print">
-             <div class="box-header">
-                <font size='4' face='Arial'><b>Egresos</b></font>
-                <br><font size='2' face='Arial' id="pillados"></font>
+<br>
+ <div class="row">
+ <div class="col-md-6">
+            <div class="box-header">
+               <h4><b>EGRESOS</b> <small class="badge badge-secondary" id="pillados"></small></h4>
         </div>
+    </div>
+<div class="col-md-6">
         
-           <div class="row">
-        <div class="col-md-8 no-print">
+    <div class="box-tools">
+          
+            <a href="<?php echo site_url('egreso/add'); ?>" class="btn bg-success btn-app"><i class="fas fa-hand-holding-usd"></i>Registrar Egreso</a>
+            <button data-toggle="modal" data-target="#modalbuscar" class="btn bg-primary btn-app" onclick="fechadeegreso('and 1')" ><i class="fa fa-search"></i>Ver Todos</button>
+            
+            <a href="#" onclick="imprimir()" class="btn bg-warning btn-app"><i class="fa fa-print"></i>Imprimir</a>
+             
+                
+    </div>
+    </div>         
+          
+        <div class="col-md-6">
        <!--------------------- parametro de buscador --------------------->
-                  <div class="input-group"> <span class="input-group-addon">Buscar</span>
-                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese la descripción">
-                  </div>
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input id="filtrar" autocomplete="off" type="text" class="form-control" placeholder="Ingresa el nombre de proveedor" >
+            </div>
             <!--------------------- fin parametro de buscador --------------------->
           </div>
-      <div class="col-md-4 no-print">
-      <div  class="box-tools" >
+      <div class="col-md-2">
+     
                           
-                    <select  class="btn btn-primary btn-sm" id="select_compra" onchange="buscar_egresos()">
+                    <select  class="btn btn-secondary" id="select_compra" onchange="buscar_egresos()">
                         <option value="0">Elija Fechas</option>
                         <option value="1">Egresos de Hoy</option>
                         <option value="2">Egresos de Ayer</option>
@@ -96,52 +110,57 @@
                     </select>
             
 
-      </div>
+    
     </div>
+    <div class="col-md-3">
+                                    
+                                    <div class="form-group">
+                                        
+                                        <select name="categoria_id" id="categoria_id" class="btn btn-secondary">
+                <option value="0">- Todas -</option>
+                <?php 
+                foreach($all_categoria_egreso as $categoria_egreso)
+                {
+                  $selected = ($categoria_egreso['categoria_categr'] == $this->input->post('egreso_categoria')) ? ' selected="selected"' : "";
+
+                  echo '<option value="'.$categoria_egreso['categoria_categr'].'" '.$selected.'>'.$categoria_egreso['categoria_categr'].'</option>';
+                } 
+                ?>
+              </select>
+                                    </div>
+                                </div>
 </div>
-</div>
-<div class="col-md-6 no-print">
-        
-    <div class="box-tools">
-        <center>    
-            <a href="<?php echo site_url('egreso/add'); ?>" class="btn btn-success btn-foursquarexs"><font size="5"><span class="fa fa-money"></span></font><br><small>Registrar Egreso</small></a>
-            
-            <button data-toggle="modal" data-target="#modalbuscar" class="btn btn-warning btn-foursquarexs" onclick="fechadeegreso('and 1')" ><font size="5"><span class="fa fa-search"></span></font><br><small>Ver Todos</small></button>
-            
-            <a href="#" onclick="imprimir()" class="btn btn-info btn-foursquarexs"><font size="5"><span class="fa fa-print"></span></font><br><small>Imprimir</small></a>
-             
-        </center>            
-    </div>
-    </div> 
+
+
      
 <div class="panel panel-primary col-md-12" id='buscador_oculto' style='display:none;'>
     <br>
-    <center>            
-        <div class="col-md-2">
-            Desde: <input type="date" class="btn btn-primary btn-sm form-control" id="fecha_desde" name="fecha_desde" required="true">
+       <div class="row">     
+        <div class="col-md-3">
+            Desde: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_desde" name="fecha_desde" required="true">
         </div>
-        <div class="col-md-2">
-            Hasta: <input type="date" class="btn btn-primary btn-sm form-control" id="fecha_hasta" name="fecha_hasta" required="true">
+        <div class="col-md-3">
+            Hasta: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_hasta" name="fecha_hasta" required="true">
         </div>
         
       
         
         <div class="col-md-3">
             <?php if($rol[63-1]['rolusuario_asignado'] == 1){ ?>
-            <button class="btn btn-sm btn-primary btn-sm btn-block"  onclick="buscar_por_fechas()">
-                <h4>
-                <span class="fa fa-search"></span>   Buscar egresos  
-                </h4>
+                <br>
+            <button class="btn  btn-primary btn-block"  onclick="buscar_por_fechas()">
+                
+                <span class="fa fa-search"></span>   Buscar Egresos  
+
             </button>
             <?php } ?>
-            <br>
+            
         </div>
         
-    </center>    
+    </div>      
     <br>    
 </div>
 
-<br>
   <div class="col-md-12">
   <div class="box">
             
