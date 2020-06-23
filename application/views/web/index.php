@@ -83,13 +83,47 @@ function mostrar() {
 <!------------------ MENU CABECERA  ----------------------------------->                    
                 <div class="agile-login">
                     <ul>
-                        <li><a href="" data-toggle="modal" data-target="#seguimientoOT">Ordenes</a></li>
-                        <li><a href="" data-toggle="modal" data-target="#seguimientoservicio">servicio</a></li>
                         
-                        <?php foreach($menu_cabecera as $cabecera) { ?>
-                        <li><a href="<?php echo base_url().$cabecera['menu_enlace']; ?>"><?php echo $cabecera['menu_nombre']; ?></a></li>
-                        <?php } ?>
-                        
+                        <li><a href="<?php echo base_url('login'); ?>">Ingresar</a></li>
+                       
+                          <?php if(isset($_COOKIE["cliente_id"])) { 
+                            
+                                        $nombre_cliente = ucwords(strtolower($_COOKIE["cliente_nombre"])); 
+                                        
+                                        if(strlen($nombre_cliente)>15){
+                                                $nombre_cliente = substr($nombre_cliente, 0, 12)."..";
+                                        }
+                        ?>
+                                    
+                                        <!------- Inicio menu usuario ------------>                                        
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fa class="fa fa-user"></fa><small> <?php echo $nombre_cliente; ?></small></a>
+                                            <ul class="dropdown-menu multi-column columns-3">
+                                                <div class="row">
+                                                    <div class="multi-gd-img">
+                                                        <ul class="multi-column-dropdown">
+                                                            <!--<h6>Todas</h6>-->
+                                                            <li><a href="<?php echo base_url("website/miperfil/").$idioma_id; ?>" >Mi perfil</a></li>
+                                                            <li><a href="<?php echo base_url("website/micarrito/").$idioma_id; ?>" >Mi carrito</a></li>
+                                                            <li><a href="<?php echo base_url("website/miscompras/").$idioma_id; ?>" >Mis Compras</a></li>
+                                                            <li><a href="<?php echo base_url("website/cerrarsesion/").$idioma_id; ?>" >Finalizar Sesion</a></li>
+                                                            
+                                                        </ul>
+                                                    </div>  
+
+                                                </div>
+                                        </ul>
+                                    </li>                                         
+                                    <!------- Fin menu usuario ------------>                                                                            
+                        <?php } else{ ?>                                    
+
+                                        <!------- Inicio iniciar sesion ------------>                                        
+                                        <li class="dropdown">
+                                            <a href="#modalCliente" data-target="#modalCliente"  class="dropdown-toggle" data-toggle="modal">Cliente</a>
+                                        </li>                                         
+                                        <!------- Fin iniciar sesion ---------->
+                                                                       
+                        <?php }  ?>    
                         <!--<li><select class="selectpicker" data-width="fit">
                     <option data-content='<span class="flag-icon flag-icon-us"></span> English'><span class="flag-icon flag-icon-us"></span>English</option>
                     <option  data-content='<span class="flag-icon flag-icon-mx"></span> Español'>Español</option>
@@ -221,114 +255,6 @@ function mostrar() {
 <!-- //header -->
 
 
-<!-- navigation -->
-    <div class="navigation-agileits">
-        <div class="container">
-            <nav class="navbar navbar-default">
-                            
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header nav_2">
-                                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div> 
-                            
-                            <!--------------------- MENU PRINCIPAL ---------------------------------------->                            
-                            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-                                    <ul class="nav navbar-nav">
-                                        
-                                        <?php foreach($menu_principal as $principal) { ?>                                                                                
-                                            <li class="active"><a href="<?php echo base_url(); ?>" class="act"><?php echo $principal['menu_nombre']; ?></a></li>
-                                        <?php } ?>                                        
-                                            
-                                            
-<!--                                        
-                                        <li class="active">
-                                            <select class="ac">
-                                                
-                                        <?php 
-                                            foreach($categorias as $cat){?>                    
-                                                <option value="<?php echo $cat['categoria_id']; ?>"><?php echo $cat['categoria_nombre']; ?></option>
-                                        <?php } ?>      
-                                            
-                                            </select>        
-                                        </li>-->
-                                        
-<!--                                        
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias<b class="caret"></b></a>
-                                            <ul class="dropdown-menu multi-column columns-3">
-                                                <div class="row">
-                                                    <div class="multi-gd-img">
-                                                        <ul class="multi-column-dropdown">
-                                                            <h6>Todas</h6>
-                                                            <?php 
-                                                                foreach($categorias as $cat){?>                    
-                                                                    <li><a href="" onclick="buscar_por_categoria(<?php echo $cat['categoria_id']; ?>);"><?php echo $cat['categoria_nombre']; ?></a></li>
-                                                                    <li style="padding: 0; margin: 3px;"><button style="background: none; border: transparent; padding:0;" onclick="buscar_por_categoria(<?php echo $cat['categoria_id']; ?>);"><?php echo $cat['categoria_nombre']; ?></button></li>
-                                                            <?php } ?>      
-                                                        </ul>
-                                                    </div>	
-
-                                                </div>
-                                        </ul>
-                                    </li>                                        
--->
-                                        <!------- Bloque de codigo 1 ------------>
-                                        
-                        <?php if(isset($_COOKIE["cliente_id"])) { 
-                            
-                                        $nombre_cliente = ucwords(strtolower($_COOKIE["cliente_nombre"])); 
-                                        
-                                        if(strlen($nombre_cliente)>15){
-                                                $nombre_cliente = substr($nombre_cliente, 0, 12)."..";
-                                        }
-                        ?>
-                                    
-                                        <!------- Inicio menu usuario ------------>                                        
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fa class="fa fa-user"></fa><small> <?php echo $nombre_cliente; ?></small></a>
-                                            <ul class="dropdown-menu multi-column columns-3">
-                                                <div class="row">
-                                                    <div class="multi-gd-img">
-                                                        <ul class="multi-column-dropdown">
-                                                            <!--<h6>Todas</h6>-->
-                                                            <li><a href="<?php echo base_url("website/miperfil/").$idioma_id; ?>" >Mi perfil</a></li>
-                                                            <li><a href="<?php echo base_url("website/micarrito/").$idioma_id; ?>" >Mi carrito</a></li>
-                                                            <li><a href="<?php echo base_url("website/miscompras/").$idioma_id; ?>" >Mis Compras</a></li>
-                                                            <li><a href="<?php echo base_url("website/cerrarsesion/").$idioma_id; ?>" >Finalizar Sesion</a></li>
-                                                            
-                                                        </ul>
-                                                    </div>	
-
-                                                </div>
-                                        </ul>
-                                    </li>                                         
-                                    <!------- Fin menu usuario ------------>                                                                            
-                        <?php } else{ ?>                                    
-
-                                        <!------- Inicio iniciar sesion ------------>                                        
-                                        <li class="dropdown">
-                                            <a href="#modalCliente" data-target="#modalCliente"  class="dropdown-toggle" data-toggle="modal">Iniciar Sesión</a>
-                                        </li>                                         
-                                        <!------- Fin iniciar sesion ----------
-                                                                       
-                        <?php }  ?>                                    
-                                    
-                                        
-                                    </ul>
-                                <ul>
-                                
-                                </ul>
-                                
-                                </div>
-                                <!--------------------- FIN MENU PRINCIPAL ---------------------------------------->                            
-                            </nav>
-            </div>
-        </div>
         
 <!-- //navigation -->
 
@@ -409,7 +335,7 @@ function mostrar() {
 
 <!------------------------- INICIO FRANJA -------------------------------------->
  
- <div class="w3agile-ftr-top"  style="background-color: #333333; color:white;">
+ <div class="w3agile-ftr-top"  style="background-color: #282973; color:white;">
 		<div class="ftr-toprow" class="container">
                     <center  >
                         <div style="background-color: #000000;" >
@@ -473,7 +399,7 @@ function mostrar() {
  
 <!------------------------- INICIO BUSCADOR-------------------------------------->
  
- <div class="w3agile-ftr-top"  style="background-color: #333333; color:white;">
+ <div class="w3agile-ftr-top"  style="background-color: #282973; color:white;">
 		<div class="ftr-toprow" class="container">
                     
 			<div class="ftr-toprow">
@@ -882,12 +808,12 @@ function mostrar() {
 
 
 	<!-- about-team -->
-	<div class="about-team" style="background-color: #fe9126;"> 
+	<div class="about-team" style="background-color: #282973;"> 
 		<div class="container">
 			<h3 class="w3_agile_header">Meet Our Team</h3>
 			<div class="team-agileitsinfo">
                             
-				<div class="col-md-3 about-team-grids" style="background-color: #fe9126">
+				<div class="col-md-3 about-team-grids" style="background-color: #282973">
                                     <img src="<?php echo base_url("resources/web/images/t1.jpg") ?>" alt="" class="img img-circle"/>
 					<div class="team-w3lstext">
 						<!--<h4><span>WHATSAPP</span></h4>-->
@@ -903,7 +829,7 @@ function mostrar() {
 					</div>
 				</div>
                             
-				<div class=" col-md-3 about-team-grids" style="background-color: #fe9126">
+				<div class=" col-md-3 about-team-grids" style="background-color: #282973">
 					<img src="<?php echo base_url("resources/web/images/t2.jpg") ?>" alt="" class="img img-circle"/>
 					<div class="team-w3lstext">
 						<!--<h4><span>FACEBOOK</span></h4>-->
@@ -919,7 +845,7 @@ function mostrar() {
 					</div>
 				</div>
                             
-				<div class="col-md-3 about-team-grids" style="background-color: #fe9126">
+				<div class="col-md-3 about-team-grids" style="background-color: #282973">
 					<img src="<?php echo base_url("resources/web/images/t3.jpg") ?>" alt="" class="img img-circle"/>
 					<div class="team-w3lstext">
 						<!--<h4><span>TWITEER</span> Supervisior</h4>-->				
@@ -935,7 +861,7 @@ function mostrar() {
 					</div>
 				</div>
                             
-				<div class="col-md-3 about-team-grids" style="background-color: #fe9126">
+				<div class="col-md-3 about-team-grids" style="background-color: #282973">
 					<img src="<?php echo base_url("resources/web/images/t4.jpg") ?>" alt="" class="img img-circle"/>
 					<div class="team-w3lstext">
 						<!--<h4><span>RACKHAM,</span> Staff</h4>-->
@@ -1135,7 +1061,7 @@ function mostrar() {
         <div class="col-md-12"></div>
         <table class="table table-hover" style="font-size: 12px;">
           <thead>
-            <tr style="color: white; background: #333333; padding: 0;">
+            <tr style="color: white; background: #282973; padding: 0;">
               <!--<th>#</th>-->
               <th style="padding:0;"></th>
               <th style="padding:0; text-align: center;">Producto</th>

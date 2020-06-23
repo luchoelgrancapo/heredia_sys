@@ -1,4 +1,5 @@
 <!----------------------------- script buscador --------------------------------------->
+<script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('resources/js/funciones_cliente.js'); ?>" type="text/javascript"></script>
 <script type="text/javascript">
         $(document).ready(function () {
@@ -38,7 +39,7 @@
     }
 </style>
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/servicio_reportedia.css'); ?>" rel="stylesheet">
+<!--<link href="<?php echo base_url('resources/css/servicio_reportedia.css'); ?>" rel="stylesheet">-->
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
@@ -80,38 +81,44 @@
 <br>
 <div class="row no-print">
     
-    <div class="col-md-8">
-    
-        <!--este es INICIO del BREADCRUMB buscador-->
-<!--        <div class="row">
-            <ol class="breadcrumb">
-                <li><a href="<?php echo site_url('admin/dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
-                <li><a href="<?php echo site_url('cliente')?>">Clientes</a></li>
-                <li class="active"><b>Clientes: </b></li>
-                <input style="border-width: 0; background-color: #DEDEDE" id="encontrados" type="text"  size="5" value="0" readonly="true">
-            </ol>
-        </div>-->
+    <div class="col-md-6">
 
 <div class="box-header">
-    <font size='4' face='Arial'><b>Clientes</b></font>
-    <br><font size='2' face='Arial' id="encontrados"></font> 
-</div>
-
-        <!--este es FIN del BREADCRUMB buscador-->
-         <div class="col-md-12">
-            <!--este es INICIO de input buscador-->
-             <div class="col-md- 6">
-                <div class="input-group">
-                    <span class="input-group-addon">Buscar</span>           
-                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese el nombre, codigo, ci, nit" onkeypress="buscarcliente(event)" autocomplete="off" >
-                </div>
-            </div>
+                <h4><b>CLIENTES</b> <small class="badge badge-secondary" id="encontrados"></small></h4>
         </div>
+</div>
+<div class="col-md-6">
+
+            <div class="box-tools">
+                <a href="<?php echo base_url('cliente/add/'); ?>" class="btn bg-success btn-app" title="Registrar nuevo Cliente"><span class="fa fa-user-plus"></span>Registrar</a>
+                <button data-toggle="modal" data-target="#modalbuscar" class="btn bg-primary btn-app" onclick="mostrar_all_clientes()" title="Mostrar a todos los Clientes" ><span class="fa fa-search"></span>Ver Todos</button>
+                <?php
+                if($rol[97-1]['rolusuario_asignado'] == 1){ ?>
+                <a onclick="imprimir_cliente()" class="btn bg-warning btn-app" title="Imprimir lista de Clientes"><span class="fa fa-print"></span>Imprimir</a>
+                <a href="<?php echo base_url('cliente/clienteprint'); ?>" target="_blank" class="btn bg-secondary btn-app" title="Imprimir lista de Clientes con detalle resumido"><span class="fa fa-file"></span>Resumen</a>
+                <a href="<?php echo base_url('cliente/mapa_cliente'); ?>" class="btn bg-purple btn-app" title="Mostrar mapa de clientes"><span class="fa fa-map"></span>Mapa</a>
+                <?php } ?>
+            <!--<a href="" class="btn btn-info btn-foursquarexs"><span class="fa fa-cubes"></span></font><br><small>Productos</a>-->            
+    </div>
+</div>
+</div>
+        <!--este es FIN del BREADCRUMB buscador-->
+         
+            <!--este es INICIO de input buscador-->
+            <div class="row">
+             <div class="col-md-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input id="filtrar" autocomplete="off" type="text" class="form-control" placeholder="Ingrese el nombre, codigo, ci, nit" onkeypress="buscarcliente(event)" autocomplete="off">
+            </div>
+            </div>
+       
         <!--<div class="col-md-12">-->
             <!--este es FIN de input buscador-->
-            <div class="col-md-3">
+            
+            <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="tipo_id" class="btn-primary btn-sm btn-block" id="tipo_id" onchange="tablaresultadoscliente(2)">
+                    <select name="tipo_id" class="btn btn-secondary" id="tipo_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- TIPOS --</option>
                         <option value="0"> Todos los Tipos </option>
                         <?php 
@@ -123,9 +130,9 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="categoriaclie_id" class="btn-primary btn-sm btn-block" id="categoriaclie_id" onchange="tablaresultadoscliente(2)">
+                    <select name="categoriaclie_id" class="btn btn-secondary" id="categoriaclie_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- CATEGORIAS --</option>
                         <option value="0"> Todas Las Categorias </option>
                         <?php 
@@ -139,7 +146,7 @@
             </div>
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="zona_id" class="btn-primary btn-sm btn-block" id="zona_id" onchange="tablaresultadoscliente(2)">
+                    <select name="zona_id" class="btn btn-secondary" id="zona_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- ZONAS --</option>
                         <option value="0"> Todas Las Zonas </option>
                         <?php 
@@ -153,7 +160,7 @@
             </div>
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="estado_id" class="btn-primary btn-sm btn-block" id="estado_id" onchange="tablaresultadoscliente(2)">
+                    <select name="estado_id" class="btn btn-secondary" id="estado_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- ESTADOS --</option>
                         <option value="0"> Todos los Estados </option>
                         <?php 
@@ -167,7 +174,7 @@
             </div>
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="prevendedor_id" class="btn-primary btn-sm btn-block" id="prevendedor_id" onchange="tablaresultadoscliente(2)">
+                    <select name="prevendedor_id" class="btn btn-secondary" id="prevendedor_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- USUARIOS --</option>
                         <option value="0"> Todos los Usuarios </option>
                         <option value="-1"> Sin Usuario Asignado </option>
@@ -180,6 +187,7 @@
                     </select>
                 </div>
             </div>
+        </div>
         <!--</div>-->
         <!-- *********** INICIO de BUSCADOR select y productos encontrados ****** -->
          <div class="row" id='loader'  style='display:none; text-align: center'>
@@ -188,26 +196,7 @@
         <!-- *********** FIN de BUSCADOR select y productos encontrados ****** -->
         
         
-    </div>
-    
-    <!---------------- BOTONES --------->
-    <div class="col-md-4">
-        
-            <div class="box-tools text-center">
-                <a href="<?php echo base_url('cliente/add/'); ?>" class="btn btn-success btn-foursquarexs" title="Registrar nuevo Cliente"><font size="5"><span class="fa fa-user-plus"></span></font><br><small>Registrar</small></a>
-                <button data-toggle="modal" data-target="#modalbuscar" class="btn btn-warning btn-foursquarexs" onclick="mostrar_all_clientes()" title="Mostrar a todos los Clientes" ><font size="5"><span class="fa fa-search"></span></font><br><small>Ver Todos</small></button>
-                <?php
-                if($rol[97-1]['rolusuario_asignado'] == 1){ ?>
-                <a onclick="imprimir_cliente()" class="btn btn-info btn-foursquarexs" title="Imprimir lista de Clientes"><font size="5"><span class="fa fa-print"></span></font><br><small>Imprimir</small></a>
-                <a href="<?php echo base_url('cliente/clienteprint'); ?>" target="_blank" class="btn btn-soundcloud btn-foursquarexs" title="Imprimir lista de Clientes con detalle resumido"><font size="5"><span class="fa fa-print"></span></font><br><small>Resumen</small></a>
-                <a href="<?php echo base_url('cliente/mapa_cliente'); ?>" class="btn btn-facebook btn-foursquarexs" title="Mostrar mapa de clientes"><font size="5"><span class="fa fa-map"></span></font><br><small>&nbsp;&nbsp;Mapa&nbsp;&nbsp;&nbsp;</small></a>
-                <?php } ?>
-            <!--<a href="" class="btn btn-info btn-foursquarexs"><font size="5"><span class="fa fa-cubes"></span></font><br><small>Productos</small></a>-->            
-    </div>
-    </div>
-    <!---------------- FIN BOTONES --------->
-    
-</div>
+<br>
     
 <!-------------------------------------------------------------------------------->
 
