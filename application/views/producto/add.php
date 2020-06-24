@@ -97,9 +97,9 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Añadir Producto</h3>&nbsp;&nbsp;
-                <button type="button" class="btn btn-facebook btn-sm" onclick="cambiarcodproducto();" title="genera codigo de barra y codigo">
-                    <i class="fa fa-barcode"></i> Generar Codigos
+              	<h3 class="box-title">REGISTAR PRODUCTO</h3>&nbsp;&nbsp;
+                <button type="button" class="btn btn-secondary btn-sm" onclick="cambiarcodproducto();" title="genera codigo de barra y codigo">
+                    <i class="fa fa-barcode"></i> Generar Códigos
 		</button>
             </div>
             <div class="row" id='loader'  style='display:none; text-align: center'>
@@ -243,7 +243,7 @@
                                     <input type="number" step="any" min="0" name="producto_tipocambio" value="1" class="form-control" id="producto_tipocambio" />
                             </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12" hidden>
                         <a href="#info1" class="btn btn-facebook btn-sm inf" title="Los factores se utilizan para describir productos con diferentes presentaciones."><fa class="fa fa-sitemap"></fa> Configurar Factores</a>
                         <div id="info1" class="oculto">
                         <div class="col-md-3">
@@ -431,7 +431,7 @@
                             </div>
                     </div>
                     <?php } ?>
-                    <div class="col-md-12">
+                    <div class="col-md-12" hidden>
                     <a href="#info2" class="btn btn-facebook btn-sm inf2" title="Envases retornables"><fa class="fa fa-exchange"></fa> Envases Retornables</a>
                         <div id="info2" class="oculto2">
                     <div class="col-md-2">

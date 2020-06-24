@@ -47,8 +47,8 @@ function toggle(source) {
       	<div class="box box-info">
             <div class="box-header with-border">
               	<h3 class="box-title">Editar Cliente</h3>&nbsp;&nbsp;
-                <button type="button" class="btn btn-success btn-sm" onclick="cambiarcod(this);" title="Volver a generar Código Cliente">
-                    <i class="fa fa-edit"></i>Codigo Cliente
+                <button type="button" class="btn btn-secondary btn-sm" onclick="cambiarcod(this);" title="Volver a generar Código Cliente">
+                    <i class="fa fa-barcode"></i> Generar Código
 		</button>
             </div>
             <?php echo form_open_multipart('cliente/edit/'.$cliente['cliente_id']); ?>
