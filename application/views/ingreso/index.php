@@ -22,7 +22,7 @@
 <!----------------------------- fin script buscador --------------------------------------->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
-<div class="row micontenedorep" style="display: none" id="cabeceraprint">
+<div class="row" style="display: none" id="cabeceraprint">
     <table class="table" style="width: 100%; padding: 0;" >
     <tr>
         <td style="width: 25%; padding: 0; line-height:10px;" >
@@ -30,13 +30,13 @@
             <center>
                                
                     <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60"><br>
-                    <font  ><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
-                    <!--<font size="2" ><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
-                    <!--<font  ><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
-                    <!--<font  ><?php echo $factura[0]['factura_sucursal'];?><br>-->
-                    <font  ><?php echo $empresa[0]['empresa_direccion']; ?><br>
-                    <font  ><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
-                    <!--<font  ><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
+                    <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
+                    <!--<font size="2" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
+                    <!--<font size="1" face="Arial"><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
                 
 
             </center>                      
@@ -46,9 +46,9 @@
             <center>
             
                 <br><br>
-                <font  ><b>INGRESOS</b></font> <br>
+                <font size="3" face="arial"><b>INGRESOS</b></font> <br>
                 
-                <font  ><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
+                <font size="1" face="arial"><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
 
             </center>
         </td>

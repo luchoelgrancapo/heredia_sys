@@ -33,9 +33,11 @@
     #masg{
         font-size: 12px;
     }
+
+    
 </style>
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/servicio_reportedia.css'); ?>" rel="stylesheet">
+<!--<link href="<?php echo base_url('resources/css/servicio_reportedia.css'); ?>" rel="stylesheet">-->
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
@@ -76,7 +78,7 @@
 <br>
 <div class="row no-print">
     
-    <div class="col-md-8">
+    <div class="col-md-6">
     
         <!--este es INICIO del BREADCRUMB buscador-->
 <!--        <div class="row">
@@ -89,25 +91,35 @@
         </div>-->
 
 <div class="box-header">
-    <font size='4' face='Arial'><b>Clientes</b></font>
-    <br><font size='2' face='Arial' id="encontrados"></font> 
+    <h4><b>CLIENTES</b> <small class="badge badge-secondary" id="encontrados"></small></h4>
 </div>
+</div>
+    <div class="col-md-6">
+        <div class="box-tools">
+            <?php
+            if($rol[97-1]['rolusuario_asignado'] == 1){ ?>
+            <a onclick="imprimir_cliente()" class="btn bg-warning btn-app" title="Imprimir lista de Clientes"><span class="fa fa-print"></span>Imprimir</a>
+            <a onclick="window.close();"  class="btn bg-danger btn-app" title="Cerrar Pestaña"><span class="fa fa-times"></span>Cerrar</a>
+            <?php } ?>
+        </div>
+    </div>
+    </div>
 
         <!--este es FIN del BREADCRUMB buscador-->
-         <div class="col-md-12">
+         <div class="row">
             <!--este es INICIO de input buscador-->
-             <div class="col-md- 6">
-                <div class="input-group">
-                    <span class="input-group-addon">Buscar</span>           
-                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese el nombre, codigo, ci, nit" onkeypress="buscarcliente(event)" autocomplete="off" >
-                </div>
+             <div class="col-md-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input id="filtrar" autocomplete="off" type="text" class="form-control" placeholder="Ingrese el nombre, codigo, ci, nit" onkeypress="buscarcliente(event)" autocomplete="off">
             </div>
-        </div>
+            </div>
+        
         <!--<div class="col-md-12">-->
             <!--este es FIN de input buscador-->
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="tipo_id" class="btn-primary btn-sm btn-block" id="tipo_id" onchange="tablaresultadoscliente(2)">
+                    <select name="tipo_id" class="btn btn-secondary" id="tipo_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- TIPOS --</option>
                         <option value="0"> Todos los Tipos </option>
                         <?php 
@@ -119,9 +131,9 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="categoriaclie_id" class="btn-primary btn-sm btn-block" id="categoriaclie_id" onchange="tablaresultadoscliente(2)">
+                    <select name="categoriaclie_id" class="btn btn-secondary" id="categoriaclie_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- CATEGORIAS --</option>
                         <option value="0"> Todas Las Categorias </option>
                         <?php 
@@ -135,7 +147,7 @@
             </div>
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="zona_id" class="btn-primary btn-sm btn-block" id="zona_id" onchange="tablaresultadoscliente(2)">
+                    <select name="zona_id" class="btn btn-secondary" id="zona_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- ZONAS --</option>
                         <option value="0"> Todas Las Zonas </option>
                         <?php 
@@ -149,7 +161,7 @@
             </div>
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="estado_id" class="btn-primary btn-sm btn-block" id="estado_id" onchange="tablaresultadoscliente(2)">
+                    <select name="estado_id" class="btn btn-secondary" id="estado_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- ESTADOS --</option>
                         <option value="0"> Todos los Estados </option>
                         <?php 
@@ -163,7 +175,7 @@
             </div>
             <div class="col-md-2" hidden>
                 <div class="box-tools">
-                    <select name="prevendedor_id" class="btn-primary btn-sm btn-block" id="prevendedor_id" onchange="tablaresultadoscliente(2)">
+                    <select name="prevendedor_id" class="btn btn-secondary" id="prevendedor_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- USUARIOS --</option>
                         <option value="0"> Todos los Usuarios </option>
                         <option value="-1"> Sin Usuario Asignado </option>
@@ -176,6 +188,8 @@
                     </select>
                 </div>
             </div>
+            </div>
+
         <!--</div>-->
         <!-- *********** INICIO de BUSCADOR select y productos encontrados ****** -->
          <div class="row" id='loader'  style='display:none; text-align: center'>
@@ -183,23 +197,7 @@
         </div>
         <!-- *********** FIN de BUSCADOR select y productos encontrados ****** -->
         
-        
-    </div>
-    
-    <!---------------- BOTONES --------->
-    <div class="col-md-4">
-        <div class="box-tools text-center">
-            <?php
-            if($rol[97-1]['rolusuario_asignado'] == 1){ ?>
-            <a onclick="imprimir_cliente()" class="btn btn-success btn-foursquarexs" title="Imprimir lista de Clientes"><font size="5"><span class="fa fa-print"></span></font><br><small>Imprimir</small></a>
-            <a onclick="window.close();" style="width: 70px; height: 68px" class="btn btn-danger btn-foursquarexs" title="Cerrar Pestaña"><font size="5"><span class="fa fa-close"></span></font><br><small></small></a>
-            <?php } ?>
-        </div>
-    </div>
-    <!---------------- FIN BOTONES --------->
-    
-</div>
-    
+   <br>
 <!-------------------------------------------------------------------------------->
 
 <div class="row">

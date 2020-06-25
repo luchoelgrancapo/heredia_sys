@@ -46,7 +46,7 @@ function toggle(source) {
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Editar Cliente</h3>&nbsp;&nbsp;
+              	<h3 class="box-title">EDITAR CLIENTE</h3>&nbsp;&nbsp;
                 <button type="button" class="btn btn-secondary btn-sm" onclick="cambiarcod(this);" title="Volver a generar Código Cliente">
                     <i class="fa fa-barcode"></i> Generar Código
 		</button>

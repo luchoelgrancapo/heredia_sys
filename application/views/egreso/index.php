@@ -22,7 +22,7 @@
 </script>   
 <!----------------------------- fin script buscador --------------------------------------->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
-<div class="row micontenedorep" style="display: none" id="cabeceraprint">
+<div class="row" style="display: none" id="cabeceraprint">
     <table class="table" style="width: 100%; padding: 0;" >
     <tr>
         <td style="width: 25%; padding: 0; line-height:10px;" >

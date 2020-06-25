@@ -22,7 +22,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Añadir Proveedor</h3>
+              	<h3 class="box-title">REGISTAR PROVEEDOR</h3>
             </div>
              <!-- **** INICIO de BUSCADOR select y productos encontrados *** -->
          <div class="row" id='loader'  style='display:none; text-align: center'>

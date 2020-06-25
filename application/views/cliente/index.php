@@ -96,9 +96,9 @@
                 if($rol[97-1]['rolusuario_asignado'] == 1){ ?>
                 <a onclick="imprimir_cliente()" class="btn bg-warning btn-app" title="Imprimir lista de Clientes"><span class="fa fa-print"></span>Imprimir</a>
                 <a href="<?php echo base_url('cliente/clienteprint'); ?>" target="_blank" class="btn bg-secondary btn-app" title="Imprimir lista de Clientes con detalle resumido"><span class="fa fa-file"></span>Resumen</a>
-                <a href="<?php echo base_url('cliente/mapa_cliente'); ?>" class="btn bg-purple btn-app" title="Mostrar mapa de clientes"><span class="fa fa-map"></span>Mapa</a>
+                <!--<a href="<?php echo base_url('cliente/mapa_cliente'); ?>" class="btn bg-purple btn-app" title="Mostrar mapa de clientes"><span class="fa fa-map"></span>Mapa</a>
                 <?php } ?>
-            <!--<a href="" class="btn btn-info btn-foursquarexs"><span class="fa fa-cubes"></span></font><br><small>Productos</a>-->            
+            <a href="" class="btn btn-info btn-foursquarexs"><span class="fa fa-cubes"></span></font><br><small>Productos</a>-->            
     </div>
 </div>
 </div>

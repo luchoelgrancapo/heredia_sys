@@ -83,7 +83,7 @@
 
         
        <div class="box-header">
-                <h4><b>Productos</b> <small class="badge badge-secondary" id="encontrados"></small></h4>
+                <h4><b>PRODUCTOS</b> <small class="badge badge-secondary" id="encontrados"></small></h4>
         </div>
 </div>
  <div class="col-md-6">
