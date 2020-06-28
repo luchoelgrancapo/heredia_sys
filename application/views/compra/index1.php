@@ -65,7 +65,7 @@
                 <font size="3" face="arial"><b>COMPRAS</b></font> <br>
                 
                 <font size="1" face="arial"><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
-
+                <font size="1" face="arial" id="busquedaavanzada"><b></b></font> <br>
             </center>
         </td>
         <td style="width: 20%; padding: 0" >

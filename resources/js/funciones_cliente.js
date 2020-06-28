@@ -229,7 +229,6 @@ function tablaresultadoscliente(limite)
                         html += "<b>RAZÓN SOC.: </b>"+registros[i]["cliente_razon"]+"<br>";
                         html += "<b>NIT: </b>"+registros[i]["cliente_nit"]+"<br>";
                         html += "<b>EMAIL: </b>"+registros[i]["cliente_email"]+"<br>";
-                        html += "<b>ANIVERS.: </b>"+aniv+"<br>";
                         
                         html += "</div>";
                         html += "</td>";
@@ -295,7 +294,7 @@ function tablaresultadoscliente(limite)
                         html += " <a href='"+base_url+"cliente/edit/"+registros[i]["cliente_id"]+"' target='_blank' class='btn btn-info btn-xs' title='Modificar datos de Cliente'><span class='fa fa-edit'></span></a>";
                         
                         if (registros[i]["cliente_celular"] > 1000){
-                            html += " <a href='https://wa.me/591"+registros[i]["cliente_celular"]+"' target='_BLANK' class='btn btn-success btn-xs' title='Enviar mensaje por whatsapp'><span class='fa fa-whatsapp'></span></a>";
+                            html += " <a href='https://wa.me/591"+registros[i]["cliente_celular"]+"' target='_BLANK' class='btn btn-success btn-xs' title='Enviar mensaje por whatsapp'><span class='fab fa-whatsapp'></span></a>";
                         }
                         
                         

@@ -14,7 +14,7 @@
 							<span class="text-danger"><?php echo form_error('categoriaclie_descripcion');?></span>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<!--<div class="col-md-3">
 						<label for="categoriaclie_porcdesc" class="control-label"><span class="text-danger">*</span>Porc. Descuento</label>
 						<div class="form-group">
                                                     <input type="number" step="any" min="0" name="categoriaclie_porcdesc" value="<?php echo ($this->input->post('categoriaclie_porcdesc') ? $this->input->post('categoriaclie_porcdesc') : $categoria_cliente['categoriaclie_porcdesc']); ?>" class="form-control" id="categoriaclie_porcdesc" required />
@@ -27,7 +27,7 @@
                                                     <input type="number" step="any" min="0" name="categoriaclie_montodesc" value="<?php echo ($this->input->post('categoriaclie_montodesc') ? $this->input->post('categoriaclie_montodesc') : $categoria_cliente['categoriaclie_montodesc']); ?>" class="form-control" id="categoriaclie_montodesc" required />
 							<span class="text-danger"><?php echo form_error('categoriaclie_montodesc');?></span>
 						</div>
-					</div>
+					</div>-->
 				</div>
 			</div>
                 <div class="box-footer">

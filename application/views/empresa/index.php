@@ -40,17 +40,15 @@
 <!------------------ ESTILO DE LAS TABLAS ----------------->
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
-
+<br>
 <div class="box-header">
-                <h3 class="box-title">Empresa</h3>
-            	
+    <h4><b>EMPRESA</b></h4>
+                
 </div>
 <div class="row">
     <div class="col-md-12">
         <!--------------------- parametro de buscador --------------------->
-                  <div class="input-group"> <span class="input-group-addon">Buscar</span>
-                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese el nombre, dirección, teléfono">
-                  </div>
+            
         <!--------------------- fin parametro de buscador --------------------->
         <div class="box">
             
@@ -137,7 +135,7 @@
                         <td><?php echo $e['empresa_ubicacion']; ?></td>
                         <td><?php echo $e['empresa_departamento']; ?></td>
                         <td>
-                            <a href="<?php echo site_url('empresa/edit/'.$e['empresa_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span></a> 
+                            <a href="<?php echo site_url('empresa/edit/'.$e['empresa_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-edit"></span></a> 
                             <!--<a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal<?php echo $i; ?>"  title="Eliminar"><span class="fa fa-trash"></span></a>-->
                             <!------------------------INICIO modal para confirmar eliminación ------------------->
                                     <div class="modal fade" id="myModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<?php echo $i; ?>">

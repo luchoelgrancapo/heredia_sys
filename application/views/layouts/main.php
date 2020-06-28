@@ -122,6 +122,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?php echo site_url('empresa');?>" class="nav-link">
+                                <i class="nav-icon fas fa-city fa-fw"></i> <p>Empresa</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?php echo site_url('compra');?>" class="nav-link">
                                 <i class="nav-icon fas fa-shopping-basket fa-fw"></i> <p>Compras</p>
                             </a>
@@ -161,6 +166,64 @@
                                 <i class="nav-icon fas fa-truck fa-fw"></i> <p>Proveedores</p>
                             </a>
                         </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-closed-captioning"></i>
+              <p>
+                Categorias
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('categoria_cliente');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cliente</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('categoria_egreso');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Egreso</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('categoria_ingreso');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ingreso</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('categoria_producto');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Producto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('proveedor');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Proveedor</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-text-height"></i>
+              <p>
+                Tipos
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('categoria_cliente');?>" class="nav-link">
+                  <i class="far fa-dot-circle nav-icon"></i>
+                  <p>Cliente</p>
+                </a>
+              </li>
+            </ul>
+          </li>
                         
                     </ul>
                     </nav>

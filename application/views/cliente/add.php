@@ -118,13 +118,13 @@ function toggle(source) {
                                     <span class="text-danger"><?php echo form_error('cliente_codigo');?></span>
                             </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                             <label for="cliente_telefono" class="control-label">Teléfono</label>
                             <div class="form-group">
                                     <input type="text" name="cliente_telefono" value="<?php echo $this->input->post('cliente_telefono'); ?>" class="form-control" id="cliente_telefono" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                             <label for="cliente_celular" class="control-label">Celular</label>
                             <div class="form-group">
                                     <input type="text" name="cliente_celular" value="<?php echo $this->input->post('cliente_celular'); ?>" class="form-control" id="cliente_celular" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
@@ -136,12 +136,7 @@ function toggle(source) {
                                 <input type="file" name="cliente_foto" value="<?php echo $this->input->post('cliente_foto'); ?>" class="btn btn-success btn-sm form-control" id="cliente_foto" accept="image/png, image/jpeg, jpg, image/gif" />
                             </div>
                     </div>
-                    <div class="col-md-2">
-                            <label for="cliente_aniversario" class="control-label">Aniversario</label>
-                            <div class="form-group">
-                                <input type="date" name="cliente_aniversario" value="<?php echo $this->input->post('cliente_aniversario'); ?>" class="form-control" id="cliente_aniversario" />
-                            </div>
-                    </div>
+                    
                     <div class="col-md-5">
                             <label for="cliente_email" class="control-label">Email</label>
                             <div class="form-group">

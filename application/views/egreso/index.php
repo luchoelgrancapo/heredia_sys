@@ -71,12 +71,12 @@
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <br>
  <div class="row">
- <div class="col-md-6">
+ <div class="col-md-6 no-print">
             <div class="box-header">
                <h4><b>EGRESOS</b> <small class="badge badge-secondary" id="pillados"></small></h4>
         </div>
     </div>
-<div class="col-md-6">
+<div class="col-md-6 no-print">
         
     <div class="box-tools">
           
@@ -100,8 +100,8 @@
       <div class="col-md-2">
      
                           
-                    <select  class="btn btn-secondary" id="select_compra" onchange="buscar_egresos()">
-                        <option value="0">Elija Fechas</option>
+                    <select  class="btn btn-secondary btn-block" id="select_compra" onchange="buscar_egresos()">
+                        <option value="0">- Fecha -</option>
                         <option value="1">Egresos de Hoy</option>
                         <option value="2">Egresos de Ayer</option>
                         <option value="3">Egresos de la semana</option>                                               
@@ -116,8 +116,8 @@
                                     
                                     <div class="form-group">
                                         
-                                        <select name="categoria_id" id="categoria_id" class="btn btn-secondary">
-                <option value="0">- Todas -</option>
+                                        <select name="categoria_id" id="categoria_id" class="btn btn-secondary btn-block">
+                <option value="0">- Todas las categorias -</option>
                 <?php 
                 foreach($all_categoria_egreso as $categoria_egreso)
                 {

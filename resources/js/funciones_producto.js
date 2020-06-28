@@ -200,8 +200,8 @@ function tablaresultadosproducto(limite){
                         html += precioenvase;
                         html += "</td>";
                         var codbarras = "";
-                        if(!(registros[i]["producto_codigobarra"] == null)){
-                            codbarras = registros[i]["producto_codigobarra"];
+                        if((registros[i]["producto_codigobarra"] != registros[i]["producto_codigo"])){
+                            codbarras += registros[i]["producto_codigobarra"];
                         }
                         html += "<td>"+registros[i]["producto_codigo"]+"<br>"+ codbarras +"</td>";
                         html += "<td>";
@@ -441,9 +441,9 @@ function cabecera_tabla() {
     chtml += "<tr role='row'>";
     chtml += "<th  role='columnheader' >#</th>";
     chtml += "<th  role='columnheader' >Nombre</th>";
-    chtml += "<th  role='columnheader' >Categoria|<br>Presentación</th>";
+    chtml += "<th  role='columnheader' >Detalle</th>";
     chtml += "<th  role='columnheader' >Envase</th>";
-    chtml += "<th  role='columnheader' >Código|<br>Cód. Barra</th>";
+    chtml += "<th  role='columnheader' >Código(s)</th>";
     chtml += "<th  role='columnheader' >Precio</th>";
     chtml += "<th  role='columnheader' >Moneda</th>";
     chtml += "<th  role='columnheader' class='no-print'>Estado</th>";
@@ -557,8 +557,8 @@ function busqueda_inicial() {
         html += precioenvase;
         html += "</td>";
         var codbarras = "";
-        if(!(registros[i]["producto_codigobarra"] == null)){
-            codbarras = registros[i]["producto_codigobarra"];
+        if((registros[i]["producto_codigobarra"]!=registros[i]["producto_codigo"])){
+            codbarras += registros[i]["producto_codigobarra"];
         }
         html += "<td>"+registros[i]["producto_codigo"]+"<br>"+ codbarras +"</td>";
         html += "<td>";

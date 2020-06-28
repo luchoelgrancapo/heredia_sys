@@ -49,33 +49,51 @@
 <input type="hidden" name="lacategoria_clientezona" id="lacategoria_clientezona" value='<?php echo json_encode($all_categoria_clientezona);  ?>' />
 <input type="hidden" name="elusuario" id="elusuario" value='<?php echo json_encode($all_usuario); */ ?>' />-->
 <!-------------------------------------------------------->
-<div class="row micontenedorep" style="display: none" id="cabeceraprint">
-    <div id="cabizquierda">
-        <?php
-        echo $empresa[0]['empresa_nombre']."<br>";
-        echo $empresa[0]['empresa_direccion']."<br>";
-        echo $empresa[0]['empresa_telefono'];
-        ?>
-        </div>
-        <div id="cabcentro">
-            <div id="titulo">
-                <u>CLIENTES</u><br><br>
-                <!--<span style="font-size: 9pt">INGRESOS DIARIOS</span><br>-->
-                <span class="lahora" id="fhimpresion"></span><br>
-                <span style="font-size: 8pt;" id="busquedacategoria"></span>
-                <!--<span style="font-size: 8pt;">PRECIOS EXPRESADOS EN MONEDA BOLIVIANA (Bs.)</span>-->
-            </div>
-        </div>
-        <div id="cabderecha">
-            <?php
+<div class="row" style="display: none" id="cabeceraprint">
+    <table class="table" style="width: 100%; padding: 0;" >
+    <tr>
+        <td style="width: 25%; padding: 0; line-height:10px;" >
+                
+            <center>
+                               
+                    <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60"><br>
+                    <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
+                    <!--<font size="2" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
+                    <!--<font size="1" face="Arial"><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
+                
 
-            $mimagen = "thumb_".$empresa[0]['empresa_imagen'];
+            </center>                      
+        </td>
+                   
+        <td style="width: 35%; padding: 0" > 
+            <center>
+            
+                <br><br>
+                <font size="3" face="arial"><b>CLIENTES</b></font> <br>
+                
+                <font size="1" face="arial"><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
+                <font size="1" face="arial" id="busquedacategoria"><b></b></font> <br>
 
-            echo '<img src="'.site_url('/resources/images/empresas/'.$mimagen).'" />';
-
-            ?>
-
-        </div>
+            </center>
+        </td>
+        <td style="width: 20%; padding: 0" >
+                <center>
+                         
+                             
+                            
+                         
+                        
+                    </center>
+        </td>
+    </tr>
+     
+    
+    
+</table>       
         
 </div>
 <br>
@@ -118,9 +136,9 @@
             
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="tipo_id" class="btn btn-secondary" id="tipo_id" onchange="tablaresultadoscliente(2)">
+                    <select name="tipo_id" class="btn btn-secondary btn-block" id="tipo_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- TIPOS --</option>
-                        <option value="0"> Todos los Tipos </option>
+                        <option value="0"> TODOS </option>
                         <?php 
                         foreach($all_tipo_cliente as $tipocliente)
                         {
@@ -132,9 +150,9 @@
             </div>
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="categoriaclie_id" class="btn btn-secondary" id="categoriaclie_id" onchange="tablaresultadoscliente(2)">
+                    <select name="categoriaclie_id" class="btn btn-secondary btn-block" id="categoriaclie_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- CATEGORIAS --</option>
-                        <option value="0"> Todas Las Categorias </option>
+                        <option value="0"> TODAS </option>
                         <?php 
                         foreach($all_categoria_cliente as $categoria)
                         {
@@ -146,9 +164,9 @@
             </div>
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="zona_id" class="btn btn-secondary" id="zona_id" onchange="tablaresultadoscliente(2)">
+                    <select name="zona_id" class="btn btn-secondary btn-block" id="zona_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- ZONAS --</option>
-                        <option value="0"> Todas Las Zonas </option>
+                        <option value="0"> TODAS </option>
                         <?php 
                         foreach($all_categoria_clientezona as $zona)
                         {
@@ -160,9 +178,9 @@
             </div>
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="estado_id" class="btn btn-secondary" id="estado_id" onchange="tablaresultadoscliente(2)">
+                    <select name="estado_id" class="btn btn-secondary btn-block" id="estado_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- ESTADOS --</option>
-                        <option value="0"> Todos los Estados </option>
+                        <option value="0"> TODOS </option>
                         <?php 
                         foreach($all_estado as $estado)
                         {
@@ -174,9 +192,9 @@
             </div>
             <div class="col-md-2">
                 <div class="box-tools">
-                    <select name="prevendedor_id" class="btn btn-secondary" id="prevendedor_id" onchange="tablaresultadoscliente(2)">
+                    <select name="prevendedor_id" class="btn btn-secondary btn-block" id="prevendedor_id" onchange="tablaresultadoscliente(2)">
                         <option value="" disabled selected >-- USUARIOS --</option>
-                        <option value="0"> Todos los Usuarios </option>
+                        <option value="0"> TODOS </option>
                         <option value="-1"> Sin Usuario Asignado </option>
                         <?php 
                         foreach($all_prevendedor as $prevendedor)
@@ -214,10 +232,10 @@
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
+                        <th>Información</th>
                         <th>Negocio</th>
                         <!--<th>Dirección</th>-->
-                        <th class="no-print">Map</th>
+                        <th class="no-print">Mapa</th>
 <!--                        <th>Email</th>-->
                         <!--<th>Aniversario</th>-->
 <!--                        <th>Tipo</th>-->

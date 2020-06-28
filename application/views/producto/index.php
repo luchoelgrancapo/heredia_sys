@@ -121,7 +121,7 @@
             <div class="col-md-3">
                 
                 <div class="box-tools">
-                    <select name="categoria_id" class="btn btn-secondary" id="categoria_id" onchange="tablaresultadosproducto(2)">
+                    <select name="categoria_id" class="btn btn-secondary btn-block" id="categoria_id" onchange="tablaresultadosproducto(2)">
                         <option value="" disabled selected >-- BUSCAR POR CATEGORIAS --</option>
                         <option value="0"> Todas Las Categorias </option>
                         <?php 
@@ -136,7 +136,7 @@
             <div class="col-md-2">
                 
                 <div class="box-tools">
-                    <select name="estado_id" class="btn btn-secondary" id="estado_id" onchange="tablaresultadosproducto(2)">
+                    <select name="estado_id" class="btn btn-secondary btn-block" id="estado_id" onchange="tablaresultadosproducto(2)">
                         <option value="" disabled selected >-- BUSCAR POR ESTADOS --</option>
                         <option value="0">Todos Los Estados</option>
                         <?php 

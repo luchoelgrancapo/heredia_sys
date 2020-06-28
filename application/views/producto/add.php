@@ -1,3 +1,4 @@
+<script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('resources/js/funciones_producto_newunidad.js'); ?>" type="text/javascript"></script>
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
 <script type="text/javascript">
@@ -187,8 +188,8 @@
                     <div class="col-md-2">
                             <label for="destino_id" class="control-label">Destino</label>
                             <div class="form-group">
-                                <select name="destino_id" class="form-control" id="destino_id">
-                                            <option value="">- DESTINO DEL PRODUCTO -</option>
+                                <select name="destino_id" class="form-control" id="destino_id" disabled>
+                                            <option value="">- GENERAL -</option>
                                             <?php 
                                             foreach($all_destino_producto as $destino_producto)
                                             {
@@ -484,7 +485,7 @@
             		<i class="fa fa-check"></i> Guardar
             	</button>
                     <a href="<?php echo site_url('producto/index'); ?>" class="btn btn-danger">
-                        <i class="fa fa-times"></i>Cancelar</a>
+                        <i class="fa fa-times"></i> Cancelar</a>
             </div>
             <?php echo form_close(); ?>
       	</div>

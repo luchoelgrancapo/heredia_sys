@@ -17,20 +17,27 @@
 <!------------------ ESTILO DE LAS TABLAS ----------------->
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
-
-<div class="box-header">
-    <font size='4' face='Arial'><b>Categoria Negocio</b></font>
-    <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($categoria_cliente); ?></font>
+<br>
+<div class="row">
+<div class="col-md-6">
+  <div class="box-header">
+               <h4><b>CATEGORIA DE CLIENTE</b> <small class="badge badge-secondary" id="pillados"><?php echo sizeof($categoria_cliente); ?></small></h4>
+  </div>
+</div>   
+<div class="col-md-6">   
     <div class="box-tools no-print">
-        <a href="<?php echo site_url('categoria_cliente/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Categoria</a> 
+        <a href="<?php echo site_url('categoria_cliente/add'); ?>" class="btn bg-success btn-app"><fa class='far fa-save'></fa> Registrar</a> 
     </div>
+</div>
 </div>
 <div class="row">
     <div class="col-md-12">
                     <!--------------------- parametro de buscador --------------------->
-                  <div class="input-group no-print"> <span class="input-group-addon">Buscar</span>
-                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese la descripción , porcentaje  o monto">
-                  </div>
+            <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input id="filtrar" autocomplete="off" type="text" class="form-control" placeholder="Ingrese la descripción" >
+            </div>
+            <br>  
             <!--------------------- fin parametro de buscador ---------------------> 
         
         <div class="box">
@@ -40,8 +47,8 @@
                     <tr>
 						<th>#</th>
 						<th>Descripción</th>
-						<th>Porc.<br>Desc.</th>
-						<th>Monto<br>Desc.</th>
+						<!--<th>Porc.<br>Desc.</th>
+						<th>Monto<br>Desc.</th>-->
                                                 <th class="no-print"></th>
                     </tr>
                     <tbody class="buscar">
@@ -54,8 +61,8 @@
                         <td><?php echo $i ?></td>
 						<!--<td><?php //echo $c['categoriaclie_id']; ?></td>-->
 						<td><?php echo $c['categoriaclie_descripcion']; ?></td>
-						<td><?php echo $c['categoriaclie_porcdesc']; ?></td>
-						<td><?php echo $c['categoriaclie_montodesc']; ?></td>
+						<!--<td><?php echo $c['categoriaclie_porcdesc']; ?></td>
+						<td><?php echo $c['categoriaclie_montodesc']; ?></td>-->
                                                 <td class="no-print">
 						<!------------------------ INICIO modal para confirmar eliminación ------------------->
                                     <div class="modal fade" id="myModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<?php echo $i; ?>">
@@ -80,7 +87,7 @@
                                       </div>
                                     </div>
                         <!------------------------ FIN modal para confirmar eliminación ------------------->
-                            <a href="<?php echo site_url('categoria_cliente/edit/'.$c['categoriaclie_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span></a> 
+                            <a href="<?php echo site_url('categoria_cliente/edit/'.$c['categoriaclie_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-edit"></span></a> 
                             <!--<a data-toggle="modal" data-target="#myModal<?php //echo $i; ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span></a>-->
                         </td>
                     </tr>
