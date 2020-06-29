@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Editar Categoria Ingreso</h3>
+              	<h3 class="box-title">EDITAR CATEGORIA INGRESO</h3>
             </div>
 			<?php echo form_open('categoria_ingreso/edit/'.$categoria_ingreso['id_cating']); ?>
 			<div class="box-body">

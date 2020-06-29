@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Editar Categoria Egreso</h3>
+              	<h3 class="box-title">EDITAR CATEGORIA EGRESO</h3>
             </div>
 			<?php echo form_open('categoria_egreso/edit/'.$categoria_egreso['id_categr']); ?>
 			<div class="box-body">
