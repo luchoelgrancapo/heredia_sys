@@ -148,4 +148,40 @@ class Proveedor_model extends CI_Model
         return $proveedor;
     }
 
+    function get_all_categoria()
+    {
+        $categoria_proveedor = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `categoria_proveedor`
+
+            WHERE
+                1=1
+        ")->result_array();
+
+        return $categoria_proveedor;
+    }
+    function add_categoria_proveedor($params)
+    {
+        $this->db->insert('categoria_proveedor',$params);
+        return $this->db->insert_id();
+    }
+
+    function get_categoria_proveedor($categoriaprov_id)
+    {
+        $categoria_proveedor = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `categoria_proveedor`
+
+            WHERE
+                `categoriaprov_id` = ?
+        ",array($categoriaprov_id))->row_array();
+
+        return $categoria_proveedor;
+    }
 }

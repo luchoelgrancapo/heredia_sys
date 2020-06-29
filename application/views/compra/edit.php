@@ -2,6 +2,7 @@
 <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('resources/js/compra.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('resources/js/funciones_producto_newunidad.js'); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('resources/js/proveedor_nuevo.js'); ?>" type="text/javascript"></script>
 <script type="text/javascript">
         $(document).ready(function () {
             (function ($) {
@@ -463,7 +464,7 @@ input[type=number] { -moz-appearance:textfield;
                                             } 
                                             ?>
                                     </select>
-                                <a data-toggle="modal" data-target="#modalcategoria" class="btn btn-warning" title="Registrar Nueva Categoria">
+                                <a data-toggle="modal" data-target="#modalcategoriap" class="btn btn-warning" title="Registrar Nueva Categoria">
                                 <i class="fa fa-plus-circle"></i></a>
                             </div>
                     </div>
@@ -651,7 +652,24 @@ input[type=number] { -moz-appearance:textfield;
                         </div>
                         <input id="bandera" class="form-control" name="bandera" type="hidden" value="<?php echo $bandera; ?>" />
                     </div>
-                
+                     <div class="col-md-6">
+                            <label for="categoriaprov_id" class="control-label"><span class="text-danger">*</span>Categoria</label>
+                            <div class="form-group" style="display: flex">
+                                    <select name="categoriaprov_id" id="categoriaprov_id" class="form-control" onchange="codigo()" required>
+                                            <option value="">- CATEGORIA -</option>
+                                            <?php 
+                                            foreach($all_categoria_proveedor as $categoria_proveedor)
+                                            {
+                                                    $selected = ($categoria_proveedor['categoriaprov_id'] == $this->input->post('categoriaprov_id')) ? ' selected="selected"' : "";
+
+                                                    echo '<option value="'.$categoria_proveedor['categoriaprov_id'].'" '.$selected.'>'.$categoria_proveedor['categoriaprov_descripcion'].'</option>';
+                                            } 
+                                            ?>
+                                    </select>
+                                    <a data-toggle="modal" data-target="#modalcategoriap" class="btn btn-warning" title="Registrar Nueva Categoria">
+                                <i class="fa fa-plus-circle"></i></a>
+                            </div>
+                    </div>
                     <div class="col-md-6">
                         <label for="proveedor_contacto" class="control-label">Contacto</label>
                         <div class="form-group">
@@ -672,6 +690,12 @@ input[type=number] { -moz-appearance:textfield;
                             <input type="text" name="proveedor_nit" value="0" class="form-control" id="proveedor_nit" />
                         </div>
                     </div>
+                    <div class="col-md-6" >
+                        <label for="proveedor_razon" class="control-label">Razon</label>
+                        <div class="form-group">
+                            <input type="text" id="proveedor_razon" class="form-control" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" value="<?php echo $this->input->post('proveedor_razon'); ?>" class="form-control" />
+                        </div>
+                    </div>
                 </div>
            <div class="card collapsed-card">
             <div class="card-header">
@@ -683,12 +707,7 @@ input[type=number] { -moz-appearance:textfield;
             </div>
                     <div class="card-body" style="display: none;">
                     <div class="row">
-                    <div class="col-md-6" >
-                        <label for="proveedor_razon" class="control-label">Razon</label>
-                        <div class="form-group">
-                            <input type="text" id="proveedor_razon" class="form-control" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" value="<?php echo $this->input->post('proveedor_razon'); ?>" class="form-control" />
-                        </div>
-                    </div>
+                  
                     <div class="col-md-6" >
                         <label for="proveedor_codigo1" class="control-label">Código</label>
                         <div class="form-group">
@@ -1214,19 +1233,7 @@ $("#texto2").change(function(){
         $('#producto_codigo').val(anio+mes+dia+hora+min+seg);
     }
 </script>
-<script>
-      $(document).ready(function () {
-          $('#proveedor_nombre1').keyup(function () {
-             var value = $(this).val();
-            var cad1 = value.substring(0,3);
-             var fecha = new Date();
-        var pararand = fecha.getFullYear()+fecha.getMonth()+fecha.getDay();
-        var cad3 = Math.floor((Math.random(1001,9999) * pararand));
-            var cad = cad1+cad3;
-              $('#proveedor_codigo1').val(cad);
-          });
-      });
-</script>
+
 
     <!----------- fin tabla detalle cuenta ----------------------------------->                                                      
             </div>
@@ -1292,6 +1299,33 @@ $("#texto2").change(function(){
             <div class="modal-footer aligncenter">
                 <button onclick="registrarnuevacategoria()" class="btn btn-success"><i class="fa fa-check"></i> Registrar </button>
                 <a href="#" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> No </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ FIN modal para Registrar nueva Categoria ------------------->
+
+<!------------------------ INICIO modal para Registrar nueva Categoria ------------------->
+<div class="modal fade" id="modalcategoriap" tabindex="-1" role="dialog" aria-labelledby="modalcategoriap">
+    <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+               <!------------------------------------------------------------------->
+               <div class="col-md-12">
+                    <label for="nueva_categoria" class="control-label">Registrar Nueva Categoria</label>
+                    <div class="form-group">
+                        <input type="text" name="nueva_categoriap"  class="form-control" id="nueva_categoriap" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                    </div>
+                </div>
+               <!------------------------------------------------------------------->
+            </div>
+            <div class="modal-footer aligncenter">
+                <a onclick="registrarnuevacategoriap()" class="btn bg-success"><span class="fa fa-check"></span> Registrar </a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cancelar </a>
             </div>
         </div>
     </div>

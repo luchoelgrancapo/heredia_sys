@@ -147,7 +147,7 @@
             <div class="box-body table-responsive">
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
-						<th>#</th>
+						<th>Nº</th>
 						
 						<th>Nombre</th>
 						<th>Contacto</th>

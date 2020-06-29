@@ -68,6 +68,7 @@ class Categoria_cliente extends CI_Controller{
                                     'categoriaclie_descripcion' => $this->input->post('categoriaclie_descripcion'),
                                     'categoriaclie_porcdesc' => $this->input->post('categoriaclie_porcdesc'),
                                     'categoriaclie_montodesc' => $this->input->post('categoriaclie_montodesc'),
+                                    'categoriaclie_numero' => 0,
                 );
 
                 $categoria_cliente_id = $this->Categoria_cliente_model->add_categoria_cliente($params);
@@ -137,6 +138,53 @@ class Categoria_cliente extends CI_Controller{
             else
                 show_error('The categoria_cliente you are trying to delete does not exist.');
         }
+    }
+
+     function nuevo()
+    {
+        if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $parametro = $this->input->post('parametro');
+                if($parametro != ""){
+                    $params = array(
+                    'categoriaclie_descripcion' => $parametro,
+                    'categoriaclie_porcdesc' => 0,
+                    'categoriaclie_montodesc' => 0,
+                    'categoriaclie_numero' => 0,
+                    
+
+                    );
+                    $categoria_id = $this->Categoria_cliente_model->add_categoria_cliente($params);
+                    $datos = $this->Categoria_cliente_model->get_categoria_cliente($categoria_id);
+                    echo json_encode($datos);
+                }else{
+                    echo json_encode(null);
+                }
+            }
+            else
+            {                 
+                show_404();
+            }
+        }
+    }
+
+    function datos()
+    {
+        if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $parametro = $this->input->post('parametro');
+                
+                    $datos = $this->Categoria_cliente_model->get_categoria_cliente($parametro);
+                    echo json_encode($datos);
+                }else{
+                    echo json_encode(null);
+                }
+            }
+            else
+            {                 
+                show_404();
+            }
+        
     }
     
 }

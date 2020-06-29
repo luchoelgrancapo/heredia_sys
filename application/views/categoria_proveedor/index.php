@@ -19,60 +19,56 @@
 <!-------------------------------------------------------->
 <br>
 <div class="row">
-<div class="col-md-6">  
- <div class="box-header">
-               <h4><b>TIPOS DE CLIENTE</b> <small class="badge badge-secondary" id="pillados"><?php echo sizeof($tipo_cliente); ?></small></h4>
+<div class="col-md-6">
+  <div class="box-header">
+               <h4><b>CATEGORIA DE PROVEEDOR</b> <small class="badge badge-secondary" id="pillados"><?php echo sizeof($categoria_proveedor); ?></small></h4>
   </div>
-  </div>
-  <div class="col-md-6">   
+</div>   
+<div class="col-md-6">   
     <div class="box-tools no-print">
-        <a href="<?php echo site_url('tipo_cliente/add'); ?>" class="btn bg-success btn-app"><fa class='far fa-save'></fa> Registrar</a> 
+        <a href="<?php echo site_url('categoria_proveedor/add'); ?>" class="btn bg-success btn-app"><fa class='far fa-save'></fa> Registrar</a> 
     </div>
 </div>
 </div>
-<br>
-
 <div class="row">
     <div class="col-md-12">
-        <!--------------------- parametro de buscador --------------------->
-                <div class="input-group-prepend">
+                    <!--------------------- parametro de buscador --------------------->
+            <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                     <input id="filtrar" autocomplete="off" type="text" class="form-control" placeholder="Ingrese la descripción" >
             </div>
             <br> 
-            <!--------------------- fin parametro de buscador --------------------->
+
+            <!--------------------- fin parametro de buscador ---------------------> 
         <div class="box">
             
             <div class="box-body table-responsive">
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
                         <th>Nº</th>
-                        <!--<th>Id</th>-->
-                        <th>Descripción</th>
-                      
+                        <th class="no-print"></th>
+                        <th>Nombre</th>
                         <th class="no-print"></th>
                     </tr>
                     <tbody class="buscar">
-                    <?php $cont = 0;
-                          foreach($tipo_cliente as $t){;
-                                 $cont = $cont+1; ?>
+                    <?php $i = 0;
+                          foreach($categoria_proveedor as $c){; 
+                              $i = $i+1;?>
                     <tr>
-                        <td><?php echo $cont ?></td>
-                        <td><?php echo $t['tipocliente_descripcion']; ?></td>
+                        <td><?php echo $i ?></td>
+                        
                        
+                        <td><?php echo $c['categoriaprov_descripcion']; ?></td>
+                        <td><?php echo $c['categoriaprov_numero']; ?></td>
                         <td class="no-print">
-                            <a href="<?php echo site_url('tipo_cliente/edit/'.$t['tipocliente_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-edit"></span></a> 
-                            <!--<a href="<?php //echo site_url('tipo_cliente/remove/'.$t['tipocliente_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span></a>-->
+                        
+                            <a href="<?php echo site_url('categoria_proveedor/edit/'.$c['categoriaprov_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-edit"></span></a> 
+                            <!--<a data-toggle="modal" data-target="#myModal<?php //echo $i; ?>"  title="Eliminar" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span></a>-->
                         </td>
                     </tr>
                     <?php } ?>
-                    </tbody>
                 </table>
-                                
-            </div>
-            <div class="pull-right">
-                    <?php echo $this->pagination->create_links(); ?>                    
-                </div>
+            </div>               
         </div>
     </div>
 </div>

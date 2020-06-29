@@ -105,7 +105,7 @@ function tabla_inventario(){
              html = "";            
                     html += "<table class='table table-striped table-bordered' id='tabla_detalle'>";
                     html += "<tr>";
-                    html += "	<th>#</th>";
+                    html += "	<th>Nº</th>";
                     html += "	<th>Imagen</th>";
                     html += "	<th>Descripción</th>";
                     html += "	<th>Código</th>";
@@ -211,7 +211,7 @@ function tabla_inventario(){
              html = "";            
                     html += "<table class='table table-striped table-bordered' id='tabla_detalle' >";
                     html += "<tr>";
-                    html += "	<th>#</th>";
+                    html += "	<th>Nº</th>";
 //                    html += "	<th>Imagen</th>";
                     html += "	<th>Descripción</th>";
                     html += "	<th>Código</th>";
@@ -420,7 +420,7 @@ function tabla_inventario_existencia(){
              html = "";            
                     html += "<table class='table table-striped table-bordered' id='tabla_detalle'>";
                     html += "<tr>";
-                    html += "    <th>#</th>";
+                    html += "    <th>Nº</th>";
                     html += "    <th>Imagen</th>";
                     html += "    <th>Descripción</th>";
                     html += "    <th>Código</th>";
@@ -526,7 +526,7 @@ function tabla_inventario_existencia(){
              html = "";            
                     html += "<table class='table table-striped table-bordered' id='tabla_detalle' >";
                     html += "<tr>";
-                    html += "    <th>#</th>";
+                    html += "    <th>Nº</th>";
 //                    html += "    <th>Imagen</th>";
                     html += "    <th>Descripción</th>";
                     html += "    <th>Código</th>";
@@ -787,7 +787,7 @@ function mostrar_duplicados()
              html = "";            
                     html += "<table class='table table-striped table-bordered' id='tabla_detalle'>";
                     html += "<tr>";
-                    html += "	<th>#</th>";
+                    html += "	<th>Nº</th>";
                     html += "	<th>Imagen</th>";
                     html += "	<th>Descripción</th>";
                     html += "	<th>Código</th>";

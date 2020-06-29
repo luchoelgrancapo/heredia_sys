@@ -1,6 +1,7 @@
 <!----------------------------- script buscador --------------------------------------->
 <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('resources/js/funciones.js'); ?>"></script>
+<script src="<?php echo base_url('resources/js/cliente_nuevo.js'); ?>"></script>
 
 <script type="text/javascript">
         $(document).ready(function () {
@@ -245,7 +246,7 @@ window.onkeydown = compruebaTecla;
             <div class="form-group" <?php echo $estilo_div; ?>>
                 
                 <!--<input type="search" name="razon_social" list="listaclientes" class="form-control" id="razon_social" value="<?php echo $cliente[0]['cliente_razon']; ?>" onkeypress="validar(event,2)"  onclick="seleccionar(2)" onKeyUp="this.value = this.value.toUpperCase();"/>-->
-                <input type="search" name="razon_social" list="listaclientes" class="form-control <?php echo $atributos; ?>" <?php echo $estilos_facturacion; ?> id="razon_social" value="<?php echo $cliente[0]['cliente_razon']; ?>" onkeypress="validar(event,9)"  onchange="seleccionar_cliente()" onclick="seleccionar(2)" onKeyUp="this.value = this.value.toUpperCase();" autocomplete="off" />
+                <input type="search" name="razon_social" list="listaclientes" class="form-control <?php echo $atributos; ?>" <?php echo $estilos_facturacion; ?> id="razon_social" value="<?php echo $cliente[0]['cliente_razon']; ?>" onkeypress="validar(event,9)"  onchange="seleccionar_cliente(),codigo()" onclick="seleccionar(2)" onKeyUp="this.value = this.value.toUpperCase();" autocomplete="off" />
                 <datalist id="listaclientes">
 
                 </datalist>
@@ -348,14 +349,25 @@ window.onkeydown = compruebaTecla;
                 <input type="text" name="cliente_direccion" class="form-control <?php echo $atributos; ?>" <?php echo $estilos; ?> id="cliente_direccion" value="<?php echo $cliente[0]['cliente_direccion']; ?>"  onKeyUp="this.value = this.value.toUpperCase();"/>
             </div>
             </div>
-            
+              
             <div class="col-md-3" <?php echo $estilo_div; ?>>
-            <label for="cliente_departamento" class="control-label" style="margin-bottom: 0;">DEPARTAMENTO</label>
-            <div class="form-group" <?php echo $estilo_div; ?>>
-                <input type="text" name="cliente_departamento" class="form-control <?php echo $atributos; ?>" <?php echo $estilos; ?> id="cliente_departamento" value="<?php echo $cliente[0]['cliente_departamento']; ?>"  onKeyUp="this.value = this.value.toUpperCase();"/>
+            <label for="categoriaclie_id" class="control-label" style="margin-bottom: 0;"><span class="text-danger" style="margin-bottom: 0;">*</span>CATEGORIA</label>
+                            <div class="form-group" style="display: flex">
+                                    <select name="categoriaclie_id" id="categoriaclie_id" class="form-control" onchange="codigo()" required>
+                                            <?php 
+                                            foreach($all_categoria_cliente as $categoria_cliente)
+                                            {
+                                                    $selected = ($categoria_cliente['categoriaclie_id'] == $this->input->post('categoriaclie_id')) ? ' selected="selected"' : "";
+
+                                                    echo '<option value="'.$categoria_cliente['categoriaclie_id'].'" '.$selected.'>'.$categoria_cliente['categoriaclie_descripcion'].'</option>';
+                                            } 
+                                            ?>
+                                    </select>
+                                    <a data-toggle="modal" data-target="#modalcategoria" class="btn btn-warning" title="Registrar Nueva Categoria">
+                                <i class="fa fa-plus-circle"></i></a>
+                            </div>
             </div>
-            </div>
-                    
+               <input type="hidden" name="cliente_departamento" class="form-control <?php echo $atributos; ?>" <?php echo $estilos; ?> id="cliente_departamento"  value="COCHABAMBA"/>      
             <div class="col-md-3" <?php echo $estilo_div; ?>>
                 <label for="telefono" class="control-label" style="margin-bottom: 0;">TELEFONO</label>
                 <div class="form-group" <?php echo $estilo_div; ?>>
@@ -656,7 +668,7 @@ window.onkeydown = compruebaTecla;
             <br>
         </div>    
         <!----------------------------------- fin Botones ---------------------------------->
-        <font  size="1">
+        <font  size="1" hidden>
         <b>
             
         TECLAS DE ACCESO DIRECTO <br>
@@ -1346,3 +1358,29 @@ window.onkeydown = compruebaTecla;
 
 
 <!----------------- fin modal preferencias ---------------------------------------------->
+<!------------------------ INICIO modal para Registrar nueva Categoria ------------------->
+<div class="modal fade" id="modalcategoria" tabindex="-1" role="dialog" aria-labelledby="modalcategoria">
+    <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+               <!------------------------------------------------------------------->
+               <div class="col-md-12">
+                    <label for="nueva_categoria" class="control-label">Registrar Nueva Categoria</label>
+                    <div class="form-group">
+                        <input type="text" name="nueva_categoria"  class="form-control" id="nueva_categoria" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                    </div>
+                </div>
+               <!------------------------------------------------------------------->
+            </div>
+            <div class="modal-footer aligncenter">
+                <a onclick="registrarnuevacategoria()" class="btn bg-success"><span class="fa fa-check"></span> Registrar </a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cancelar </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ FIN modal para Registrar nueva Categoria ------------------->

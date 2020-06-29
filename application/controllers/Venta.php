@@ -28,6 +28,7 @@ class Venta extends CI_Controller{
         $this->load->model('Preferencia_model');
         $this->load->model('Credito_model');
         $this->load->model('Categoria_clientezona_model');
+        $this->load->model('Categoria_cliente_model');
         if ($this->session->userdata('logged_in')) {
             $this->session_data = $this->session->userdata('logged_in');
         }else {
@@ -86,6 +87,7 @@ class Venta extends CI_Controller{
         $data['cliente'] = $this->Venta_model->get_cliente_inicial();
         $data['zonas'] = $this->Categoria_clientezona_model->get_all_categoria_clientezona();
         $data['categoria_producto'] = $this->Venta_model->get_categoria_producto();
+        $data['all_categoria_cliente'] = $this->Categoria_cliente_model->get_all_categoria_cliente();
         $data['tipo_transaccion'] = $this->Tipo_transaccion_model->get_all_tipo();
         $data['forma_pago'] = $this->Forma_pago_model->get_all_forma();
         $data['tipo_cliente'] = $this->Tipo_cliente_model->get_all_tipo_cliente();
@@ -139,7 +141,7 @@ class Venta extends CI_Controller{
         $data['tipousuario_id'] = $tipousuario_id;
         $data['tipo_servicio'] = $this->Tipo_servicio_model->get_all_tipo_servicio();
         $data['preferencia'] = $this->Preferencia_model->get_all_preferencia();
-        
+        $data['all_categoria_cliente'] = $this->Categoria_cliente_model->get_all_categoria_cliente();
         //$data['venta'] = $this->Venta_model->get_all_venta($usuario_id);
         
         $data['_view'] = 'venta/ventas';

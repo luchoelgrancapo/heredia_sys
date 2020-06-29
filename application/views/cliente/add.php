@@ -1,4 +1,6 @@
 <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('resources/js/cliente_nuevo.js'); ?>" type="text/javascript"></script>
+<input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
 <script type="text/javascript">
 function mostrar(a) {
     obj = document.getElementById('oculto'+a);
@@ -33,29 +35,12 @@ function toggle(source) {
   }
 }
 </script>
-<script type="text/javascript">
-    function cambiarcod(cod){
-        var nombre = $("#cliente_nombre").val();
-        var cad1 = nombre.substring(0,2);
-        var cad2 = nombre.substring(nombre.length-1,nombre.length);
-        var fecha = new Date();
-        var pararand = fecha.getFullYear()+fecha.getMonth()+fecha.getDay();
-        var cad3 = Math.floor((Math.random(1001,9999) * pararand));
-        var cad = cad1+cad2+cad3;
-        $('#cliente_codigo').val(cad);
-    }
-</script>
+
 <script type="text/javascript">
     $(document).ready(function(){
     $("#cliente_nombre").change(function(){
         var nombre = $("#cliente_nombre").val();
-        var cad1 = nombre.substring(0,2);
-        var cad2 = nombre.substring(nombre.length-1,nombre.length);
-        var fecha = new Date();
-        var pararand = fecha.getFullYear()+fecha.getMonth()+fecha.getDay();
-        var cad3 = Math.floor((Math.random(1001,9999) * pararand));
-        var cad = cad1+cad2+cad3;
-        $('#cliente_codigo').val(cad);
+        
         $('#cliente_razon').val(nombre);
     });
     $("#cliente_ci").change(function(){
@@ -85,9 +70,9 @@ function toggle(source) {
       	<div class="box box-info">
             <div class="box-header with-border">
               	<h3 class="box-title">REGISTAR CLIENTE</h3>&nbsp;&nbsp;
-                <button type="button" class="btn btn-secondary btn-sm" onclick="cambiarcod(this);" title="Generar otro Código Cliente">
+                <!--<button type="button" class="btn btn-secondary btn-sm" onclick="cambiarcod(this);" title="Generar otro Código Cliente">
 			<i class="fa fa-barcode"></i> Generar Código
-		</button>
+		</button>-->
             </div>
             <?php echo form_open_multipart('cliente/add'); ?>
             <div class="box-body">
@@ -114,7 +99,7 @@ function toggle(source) {
                     <div class="col-md-2">
                             <label for="cliente_codigo" class="control-label">Código</label>
                             <div class="form-group">
-                                <input type="text" name="cliente_codigo" value="<?php echo $this->input->post('cliente_codigo'); ?>" class="form-control" id="cliente_codigo" readonly onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                                <input type="text" name="cliente_codigo" value="<?php echo $this->input->post('cliente_codigo'); ?>" class="form-control" id="cliente_codigo" placeholder="Seleccione una categoria" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" readonly/>
                                     <span class="text-danger"><?php echo form_error('cliente_codigo');?></span>
                             </div>
                     </div>
@@ -253,16 +238,16 @@ function toggle(source) {
                                 <input type="number" min="0" onchange="verificarnumero(this.value)" name="cliente_nit" value="<?php echo ($this->input->post('cliente_nit') ? $this->input->post('cliente_nit') : '0'); ?>" class="form-control" id="cliente_nit" />
                             </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                             <label for="cliente_razon" class="control-label">Razón</label>
-                            <div class="form-group">
+                            <div class="form-group" >
                                     <input type="text" name="cliente_razon" value="<?php echo ($this->input->post('cliente_razon') ? $this->input->post('cliente_razon') : 'SIN NOMBRE'); ?>" class="form-control" id="cliente_razon" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                             <label for="tipocliente_id" class="control-label"><span class="text-danger">*</span>Tipo</label>
-                            <div class="form-group">
-                                    <select name="tipocliente_id" class="form-control" required>
+                            <div class="form-group" style="display: flex">
+                                    <select name="tipocliente_id" id="tipocliente_id" class="form-control" required>
                                             <option value="">- TIPO CLIENTE -</option>
                                             <?php 
                                             foreach($all_tipo_cliente as $tipo_cliente)
@@ -273,12 +258,14 @@ function toggle(source) {
                                             } 
                                             ?>
                                     </select>
+                                    <a data-toggle="modal" data-target="#modaltipo" class="btn btn-warning" title="Registrar Nueva Tipo">
+                                <i class="fa fa-plus-circle"></i></a>
                             </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                             <label for="categoriaclie_id" class="control-label"><span class="text-danger">*</span>Categoria</label>
-                            <div class="form-group">
-                                    <select name="categoriaclie_id" class="form-control" required>
+                            <div class="form-group" style="display: flex">
+                                    <select name="categoriaclie_id" id="categoriaclie_id" class="form-control" onchange="codigo()" required>
                                             <option value="">- CATEGORIA NEGOCIO -</option>
                                             <?php 
                                             foreach($all_categoria_cliente as $categoria_cliente)
@@ -289,12 +276,14 @@ function toggle(source) {
                                             } 
                                             ?>
                                     </select>
+                                    <a data-toggle="modal" data-target="#modalcategoria" class="btn btn-warning" title="Registrar Nueva Categoria">
+                                <i class="fa fa-plus-circle"></i></a>
                             </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                             <label for="zona_id" class="control-label">Zona</label>
-                            <div class="form-group">
-                                    <select name="zona_id" class="form-control">
+                            <div class="form-group" style="display: flex">
+                                    <select name="zona_id" id="zona_id" class="form-control">
                                             <option value="0">- ZONA -</option>
                                             <?php 
                                             foreach($zona as $categoria_clientezona)
@@ -305,6 +294,8 @@ function toggle(source) {
                                             } 
                                             ?>
                                     </select>
+                                    <a data-toggle="modal" data-target="#modalzona" class="btn btn-warning" title="Registrar Nueva Zona">
+                                <i class="fa fa-plus-circle"></i></a>
                             </div>
                     </div>
                     <div class="col-md-3">
@@ -322,13 +313,13 @@ function toggle(source) {
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <!--<div class="col-md-2">
                         <label for="cliente_clave" class="control-label">Contraseña</label>
                         <div class="form-group">
                             <input type="password" name="cliente_clave" value="<?php echo $this->input->post('cliente_clave'); ?>" class="form-control" id="cliente_clave" />
                             <span class="text-danger"><?php echo form_error('cliente_clave');?></span>
                         </div>
-                    </div>
+                    </div>-->
                     <!--<div class="col-md-2">
                         <label for="rcliente_clave" class="control-label"><span class="text-danger">*</span>Repetir Contraseña</label>
                         <div class="form-group">
@@ -336,7 +327,7 @@ function toggle(source) {
                             <span class="text-danger"><?php echo form_error('rcliente_clave');*/ ?></span>
                         </div>
                     </div>-->
-                    <div class="col-md-5">
+                    <!--<div class="col-md-5">
                         <label for="dias_visita" class="control-label">Dias de Visita</label><input type="checkbox" id="select_all" onClick="toggle(this)" /> Todos
                             <div class="form-group">
                                 <label>Lunes<input class="checkbox" type="checkbox" name="lun" value="1" id="lun" /></label>&nbsp;&nbsp;&nbsp;
@@ -353,7 +344,7 @@ function toggle(source) {
                         <div class="form-group">
                             <input type="number" min="0" name="cliente_ordenvisita" value="<?php echo ($this->input->post('cliente_ordenvisita') ? $this->input->post('cliente_ordenvisita') : '0'); ?>" class="form-control" id="cliente_ordenvisita" />
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <div class="box-footer">
@@ -367,3 +358,82 @@ function toggle(source) {
       	</div>
     </div>
 </div>
+
+<!------------------------ INICIO modal para Registrar nueva Categoria ------------------->
+<div class="modal fade" id="modalcategoria" tabindex="-1" role="dialog" aria-labelledby="modalcategoria">
+    <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+               <!------------------------------------------------------------------->
+               <div class="col-md-12">
+                    <label for="nueva_categoria" class="control-label">Registrar Nueva Categoria</label>
+                    <div class="form-group">
+                        <input type="text" name="nueva_categoria"  class="form-control" id="nueva_categoria" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                    </div>
+                </div>
+               <!------------------------------------------------------------------->
+            </div>
+            <div class="modal-footer aligncenter">
+                <a onclick="registrarnuevacategoria()" class="btn bg-success"><span class="fa fa-check"></span> Registrar </a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cancelar </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ FIN modal para Registrar nueva Categoria ------------------->
+<!------------------------ INICIO modal para Registrar nueva Categoria ------------------->
+<div class="modal fade" id="modaltipo" tabindex="-1" role="dialog" aria-labelledby="modaltipo">
+    <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+               <!------------------------------------------------------------------->
+               <div class="col-md-12">
+                    <label for="nuevo_tipo" class="control-label">Registrar Nuevo Tipo</label>
+                    <div class="form-group">
+                        <input type="text" name="nuevo_tipo"  class="form-control" id="nuevo_tipo" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                    </div>
+                </div>
+               <!------------------------------------------------------------------->
+            </div>
+            <div class="modal-footer aligncenter">
+                <a onclick="registrarnuevotipo()" class="btn bg-success"><span class="fa fa-check"></span> Registrar </a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cancelar </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ FIN modal para Registrar nueva Categoria ------------------->
+<!------------------------ INICIO modal para Registrar nueva Categoria ------------------->
+<div class="modal fade" id="modalzona" tabindex="-1" role="dialog" aria-labelledby="modalzona">
+    <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+               <!------------------------------------------------------------------->
+               <div class="col-md-12">
+                    <label for="nueva_zona" class="control-label">Registrar Nueva Zona</label>
+                    <div class="form-group">
+                        <input type="text" name="nueva_zona"  class="form-control" id="nueva_zona" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                    </div>
+                </div>
+               <!------------------------------------------------------------------->
+            </div>
+            <div class="modal-footer aligncenter">
+                <a onclick="registrarnuevazona()" class="btn bg-success"><span class="fa fa-check"></span> Registrar </a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cancelar </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ FIN modal para Registrar nueva Categoria ------------------->

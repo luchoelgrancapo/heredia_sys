@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Añadir Tipo Cliente</h3>
+              	<h3 class="box-title">REGISTRAR TIPO CLIENTE</h3>
             </div>
             <?php echo form_open('tipo_cliente/add'); ?>
           	<div class="box-body">

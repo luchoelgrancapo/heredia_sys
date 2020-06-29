@@ -125,5 +125,30 @@ class Categoria_clientezona extends CI_Controller{
                 show_error('La categoria Cliente zona que estas intentando eliminar no existe.');
         }
     }
+
+    function nuevo()
+    {
+        if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $parametro = $this->input->post('parametro');
+                if($parametro != ""){
+                    $params = array(
+                    'zona_nombre' => $parametro,
+                    'estado_id' => 1,
+
+                    );
+                    $categoria_id = $this->Categoria_clientezona_model->add_categoria_clientezona($params);
+                    $datos = $this->Categoria_clientezona_model->get_categoria_clientezona($categoria_id);
+                    echo json_encode($datos);
+                }else{
+                    echo json_encode(null);
+                }
+            }
+            else
+            {                 
+                show_404();
+            }
+        }
+    }
     
 }

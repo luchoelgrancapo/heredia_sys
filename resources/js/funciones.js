@@ -192,6 +192,7 @@ function buscarcliente(){
                     $("#cliente_direccion").val(registros[0]["cliente_direccion"]);
                     $("#cliente_departamento").val(registros[0]["cliente_departamento"]);
                     $("#cliente_celular").val(registros[0]["cliente_celular"]);
+                    $("#categoriaclie_id").val(registros[0]["categoriaclie_id"]);
                     if(registros[0]["zona_id"] != null && registros[0]["zona_id"] >=0){
                         $("#zona_id").val(registros[0]["zona_id"]);
                     }else{
@@ -502,7 +503,7 @@ function tabladetalle(subtotal,descuento,totalfinal)
     
     html = "";
     html += "<div class='box'>";
-    html += "        <div class='box-body table-responsive table-condensed'>";
+    html += "        <div class='box-body table-responsive table-condensed' hidden>";
     html += "            <table class='table table-striped table-condensed' id='miotratabla'>";
     html += "<tr>";
     html += "    <th> Descripción</th>";

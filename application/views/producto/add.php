@@ -538,8 +538,8 @@
                <!------------------------------------------------------------------->
             </div>
             <div class="modal-footer aligncenter">
-                <a onclick="registrarnuevacategoria()" class="btn btn-success"><span class="fa fa-check"></span> Registrar </a>
-                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> No </a>
+                <a onclick="registrarnuevacategoria()" class="btn bg-success"><span class="fa fa-check"></span> Registrar </a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cancelar </a>
             </div>
         </div>
     </div>
@@ -564,8 +564,8 @@
                <!------------------------------------------------------------------->
             </div>
             <div class="modal-footer aligncenter">
-                <a onclick="registrarnuevasubcategoria()" class="btn btn-success"><span class="fa fa-check"></span> Registrar </a>
-                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> No </a>
+                <a onclick="registrarnuevasubcategoria()" class="btn bg-success"><span class="fa fa-check"></span> Registrar </a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cancelar </a>
             </div>
         </div>
     </div>

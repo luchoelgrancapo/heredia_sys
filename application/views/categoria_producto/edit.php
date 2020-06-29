@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Editar Categoria Producto</h3>
+              	<h3 class="box-title">EDITAR CATEGORIA PRODUCTO</h3>
             </div>
             <?php echo form_open_multipart('categoria_producto/edit/'.$categoria_producto['categoria_id']); ?>
             <div class="box-body">

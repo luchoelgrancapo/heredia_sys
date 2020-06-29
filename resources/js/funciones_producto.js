@@ -387,7 +387,7 @@ function listaprecios() {
     if(catalogo){
         chtml = "";
         chtml += "<tr role='row'  style='width: 19cm !important'>";
-        chtml += "<th role='columnheader' >#</th>";
+        chtml += "<th role='columnheader' >Nº</th>";
         chtml += "<th role='columnheader' >Nombre</th>";
         chtml += "<th role='columnheader' >Unidad</th>";
         chtml += "<th role='columnheader' >Cod. Barra</th>";
@@ -439,7 +439,7 @@ function listaprecios() {
 function cabecera_tabla() {
     chtml = "";
     chtml += "<tr role='row'>";
-    chtml += "<th  role='columnheader' >#</th>";
+    chtml += "<th  role='columnheader' >Nº</th>";
     chtml += "<th  role='columnheader' >Nombre</th>";
     chtml += "<th  role='columnheader' >Detalle</th>";
     chtml += "<th  role='columnheader' >Envase</th>";

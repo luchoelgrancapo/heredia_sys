@@ -438,8 +438,8 @@ function cambiarproveedores(compra_id,proveedor_id) {
                     html = registros[p]['proveedor_codigo'];
                      $("#provedorcodigo").html(html);
                   
-                     html = "<a  href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-xs btn-success' ><i class='fa fa-money'></i>Finalizar compra</a>";
-                     var html5 = "<a href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-sq-lg btn-success' style='width: 120px !important; height: 120px !important;'><i class='fa fa-money fa-4x'></i><br>Finalizar<br>Compra<br></a>";
+                     html = "<a  href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-xs btn-success' ><i class='fas fa-money-bill-alt'></i> Finalizar compra</a>";
+                     var html5 = "<a href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-app bg-success' style='width: 90px !important; height: 90px !important;'><i class='fas fa-money-bill-alt'></i><br>Finalizar<br>Compra<br></a>";
                     $("#provedorboton").html(html);
                     $("#provedorboton2").html(html5);
 
@@ -452,8 +452,8 @@ function cambiarproveedores(compra_id,proveedor_id) {
                     
 
             } else{
-                    html = "<a  onclick='myFunction()' href='#' class='btn btn-xs btn-success' ></i>Finalizar compra </a>";
-                    var html5 = "<a onclick='myFunction()' class='btn btn-sq-lg btn-success' style='width: 120px !important; height: 120px !important;'><i class='fa fa-money fa-4x'></i><br>Finalizar<br>Compra<br></a>";
+                    html = "<a  onclick='myFunction()' href='#' class='btn btn-xs btn-success' ><i class='fas fa-money-bill-alt'></i> Finalizar compra </a>";
+                    var html5 = "<a onclick='myFunction()' class='btn btn-app bg-success' style='width: 90px !important; height: 90px !important;'><i class='fas fa-money-bill-alt'></i><br>Finalizar<br>Compra<br></a>";
                         $("#provedorboton").html(html);
                         $("#provedorboton2").html(html5);
                         }
@@ -485,10 +485,11 @@ function crearproveedor(compra_id) {
                 var proveedor_direccion = document.getElementById('proveedor_direccion').value;
                 var proveedor_telefono = document.getElementById('proveedor_telefono').value;
                 var proveedor_telefono2 = document.getElementById('proveedor_telefono2').value;
+                var categoriaprov_id = document.getElementById('categoriaprov_id').value;
                 
             $.ajax({url: controlador,
            type:"POST",
-           data:{compra_id:compra_id,proveedor_nombre:proveedor_nombre,proveedor_nit:proveedor_nit,proveedor_razon:proveedor_razon,proveedor_codigo:proveedor_codigo,proveedor_autorizacion:proveedor_autorizacion,proveedor_contacto:proveedor_contacto,proveedor_direccion:proveedor_direccion,proveedor_telefono:proveedor_telefono,proveedor_telefono2:proveedor_telefono2},
+           data:{compra_id:compra_id,proveedor_nombre:proveedor_nombre,proveedor_nit:proveedor_nit,proveedor_razon:proveedor_razon,proveedor_codigo:proveedor_codigo,proveedor_autorizacion:proveedor_autorizacion,proveedor_contacto:proveedor_contacto,proveedor_direccion:proveedor_direccion,proveedor_telefono:proveedor_telefono,proveedor_telefono2:proveedor_telefono2,categoriaprov_id:categoriaprov_id},
            success:function(respuesta){ 
                 var registros =  JSON.parse(respuesta);
                  if (registros != null){
@@ -508,19 +509,19 @@ function crearproveedor(compra_id) {
                     html = registros[p]['proveedor_codigo'];
                      $("#provedorcodigo").html(html);
                   
-                     html = "<a  href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-xs btn-success' ><i class='fa fa-money'></i>Finalizar compra</a>";
+                     html = "<a  href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-xs btn-success' ><i class='fas fa-money-bill-alt'></i> Finalizar compra</a>";
                     $("#provedorboton").html(html);
-                    var html5 = "<a href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-sq-lg btn-success' style='width: 120px !important; height: 120px !important;'><i class='fa fa-money fa-4x'></i><br>Finalizar<br>Compra<br></a>";
+                    var html5 = "<a href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-app bg-success' style='width: 900px !important; height: 90px !important;'><i class='fas fa-money-bill-alt'></i><br>Finalizar<br>Compra</a>";
                      $("#provedorboton2").html(html5);
                      $("#modalproveedor").modal('hide');
             } else{
                     
-                    html = "<a onclick='myFunction()' href='#' class='btn btn-xs btn-success' ></i>Finalizar compra </a>";
+                    html = "<a onclick='myFunction()' href='#' class='btn btn-xs btn-success'><i class='fas fa-money-bill-alt'></i> Finalizar compra </a>";
                         $("#provedorboton").html(html);
-                    var html5 = "<a onclick='myFunction()' class='btn btn-sq-lg btn-success' style='width: 120px !important; height: 120px !important;'><i class='fa fa-money fa-4x'></i><br>Finalizar<br>Compra<br></a>";
+                    var html5 = "<a onclick='myFunction()' class='btn btn-app bg-success' style='width: 90px !important; height: 90px !important;'><i class='fas fa-money-bill-alt'></i><br>Finalizar<br>Compra</a>";
 
                         $("#provedorboton2").html(html5);
-                        $("#mensaje").html("<br> Debe llenar el campo Nombre");
+                        $("#mensaje").html("<br> Debe llenar el campo Nombre y seleccionar categoria");
 
                         }
              },
@@ -837,16 +838,16 @@ function tablaresultados(opcion)
                             
                         html += "<div class='col-md-12' style='padding-left: 0px;'>";
 
-                        html += "<b><font size=2>"+registros[i]["producto_nombre"]+"    ("+registros[i]["producto_codigo"]+")</b>  <span class='btn btn-warning btn-xs' >"+Number(registros[i]["existencia"]).toFixed(2)+"</span>";
+                        html += "<b><font size=2>"+registros[i]["producto_nombre"]+"    ("+registros[i]["producto_codigo"]+")</b>  <span class='btn bg-purple btn-xs' >"+Number(registros[i]["existencia"]).toFixed(2)+"</span>";
 //                        html += " <span class='btn btn-danger btn-xs' style='font-size:10px; face=arial narrow;' title='Historial de precios de compra'><i class='fa fa-book'></i> </span>";
 
                        
-                        html += " <span data-toggle='modal' data-target='#modalhistorial' class='btn btn-xs btn-success' onclick='mostrar_historial("+registros[i].producto_id+")'  title='Historial de precios de compra'>";
+                        html += " <span data-toggle='modal' data-target='#modalhistorial' class='btn btn-xs bg-navy' onclick='mostrar_historial("+registros[i].producto_id+")'  title='Historial de precios de compra'>";
                         html += "<i class='fa fa-book'></i>";
                         html += "</span>";
                         
                         
-                        html += "   <select class='btn btn-facebook btn-xs'  id='select_factor"+registros[i]["producto_id"]+"' onchange='mostrar_saldo("+registros[i]["existencia"]+","+registros[i]["producto_id"]+")'>";
+                        html += "   <select class='btn bg-warning btn-xs'  id='select_factor"+registros[i]["producto_id"]+"' onchange='mostrar_saldo("+registros[i]["existencia"]+","+registros[i]["producto_id"]+")'>";
                         html += "       <option value='1'>";
                         precio_unidad = registros[i]["producto_precio"];
                         html += "           "+registros[i]["producto_unidad"]+" Bs : "+precio_unidad.fixed(2)+"";
@@ -918,18 +919,18 @@ function tablaresultados(opcion)
                             
                         }
                         else{
-                            
+                        html += "<div class='row'>";    
                         html += "<div class='col-md-2' style='padding-left: 0px;' >";
-                        html += "<label  class='control-label' style='margin-bottom :0px'>PREC. </label><input class='input-sm' style='padding-left: 1px;' id='producto_preciodetalle"+registros[i]["producto_id"]+"'   autocomplete='off' name='producto_precio' type='number' step='0.01' class='form-control' value='"+registros[i]["producto_precio"]+"' ></div>";
+                        html += "<label  class='control-label' style='margin-bottom :0px'>PREC. </label><input class='input-sm' style='padding-left: 1px;width:70px' id='producto_preciodetalle"+registros[i]["producto_id"]+"'   autocomplete='off' name='producto_precio' type='number' step='0.01' class='form-control' value='"+registros[i]["producto_precio"]+"' ></div>";
                         html += "<div class='col-md-2' style='padding-left: 0px;'>";
-                        html += "<label  class='control-label' style='margin-bottom :0px'>COSTO </label><input class='input-sm' style='padding-left: 1px;' id='producto_costodetalle"+registros[i]["producto_id"]+"'   autocomplete='off' name='producto_costo' type='number' step='0.01' class='form-control' value='"+registros[i]["producto_ultimocosto"]+"' > </div>";
+                        html += "<label  class='control-label' style='margin-bottom :0px'>COSTO </label><input class='input-sm' style='padding-left: 1px;width:70px' id='producto_costodetalle"+registros[i]["producto_id"]+"'   autocomplete='off' name='producto_costo' type='number' step='0.01' class='form-control' value='"+registros[i]["producto_ultimocosto"]+"' > </div>";
                         html += "<div class='col-md-2' style='padding-left: 0px;' >";
-                        html += "<label  class='control-label' style='margin-bottom :0px'>DESC. </label><input class='input-sm' style='padding-left: 1px;' id='descuentodetalle"+registros[i]["producto_id"]+"' min='0' autocomplete='off' name='descuento' type='number' class='form-control' value='0.00' step='.01' required ></div>";
+                        html += "<label  class='control-label' style='margin-bottom :0px'>DESC. </label><input class='input-sm' style='padding-left: 1px;width:70px' id='descuentodetalle"+registros[i]["producto_id"]+"' min='0' autocomplete='off' name='descuento' type='number' class='form-control' value='0.00' step='.01' required ></div>";
                         html += "<div class='col-md-2'style='padding-left: 0px;'  >";
-                        html += "<label  class='control-label' style='margin-bottom :0px'>CANT. </label><input class='input-sm ' style='padding-left: 1px; width:70px' id='cantidaddetalle"+registros[i]["producto_id"]+"'  name='cantidad' type='number' autocomplete='off' onkeypress='pasardetalle(event,"+compra_id+","+registros[i]["producto_id"]+")' class='form-control' placeholder='cantidad' required value='1'> </div>";
+                        html += "<label  class='control-label' style='margin-bottom :0px'>CANT. </label><input class='input-sm' style='padding-left: 1px; width:70px' id='cantidaddetalle"+registros[i]["producto_id"]+"'  name='cantidad' type='number' autocomplete='off' onclick='this.select()' onkeypress='pasardetalle(event,"+compra_id+","+registros[i]["producto_id"]+")' class='form-control' placeholder='cantidad' required value='1'> </div>";
                         html += "<div class='col-md-2' style='padding-left: 0px;' >";
-                        html += "<label  class='control-label' style='margin-bottom :0px'>FEC.VENC. </label><input class='input-sm ' type='date' id='detallecomp_fechavencimiento"+registros[i]["producto_id"]+"'  name='detallecomp_fechavencimiento'  class='form-control' ></div></td>";
-                       
+                        html += "<label  class='control-label' style='margin-bottom :0px'>FEC.VENC. </label><input class='input-sm btn-info' style='padding-left: 1px; width:120px' type='date' id='detallecomp_fechavencimiento"+registros[i]["producto_id"]+"'  name='detallecomp_fechavencimiento'  class='form-control' ></div></td>";
+                        html += "</div>";
                        }
                         
                        

@@ -200,31 +200,25 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('proveedor');?>" class="nav-link">
+                <a href="<?php echo site_url('categoria_proveedor');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proveedor</p>
                 </a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-text-height"></i>
-              <p>
-                Tipos
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('categoria_cliente');?>" class="nav-link">
+                <a href="<?php echo site_url('tipo_cliente');?>" class="nav-link">
                   <i class="far fa-dot-circle nav-icon"></i>
-                  <p>Cliente</p>
+                  <p>Tipo Cliente</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('categoria_clientezona');?>" class="nav-link">
+                  <i class="far fa-dot-circle nav-icon"></i>
+                  <p>Zonas</p>
                 </a>
               </li>
             </ul>
-          </li>
-                        
+          </li>       
                     </ul>
                     </nav>
                 </div>
@@ -304,8 +298,8 @@
             <script src="<?php echo site_url('resources/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js');?>"></script>
             <!-- AdminLTE App -->
             <script src="<?php echo site_url('resources/js/adminlte.js');?>"></script>
-            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-            <script src="<?php echo site_url('resources/js/pages/dashboard.js');?>"></script>
+            <!-- AdminLTE dashboard demo (This is only for demo purposes) 
+            <script src="<?php echo site_url('resources/js/pages/dashboard.js');?>"></script>-->
             <!-- AdminLTE for demo purposes -->
             <script src="<?php echo site_url('resources/js/demo.js');?>"></script>
     </body>

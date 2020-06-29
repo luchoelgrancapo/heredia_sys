@@ -165,7 +165,7 @@
                <!--<table role="table">-->
                     <thead role="rowgroup">
                         <tr role="row">
-                            <th  role="columnheader" >#</th>
+                            <th  role="columnheader" >Nº</th>
                             <th  role="columnheader" >Nombre</th>
                             <th  role="columnheader" >Detalle</th>
                             <th  role="columnheader" style="width: 20%;" >Caracteristicas</th>

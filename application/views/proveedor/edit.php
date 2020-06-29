@@ -1,16 +1,8 @@
 <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('resources/js/proveedor_nuevo.js'); ?>" type="text/javascript"></script>
+<input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
 <script>
-      $(document).ready(function () {
-          $('#proveedor_nombre').keyup(function () {
-          	 var value = $(this).val();
-          	var cad1 = value.substring(0,3);
-             var fecha = new Date();
-        var pararand = fecha.getFullYear()+fecha.getMonth()+fecha.getDay();
-        var cad3 = Math.floor((Math.random(1001,9999) * pararand));
-        	var cad = cad1+cad3;
-              $('#proveedor_codigo').val(cad);
-          });
-      });
+  
        function loader() {
      	$("form").submit(function() {
    document.getElementById('loader').style.display = 'block'; //ocultar el bloque del loader 
@@ -38,10 +30,28 @@
 							<span class="text-danger"><?php echo form_error('proveedor_nombre');?></span>
 						</div>
 					</div>
+					 <div class="col-md-6">
+                            <label for="categoriaprov_id" class="control-label"><span class="text-danger">*</span>Categoria</label>
+                            <div class="form-group" style="display: flex">
+                                    <select name="categoriaprov_id" id="categoriaprov_id" class="form-control" onchange="codigo()" required>
+                                            <option value="">- CATEGORIA -</option>
+                                            <?php 
+                                            foreach($all_categoria_proveedor as $categoria_proveedor)
+                                            {
+                                                    $selected = ($categoria_proveedor['categoriaprov_id'] == $this->input->post('categoriaprov_id')) ? ' selected="selected"' : "";
+
+                                                    echo '<option value="'.$categoria_proveedor['categoriaprov_id'].'" '.$selected.'>'.$categoria_proveedor['categoriaprov_descripcion'].'</option>';
+                                            } 
+                                            ?>
+                                    </select>
+                                    <a data-toggle="modal" data-target="#modalcategoriap" class="btn btn-warning" title="Registrar Nueva Categoria">
+                                <i class="fa fa-plus-circle"></i></a>
+                            </div>
+                    </div>
 					<div class="col-md-6">
 						<label for="proveedor_codigo" class="control-label"><span class="text-danger">*</span>Código</label>
 						<div class="form-group">
-							<input type="text" name="proveedor_codigo" value="<?php echo ($this->input->post('proveedor_codigo') ? $this->input->post('proveedor_codigo') : $proveedor['proveedor_codigo']); ?>" class="form-control" id="proveedor_codigo" required />
+							<input type="text" name="proveedor_codigo" value="<?php echo ($this->input->post('proveedor_codigo') ? $this->input->post('proveedor_codigo') : $proveedor['proveedor_codigo']); ?>" class="form-control" id="proveedor_codigo1" required />
 							<span class="text-danger"><?php echo form_error('proveedor_codigo');?></span>
 						</div>
 					</div>
@@ -128,3 +138,30 @@
 		</div>
     </div>
 </div>
+
+<!------------------------ INICIO modal para Registrar nueva Categoria ------------------->
+<div class="modal fade" id="modalcategoriap" tabindex="-1" role="dialog" aria-labelledby="modalcategoriap">
+    <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+               <!------------------------------------------------------------------->
+               <div class="col-md-12">
+                    <label for="nueva_categoria" class="control-label">Registrar Nueva Categoria</label>
+                    <div class="form-group">
+                        <input type="text" name="nueva_categoriap"  class="form-control" id="nueva_categoriap" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                    </div>
+                </div>
+               <!------------------------------------------------------------------->
+            </div>
+            <div class="modal-footer aligncenter">
+                <a onclick="registrarnuevacategoriap()" class="btn bg-success"><span class="fa fa-check"></span> Registrar </a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cancelar </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ FIN modal para Registrar nueva Categoria ------------------->

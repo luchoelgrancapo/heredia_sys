@@ -119,6 +119,7 @@ class Proveedor extends CI_Controller{
             $estado = 1;
             $params = array(
                 'estado_id' => $estado,
+                'categoriaprov_id' => $this->input->post('categoriaprov_id'),
                 'proveedor_codigo' => $this->input->post('proveedor_codigo'),
                 'proveedor_nombre' => $this->input->post('proveedor_nombre'),
                 'proveedor_foto' => $foto,
@@ -132,6 +133,9 @@ class Proveedor extends CI_Controller{
                 'proveedor_autorizacion' => $this->input->post('proveedor_autorizacion'),
             );
             
+            $categorias=$this->input->post('categoriaprov_id');
+            $sql = "UPDATE categoria_proveedor SET categoriaprov_numero=categoriaprov_numero+1 WHERE categoriaprov_id = ".$categorias." "; 
+                $this->db->query($sql);
             $proveedor_id = $this->Proveedor_model->add_proveedor($params);
             redirect('proveedor/index');
         }
@@ -139,6 +143,7 @@ class Proveedor extends CI_Controller{
         {
             $this->load->model('Estado_model');
             $data['all_estado'] = $this->Estado_model->get_all_estado();
+            $data['all_categoria_proveedor'] = $this->Proveedor_model->get_all_categoria();
             $data['page_title'] = "Proveedor";
             $data['_view'] = 'proveedor/add';
             $this->load->view('layouts/main',$data);
@@ -152,6 +157,7 @@ class Proveedor extends CI_Controller{
         if($this->acceso(4)){
          $this->load->library('form_validation');
         $this->form_validation->set_rules('proveedor_nombre','Proveedor Nombre','required');
+        $this->form_validation->set_rules('categoriaprov_id','Proveedor Categoria','required');
         
         if($this->form_validation->run())     
         {   
@@ -165,6 +171,7 @@ class Proveedor extends CI_Controller{
            
             $params = array(
                 'estado_id' => $estado,
+                'categoriaprov_id' => $this->input->post('categoriaprov_id'),
                 'proveedor_codigo' => $this->input->post('proveedor_codigo'),
                 'proveedor_nombre' => $this->input->post('proveedor_nombre'),
                 'proveedor_foto' => $this->input->post('proveedor_foto'),
@@ -178,7 +185,9 @@ class Proveedor extends CI_Controller{
                 'proveedor_autorizacion' => $this->input->post('proveedor_autorizacion'),
             );
 
-             
+             $categorias=$this->input->post('categoriaprov_id');
+            $sql = "UPDATE categoria_proveedor SET categoriaprov_numero=categoriaprov_numero+1 WHERE categoriaprov_id = ".$categorias." "; 
+                $this->db->query($sql);
            $proveedor_id = $this->Proveedor_model->add_proveedor($params);
           
    $this->Compra_model->cambiar_proveedor($compra_id,$proveedor_id);
@@ -241,6 +250,7 @@ class Proveedor extends CI_Controller{
                 $usuario_id = $this->session_data['usuario_id'];
         // check if the proveedor exists before trying to edit it
         $data['proveedor'] = $this->Proveedor_model->get_proveedor($proveedor_id);
+        $proveedors = $this->Proveedor_model->get_proveedor($proveedor_id);
         
         if(isset($data['proveedor']['proveedor_id']))
         {
@@ -317,6 +327,7 @@ class Proveedor extends CI_Controller{
             /* *********************FIN imagen***************************** */
                 $params = array(
                     'estado_id' => $this->input->post('estado_id'),
+                    'categoriaprov_id' => $this->input->post('categoriaprov_id'),
                     'proveedor_codigo' => $this->input->post('proveedor_codigo'),
                     'proveedor_nombre' => $this->input->post('proveedor_nombre'),
                     'proveedor_foto' => $foto,
@@ -330,6 +341,12 @@ class Proveedor extends CI_Controller{
                     'proveedor_autorizacion' => $this->input->post('proveedor_autorizacion'),
                 );
 
+                $categorias=$this->input->post('categoriaprov_id');
+                if ($categorias!=$proveedors["categoriaprov_id"]) {
+                $sql = "UPDATE categoria_proveedor SET categoriaprov_numero=categoriaprov_numero+1 WHERE categoriaprov_id = ".$categorias." "; 
+                $this->db->query($sql);
+                }
+                
                 $this->Proveedor_model->update_proveedor($proveedor_id,$params);            
                 redirect('proveedor/index');
 
@@ -338,6 +355,7 @@ class Proveedor extends CI_Controller{
             {
                 $this->load->model('Estado_model');
                 $data['all_estado'] = $this->Estado_model->get_all_estado();
+                $data['all_categoria_proveedor'] = $this->Proveedor_model->get_all_categoria();
                 $data['page_title'] = "Proveedor";
                 $data['_view'] = 'proveedor/edit';
                 $this->load->view('layouts/main',$data);
@@ -387,5 +405,49 @@ class Proveedor extends CI_Controller{
                 echo json_encode($data);
             }
             
+    }
+
+        function nuevo_categoria()
+    {
+        if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $parametro = $this->input->post('parametro');
+                if($parametro != ""){
+                    $params = array(
+                    'categoriaprov_descripcion' => $parametro,
+                    'categoriaprov_numero' => 0,
+
+                    );
+                    $categoria_id = $this->Proveedor_model->add_categoria_proveedor($params);
+                    $datos = $this->Proveedor_model->get_categoria_proveedor($categoria_id);
+                    echo json_encode($datos);
+                }else{
+                    echo json_encode(null);
+                }
+            }
+            else
+            {                 
+                show_404();
+            }
+        }
+    }
+
+    function datos()
+    {
+        if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $parametro = $this->input->post('parametro');
+                
+                    $datos = $this->Proveedor_model->get_categoria_proveedor($parametro);
+                    echo json_encode($datos);
+                }else{
+                    echo json_encode(null);
+                }
+            }
+            else
+            {                 
+                show_404();
+            }
+        
     }
 }

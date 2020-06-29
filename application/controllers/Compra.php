@@ -481,6 +481,7 @@ class Compra extends CI_Controller{
 
                $this->load->model('Proveedor_model');
                $data['all_proveedor'] = $this->Proveedor_model->get_all_proveedor_activo();
+               $data['all_categoria_proveedor'] = $this->Proveedor_model->get_all_categoria();
 
                $this->load->model('Forma_pago_model');
                $data['all_forma_pago'] = $this->Forma_pago_model->get_all_forma_pago();
@@ -525,6 +526,7 @@ class Compra extends CI_Controller{
 
                 $this->load->model('Proveedor_model');
                 $data['all_proveedor'] = $this->Proveedor_model->get_all_proveedor_activo();
+                $data['all_categoria_proveedor'] = $this->Proveedor_model->get_all_categoria();
 
                 $this->load->model('Forma_pago_model');
                 $data['all_forma_pago'] = $this->Forma_pago_model->get_all_forma_pago();

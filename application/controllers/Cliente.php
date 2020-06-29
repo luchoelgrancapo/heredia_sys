@@ -206,7 +206,9 @@ class Cliente extends CI_Controller{
                     'cliente_ordenvisita' => $this->input->post('cliente_ordenvisita'),
                     'cliente_clave' => $la_contraseña,
                 );
-            
+                $categorias=$this->input->post('categoriaclie_id');
+                $sql = "UPDATE categoria_cliente SET categoriaclie_numero=categoriaclie_numero+1 WHERE categoriaclie_id = ".$categorias." "; 
+                $this->db->query($sql);
                 $cliente_id = $this->Cliente_model->add_cliente($params);
                 redirect('cliente/index');
                 }
@@ -248,7 +250,7 @@ class Cliente extends CI_Controller{
             $data['page_title'] = "Cliente";
         // check if the cliente exists before trying to edit it
         $data['cliente'] = $this->Cliente_model->get_cliente($cliente_id);
-        
+        $cliente = $this->Cliente_model->get_cliente($cliente_id);
         if(isset($data['cliente']['cliente_id']))
         {
             $this->load->library('form_validation');
@@ -377,6 +379,12 @@ class Cliente extends CI_Controller{
                         'cliente_ordenvisita' => $this->input->post('cliente_ordenvisita'),
                     );
 
+                    $categorias=$this->input->post('categoriaclie_id');
+                    if ($categorias!=$cliente["categoriaclie_id"]) {
+                      $sql = "UPDATE categoria_cliente SET categoriaclie_numero=categoriaclie_numero+1 WHERE categoriaclie_id = ".$categorias." "; 
+                     $this->db->query($sql);
+                    }
+                
                     $this->Cliente_model->update_cliente($cliente_id,$params);            
                     redirect('cliente/index');
                 }

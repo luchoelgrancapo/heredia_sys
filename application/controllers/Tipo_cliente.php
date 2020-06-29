@@ -132,5 +132,31 @@ class Tipo_cliente extends CI_Controller{
             show_error('The tipo_cliente you are trying to delete does not exist.');
     }
 }
+
+ function nuevo()
+    {
+        if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $parametro = $this->input->post('parametro');
+                if($parametro != ""){
+                    $params = array(
+                    'tipocliente_descripcion' => $parametro,
+                    'tipocliente_porcdesc' => 0,
+                    'tipocliente_montodesc' => 0,
+
+                    );
+                    $categoria_id = $this->Tipo_cliente_model->add_tipo_cliente($params);
+                    $datos = $this->Tipo_cliente_model->get_tipo_cliente($categoria_id);
+                    echo json_encode($datos);
+                }else{
+                    echo json_encode(null);
+                }
+            }
+            else
+            {                 
+                show_404();
+            }
+        }
+    }
     
 }

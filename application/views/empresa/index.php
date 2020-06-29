@@ -55,9 +55,9 @@
             <div class="box-body table-responsive">
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
-                        <th>#</th>
+                        
                         <th>Empresa</th>
-                        <th>Map</th>
+                        <th>Mapa</th>
                         <th>Eslogan</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
@@ -72,7 +72,7 @@
                           foreach($empresa as $e){;
                                  $cont = $cont+1; ?>
                     <tr>
-                        <td><?php echo $cont ?></td>
+                        
                         <td>
                             <div id="horizontal">
                                 <div id="contieneimg">
@@ -94,7 +94,7 @@
                                     <div style="padding-left: 4px">
                                         <?php echo "<b id='masg'>".$e['empresa_nombre']."</b>";
                                         if($e['empresa_propietario']){
-                                            echo "<br><b>de: </b>".$e['empresa_propietario'];
+                                            echo "<br><b>De: </b>".$e['empresa_propietario'];
                                         }
                                         if($e['empresa_profesion']){
                                             echo "<br><b>Profesión: </b>".$e['empresa_profesion'];

@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Editar Nueva Zona</h3>
+              	<h3 class="box-title">EDITAR ZONA</h3>
             </div>
 			<?php echo form_open('categoria_clientezona/edit/'.$categoria_clientezona['zona_id']); ?>
 			<div class="box-body">

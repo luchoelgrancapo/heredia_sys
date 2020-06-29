@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Añadir Nueva Zona</h3>
+              	<h3 class="box-title">REGISTRAR ZONA</h3>
             </div>
             <?php echo form_open('categoria_clientezona/add'); ?>
           	<div class="box-body">

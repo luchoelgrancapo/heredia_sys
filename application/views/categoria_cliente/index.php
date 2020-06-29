@@ -45,8 +45,9 @@
             <div class="box-body table-responsive">
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
-						<th>#</th>
+						<th>Nº</th>
 						<th>Descripción</th>
+            <th>Numero</th>
 						<!--<th>Porc.<br>Desc.</th>
 						<th>Monto<br>Desc.</th>-->
                                                 <th class="no-print"></th>
@@ -61,6 +62,7 @@
                         <td><?php echo $i ?></td>
 						<!--<td><?php //echo $c['categoriaclie_id']; ?></td>-->
 						<td><?php echo $c['categoriaclie_descripcion']; ?></td>
+            <td><?php echo $c['categoriaclie_numero']; ?></td>
 						<!--<td><?php echo $c['categoriaclie_porcdesc']; ?></td>
 						<td><?php echo $c['categoriaclie_montodesc']; ?></td>-->
                                                 <td class="no-print">
