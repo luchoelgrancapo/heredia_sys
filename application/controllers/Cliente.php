@@ -350,7 +350,7 @@ class Cliente extends CI_Controller{
                     if($dom != 1){ $dom = 0; }
                     $params = array(
                         'estado_id' => $this->input->post('estado_id'),
-                        'tipocliente_id' => $this->input->post('tipocliente_id'),
+                        //'tipocliente_id' => $this->input->post('tipocliente_id'),
                         'categoriaclie_id' => $this->input->post('categoriaclie_id'),
                         'cliente_codigo' => $this->input->post('cliente_codigo'),
                         'zona_id' => $this->input->post('zona_id'),
@@ -379,11 +379,11 @@ class Cliente extends CI_Controller{
                         'cliente_ordenvisita' => $this->input->post('cliente_ordenvisita'),
                     );
 
-                    $categorias=$this->input->post('categoriaclie_id');
+                    /*$categorias=$this->input->post('categoriaclie_id');
                     if ($categorias!=$cliente["categoriaclie_id"]) {
                       $sql = "UPDATE categoria_cliente SET categoriaclie_numero=categoriaclie_numero+1 WHERE categoriaclie_id = ".$categorias." "; 
                      $this->db->query($sql);
-                    }
+                    }*/
                 
                     $this->Cliente_model->update_cliente($cliente_id,$params);            
                     redirect('cliente/index');

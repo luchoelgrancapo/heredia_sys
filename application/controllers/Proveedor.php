@@ -327,7 +327,7 @@ class Proveedor extends CI_Controller{
             /* *********************FIN imagen***************************** */
                 $params = array(
                     'estado_id' => $this->input->post('estado_id'),
-                    'categoriaprov_id' => $this->input->post('categoriaprov_id'),
+                    //'categoriaprov_id' => $this->input->post('categoriaprov_id'),
                     'proveedor_codigo' => $this->input->post('proveedor_codigo'),
                     'proveedor_nombre' => $this->input->post('proveedor_nombre'),
                     'proveedor_foto' => $foto,
@@ -341,11 +341,11 @@ class Proveedor extends CI_Controller{
                     'proveedor_autorizacion' => $this->input->post('proveedor_autorizacion'),
                 );
 
-                $categorias=$this->input->post('categoriaprov_id');
+                /*$categorias=$this->input->post('categoriaprov_id');
                 if ($categorias!=$proveedors["categoriaprov_id"]) {
                 $sql = "UPDATE categoria_proveedor SET categoriaprov_numero=categoriaprov_numero+1 WHERE categoriaprov_id = ".$categorias." "; 
                 $this->db->query($sql);
-                }
+                }*/
                 
                 $this->Proveedor_model->update_proveedor($proveedor_id,$params);            
                 redirect('proveedor/index');

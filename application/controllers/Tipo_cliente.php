@@ -55,7 +55,7 @@ class Tipo_cliente extends CI_Controller{
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('tipocliente_descripcion','Tipocliente Descripcion','required');
-		
+		$this->form_validation->set_rules('tipocliente_descripcion','tipocliente_descripcion','is_unique[tipo_cliente.tipocliente_descripcion]', array('is_unique' => 'Este Tipo ya fue Registrado'));
 		if($this->form_validation->run())     
         {   
             $params = array(
