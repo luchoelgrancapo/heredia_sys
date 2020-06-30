@@ -82,7 +82,7 @@ break;
                        
                     </tr>
                    
-                    <tr>
+                    <!--<tr>
                         <th style="font-size: 12px;color:black;background: rgba(255, 0, 0, 0.3);" rowspan="2" ><u>SERVICIOS</u></th>
                         <th style="font-size: 11px;color:black;background: rgba(255, 0, 0, 0.3);">DIAGNOSTICO</th>
                         <th style="font-size: 11px;color:black;background: rgba(255, 0, 0, 0.3);">SOLUCION</th>
@@ -102,7 +102,7 @@ break;
                                   elseif($p['parametro_serviciofact'] == 3){ echo "SOLUCION Y DESCRIPCION"; }
                                   elseif($p['parametro_serviciofact'] == 4){ echo "DESCRIPCION Y SOLUCION"; } ?>
                         </td>
-                    </tr>
+                    </tr>-->
                         
                     <tr>
                         <th style="font-size: 12px;color:black;background: rgba(255, 255, 0, 0.3);" rowspan="4" ><u>VENTAS</u></th>

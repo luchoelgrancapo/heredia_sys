@@ -6,6 +6,7 @@
             </div>
             <?php echo form_open('parametro/edit/'.$parametro['parametro_id']); ?>
             <div class="box-body" style="margin-top: 0px;margin-bottom: -20px; background: rgba(0, 0, 255, 0.3);"><u><b>CONFIGURACION</b></u><br>
+                <div class="row">
                 <div class="col-md-3">
                     <label for="parametro_numrecegr" class="control-label"> NUMERO EGRESO</label>
                     <div class="form-group">
@@ -69,8 +70,9 @@
                         <input type="text" name="parametro_apikey" value="<?php echo ($this->input->post('parametro_apikey') ? $this->input->post('parametro_apikey') : $parametro['parametro_apikey']); ?>" class="form-control" id="parametro_apikey" />
                     </div>
                 </div>
-            </div><hr>
+            </div></div><hr>
             <div class="box-body" style="margin-top: -20px;margin-bottom: -20px; background: rgba(0, 255, 0, 0.3);"><u><b>CREDITOS</b></u><br>
+                <div class="row">
                 <div class="col-md-2">
                     <label for="parametro_numcuotas" class="control-label"> NUMERO DE CUOTAS</label>
                     <div class="form-group">
@@ -116,8 +118,9 @@
                         <input type="number" step="any" name="parametro_interes" value="<?php echo ($this->input->post('parametro_interes') ? $this->input->post('parametro_interes') : $parametro['parametro_interes']); ?>" class="form-control" id="parametro_interes" />
                     </div>
                 </div>
+                </div>
             </div><hr>
-            <div class="box-body" style="margin-top: -20px;margin-bottom: -20px; background: rgba(255, 0, 0, 0.3);"><u><b>SERVICIOS</b></u><br>
+            <div class="box-body" hidden style="margin-top: -20px;margin-bottom: -20px; background: rgba(255, 0, 0, 0.3);"><u><b>SERVICIOS</b></u><br>
                 <div class="col-md-3">
                     <label for="parametro_diagnostico" class="control-label">DIAGNOSTICO</label>
                     <div class="form-group">

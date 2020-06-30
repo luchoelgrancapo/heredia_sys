@@ -995,13 +995,15 @@ class Factura extends CI_Controller{
                 
             $parametros = $this->Parametro_model->get_parametros();
 
-            if (sizeof($parametros)>0){
+            if ($parametros[0]['parametro_copiasfact']>0){
                 
                 if ($parametros[0]['parametro_tipoimpresora']=="FACTURADORA")
                     $this->factura_boucher($venta_id,$tipo);
                 else
                     $this->factura_carta($venta_id,$tipo);
-            }
+            }else{
+        echo "<script languaje='javascript' type='text/javascript'>window.close();</script>";
+    }
 
         //**************** fin contenido ***************
         } 
@@ -1019,13 +1021,15 @@ class Factura extends CI_Controller{
                 
             $parametros = $this->Parametro_model->get_parametros();
 
-            if (sizeof($parametros)>0){
+            if ($parametros[0]['parametro_copiasfact']>0){
                 
                 if ($parametros[0]['parametro_tipoimpresora']=="FACTURADORA")
                     $this->factura_boucher_id($factura_id,$tipo);
                 else
                     $this->factura_carta_id($factura_id,$tipo);
-            }
+            }else{
+        echo "<script languaje='javascript' type='text/javascript'>window.close();</script>";
+    }
 
         //**************** fin contenido ***************
         } 
