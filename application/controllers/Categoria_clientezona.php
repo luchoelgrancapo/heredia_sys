@@ -49,7 +49,7 @@ class Categoria_clientezona extends CI_Controller{
             $data['page_title'] = "Categoria Cliente Zona";
             $this->load->library('form_validation');
             $this->form_validation->set_rules('zona_nombre','Nombre es requerida','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-
+            $this->form_validation->set_rules('zona_nombre','zona_nombre','is_unique[zona.zona_nombre]', array('is_unique' => 'Esta Zona ya fue Registrado'));
             if($this->form_validation->run())     
             {
                         //estado_id = 1    --->por defecto lo crea activo

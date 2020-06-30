@@ -59,7 +59,7 @@ class Categoria_cliente extends CI_Controller{
 
             //$this->form_validation->set_rules('categoriaclie_descripcion','Descripcion es requerida','trim|required|alpha', array('required' => 'Este Campo no debe ser vacio', 'alpha' => 'Solo valores alfanumericos'));
             $this->form_validation->set_rules('categoriaclie_descripcion','Descripcion es requerida','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-		
+		    $this->form_validation->set_rules('categoriaclie_descripcion','categoriaclie_descripcion','is_unique[categoria_cliente.categoriaclie_descripcion]', array('is_unique' => 'Esta Categoria ya fue Registrado'));
             if($this->form_validation->run())     
             {
                 $params = array(

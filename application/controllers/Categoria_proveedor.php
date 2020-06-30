@@ -59,7 +59,7 @@ class Categoria_proveedor extends CI_Controller{
 
             //$this->form_validation->set_rules('categoriaprov_descripcion','Descripcion es requerida','trim|required|alpha', array('required' => 'Este Campo no debe ser vacio', 'alpha' => 'Solo valores alfanumericos'));
             $this->form_validation->set_rules('categoriaprov_descripcion','Descripcion es requerida','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-		
+		    $this->form_validation->set_rules('categoriaprov_descripcion','categoriaprov_descripcion','is_unique[categoria_proveedor.categoriaprov_descripcion]', array('is_unique' => 'Esta Categoria ya fue Registrado'));
             if($this->form_validation->run())     
             {
                 $params = array(
