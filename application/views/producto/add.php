@@ -30,6 +30,19 @@
         $('#producto_codigo').val(anio+mes+dia+hora+min+seg);
     }
 </script>
+    <script type="text/javascript">
+
+      $(document).ready(function () {
+          $('#producto_codigobarra').keyup(function () {
+             var value = $(this).val();
+            
+              
+              $('#producto_codigo').val(value);
+          });
+      });
+
+</script>
+
 <script type="text/javascript">
     jQuery(document).ready(function(){
       $(".oculto").hide();              

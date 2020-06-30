@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Editar Categoria Negocio</h3>
+              	<h3 class="box-title">EDITAR CATEGORIA CLIENTE</h3>
             </div>
 			<?php echo form_open('categoria_cliente/edit/'.$categoria_cliente['categoriaclie_id']); ?>
 			<div class="box-body">

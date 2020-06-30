@@ -484,7 +484,7 @@ function crearproveedor(compra_id) {
                 var proveedor_contacto = document.getElementById('proveedor_contacto').value;
                 var proveedor_direccion = document.getElementById('proveedor_direccion').value;
                 var proveedor_telefono = document.getElementById('proveedor_telefono').value;
-                var proveedor_telefono2 = document.getElementById('proveedor_telefono2').value;
+                 var proveedor_telefono2 = document.getElementById('proveedor_telefono2').value;
                 var categoriaprov_id = document.getElementById('categoriaprov_id').value;
                 
             $.ajax({url: controlador,
@@ -500,28 +500,32 @@ function crearproveedor(compra_id) {
 
                 
              
-                    html = registros[p]['proveedor_nombre'];
-                     $("#provedordecompra").html(html);
+                    html1 = registros[p]['proveedor_nombre'];
+                     $("#provedordecompra").html(html1);
 
-                    html = "<input id='prove_id' type='hidden' value='"+proveedor_id+"'>";
-                     $("#prove_iden").html(html);
+                    html2 = "<input id='prove_id' type='hidden' value='"+proveedor_id+"'>";
+                     $("#prove_iden").html(html2);
 
-                    html = registros[p]['proveedor_codigo'];
-                     $("#provedorcodigo").html(html);
+                    html3 = registros[p]['proveedor_codigo'];
+                     $("#provedorcodigo").html(html3);
                   
-                     html = "<a  href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-xs btn-success' ><i class='fas fa-money-bill-alt'></i> Finalizar compra</a>";
-                    $("#provedorboton").html(html);
+                     html4 = "<a  href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-xs btn-success' ><i class='fas fa-money-bill-alt'></i> Finalizar compra</a>";
+                    $("#provedorboton").html(html4);
                     var html5 = "<a href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-app bg-success' style='width: 900px !important; height: 90px !important;'><i class='fas fa-money-bill-alt'></i><br>Finalizar<br>Compra</a>";
                      $("#provedorboton2").html(html5);
                      $("#modalproveedor").modal('hide');
+                     $("#proveedor_nombre1").val('');
+                     $("#proveedor_codigo1").val('');
+                     $("#categoriaprov_id").val('');
+                     $("#proveedor_razon").val('');
             } else{
                     
-                    html = "<a onclick='myFunction()' href='#' class='btn btn-xs btn-success'><i class='fas fa-money-bill-alt'></i> Finalizar compra </a>";
-                        $("#provedorboton").html(html);
+                    html4 = "<a onclick='myFunction()' href='#' class='btn btn-xs btn-success'><i class='fas fa-money-bill-alt'></i> Finalizar compra </a>";
+                        $("#provedorboton").html(html4);
                     var html5 = "<a onclick='myFunction()' class='btn btn-app bg-success' style='width: 90px !important; height: 90px !important;'><i class='fas fa-money-bill-alt'></i><br>Finalizar<br>Compra</a>";
 
                         $("#provedorboton2").html(html5);
-                        $("#mensaje").html("<br> Debe llenar el campo Nombre y seleccionar categoria");
+                        $("#mensaje").html("<br> Debe ingresar un Nombre unico y seleccionar categoria");
 
                         }
              },

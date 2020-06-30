@@ -59,8 +59,6 @@ class Categoria_cliente extends CI_Controller{
 
             //$this->form_validation->set_rules('categoriaclie_descripcion','Descripcion es requerida','trim|required|alpha', array('required' => 'Este Campo no debe ser vacio', 'alpha' => 'Solo valores alfanumericos'));
             $this->form_validation->set_rules('categoriaclie_descripcion','Descripcion es requerida','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-            $this->form_validation->set_rules('categoriaclie_porcdesc','Categoriaclie Porcdesc','required');
-            $this->form_validation->set_rules('categoriaclie_montodesc','Categoriaclie Montodesc','required');
 		
             if($this->form_validation->run())     
             {
@@ -96,9 +94,6 @@ class Categoria_cliente extends CI_Controller{
             {
                 $this->load->library('form_validation');
                             $this->form_validation->set_rules('categoriaclie_descripcion','Descripcion es requerida','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-                            $this->form_validation->set_rules('categoriaclie_porcdesc','Categoriaclie Porcdesc','required');
-                            $this->form_validation->set_rules('categoriaclie_montodesc','Categoriaclie Montodesc','required');
-
                             if($this->form_validation->run())     
                 {   
                     $params = array(

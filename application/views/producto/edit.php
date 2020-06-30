@@ -54,6 +54,19 @@
         });
     });
 </script>
+</script>
+    <script type="text/javascript">
+
+      $(document).ready(function () {
+          $('#producto_codigobarra').keyup(function () {
+             var value = $(this).val();
+            
+              
+              $('#producto_codigo').val(value);
+          });
+      });
+
+</script>
 <script type="text/javascript">
     jQuery(document).ready(function(){
       $(".oculto2").hide();              

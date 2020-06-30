@@ -33,25 +33,26 @@
 					 <div class="col-md-6">
                             <label for="categoriaprov_id" class="control-label"><span class="text-danger">*</span>Categoria</label>
                             <div class="form-group" style="display: flex">
-                                    <select name="categoriaprov_id" id="categoriaprov_id" class="form-control" onchange="codigo()" required>
+                                    <select name="categoriaprov_id" id="categoriaprov_id" class="form-control" onchange="codigo()" required disabled>
                                             <option value="">- CATEGORIA -</option>
                                             <?php 
                                             foreach($all_categoria_proveedor as $categoria_proveedor)
                                             {
-                                                    $selected = ($categoria_proveedor['categoriaprov_id'] == $this->input->post('categoriaprov_id')) ? ' selected="selected"' : "";
+                                                    $selected = ($categoria_proveedor['categoriaprov_id'] == $proveedor['categoriaprov_id']) ? ' selected="selected"' : "";
 
                                                     echo '<option value="'.$categoria_proveedor['categoriaprov_id'].'" '.$selected.'>'.$categoria_proveedor['categoriaprov_descripcion'].'</option>';
+
                                             } 
-                                            ?>
+                                            ?>   
                                     </select>
-                                    <a data-toggle="modal" data-target="#modalcategoriap" class="btn btn-warning" title="Registrar Nueva Categoria">
-                                <i class="fa fa-plus-circle"></i></a>
+                                    <!--<a data-toggle="modal" data-target="#modalcategoriap" class="btn btn-warning" title="Registrar Nueva Categoria">
+                                <i class="fa fa-plus-circle"></i></a>-->
                             </div>
                     </div>
 					<div class="col-md-6">
 						<label for="proveedor_codigo" class="control-label"><span class="text-danger">*</span>Código</label>
 						<div class="form-group">
-							<input type="text" name="proveedor_codigo" value="<?php echo ($this->input->post('proveedor_codigo') ? $this->input->post('proveedor_codigo') : $proveedor['proveedor_codigo']); ?>" class="form-control" id="proveedor_codigo1" required />
+							<input type="text" name="proveedor_codigo" value="<?php echo ($this->input->post('proveedor_codigo') ? $this->input->post('proveedor_codigo') : $proveedor['proveedor_codigo']); ?>" class="form-control" id="proveedor_codigo1" required readonly/>
 							<span class="text-danger"><?php echo form_error('proveedor_codigo');?></span>
 						</div>
 					</div>

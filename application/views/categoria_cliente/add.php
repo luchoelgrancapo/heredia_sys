@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Añadir Categoria Negocio</h3>
+              	<h3 class="box-title">REGISTRAR CATEGORIA CLIENTE</h3>
             </div>
             <?php echo form_open('categoria_cliente/add'); ?>
           	<div class="box-body">

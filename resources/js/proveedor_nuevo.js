@@ -16,6 +16,7 @@ function registrarnuevacategoriap(){
                     html += registros["categoriaprov_descripcion"];
                     html += "</option>";
                     $("#categoriaprov_id").append(html);
+                    $("#nueva_categoriap").val('');
                     codigo();
             }
         },

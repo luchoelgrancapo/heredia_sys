@@ -67,7 +67,7 @@ class Categoria_proveedor extends CI_Controller{
                                     'categoriaprov_numero' => 0,
                                    
                 );
-
+                
                 $categoria_proveedor_id = $this->Categoria_proveedor_model->add_categoria_proveedor($params);
                 redirect('categoria_proveedor/index');
             }

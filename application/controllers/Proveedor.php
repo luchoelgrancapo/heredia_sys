@@ -57,9 +57,8 @@ class Proveedor extends CI_Controller{
          if($this->acceso(111)){
                 $usuario_id = $this->session_data['usuario_id'];
         $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('proveedor_codigo','Proveedor Codigo','required');
-        $this->form_validation->set_rules('proveedor_nombre','Proveedor Nombre','required');
+    $this->form_validation->set_rules('proveedor_nombre','proveedor_nombre','is_unique[proveedor.proveedor_nombre]', array('is_unique' => 'Este Proveedor ya fue Registrado'));
+    $this->form_validation->set_rules('proveedor_codigo','proveedor_codigo','is_unique[proveedor.proveedor_codigo]', array('is_unique' => 'Este Codigo ya fue Registrado'));
         
         if($this->form_validation->run())     
         {   
@@ -156,7 +155,7 @@ class Proveedor extends CI_Controller{
     {   
         if($this->acceso(4)){
          $this->load->library('form_validation');
-        $this->form_validation->set_rules('proveedor_nombre','Proveedor Nombre','required');
+        $this->form_validation->set_rules('proveedor_nombre','proveedor_nombre','is_unique[proveedor.proveedor_nombre]', array('is_unique' => 'Este Proveedor ya fue Registrado'));
         $this->form_validation->set_rules('categoriaprov_id','Proveedor Categoria','required');
         
         if($this->form_validation->run())     
@@ -185,11 +184,12 @@ class Proveedor extends CI_Controller{
                 'proveedor_autorizacion' => $this->input->post('proveedor_autorizacion'),
             );
 
-             $categorias=$this->input->post('categoriaprov_id');
+             
+            
+           $proveedor_id = $this->Proveedor_model->add_proveedor($params);
+           $categorias=$this->input->post('categoriaprov_id');
             $sql = "UPDATE categoria_proveedor SET categoriaprov_numero=categoriaprov_numero+1 WHERE categoriaprov_id = ".$categorias." "; 
                 $this->db->query($sql);
-           $proveedor_id = $this->Proveedor_model->add_proveedor($params);
-          
    $this->Compra_model->cambiar_proveedor($compra_id,$proveedor_id);
         $datos =  $this->Compra_model->get_compra_proveedor($compra_id);
         if(isset($datos)){

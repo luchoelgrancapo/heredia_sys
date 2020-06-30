@@ -68,7 +68,7 @@ function toggle(source) {
                     <div class="col-md-2">
                             <label for="cliente_codigo" class="control-label">Código</label>
                             <div class="form-group">
-                                <input type="text" name="cliente_codigo" value="<?php echo ($this->input->post('cliente_codigo') ? $this->input->post('cliente_codigo') : $cliente['cliente_codigo']); ?>" class="form-control" id="cliente_codigo"  />
+                                <input type="text" name="cliente_codigo" value="<?php echo ($this->input->post('cliente_codigo') ? $this->input->post('cliente_codigo') : $cliente['cliente_codigo']); ?>" class="form-control" id="cliente_codigo"  readonly/>
                                     <span class="text-danger"><?php echo form_error('cliente_codigo');?></span>
                             </div>
                     </div>
@@ -277,7 +277,7 @@ function toggle(source) {
                     <div class="col-md-2">
                             <label for="categoriaclie_id" class="control-label"><span class="text-danger">*</span>Categoria</label>
                             <div class="form-group" style="display: flex">
-                                    <select name="categoriaclie_id" id="categoriaclie_id" class="form-control" onchange="codigo()" required>
+                                    <select name="categoriaclie_id" id="categoriaclie_id" class="form-control" onchange="codigo()" required disabled>
                                             <option value="">- CATEGORIA NEGOCIO -</option>
                                             <?php 
                                             foreach($all_categoria_cliente as $categoria_cliente)
@@ -288,8 +288,8 @@ function toggle(source) {
                                             } 
                                             ?>
                                     </select>
-                                    <a data-toggle="modal" data-target="#modalcategoria" class="btn btn-warning" title="Registrar Nueva Categoria">
-                                <i class="fa fa-plus-circle"></i></a>
+                                    <!--<a disabled data-toggle="modal" data-target="#modalcategoria" class="btn btn-warning" title="Registrar Nueva Categoria" disabled>
+                                <i class="fa fa-plus-circle"></i></a>-->
                             </div>
                     </div>
                     <div class="col-md-2">

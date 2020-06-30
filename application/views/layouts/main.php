@@ -166,6 +166,11 @@
                                 <i class="nav-icon fas fa-truck fa-fw"></i> <p>Proveedores</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('usuario');?>" class="nav-link">
+                                <i class="nav-icon fas fa-user-lock fa-fw"></i> <p>Usuarios</p>
+                            </a>
+                        </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-closed-captioning"></i>
@@ -207,13 +212,13 @@
               </li>
               <li class="nav-item">
                 <a href="<?php echo site_url('tipo_cliente');?>" class="nav-link">
-                  <i class="far fa-dot-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Tipo Cliente</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo site_url('categoria_clientezona');?>" class="nav-link">
-                  <i class="far fa-dot-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Zonas</p>
                 </a>
               </li>

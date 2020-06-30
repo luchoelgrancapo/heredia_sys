@@ -16,6 +16,7 @@ function registrarnuevacategoria(){
                     html += registros["categoriaclie_descripcion"];
                     html += "</option>";
                     $("#categoriaclie_id").append(html);
+                    $("#nueva_categoria").val('');
                     codigo();
             }
         },
@@ -45,6 +46,8 @@ function registrarnuevotipo(){
                     html += registros["tipocliente_descripcion"];
                     html += "</option>";
                     $("#tipocliente_id").append(html);
+                    $("#nuevo_tipo").val('');
+
             }
         },
         error:function(respuesta){
@@ -73,6 +76,7 @@ function registrarnuevazona(){
                     html += registros["zona_nombre"];
                     html += "</option>";
                     $("#zona_id").append(html);
+                    $("#nueva_zona").val('');
             }
         },
         error:function(respuesta){
