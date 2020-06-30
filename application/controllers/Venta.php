@@ -576,8 +576,9 @@ class Venta extends CI_Controller{
                   usuario_id=".$usuario_id.")";
          
                 $this->Venta_model->ejecutar($sql);               
-                
-                $this->ultimaventa(1);
+                $parametros = $this->Parametro_model->get_parametros();
+    if ($parametros[0]['parametro_copiasfact']>0) {
+                $this->ultimaventa(1); }
        //     }
         }
         
@@ -1980,6 +1981,9 @@ function ultimaventa($tipo){
     $venta = $this->Venta_model->ultima_venta();
     $venta_tipodoc = $venta[0]['venta_tipodoc'];
     $venta_id = $venta[0]['venta_id'];
+    $parametros = $this->Parametro_model->get_parametros();
+    if ($parametros[0]['parametro_copiasfact']>0) {
+       
     
     if ($venta_tipodoc==1){ 
         redirect('factura/imprimir_factura/'.$venta_id."/".$tipo);
@@ -1992,8 +1996,10 @@ function ultimaventa($tipo){
     }
         
        //**************** fin contenido ***************
+    }else{
+        echo "<script languaje='javascript' type='text/javascript'>window.close();</script>";
     }
-            
+    }      
 }
 
 /*************** funcion para mostrar la vista de la factura******************/

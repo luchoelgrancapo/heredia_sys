@@ -63,6 +63,15 @@
 									<input type="text" readonly="readonly" name="ingreso_numero" value="<?php echo ($this->input->post('ingreso_numero') ? $this->input->post('ingreso_numero') : $ingreso['ingreso_numero']); ?>" class="form-control" id="ingreso_numero" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);"  required />
 								</div>
 							</div>
+							<?php  if ($tipousuario_id==1) { ?>
+							<div class="col-md-2">
+								<label for="ingreso_fecha" class="control-label">Fecha</label>
+								<div class="form-group">
+									<input type="datetime" name="ingreso_fecha" value="<?php echo ($this->input->post('ingreso_fecha') ? $this->input->post('ingreso_fecha') : $ingreso['ingreso_fecha']); ?>" class="form-control" id="ingreso_fecha" required />
+								</div>
+							</div>
+							
+							<?php } ?>
 							
 							
 							<div class="col-md-4">

@@ -511,7 +511,7 @@ function crearproveedor(compra_id) {
                   
                      html4 = "<a  href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-xs btn-success' ><i class='fas fa-money-bill-alt'></i> Finalizar compra</a>";
                     $("#provedorboton").html(html4);
-                    var html5 = "<a href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-app bg-success' style='width: 900px !important; height: 90px !important;'><i class='fas fa-money-bill-alt'></i><br>Finalizar<br>Compra</a>";
+                    var html5 = "<a href='#' data-toggle='modal' data-target='#modalcobrar' class='btn btn-app bg-success' style='width: 90px !important; height: 90px !important;'><i class='fas fa-money-bill-alt'></i><br>Finalizar<br>Compra</a>";
                      $("#provedorboton2").html(html5);
                      $("#modalproveedor").modal('hide');
                      $("#proveedor_nombre1").val('');

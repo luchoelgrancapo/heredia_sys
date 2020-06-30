@@ -76,15 +76,16 @@ border-bottom : 1px solid #aaa;
 <!-------------------------------------------------------->
 <?php $tipo_factura = $parametro[0]["parametro_altofactura"]; //15 tamaño carta 
       $ancho = $parametro[0]["parametro_anchofactura"];
-      $margen_izquierdo = "col-xs-".$parametro[0]["parametro_margenfactura"];;
+      $margen_izquierdo = $parametro[0]["parametro_margenfactura"]."cm";
 ?>
 
-<div class="<?php echo $margen_izquierdo; ?>" style="padding: 0; max-width:5cm;">
+<table class="table" >
+<tr>
+<td style="padding: 0; width: <?php echo $margen_izquierdo; ?>" >
     
-</div>
- 
-<div class="col-xs-10" style="padding: 0;">
-
+</td>
+<td style="padding: 0;">
+    
 <table class="table" style="width: <?php echo $ancho;?>cm; padding: 0;" >
     <tr>
         <td style="width: 6cm; padding: 0; line-height: 9px;" >
@@ -122,7 +123,7 @@ border-bottom : 1px solid #aaa;
 
                 <font size="3" face="arial"><b>NOTA DE ENTREGA</b></font> <br>
                 <font size="3" face="arial"><b>Nº 00<?php echo $venta[0]['venta_id']; ?></b></font> <br>
-                <font size="1" face="arial"><b><?php echo $venta[0]['venta_fecha']." ".$venta[0]['venta_hora']; ?></b></font> <br>
+                <!--<font size="1" face="arial"><b><?php echo $venta[0]['venta_fecha']." ".$venta[0]['venta_hora']; ?></b></font> <br>-->
             </center>
         </td>
         
@@ -176,13 +177,15 @@ border-bottom : 1px solid #aaa;
                         $caracteristicas = $d['detalleven_caracteristicas'];
                         
                         if ($preferencia !="null" && $preferencia!='-')
-                            echo  " /".$preferencia;
+                            echo  " /".nl2br($preferencia);
                         
                         if ($caracteristicas!="null" && $caracteristicas!='-')
                             echo  "<br>".nl2br($caracteristicas);
                         
                         ?>
 
+                    
+                    
                 </td>
                 <td align="right" style="padding: 0"><?php echo number_format($d['detalleven_precio']+$d['detalleven_descuento'],2,'.',','); ?></td>
                 <td align="right" style="padding: 0"><?php echo number_format($d['detalleven_subtotal'],2,'.',','); ?></td>
@@ -251,6 +254,7 @@ border-bottom : 1px solid #aaa;
                     __________________________<br>
                             ENTREGE CONFORME
                 </center>  
+                <?php echo date("d/m/Y H:i:s"); ?>
             </td>
             <td style="padding: 0">
             </td>
@@ -263,4 +267,5 @@ border-bottom : 1px solid #aaa;
         </tr>
     </table>
 
-</div>
+</tr>    
+</table>

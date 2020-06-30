@@ -193,8 +193,8 @@
       <th>Nº</th>
       <th>Proveedor</th>
       <th>Compra</th>
-    <th class="the-dark">Total</th>
-    <th>Fecha<br>Hora</th>
+    <th>Totales</th>
+    <th>Fecha</th>
     <th>Estado</th>
     <th>Usuario</th>
     <th class="no-print"></th>

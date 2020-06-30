@@ -648,8 +648,8 @@ window.onkeydown = compruebaTecla;
 
             <center>
             <?php if($rolusuario[14-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="#" data-toggle="modal" onclick="focus_efectivo()" data-target="#modalfinalizar" class="btn btn-app bg-success">
-                <i class="fa fa-money-bill-alt"></i>Finalizar Venta <br>
+            <a href="#" data-toggle="modal" onclick="focus_efectivo()" data-target="#modalfinalizar" class="btn btn-app bg-success" style='width: 90px !important; height: 90px !important;'>
+                <i class="fa fa-money-bill-alt"></i><br>Finalizar Venta <br>
             </a>
             <?php } ?>
 
@@ -659,8 +659,8 @@ window.onkeydown = compruebaTecla;
             </a>-->
 
             <?php if($rolusuario[18-1]['rolusuario_asignado'] == 1){ ?>
-            <a  href="<?php echo site_url('venta'); ?>" class="btn btn-app bg-danger">
-                <i class="fa fa-sign-out-alt"></i>
+            <a  href="<?php echo site_url('venta'); ?>" class="btn btn-app bg-danger" style='width: 90px !important; height: 90px !important;'>
+                <i class="fa fa-sign-out-alt"></i><br>
                Salir <br>
             </a>    
             <?php } ?>    

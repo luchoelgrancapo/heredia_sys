@@ -117,7 +117,7 @@
                     <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="<?php echo site_url();?>" class="nav-link">
+                            <a href="<?php echo site_url('admin/dashb');?>" class="nav-link">
                                 <i class="nav-icon fas fa-home fa-fw"></i> <p>Inicio</p>
                             </a>
                         </li>
@@ -220,6 +220,29 @@
                 <a href="<?php echo site_url('categoria_clientezona');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Zonas</p>
+                </a>
+              </li>
+            </ul>
+          </li> 
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-atlas"></i>
+              <p>
+                Libros
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('factura');?>" class="nav-link">
+                  <i class="fas fa-book nav-icon"></i>
+                  <p>Ventas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('factura/factura_compra');?>" class="nav-link">
+                  <i class="fas fa-book nav-icon"></i>
+                  <p>Compras</p>
                 </a>
               </li>
             </ul>

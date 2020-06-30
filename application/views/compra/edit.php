@@ -938,7 +938,7 @@ input[type=number] { -moz-appearance:textfield;
     <label for="compra_caja1">Dinero de caja</label></span>
     </div>
     <div class="col-md-6">      
-        <span class="btn btn-primary">Ajustar precios de costo <input  type="checkbox"  id="actualizarprecios" name="actualizarprecios" value="1"></span>   
+        <span class="btn btn-primary">Ajustar precios de costo <input  type="checkbox"  id="actualizarprecios" name="actualizarprecios" value="1" checked></span>   
     </div>
     </div>    
 

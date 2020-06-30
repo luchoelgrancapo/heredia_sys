@@ -38,21 +38,21 @@
 
                 </div>-->
                 
-                <div class="col-md-12">
-                    <form action="<?php echo site_url('factura/generar_excel'); ?>" method="POST">
+                <div class="row">
+                    <!--<form action="<?php //echo site_url('factura/generar_excel'); ?>" method="POST">-->
                         
                         <div class="col-md-3">
                             <label for="desde" class="control-label">Desde:</label>
                             <div class="form-group">
-                                 <input type="date"class="btn btn-warning btn-xs form-control"  id="fecha_desde" name="fecha_desde" value="<?php echo date("Y-m-d");?>">
+                                 <input type="date"class="btn btn-secondary btn-block"  id="fecha_desde" name="fecha_desde" value="<?php echo date("Y-m-d");?>">
 
                             </div>
                         </div>
                         
                         <div class="col-md-3">
-                            <label for="hasta" class="control-label">Desde:</label>
+                            <label for="hasta" class="control-label">Hasta:</label>
                             <div class="form-group">
-                                <input type="date" class="btn btn-warning btn-xs form-control"  id="fecha_hasta" name="fecha_hasta" value="<?php echo date("Y-m-d");?>">
+                                <input type="date" class="btn btn-secondary btn-block"  id="fecha_hasta" name="fecha_hasta" value="<?php echo date("Y-m-d");?>">
                         
                             </div>
                         </div>
@@ -80,19 +80,19 @@
                            <label for="desde" class="control-label"> Exportar: </label>
                            <div class="form-group">
               
-                                <button  type="submit" class="btn btn-facebook btn-xs form-control" ><span class="fa fa-file-excel-o"> </span> Exportar a Excel</button>
+                                <button onclick="generarexcel()" type="button" class="btn btn-success btn-block" ><span class="far fa-file-excel"> </span> Exportar a Excel</button>
                                 <!--<button  type="submit" class="btn btn-facebook btn-xs form-control" ><span class="fa fa-file-excel-o"> </span> Exportar a Excel</button>-->
       
                             </div>
                         </div>
                         
                     
-                    </form>
+                    <!--</form>-->
                         <div class="col-md-2">
                            <label for="desde" class="control-label"> Buscar: </label>
                            <div class="form-group">
               
-                               <button  type="submit" class="btn btn-danger btn-xs form-control" onclick="mostrar_facturas()"><span class="fa fa-binoculars"> </span> Ver</button>
+                               <button  type="submit" class="btn btn-primary btn-block" onclick="mostrar_facturas()"><span class="fa fa-search"> </span> Buscar</button>
       
                             </div>
                         </div>

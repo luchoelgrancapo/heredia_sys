@@ -24,15 +24,18 @@
 <!-- ---------------- ESTILO DE LAS TABLAS --------------- -->
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-- ---------------------------------------------------- -->
-<div class="box-header">
-<!--                <h3 class="box-title">Usuarios</h3>-->
-            	<div class="box-tools">
-                    <a href="<?php echo site_url('usuario/add'); ?>" class="btn btn-success btn-sm">+ Añadir</a> 
-                </div>
-        
-            <font size='4' face='Arial'><b>Usuarios</b></font>
-            <br><font size='2' face='Arial' id="encontrados">Registros Encontrados:<?php echo sizeof($usuario);  ?></font> 
-        
+<br>
+<div class="row">
+<div class="col-md-6">  
+ <div class="box-header">
+               <h4><b>USUARIOS</b> <small class="badge badge-secondary" id="pillados"><?php echo sizeof($usuario); ?></small></h4>
+  </div>
+  </div>
+  <div class="col-md-6">   
+    <div class="box-tools no-print">
+        <a href="<?php echo site_url('usuario/add'); ?>" class="btn bg-success btn-app"><fa class='fas fa-user-lock'></fa> Registrar</a> 
+    </div>
+</div>
 </div>
 
 
@@ -41,9 +44,11 @@
     <!--<p style="margin-left: 20px;" class="text-danger">      <?php //echo $mensaje; ?></p>-->
     <div class="col-md-12">
         <!---- ----------------- parametro de buscador ------------------- -->
-                  <div class="input-group"> <span class="input-group-addon">Buscar</span>
-                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese el nombre, login, email">
-                  </div>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input id="filtrar" autocomplete="off" type="text" class="form-control" placeholder="Ingrese el nombre, login" >
+            </div>
+            <br> 
             <!-- ------------------- fin parametro de buscador ------------------- -->
         <div class="box">
             <?php if($this->session->flashdata('msg')): ?>
@@ -52,7 +57,7 @@
             <div class="box-body table-responsive">
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
-                        <th>#</th>
+                        <th>Nº</th>
                         <th></th>
                         <th>Nombre/Usuario</th>
                         <!--<th>Tipo</th>-->
@@ -86,7 +91,7 @@
                         <td style="background-color: #<?php echo $u['estado_color']; ?>"><?php echo $u['estado_descripcion']; ?></td>
 
                         <td>
-                            <a href="<?php echo site_url('usuario/editar/'. $u['usuario_id']); ?>" class="btn btn-info btn-xs" title="Modificar datos de usuario"><span class="fa fa-pencil"></span></a>
+                            <a href="<?php echo site_url('usuario/editar/'. $u['usuario_id']); ?>" class="btn btn-info btn-xs" title="Modificar datos de usuario"><span class="fa fa-edit"></span></a>
                             <!--<a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal<?php //echo $i; ?>"  title="Eliminar"><em class="fa fa-trash"></em></a>-->
                             <?php
                             if($tipo_usuario_id == 1){

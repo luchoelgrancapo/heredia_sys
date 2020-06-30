@@ -264,7 +264,7 @@ class Ingreso extends CI_Controller{
                 $usuario_id = $this->session_data['usuario_id'];
         // check if the ingreso exists before trying to edit it
         $data['ingreso'] = $this->Ingreso_model->get_ingreso($ingreso_id);
-        
+        $data['tipousuario_id'] = $this->session_data['tipousuario_id'];
         if(isset($data['ingreso']['ingreso_id']))
         {
             if(isset($_POST) && count($_POST) > 0)     
@@ -277,7 +277,7 @@ class Ingreso extends CI_Controller{
         'ingreso_monto' => $this->input->post('ingreso_monto'),
         'ingreso_moneda' => $this->input->post('ingreso_moneda'),
         'ingreso_concepto' => $this->input->post('ingreso_concepto'),
-        //'ingreso_fecha' => $this->input->post('ingreso_fecha'),
+        'ingreso_fecha' => $this->input->post('ingreso_fecha'),
 				
                 );
 
