@@ -21,7 +21,7 @@ function buscarventas(){
            success:function(resul){     
               
                             
-                $("#pillados").val("- 0 -");
+                
                var registros =  JSON.parse(resul);
            
                if (registros != null){
@@ -31,7 +31,7 @@ function buscarventas(){
                     var total = Number(0);
                     
                     var n = registros.length; //tamaÃ±o del arreglo de la consulta
-                   
+                   $("#pillados").val(n);
                    
                     html = "";
                    

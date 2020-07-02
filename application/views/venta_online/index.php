@@ -1,4 +1,5 @@
 <!----------------------------- script buscador --------------------------------------->
+<script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('resources/js/venta_online.js'); ?>" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -39,42 +40,9 @@
     }
 </style>
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 
 
-<table class="table" style="width: 20cm; padding: 0;" >
-    <tr style="line-height: 10px;">
-        <td style="width: 10cm; padding: 0; line-height: 10px;" >
-                
-            <center>
-                               
-                    <!--<img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60"><br>-->
-                    <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
-                    <!--<font size="2" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
-                    <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
-                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
-                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
-                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
-                    <!--<font size="1" face="Arial"><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
-                
-
-            </center>                      
-        </td>
-                   
-        <td style="width: 8cm; padding: 0" > 
-            <center>
-            
-                <br>
-                <font size="3" face="arial"><b>VENTAS ONLINE</b></font> <br>
-                <!--<font size="3" face="arial"><b>Nº 00<?php echo $venta[0]['venta_id']; ?></b></font> <br>-->
-                
-            </center>
-        </td>
-       
-    </tr>
-     
-</table>
 
 
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
@@ -82,50 +50,28 @@
     <h2 class="box-title"><b>REPORTE DE RECORRIDO</b></h2>
 </div>-->
 <!-------------------------------------------------------->
-<div class="row micontenedorep" style="display: none" id="cabeceraprint">
-    <div id="cabizquierda">
-        <?php
-        echo $empresa[0]['empresa_nombre']."<br>";
-        echo $empresa[0]['empresa_direccion']."<br>";
-        echo $empresa[0]['empresa_telefono'];
-        ?>
-        </div>
-        <div id="cabcentro">
-            <div id="titulo">
-                <u>CLIENTES</u><br><br>
-                <!--<span style="font-size: 9pt">INGRESOS DIARIOS</span><br>-->
-                <span class="lahora" id="fhimpresion"></span><br>
-                <span style="font-size: 8pt;" id="busquedacategoria"></span>
-                <!--<span style="font-size: 8pt;">PRECIOS EXPRESADOS EN MONEDA BOLIVIANA (Bs.)</span>-->
-            </div>
-        </div>
-        <div id="cabderecha">
-            <?php
+<div class="row">
+    
+    <div class="col-md-6">
+<h4 class="box-title"><b>VENTAS ONLINE</b> <small class="badge badge-secondary" id="pillados"></small></h4>
+</div>
+        <!---------------- BOTONES --------->
 
-            $mimagen = "thumb_".$empresa[0]['empresa_imagen'];
-
-            echo '<img src="'.site_url('/resources/images/empresas/'.$mimagen).'" />';
-
-            ?>
-
-        </div>
-        
 </div>
 
-<div class="row no-print">
     
-    <div class="col-md-8">
+    <div class="row">
     
         <div class="col-md-3">
-            Desde: <input type="date" class="btn btn-primary btn-sm form-control" value="<?php echo date('Y-m-d')?>" id="fecha_desde" name="fecha_desde" required="true">
+            Desde: <input type="date" class="btn  btn-sm btn-secondary btn-block" value="<?php echo date('Y-m-d')?>" id="fecha_desde" name="fecha_desde" required="true">
         </div>
         <div class="col-md-3">
-            Hasta: <input type="date" class="btn btn-primary btn-sm form-control" value="<?php echo date('Y-m-d')?>" id="fecha_hasta" name="fecha_hasta" required="true">
+            Hasta: <input type="date" class="btn  btn-sm btn-secondary btn-block" value="<?php echo date('Y-m-d')?>" id="fecha_hasta" name="fecha_hasta" required="true">
         </div>
         
         <div class="col-md-3">
             <br>
-            <button class="btn btn-sm btn-soundcloud btn-sm btn-block"  type="button" onclick="buscarventas()" style="height: 34px;">
+            <button class="btn btn-primary btn-sm form-control"  type="button" onclick="buscarventas()" style="height: 34px;">
                 <span class="fa fa-search"></span> Buscar
           </button>
             <br>
@@ -140,7 +86,7 @@
         
     </div>
     
-</div>
+<br>
     
 <!-------------------------------------------------------------------------------->
 
