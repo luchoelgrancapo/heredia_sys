@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo $pagina_web[0]['pagina_nombre']; ?></title>
+<title>NUESTRO NOMBRE</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -335,73 +335,13 @@ function mostrar() {
 
 <!------------------------- INICIO FRANJA -------------------------------------->
  
- <div class="w3agile-ftr-top"  style="background-color: #282973; color:white;">
-		<div class="ftr-toprow" class="container">
-                    <center  >
-                        <div style="background-color: #000000;" >
-                        <h4 style="margin:0;"><b>COMPRAR NUNCA FUE MÁS FACIL</b></h4>
-                            
-                        </div>
-                        
-                    </center>
-			<div class="ftr-toprow">
-				<div class="col-md-4 ftr-top-grids" >
-                                    <center>
-					<div class="ftr-top-left">
-                                                <h1 style="margin-top: 0px;margin-bottom: 0px;">
-                                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>                                                    
-                                                </h1>
-					</div> 
-					<div class="ftr-top-right">
-                                                <h4 style="margin:0;">PASO 1</h4>
-						<p>Añade productos al carrito</p>
-					</div> 
-					<div class="clearfix"> </div>
-                                    </center>
-				</div>
-                            
-				<div class="col-md-4 ftr-top-grids">
-                                    <center>
-					<div class="ftr-top-left">
-                                                <h1 style="margin-top: 0px;margin-bottom: 0px;">
-						<i class="fa fa-list-ul" aria-hidden="true"></i>
-                                                </h1>
-					</div> 
-					<div class="ftr-top-right">
-						<h4 style="margin:0;">PASO 2</h4>
-						<p>Registra tus datos</p>
-					</div> 
-					<div class="clearfix"> </div>
-                                    </center>
-				</div>
-                            
-				<div class="col-md-4 ftr-top-grids">
-                                    <center>
-					<div class="ftr-top-left">
-                                                <h1 style="margin-top: 0px;margin-bottom: 0px;">
-						<i class="fa fa-truck" aria-hidden="true"></i>
-                                                </h1>
-					</div> 
-					<div class="ftr-top-right">
-                                            <h4 style="margin:0;">PASO 3</h4>
-                                            <p>Recibe tu pedido</p>
-					</div>
-					<div class="clearfix"> </div>
-                                    </center>
-				</div>
-                            
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-     <br>
-	</div>
- <!--------------------------- FIN FRANJA------------------------------------>    
+   
  
 <!------------------------- INICIO BUSCADOR-------------------------------------->
  
- <div class="w3agile-ftr-top"  style="background-color: #282973; color:white;">
+ <div class="w3agile-ftr-top"  style="background-color: #282973; color:white; border:  1px solid black; border-radius: 5px">
 		<div class="ftr-toprow" class="container">
-                    
+                 <br>   
 			<div class="ftr-toprow">
 
                                     <center>
@@ -411,10 +351,10 @@ function mostrar() {
 
                                         <div class="col-md-4">
 
-                                            <div class="input-group input-group-sm">
-                                            <input type="text" onkeypress="buscarpro(event)" name="parabuscar" id="parabuscar" class="form-control" placeholder="Buscar un producto..." required autocomplete="off" >
+                                            <div class="input-group input-group-lg">
+                                            <input type="text" onkeypress="buscarpro(event)" name="parabuscar" id="parabuscar" class="form-control" placeholder="BUSCAR PRODUCTO" required autocomplete="off" >
                                             <span class="input-group-btn">
-                                            <button class="btn btn-warning" onclick="buscar_producto()" type="button" id="boton_buscar_prod">
+                                            <button class="btn btn-primary" onclick="buscar_producto()" type="button" id="boton_buscar_prod">
                                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
                                             </button>
                                             </span>
@@ -425,7 +365,7 @@ function mostrar() {
 
                                         <div class="col-md-4">
 
-                                            <div class="input-group input-group-sm">
+                                            <div class="input-group input-group-lg">
 
                                                 <select onchange="buscar_por_categoria(this.value)" name="select_categoria" id="select_categoria" class="form-control" autocomplete="off" >
                                                     <option value="0" selected> TODOS </option>
@@ -438,7 +378,7 @@ function mostrar() {
                                                 </select>
                                                 
                                             <span class="input-group-btn">
-                                            <button class="btn btn-warning" onclick="buscar_producto()" type="button"><span class="glyphicon glyphicon-list" aria-hidden="true">
+                                            <button class="btn btn-primary" onclick="buscar_producto()" type="button"><span class="glyphicon glyphicon-list" aria-hidden="true">
                                             </span> </button>
                                             </span>
                                             </div>
@@ -448,13 +388,13 @@ function mostrar() {
 
                                         <div class="col-md-4">
 
-                                            <div class="input-group input-group-sm">
+                                            <div class="input-group input-group-lg">
 
-                                                <select onchange="buscar_por_subcategoria(this.value)" name="select_subcategoria" id="select_subcategoria" class="form-control" autocomplete="off" >
+                                                <select onchange="buscar_por_subcategoria(this.value)" name="select_subcategoria" id="select_subcategoria" class="form-control lg" autocomplete="off" >
                                                     <option value="0" selected> TODOS </option>
                                                 </select>
                                             <span class="input-group-btn">
-                                            <button class="btn btn-warning" onclick="buscar_producto()" type="button"><span class="glyphicon glyphicon-list" aria-hidden="true">
+                                            <button class="btn btn-primary" onclick="buscar_producto()" type="button"><span class="glyphicon glyphicon-list" aria-hidden="true">
                                             </span> </button>
                                             </span>
                                             </div>
@@ -478,7 +418,7 @@ function mostrar() {
     
     <div class="top-brands" style="padding-top: 20px;padding-bottom: 20px;">
         <!------------------------ BUSCADOR --------------------------->         
-                <h2 class="w3_agile_vimeo">NUESTROS PRODUCTOS</h2>
+                <h2 class="w3_agile_vimeo">PRODUCTOS</h2>
 
             
             <div class="row" id='loader'  style='display:none; text-align: center'>
@@ -532,147 +472,10 @@ function mostrar() {
                 
 <!------------------------------------- SEGUNDA SECCION -------------------------------------->
             
-            <div class="col-md-12">
-                <h2 class="w3_agile_vimeo">NUESTRAS OFERTAS</h2>
-                <div class="clearfix"> </div>
-            </div>  
+            
             <br>
 
         
-
-
-                <div class="grid_3 grid_5">
-                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                    <ul id="myTab" class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true"><?php echo $seccion2[0]['seccion_titulo']; ?></a></li>
-                        <li role="presentation"><a href="#tours" role="tab" id="tours-tab" data-toggle="tab" aria-controls="tours"><?php echo $seccion3[0]['seccion_titulo']; ?></a></li>
-                    </ul>
-                    <div id="myTabContent" class="tab-content" style="padding: 20px;">
-                        <div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">
-                            <div class="agile-tp">
-                                <h5 style="margin: 0px;"><?php echo $seccion1[0]['seccion_descripcion']; ?></h5>
-                                <p class="w3l-ad"><?php echo $seccion1[0]['seccion_texto']; ?></p>
-                            </div>
-                            
-                            <div class="agile_top_brands_grids">
-                                <?php foreach($ofertasemanal as $os) { ?>
-                                                            
-                                <div class="col-md-4 top_brand_left">
-                                        <div class="hover14 column">
-                                            <div class="agile_top_brand_left_grid">
-                                                <div class="agile_top_brand_left_grid_pos">
-                                                        <img src="<?php echo $raiz;?>images/offer.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="agile_top_brand_left_grid1" style="line-height: 10px;">
-                                                    <figure>
-                                                        <div class="snipcart-item block" >
-                                                            <div class="snipcart-thumb">
-                                                                <a href="<?php echo base_url("website/single/".$idioma_id."/".$os['producto_id']); ?>">
-                                                                    <img title=" " alt=" " src="<?php echo base_url()."resources/images/productos/".$os['producto_foto']; ?>" width="100" height="100"/>
-                                                                </a>     
-                                                                    <p style="margin-top: 5px;margin-bottom: 5px;"><?php echo $os['producto_nombre'];?></p>
-                                                                    <div class="stars" style="margin-bottom: 0px;">
-                                                                            <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                            <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                            <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                            <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                            <i class="fa fa-star gray-star" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <h4 style="margin-bottom: 5px; margin-top: 5px;"><?php echo "Bs ".number_format($os['promocion_preciototal'], 2, '.',',');?><span><?php echo number_format($os['producto_precio'], 2, '.', ','); ?></span></h4>
-                                                            </div>
-                                                            <div class="snipcart-details top_brand_home_details">
-                                                                <form action="#" method="post">
-                                                                    <fieldset>
-                                                                       <input type="hidden" name="cmd" value="_cart" />
-                                                                    <input type="hidden" name="add" id="cantidad<?php echo $os['producto_id'];?>" value="1" />
-                                                                    <input type="hidden" name="business" value=" " />
-                                                                    <input type="hidden" name="item_name" value="<?php echo $os['producto_nombre'];?>" />
-                                                                    <input type="hidden" name="amount" id="producto_precio<?php echo $os['producto_id'];?>" value="<?php echo $os['producto_precio'];?>" />
-                                                                    <input type="hidden" name="discount_amount" id="descuento<?php echo $os['producto_id'];?>" value="<?php echo ($os['producto_precio']-$os['promocion_preciototal']); ?>" />
-                                                                    <input type="hidden" name="currency_code" value="USD" />
-                                                                    <input type="hidden" name="return" value=" " />
-                                                                    <input type="hidden" name="cancel_return" value=" " />
-                                                                    
-                                                                    <!--<input type="button" name="submit" value="Añadir al pedido" class="button" onclick="insertar(<?php echo $os['producto_id'];?>)"/>-->
-                                                                    <button type="button" name="submit" class="btn btn-info btn-sm" onclick="insertar(<?php echo $os['producto_id'];?>)"><fa class='fa fa-cart-plus'></fa> AÑADIR AL PEDIDO</button>
-                                                                     
-                                                                    </fieldset>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
-                                                            
-                                                            <?php } ?>
-
-                                                                <!-------------- Bloque de codigo 2 ---------------->
-                                <div class="clearfix"> </div>
-                            </div>
-                        </div>
-                                            
-                        <div role="tabpanel" class="tab-pane fade" id="tours" aria-labelledby="tours-tab">
-                            <div class="agile-tp">
-                                <h5><?php echo $seccion3[0]['seccion_titulo']; ?></h5>
-                                <p class="w3l-ad"><?php echo $seccion3[0]['seccion_texto']; ?></p>
-                            </div>
-                            <div class="agile_top_brands_grids">
-                                                            <?php foreach($ofertasdia as $od) { ?>
-                                <div class="col-md-4 top_brand_left">
-                                    <div class="hover14 column">
-                                        <div class="agile_top_brand_left_grid">
-                                            <div class="agile_top_brand_left_grid_pos">
-                                                <img src="<?php echo $raiz;?>images/offer.png" alt=" " class="img-responsive" />
-                                            </div>
-                                            <div class="agile_top_brand_left_grid1">
-                                                <figure>
-                                                    <div class="snipcart-item block" >
-                                                        <div class="snipcart-thumb">
-                                                            <a href="<?php echo base_url("website/single/".$idioma_id."/".$od['producto_id']); ?>">
-                                                                <img title=" " alt=" " src="<?php echo $raiz."/images/".$od['producto_foto'];?>" />
-                                                            </a>
-                                                            <p><?php echo $od['producto_nombre'];?></p>
-                                                            <div class="stars">
-                                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
-                                                            </div>
-                                                            <h4><?php echo number_format($os['producto_precio'], 2, '.',',');?><span><?php echo number_format($os['producto_precio']*1.20, 2, '.', ','); ?></span></h4>
-                                                        </div>
-                                                        <div class="snipcart-details top_brand_home_details">
-                                                            <form action="#" method="post">
-                                                                <fieldset>
-                                                                    <input type="hidden" name="cmd" value="_cart" />
-                                                                    <input type="hidden" name="add" id="cantidad<?php echo $od['producto_id'];?>" value="1" />
-                                                                    <input type="hidden" name="business" value=" " />
-                                                                    <input type="hidden" name="item_name" value="<?php echo $od['producto_nombre'];?>" />
-                                                                    <input type="hidden" name="amount" id="producto_precio<?php echo $od['producto_id'];?>" value="<?php echo $od['producto_precio'];?>" />
-                                                                    <input type="hidden" name="discount_amount" id="descuento<?php echo $od['producto_id'];?>" value="<?php echo ($os['producto_precio']-$os['promocion_preciototal']); ?>" />
-                                                                    <input type="hidden" name="currency_code" value="USD" />
-                                                                    <input type="hidden" name="return" value=" " />
-                                                                    <input type="hidden" name="cancel_return" value=" " />
-                                                                    <input type="button" name="submit" value="Añadir al pedido" class="button" onclick="insertar(<?php echo $od['producto_id'];?>)"/>
-                                                                </fieldset>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </figure>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                                                <?php } ?>
-<!----------------------------- bloque de codigo 3 --------------------->
-                                <div class="clearfix"> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 <!-- //top-brands -->
@@ -807,80 +610,7 @@ function mostrar() {
 <!--//brands-->
 
 
-	<!-- about-team -->
-	<div class="about-team" style="background-color: #282973;"> 
-		<div class="container">
-			<h3 class="w3_agile_header">Meet Our Team</h3>
-			<div class="team-agileitsinfo">
-                            
-				<div class="col-md-3 about-team-grids" style="background-color: #282973">
-                                    <img src="<?php echo base_url("resources/web/images/t1.jpg") ?>" alt="" class="img img-circle"/>
-					<div class="team-w3lstext">
-						<!--<h4><span>WHATSAPP</span></h4>-->
-						<!--<p>Llamanos o envianos un mensaje, te contestaremos a la brevedad posible.</p>-->
-					</div>
-					<div class="social-icons caption" style="font-size: 30px;"> 
-						<ul>
-							<li><a href="#" class="fa fa-whatsapp"> </a> Whatsapp</li>
-<!--							<li><a href="#" class="fa fa-twitter twitter"> </a></li>
-							<li><a href="#" class="fa fa-google-plus googleplus"> </a></li> -->
-						</ul>
-						<div class="clearfix"> </div>  
-					</div>
-				</div>
-                            
-				<div class=" col-md-3 about-team-grids" style="background-color: #282973">
-					<img src="<?php echo base_url("resources/web/images/t2.jpg") ?>" alt="" class="img img-circle"/>
-					<div class="team-w3lstext">
-						<!--<h4><span>FACEBOOK</span></h4>-->
-						<!--<p>Visita nuestra página de facebook, o dejanos un like.</p>-->
-					</div>
-					<div class="social-icons caption" style="font-size: 30px;"> 
-						<ul>
-							<li><a href="#" class="fa fa-facebook facebook"> </a> Facebook</li>
-<!--							<li><a href="#" class="fa fa-twitter twitter"> </a></li>
-							<li><a href="#" class="fa fa-google-plus googleplus"> </a></li> -->
-						</ul>
-						<div class="clearfix"> </div>  
-					</div>
-				</div>
-                            
-				<div class="col-md-3 about-team-grids" style="background-color: #282973">
-					<img src="<?php echo base_url("resources/web/images/t3.jpg") ?>" alt="" class="img img-circle"/>
-					<div class="team-w3lstext">
-						<!--<h4><span>TWITEER</span> Supervisior</h4>-->				
-						<!--<p>Siguenos en twiteer.</p>-->
-					</div>
-					<div class="social-icons caption" style="font-size: 30px;"> 
-						<ul>
-							<li><a href="#" class="fa fa-twitter twitter"> </a> Twitter</li>
-<!--							<li><a href="#" class="fa fa-twitter twitter"> </a></li>
-							<li><a href="#" class="fa fa-google-plus googleplus"> </a></li> -->
-						</ul>
-						<div class="clearfix"> </div>  
-					</div>
-				</div>
-                            
-				<div class="col-md-3 about-team-grids" style="background-color: #282973">
-					<img src="<?php echo base_url("resources/web/images/t4.jpg") ?>" alt="" class="img img-circle"/>
-					<div class="team-w3lstext">
-						<!--<h4><span>RACKHAM,</span> Staff</h4>-->
-						<!--<p>Odio dignissimos vero eos voluptatem accusantium doloremque laudantium reader will be distracted.</p>-->
-					</div>
-					<div class="social-icons caption" style="font-size: 30px;"> 
-						<ul>
-							<li><a href="#" class="fa fa-instagram"> </a> Instagram</li>
-<!--							<li><a href="#" class="fa fa-twitter twitter"> </a></li>
-							<li><a href="#" class="fa fa-google-plus googleplus"> </a></li> -->
-						</ul>
-						<div class="clearfix"> </div>  
-					</div>
-				</div>
-                            
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
+
 	<!-- //about-team -->
 
 
@@ -995,7 +725,7 @@ function mostrar() {
                         
                 <div class="agileits_w3layouts_map_pos">
                     <div class="agileits_w3layouts_map_pos1" style="padding: 5px;">
-                        <h3 style="margin-top: 10px;">Contactos</h3>
+                        <h3 style="margin-top: 10px;">Informacion</h3>
                         
                         <p><?php echo $pagina_web[0]['empresa_direccion']; ?>, <?php echo $pagina_web[0]['empresa_departamento']; ?>.</p>
                         
@@ -1049,11 +779,11 @@ function mostrar() {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header" style="padding:3px;">
+      <div class="modal-header bg-primary" style="padding:3px;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Mi Carrito</h4>
+        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Lista de Compra</h4>
       </div>
       <!--Body-->
       <div class="modal-body" style="overflow-x: auto;">
@@ -1066,9 +796,9 @@ function mostrar() {
               <th style="padding:0;"></th>
               <th style="padding:0; text-align: center;">Producto</th>
               <th style="padding:0; text-align: center;">Precio</th>
-              <th style="padding:0; text-align: center;">Cant.</th>
+              <th style="padding:0; text-align: center;">Cantidad</th>
               <!--<th style="padding:0;">Desc.</th>-->
-              <th style="padding:0; text-align: center;">Total Bs.</th>
+              <th style="padding:0; text-align: center;">Bs.</th>
 
             </tr>
           </thead>
@@ -1319,7 +1049,7 @@ function mostrar() {
 <div class="modal fade" id="modalmensaje" tabindex="-1" role="dialog" aria-labelledby="modalmensaje" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header bg-danger">
                             
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -1383,7 +1113,7 @@ function mostrar() {
 <div class="footer">
         <div class="container">
             <div class="w3_footer_grids">
-                <div class="col-md-3 w3_footer_grid">
+                <div class="col-md-6 w3_footer_grid">
                     <center>
 <!--                    <h3>CONTACTOS</h3>
                     
@@ -1392,44 +1122,14 @@ function mostrar() {
                         <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:<?php echo $pagina_web[0]['empresa_email']; ?>"><?php echo $pagina_web[0]['empresa_email']; ?></a></li>
                         <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i><?php echo $pagina_web[0]['empresa_telefono']; ?></li>
                     </ul>-->
-                        <a href="<?php echo base_url("website/ximpleman"); ?>" target="_BLANK" >
-                            <img src="<?php echo base_url("resources/web/images/logo.png"); ?>" width="50%" height="50%">
+                        <a href="<?php echo base_url("website/ximpleman"); ?>" target="_BLANK" >SISTEMA LOGO
+                            <!--<img src="<?php echo base_url("resources/web/images/logo.png"); ?>" width="50%" height="50%">-->
                         </a>
                     </center>
                 </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <center>
-<!--                    <h3>INFORMACIÓN</h3>
-                    <ul class="info"> 
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.html">Contact Us</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="short-codes.html">Short Codes</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.html">FAQ's</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Special Products</a></li>
-                    </ul>-->
-                    <ul class="info"> <br>
-                        <li><i class="fa" aria-hidden="true"></i><a href="faq.html">Política de privacidad</a></li>
-                    
-                    </ul>
-                    </center>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <center>
-<!--                    <h3>CATEGORIAS</h3>
-                    <ul class="info"> 
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">Beverages</a></li>
-                    </ul>-->
-                    <ul class="info"> 
-                        <br>
-                        <li><i class="fa" aria-hidden="true"></i><a href="groceries.html">Un producto de </a></li>
-                    </ul>
-                    </center>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
+
+          
+                <div class="col-md-6 w3_footer_grid">
                     <center>
                         
                         
@@ -1441,8 +1141,8 @@ function mostrar() {
                         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.html">Create Account</a></li>
                     </ul>-->
 
-                        <a href="<?php echo base_url("website/password"); ?>" target="_BLANK" >
-                        <img src="<?php echo base_url("resources/web/images/logo_password.png"); ?>" width="50%" height="50%">
+                        <a href="<?php echo base_url("website/password"); ?>" target="_BLANK" >NUESTRO LOGO
+                        <!-- <img src="<?php echo base_url("resources/web/images/logo_password.png"); ?>" width="50%" height="50%">-->
                         </a>
                     </center>
                 </div>
@@ -1467,8 +1167,11 @@ function mostrar() {
                         <li><a href="https://www.twitter.com/sisximpleman/" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                         <!--<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>-->
                         <li><a href="https://www.vimeo.com/sisximpleman/" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+                        <li> Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <span>Alejandro Heredia</span></li>
+                       
                     </ul>
                 </div>
+                
                 <div class="payment-w3ls">  
                     <img src="<?php echo $raiz;?>images/card.png" alt=" " class="img-responsive">
                 </div>
@@ -1523,6 +1226,6 @@ function mostrar() {
 <!-- //main slider-banner --> 
     <?php 
         $var = "827ccb0eea8a706c4c34a16891f84e7b"; 
-        echo md5($var); ?> 
+        //echo md5($var); ?> 
     </body>
 </html>

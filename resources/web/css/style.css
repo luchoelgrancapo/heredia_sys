@@ -1953,11 +1953,11 @@ a.callbacks1_s3.active,a.callbacks1_s3:focus{
     top: 22%;
     width: 50%;
     padding: 2em;
-    background: #3399cc;
+    background: #282973;
 }
 .agileits_w3layouts_map_pos h3{
 	font-size:1.5em;
-	color:#212121;
+	color: white;
 }
 .agileits_w3layouts_map_pos p{
 	color:#fff;
@@ -2380,7 +2380,7 @@ h3.agileits-icons-title {
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-	color: #777;
+	color: white;
 } 
 .bs-glyphicons .glyphicon-class {
     display: block;

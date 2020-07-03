@@ -631,7 +631,7 @@ function tablacarrito(){
                         step = "step = '"+registros[i]["producto_unidadentera"]+"'";
                         //alert(step);
 
-                        html += "<td "+estilo+"><input  type='number' "+step+" min='"+registros[i]["producto_unidadentera"]+"' onkeypress='cantimas(event,"+registros[i]["producto_id"]+")' onchange='cantidar("+registros[i]["producto_id"]+")' id='carrito_cantidad"+registros[i]["producto_id"]+"' autocomplete='off' name='cantidad' class='btn btn-warning' value='"+registros[i]["carrito_cantidad"]+"' style='padding:0; width:60px;' required>";
+                        html += "<td align='center' "+estilo+"><input  type='number' "+step+" min='"+registros[i]["producto_unidadentera"]+"' onkeypress='cantimas(event,"+registros[i]["producto_id"]+")' onchange='cantidar("+registros[i]["producto_id"]+")' id='carrito_cantidad"+registros[i]["producto_id"]+"' autocomplete='off' name='cantidad' class='btn btn-primary' value='"+registros[i]["carrito_cantidad"]+"' style='padding:0; width:60px;' required>";
                        
                         html += "<input id='carrito_id'  name='carrito_id' type='hidden' class='form-control' value='"+registros[i]["carrito_id"]+"'></td>";
 //                        html += "<td align='right' "+estilo+">"+Number(registros[i]["carrito_descuento"]).toFixed(2)+" <input type='hidden' id='carrito_descuento"+registros[i]["producto_id"]+"' name='descuento' size='3' type='text' class='form-control' value='"+registros[i]["carrito_descuento"]+"' ></td>";
