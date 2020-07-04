@@ -107,8 +107,33 @@ class Detalle_venta extends CI_Controller{
         if($this->acceso(156)){
         $data['page_title'] = "Reporte Ventas";        
         $data['_view'] = 'venta/reportes';
+        $data['empresa'] = $this->Empresa_model->get_empresa(1); 
+        $data['porque'] = 'prod'; 
+        $data['all_tipo_transaccion'] = $this->Tipo_transaccion_model->get_all_tipo_transaccion();
+        //$data['all_entrega'] = $this->Detalle_venta_model->get_all_entrega();
+        $this->load->view('layouts/main',$data);
+        }
+    }
+    function repocliente()
+    {
+        if($this->acceso(156)){
+        $data['page_title'] = "Reporte Ventas";        
+        $data['_view'] = 'venta/reportes';
         $data['empresa'] = $this->Empresa_model->get_empresa(1);  
         $data['all_tipo_transaccion'] = $this->Tipo_transaccion_model->get_all_tipo_transaccion();
+        $data['porque'] = 'cli'; 
+        //$data['all_entrega'] = $this->Detalle_venta_model->get_all_entrega();
+        $this->load->view('layouts/main',$data);
+        }
+    }
+    function repoproducto()
+    {
+        if($this->acceso(156)){
+        $data['page_title'] = "Reporte Ventas";        
+        $data['_view'] = 'venta/reportes';
+        $data['empresa'] = $this->Empresa_model->get_empresa(1);  
+        $data['all_tipo_transaccion'] = $this->Tipo_transaccion_model->get_all_tipo_transaccion();
+        $data['porque'] = 'pro'; 
         //$data['all_entrega'] = $this->Detalle_venta_model->get_all_entrega();
         $this->load->view('layouts/main',$data);
         }

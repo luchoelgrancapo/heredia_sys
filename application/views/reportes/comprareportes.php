@@ -3,10 +3,10 @@
 <div class="box-header">
     <h3 class="box-title"><b>Reportes de Compras</b></h3>
     </div>
-    <div class="col-md-12">
+    <div class="row">
          <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-aqua">
+              <div class="small-box bg-red">
                 <div class="inner">
                   <h4><b>FECHAS</b></h4>
                   <p>-----------</p>
@@ -32,7 +32,7 @@
             </div>
         <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-yellow">
+              <div class="small-box bg-blue">
                 <div class="inner">
                   <h4><b>PRODUCTO</b></h4>
                   <p>-----------</p>

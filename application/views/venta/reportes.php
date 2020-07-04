@@ -40,43 +40,67 @@
 </style>
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('resources/css/cabecera.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
-<div class="cuerpo">
-                    <div class="columna_derecha">
-                        <center> 
-                        <img src="<?php echo base_url('resources/images/empresas/'.$empresa[0]["empresa_imagen"].''); ?>"  style="width:80px;height:80px">
+<div class="row" style="display: block" id="cabeceraprint">
+    <table class="table" style="width: 100%; padding: 0;" >
+    <tr>
+        <td style="width: 25%; padding: 0; line-height:10px;" >
+                
+            <center>
+                               
+                    <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60"><br>
+                    <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
+                    <!--<font size="2" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono'];  ?></font><br>
+                    <!--<font size="1" face="Arial"><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
+                
+
+            </center>                      
+        </td>
+                   
+        <td style="width: 35%; padding: 0" > 
+            <center>
+            
+                <br><br>
+                <font size="3" face="arial"><b>VENTAS</b></font> <br>
+                
+                <font size="1" face="arial"><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
+                <font size="1" face="arial" id="busquedaavanzada"><b></b></font> <br>
+            </center>
+        </td>
+        <td style="width: 20%; padding: 0" >
+                <center>
+                         
+                             
+                            
+                         
+                        
                     </center>
-                    </div>
-                    <div class="columna_izquierda">
-                       <center>  <font size="4"><b><u><?php echo $empresa[0]['empresa_nombre']; ?></u></b></font><br>
-                        <?php echo $empresa[0]['empresa_zona']; ?><br>
-                        <?php echo $empresa[0]['empresa_direccion']; ?><br>
-                        <?php echo $empresa[0]['empresa_telefono']; ?>
-                    </div> </center>
-                    <div class="columna_central">
-                        <center>      <h3 class="box-title"><u>VENTAS</u></h3>
-                <?php echo date('d/m/Y H:i:s'); ?><br>
-                <b>VENTAS REALIZADAS</b>
-                </center>
-                    </div>
+        </td>
+    </tr>
+     
+    
+    
+</table>       
+        
 </div>
 <div class="row" >
-    
-      
-<div class="panel panel-primary col-md-12 no-print" id='buscador_oculto' >
-    
+   
              
-        <div class="col-md-3">
-            Desde: <input type="date" value="<?php echo date('Y-m-d') ?>" class="btn btn-primary btn-sm form-control"  id="fecha_desde" name="fecha_desde" >
+        <div class="col-md-2 no-print">
+            Desde: <input type="date" value="<?php echo date('Y-m-d') ?>" class="btn btn-secondary btn-sm form-control"  id="fecha_desde" name="fecha_desde" >
         </div> 
-        <div class="col-md-3">
-            Hasta: <input type="date" value="<?php echo date('Y-m-d') ?>" class="btn btn-primary btn-sm form-control"  id="fecha_hasta" name="fecha_hasta" >
+        <div class="col-md-2 no-print">
+            Hasta: <input type="date" value="<?php echo date('Y-m-d') ?>" class="btn btn-secondary btn-sm form-control"  id="fecha_hasta" name="fecha_hasta" >
         </div>
-        <div class="col-md-3">
-            TIPO: <select id="tipo_transaccion" name="tipo_transaccion" class="btn btn-primary btn-sm form-control"  >
+        <div class="col-md-3 no-print">
+            TIPO: <select id="tipo_transaccion" name="tipo_transaccion" class="btn btn-secondary btn-sm form-control"  >
                 <option value="0">-TODOS-</option>
                                             <?php
                                                 foreach($all_tipo_transaccion as $tipo){ ?>
@@ -87,28 +111,44 @@
         </div>
         <div class="col-md-3 no-print">
             <br>
-            <button class="btn btn-facebook btn-sm" onclick="reportes()"><i class="fa fa-search"> Buscar</i></button>
-            <a onclick="imprimir()" class="btn btn-success btn-sm"><i class="fa fa-print"> Imprimir</i></a>
+            <button class="btn btn-primary  btn-block" onclick="reportes()"><i class="fa fa-search"></i> Buscar</button>
         </div>
-        
-   <div class="col-md-6 no-print" >                     
-      <div class="input-group no-print"> <span class="input-group-addon">Buscar Producto</span>
-        <input id="vender" type="text" class="form-control" placeholder="Ingresa el nombre de producto o codigo"  onkeypress="ventaproducto(event)">
-      </div>
-   
+        <div class="col-md-2 no-print">
+            <br>
+            <a onclick="imprimir()" class="btn btn-warning btn-block"><i class="fa fa-print"></i>Imprimir</a>
+        </div>
+
+   <?php if ($porque=='prod') { ?>
+      <div class="col-md-6 no-print" >  
+      <br>       
+      <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i> Buscar Producto</span>
+                    <input id="vender" type="text" class="form-control" placeholder="Ingresa el nombre de producto, código o descripción"  onkeypress="ventaproducto(event)">
+      </div>            
     </div>
-    <div class="col-md-6 no-print" >                     
-      <div class="input-group no-print"> <span class="input-group-addon">Buscar Cliente</span>
-        <input id="cliente_id" type="text" class="form-control" placeholder="Ingresa el nombre del cliente, nit o razon social"  onkeypress="ventacliente(event)">
-      </div>
-   
-    </div>  
-    <div class="col-md-6 no-print" >                     
+   <?php }     ?>
+   <?php if ($porque=='cli') { ?>
+    <div class="col-md-6 no-print" >     
+    <br> 
+    <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i> Buscar Cliente</span>
+                    <input id="cliente_id" type="text" class="form-control" placeholder="Ingresa el nombre del cliente, nit o razon social"  onkeypress="ventacliente(event)">
+    </div>               
+    </div> 
+    <?php }     ?> 
+    <?php if ($porque=='pro') { ?>
+    <div class="col-md-6 no-print" > 
+    <br>  
+    <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i> Buscar Proveedor</span>
+                    <input id="proveedor_id" type="text" class="form-control" placeholder="Ingresa el nombre de proveedor"  onkeypress="ventaproveedor(event)">
+    </div>                  
       <div class="input-group no-print"> <span class="input-group-addon">Buscar Proveedor</span>
         <input id="proveedor_id" type="text" class="form-control" placeholder="Ingresa el nombre de proveedor"  onkeypress="ventaproveedor(event)">
       </div>
    
     </div>
+    <?php }     ?>
     <!--<div class="col-md-6 no-print" >                     
       <div class="input-group no-print"> <span class="input-group-addon">Buscar Categoria</span>
         <input id="vender" type="text" class="form-control" placeholder="Ingresa el nombre de proveedor"  onkeypress="ventaproducto(event)">
@@ -117,14 +157,17 @@
     </div>-->
 
                               
-           <div id="tablas" style="visibility: block">  
+          <?php if ($porque=='prod') { ?>  
           <div class="col-md-6 no-print" id="tablareproducto"></div>
+          <?php }     ?>
+   <?php if ($porque=='cli') { ?>
           <div class="col-md-6 no-print" id="tablarecliente"></div>
+          <?php }     ?>
           <div class="col-md-6 no-print" id="tablareproveedor"></div>
            <input id="producto" type="hidden" class="form-control" >
            <input id="cliente" type="hidden" class="form-control" > 
-           <input id="proveedor" type="text" class="form-control" > 
-       </div>
+           <input id="proveedor" type="hidden" class="form-control" > 
+       
             
 </div>
          <span id="desde"></span>
@@ -134,7 +177,7 @@
            </div> 
         
      
-</div>
+           <br>
 <div class="row no-print" id='loader'  style='display:none;'>
                         <center>
                             <img src="<?php echo base_url("resources/images/loader.gif"); ?>"  >        

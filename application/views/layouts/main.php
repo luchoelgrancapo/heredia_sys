@@ -246,7 +246,48 @@
                 </a>
               </li>
             </ul>
-          </li>       
+          </li>
+             <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file-download"></i>
+              <p>
+                Reportes
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo site_url('reportes/ventareportes');?>" class="nav-link">
+                  <i class="fas fa-file-import nav-icon"></i>
+                  <p>Ventas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('reportes/comprareportes');?>" class="nav-link">
+                  <i class="fas fa-file-import nav-icon"></i>
+                  <p>Compras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('reportes');?>" class="nav-link">
+                  <i class="fas fa-file-import nav-icon"></i>
+                  <p>Movimiento</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('reportes/egresorep');?>" class="nav-link">
+                  <i class="fas fa-file-import nav-icon"></i>
+                  <p>Egresos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('reportes/ingresorep');?>" class="nav-link">
+                  <i class="fas fa-file-import nav-icon"></i>
+                  <p>Ingresos</p>
+                </a>
+              </li>
+            </ul>
+          </li>         
                     </ul>
                     </nav>
                 </div>

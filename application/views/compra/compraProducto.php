@@ -40,82 +40,86 @@
 </style>
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('resources/css/cabecera.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
-<div class="cuerpo">
-                    <div class="columna_derecha">
-                        <center> 
-                        <img src="<?php echo base_url('resources/images/empresas/'.$empresa[0]["empresa_imagen"].''); ?>"  style="width:80px;height:80px">
+<div class="row" style="display: block" id="cabeceraprint">
+    <table class="table" style="width: 100%; padding: 0;" >
+    <tr>
+        <td style="width: 25%; padding: 0; line-height:10px;" >
+                
+            <center>
+                               
+                    <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60"><br>
+                    <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
+                    <!--<font size="2" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
+                    <!--<font size="1" face="Arial"><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
+                
+
+            </center>                      
+        </td>
+                   
+        <td style="width: 35%; padding: 0" > 
+            <center>
+            
+                <br><br>
+                <font size="3" face="arial"><b>COMPRAS</b></font> <br>
+                
+                <font size="1" face="arial"><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
+                <font size="1" face="arial" id="busquedaavanzada"><b></b></font> <br>
+            </center>
+        </td>
+        <td style="width: 20%; padding: 0" >
+                <center>
+                         
+                             
+                            
+                         
+                        
                     </center>
-                    </div>
-                    <div class="columna_izquierda">
-                       <center>  <font size="4"><b><u><?php echo $empresa[0]['empresa_nombre']; ?></u></b></font><br>
-                        <?php echo $empresa[0]['empresa_zona']; ?><br>
-                        <?php echo $empresa[0]['empresa_direccion']; ?><br>
-                        <?php echo $empresa[0]['empresa_telefono']; ?>
-                    </div> </center>
-                    <div class="columna_central">
-                        <center>      <h3 class="box-title"><u>COMPRAS</u></h3>
-                <?php echo date('d-m-Y H:i:s'); ?>
-                </center>
-                    </div>
+        </td>
+    </tr>
+     
+    
+    
+</table>       
+        
 </div>
 <div class="row" >
     
-    <div class="col-md-12" style="padding: 0;">
-       <!----  <div class="col-md-6">
-<div class="input-group"> <span class="input-group-addon">Buscar</span>
-        <input id="comprar" type="text" class="form-control" placeholder="Ingresa el nombre de proveedor" onkeypress="validacompra(event,4)" >
-      </div></div>
-      <div class="container" id="categoria">----->
     
- 
-                <!--------------------- indicador de resultados --------------------->
-    <!--<button type="button" class="btn btn-primary"><span class="badge">7</span>Productos encontrados</button>-->
-
-             <!----   <span class="badge btn-primary">Productos encontrados: <span class="badge btn-primary"><input style="border-width: 0;" id="encontrados" type="text" value="0" readonly="true"> </span></span>
-
-</div>----->
-      <!-------------------- CATEGORIAS------------------------------------->
-  
-
-      
-<div class="panel panel-primary col-md-12" id='buscador_oculto' ">
-    
-             
-      
-            Desde: <input type="date" style=" width: 15%;  " class="btn btn-primary btn-sm form-control"  id="fecha_desde" name="fecha_desde" >
-        
-            Hasta: <input type="date" style=" width: 15%;" class="btn btn-primary btn-sm form-control"  id="fecha_hasta" name="fecha_hasta" >
-        
-         
-       
-                                
-      <div class="input-group no-print"> <span class="input-group-addon">Buscar Producto</span>
-        <input id="comprar" type="text" class="form-control" placeholder="Ingresa el nombre de producto, código o descripción"  onkeypress="compraproducto(event,4)">
-      </div>
-      <!-------------------- CATEGORIAS------------------------------------->
-<div class="container no-print" id="categoria">
-    
- 
-                <!--------------------- indicador de resultados --------------------->
-    <!--<button type="button" class="btn btn-primary"><span class="badge">7</span>Productos encontrados</button>-->
-<div class="col-md-6 no-print" >
-                <span class="badge btn-primary">Productos encontrados: <span class="badge btn-facebook"><input style="border-width: 0;" id="encontrados" type="text" value="0" readonly="true"> </span></span> </div>
- <div class="col-md-6 no-print" >
-    <a onclick="imprimir()" class="btn btn-success btn-sm"><i class="fa fa-print"> Imprimir</i></a>
-    </div> 
+<div class="col-md-3">   
+            Desde: <input type="date"  class="btn btn-secondary btn-sm form-control"  id="fecha_desde" name="fecha_desde" >
 </div>
-<!-------------------- FIN CATEGORIAS--------------------------------->
-                              
-            
-          
+<div class="col-md-3">        
+            Hasta: <input type="date" class="btn btn-secondary btn-sm form-control"  id="fecha_hasta" name="fecha_hasta" >
+</div>
+ <div class="col-md-3 no-print" >
+    Imprimir:
+    <a onclick="imprimir()" class="btn btn-warning btn-block"><i class="fa fa-print"></i> Imprimir</a>
+</div>
+
+<div class="col-md-6"> 
+<br> 
+<div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i> Buscar Producto</span>
+                    <input id="comprar" type="text" class="form-control" placeholder="Ingresa el nombre de producto, código o descripción"  onkeypress="compraproducto(event,4)">
+</div>
+</div>   
+      <!-------------------- CATEGORIAS------------------------------------->
+
+ <div class="col-md-6 no-print">
+
+    <br>      
                 <table class="table table-striped no-print" id="mitabla">
                     
                      <tr>
-                                                <th>N</th>
+                                                <th>Nº</th>
                                                 <th>ID</th>
                                                 <th>Producto</th>
                                                 <th></th>
@@ -127,28 +131,15 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        
-       
-        
-     
-</div>
+            </div>
 
-<div class="container no-print" id="categoria" style="padding: 0;">
-    
- 
-                <!--------------------- indicador de resultados --------------------->
-    <!--<button type="button" class="btn btn-primary"><span class="badge">7</span>Productos encontrados</button>-->
 
-               
-
-</div>
         <div class="box" style="padding: 0;">
             
             <div class="box-body table-responsive" >
                 <table class="table table-striped table-condensed" id="mitabla" >
                     <tr>
-                        <th>Nro.</th>
+                        <th>Nº</th>
                         <th>PRODUCTO</th>
                         <th>CODIGO</th>
                         <th>COMPRA</th>

@@ -1039,7 +1039,7 @@ function tablareproducto(opcion)
                         
                         html += "<td>";
 
-                        html += "<button type='button' onclick='buscar_reporte_producto("+registros[i]["producto_id"]+")' class='btn btn-primary'><i class='fa fa-search'></i></button>";
+                        html += "<button type='button' onclick='buscar_reporte_producto("+registros[i]["producto_id"]+")' class='btn btn-primary'><i class='fa fa-file'></i> Ver Reporte</button>";
                         
                         
                         
