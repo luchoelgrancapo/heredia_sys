@@ -887,27 +887,31 @@ function mostrar() {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header" style="background-color: #000000;">
+      <div class="modal-header" style="background-color: #282973;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
-        <!--<h4 class="modal-title" id="myModalLabel"><i class="fa fa-user"></i> Cliente</h4>-->
-          <img src="<?php echo base_url("resources/web/images/logo.png") ?>" width="30%" height="30%">
+        <!--<h4 class="modal-title" id="myModalLabel"><i class="fa fa-user"></i> Cliente</h4>
+          <img src="<?php echo base_url("resources/web/images/logo.png") ?>" width="30%" height="30%">-->
+          Nuestro logo
       </div>
       <!--Body-->
       <div class="modal-body">
-        <div class="col-md-12"></div>
+        
         <table class="table table-hover">
             
             
             <tr>
                 <td>    
-                    <div class="col-md-12" style="padding:0; border-bottom: silver;" >
-                        <div class="btn-group" role="group" aria-label="login">
-                                                            
-                        <button class="btn btn-primary"  style="width: 120px;" onclick="inisesion()" id="boton_sesion"><fa class="fa fa-key"></fa> Iniciar Sesion</button>
-                        <button class="btn btn-default" style="width: 120px;" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrate</button>
+                    <div class="row" >
+                        
+                           <div class="col-md-6">                                
+                        <button class="btn btn-primary btn-block form-control" onclick="inisesion()" id="boton_sesion"><fa class="fa fa-key"></fa> Iniciar Sesion</button>
                     </div>
+                        <div class="col-md-6">
+                        <button class="btn btn-default btn-block" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrate</button>
+                    </div>
+                    
                     </div>
                 </td>    
             </tr>
@@ -934,16 +938,17 @@ function mostrar() {
                                <a href="<?php echo base_url("website/recuperarclave/".$idioma_id); ?>" >¿Olvidaste tu contraseña?</a>
                            </div>
 
-                           <div class="col-md-12" style="text-align: justify; line-height: 12px; font-family: Arial;">
+                           <div class="col-md-12" style="text-align: justify; line-height: 12px;">
                                <p >
                                    <small>
-                                    Al identificarte aceptas nuestras Condiciones de uso y venta. Consulta nuestro Aviso de privacidad y nuestras Aviso de Cookies y Aviso sobre publicidad basada en los intereses del usuario.                                       
+                                    Las cookies nos permiten ofrecer nuestros serivicios. Al utilizar nuestro servicio aceptas el uso que hacemos de las cookies.                                       
                                    </small>
                                </p>
                                    
                                <center>
-                                   <button class="btn btn-danger" type="button" data-dismiss="modal" style="width: 100px;"><fa class="fa fa-times"></fa> Cerrar</button>                
-                                   <button class="btn btn-success" type="button" onclick="sesion()" style="width: 100px;" id="boton_login"><fa class="fa fa-inbox"></fa> Ingresar</button>                
+                                 <button class="btn btn-success" type="button" onclick="sesion()" id="boton_login"><fa class="fa fa-inbox"></fa> Ingresar</button>     
+                                 <button class="btn btn-danger" type="button" data-dismiss="modal"><fa class="fa fa-times"></fa> Cerrar</button>                
+                                             
                                </center>
                            </div>
                         </div>
@@ -968,7 +973,7 @@ function mostrar() {
                         
                         
                     <div class="col-md-6">
-                        <b><fa class="fa fa-map-marker"></fa> Usuario/Email (*): <small style="color:red;"><span id="mensaje_logemail"> </span></small></b><input type="text" class="form-control" value="" id="cliente_email" name="cliente_email" required="true" onkeyup="enfocar(event,4);">
+                        <b><fa class="fa fa-envelope"></fa> Usuario/Email (*): <small style="color:red;"><span id="mensaje_logemail"> </span></small></b><input type="text" class="form-control" value="" id="cliente_email" name="cliente_email" required="true" onkeyup="enfocar(event,4);">
                     </div>                       
                         
                     <div class="col-md-6">
@@ -1009,8 +1014,9 @@ function mostrar() {
                     
                     <div class="col-md-12">
                         <center>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="width: 120px;"><fa class="fa fa-times"></fa> Cerrar</button>   
-                            <button class="btn btn-success" type="button" onclick="registrarcliente()"  style="width: 120px;" id="boton_registrar_datos"><fa class="fa fa-floppy-o"></fa> Registrarse</button>                            
+                            <button class="btn btn-success" type="button" onclick="registrarcliente()"  id="boton_registrar_datos"><fa class="fa fa-floppy-o"></fa> Registrarse</button>
+                            <button class="btn btn-danger" type="button" data-dismiss="modal"><fa class="fa fa-times"></fa> Cerrar</button>   
+                                                        
                         </center>                            
                     </div>
                         

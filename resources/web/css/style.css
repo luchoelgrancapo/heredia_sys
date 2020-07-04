@@ -166,7 +166,7 @@ button.w3l_search {
     transition: .5s all;
 }
 .btn-default:hover {
-    background-color:#000;
+    background-color:#282973;
     border:none;
 }
 .cart-wthree .fa {
@@ -873,7 +873,7 @@ a.w3_agile_vimeo:hover{
     float: right;
 }
 .footer-botm {
-    background: #000000;
+    background: #282973;
     padding: 16px 0;
 }
 /*-- //footer --*/
