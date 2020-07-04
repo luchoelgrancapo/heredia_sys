@@ -729,7 +729,7 @@ class Website extends CI_Controller{
                 $cliente_nombre =  "'".$nombre."'";
                 $cliente_ci =  "'".$this->input->post('cliente_ci')."'";
                 $cliente_nombrenegocio =  "'".$this->input->post('cliente_nombrenegocio')."'";
-                $cliente_codigo =  "'".$this->input->post('cliente_codigo')."'";
+                $cliente_codigo =  "'WEB".$this->input->post('cliente_codigo')."'";
 
                 $cliente_direccion =  "'".$this->input->post('cliente_direccion')."'";
                 $cliente_departamento =  "'".$this->input->post('cliente_departamento')."'";
@@ -819,7 +819,7 @@ class Website extends CI_Controller{
             $this->email->to($email_destino);
             $this->email->cc($configuracion['email_copia']);
 //            $this->email->bcc($attributes['cc']);
-            $this->email->subject("Felicidades por registrarte en nuestra plataforma");
+            $this->email->subject("Gracias por registrarte en nuestra plataforma");
 
             
             $html = "<html>";
@@ -833,13 +833,13 @@ class Website extends CI_Controller{
             
             $html .= "<div class='col-md-10'>";
             $html .= "<center>";
-            $html .= "<h3>GRACIAS POR REGISTRARTE</h3>";
+            $html .= "<h2>REGISTRO EXITOSO</h2>";
             $html .= " ";
-            $html .= "<h4>".$nombre_cliente." BIENVENIDO(A) A NUESTRA PLATAFORMA</h4>";
+            $html .= "<h4>".$nombre_cliente." BIENVENIDO(A) A NUESTRA WEB</h4>";
             $html .= "<br>";
             $html .= $configuracion['email_cabecera'];
             $html .= "<br>";
-            $html .= "<br><a href='".$direccion."' class='btn btn-info btn-sm' > Activar mi Cuenta</a>";
+            $html .= "<br><a href='".$direccion."' class='btn btn-info btn-sm' > Activar Cuenta</a>";
 //            $html .= "<form method='get' action='/".$direccion."'>";
 //            $html .= "<button type='submit'>Activar mi Cuenta</button>";
 //            $html .= "</form>";

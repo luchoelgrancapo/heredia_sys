@@ -313,7 +313,7 @@ function generarexcel(){
     });   
 
 }
-
+ 
 function mostrar_facturas2() {
     var base_url = document.getElementById('base_url').value;
     var opcion = document.getElementById('opcion').value;

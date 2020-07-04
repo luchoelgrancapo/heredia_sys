@@ -167,6 +167,7 @@ button.w3l_search {
 }
 .btn-default:hover {
     background-color:#282973;
+    color:#fff;
     border:none;
 }
 .cart-wthree .fa {

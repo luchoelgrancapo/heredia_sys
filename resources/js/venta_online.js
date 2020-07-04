@@ -65,6 +65,11 @@ function buscarventas(){
                        
                         html += "</td>";    
                         }
+                        if (registros[i]["venta_numeroventa"]==1) {
+                        html += "<td>";   
+                        html += "<button class='btn btn-success btn-xs' onclick='entregado("+registros[i]["venta_id"]+")' ><span class='fa fa-check'></span> VENTA<BR>HECHA</button>";
+                        html += "</td>";
+                        }
                         html += "</tr>";
                     } 
                         
@@ -158,8 +163,8 @@ function detalleonline(venta){
                        html += "<td></td>";
                        html += "<td></td>";
                        html += "<td></td>";
-                       html += "<td align='right'><span class='badge badge-success'><font size='4'><b>"+Number(suma).toFixed(2)+"</b></font></span></td>";
-                       html += "<td align='right' class='text-right'><span class='btn btn-warning'><font size='4'><b>"+Number(mitotal).toFixed(2)+"</b></font></span></td>";
+                       html += "<th align='right'><font size='4'><b>"+Number(suma).toFixed(2)+"</b></font></th>";
+                       html += "<th align='right' class='text-right'><font size='4'><b>"+Number(mitotal).toFixed(2)+"</b></font></th>";
                        html += "</tr>";
                        $("#detalle").html(html);
                        $("#modalDetalle").modal("show");
@@ -196,7 +201,9 @@ function pasar_aventas(venta_id)
 
                 }*/
                 //alert(base_url+"venta/ventas_cliente/"+registros['cliente_id']);
+                $("#modalDetalle").modal("hide");
                 window.open(base_url+"venta/ventas_cliente/"+registros['cliente_id']);
+                ponerboton(venta_id);
             }
             
         },
@@ -207,4 +214,46 @@ function pasar_aventas(venta_id)
     });
 }
 
+function ponerboton(venta_id)
+{
+    var base_url = document.getElementById('base_url').value;
+    var controlador = base_url+"venta_online/para_boton/";
+   
+    $.ajax({url: controlador,
+        type:"POST",
+        data:{venta_id:venta_id},
+        success:function(respuesta){
+            var registros =  JSON.parse(respuesta);
+            if (registros != null){
+              buscarventas();
+            }
+            
+        },
+        error: function(respuesta){
+            tablaproductos();
+            datoscliente(cliente_id);
+        }
+    });
+}
 
+function entregado(venta_id)
+{
+    var base_url = document.getElementById('base_url').value;
+    var controlador = base_url+"venta_online/entregar/";
+   
+    $.ajax({url: controlador,
+        type:"POST",
+        data:{venta_id:venta_id},
+        success:function(respuesta){
+            var registros =  JSON.parse(respuesta);
+            if (registros != null){
+              buscarventas();
+            }
+            
+        },
+        error: function(respuesta){
+            tablaproductos();
+            datoscliente(cliente_id);
+        }
+    });
+}

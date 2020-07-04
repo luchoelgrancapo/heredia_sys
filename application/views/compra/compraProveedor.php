@@ -94,10 +94,10 @@
     
              
 <div class="col-md-2">      
-            Desde: <input type="date"  class="btn btn-secondary btn-block form-control"  id="fecha_desde" name="fecha_desde" >
+            Desde: <input type="date"  class="btn btn-secondary btn-block form-control" value="<?php echo date('Y-m-d') ?>"  id="fecha_desde" name="fecha_desde" >
 </div>
 <div class="col-md-2">        
-            Hasta: <input type="date"  class="btn btn-secondary btn-block form-control"  id="fecha_hasta" name="fecha_hasta" >
+            Hasta: <input type="date"  class="btn btn-secondary btn-block form-control" value="<?php echo date('Y-m-d') ?>"  id="fecha_hasta" name="fecha_hasta" >
 </div>
 <div class="col-md-3">     
     

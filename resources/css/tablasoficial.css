@@ -63,20 +63,20 @@
     font-size: 14px;
 }
 
-/*@media print {
+@media print {
     #mitabla th {
-        background-color: green !important;
-        color: white !important;
+        background-color: gray !important;
+        border: 1px solid black !important;
+        color: black !important;
        /* -webkit-print-color-adjust: exact; */
-   /* }
+    }
 }
 
 @media print {
     #mitabla td {
-        background-color: red !important;
-        color: yellow !important;
+        color: black !important;
     }
-}*/
+}
 
 #mitabla tr:nth-child(odd){background-color: #fff;}
 #mitabla tr:nth-child(even){background-color: #fff;}

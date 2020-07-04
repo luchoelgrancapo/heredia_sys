@@ -272,7 +272,7 @@ function fechabusquedaingegr(fecha_desde, fecha_hasta, usuario){
                     piehtml6 = "</tbody></table></div></div>";
                     /* *****************F I N para reporte de PAGOS****************** */
                     /* *****************INICIO para reporte de ORDENES DE PAGOS****************** */
-                    cabecerahtml10= "<table style='width:50%;' hidden class='table table-striped table-condensed' id='tablasinespacio'><tr><td style='width:5%;'><a href='#' id='mosordenpago' onclick='mostrarordenpago(); return false'>+</a></td><td style='width:60%;'>PAGOS POR ORDENES DE PAGO: </td><td style='width:35%;' id='alinearder'>"+numberFormat(Number(totalegreso10).toFixed(2))+"</td></tr></table>";
+                    cabecerahtml10= "<table style='width:50%;'hidden class='table table-striped table-condensed' id='tablasinespacio'><tr><td style='width:5%;'><a href='#' id='mosordenpago' onclick='mostrarordenpago(); return false'>+</a></td><td style='width:60%;'>PAGOS POR ORDENES DE PAGO: </td><td style='width:35%;' id='alinearder'>"+numberFormat(Number(totalegreso10).toFixed(2))+"</td></tr></table>";
                     //cabecerahtml6= "<label  class='control-label col-md-12'><div class='col-md-1'><a href='#' id='mospago' onclick='mostrarpago(); return false'>+</a></div><div class='col-md-4'>Pagos por Credito: </div><div class='col-md-4'>"+numberFormat(Number(totalegreso6).toFixed(2))+"</div><div class='col-md-3'></div></label>";
                     cabecerahtml10 += "<div id='oculto10' style='visibility: hidden; width: 0; height: 0;'>";
                     cabecerahtml10 += "<div id='map10'>";

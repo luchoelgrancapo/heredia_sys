@@ -65,7 +65,7 @@ class Categoria_cliente_model extends CI_Model
             WHERE
                 1 = 1
 
-            ORDER BY `categoriaclie_id` DESC
+            ORDER BY `categoriaclie_id` ASC
 
             " . $limit_condition . "
         ")->result_array();

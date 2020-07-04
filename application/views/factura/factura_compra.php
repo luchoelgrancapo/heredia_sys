@@ -80,7 +80,7 @@
                            <label for="desde" class="control-label"> Exportar: </label>
                            <div class="form-group">
               
-                                <button onclick="generarexcel()" type="button" class="btn btn-success btn-block" ><span class="far fa-file-excel"> </span> Exportar a Excel</button>
+                                <button onclick="generarexcel2()" type="button" class="btn btn-success btn-block" ><span class="far fa-file-excel"> </span> Exportar a Excel</button>
                                 <!--<button  type="submit" class="btn btn-facebook btn-xs form-control" ><span class="fa fa-file-excel-o"> </span> Exportar a Excel</button>-->
       
                             </div>
@@ -92,7 +92,7 @@
                            <label for="desde" class="control-label"> Buscar: </label>
                            <div class="form-group">
               
-                               <button  type="submit" class="btn btn-primary btn-block" onclick="mostrar_facturas()"><span class="fa fa-search"> </span> Buscar</button>
+                               <button  type="submit" class="btn btn-primary btn-block" onclick="mostrar_facturas2()"><span class="fa fa-search"> </span> Buscar</button>
       
                             </div>
                         </div>

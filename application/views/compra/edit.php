@@ -929,12 +929,12 @@ input[type=number] { -moz-appearance:textfield;
           <div class="col-md-6">
                     <span class="btn btn-outline-info btn-xs">
     <input type="radio" id="compra_caja0"
-     name="compra_caja" value="" <?php if ($compra[0]['compra_caja']=='' || $compra[0]['compra_caja']==0 || $compra[0]['compra_caja']==null){ ?> checked <?php } ?> >
+     name="compra_caja" value="" <?php if ($compra[0]['compra_caja']==0){ ?> checked <?php } ?> >
     <label for="compra_caja0">Otro</label></span>
     
     <span class="btn btn-outline-info btn-xs">
     <input type="radio" id="compra_caja1"
-     name="compra_caja" value="1" <?php if ($compra[0]['compra_caja']==1){ ?> checked <?php } ?> >
+     name="compra_caja" value="1" <?php if ($compra[0]['compra_caja']=='' || $compra[0]['compra_caja']==1 || $compra[0]['compra_caja']==null){ ?> checked <?php } ?> >
     <label for="compra_caja1">Dinero de caja</label></span>
     </div>
     <div class="col-md-6">      

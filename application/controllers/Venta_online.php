@@ -135,5 +135,20 @@ class Venta_online extends CI_Controller{
                 show_404();
             }
     }
+
+    function para_boton()
+    {
+        $venta_id = $this->input->post('venta_id');
+        $sql = "UPDATE Venta_online set venta_numeroventa=1 WHERE venta_id=".$venta_id." ";
+        $this->db->query($sql);
+        echo json_encode(true);
+    }
+    function entregar()
+    {
+        $venta_id = $this->input->post('venta_id');
+        $sql = "UPDATE Venta_online set venta_numeroventa=0, entrega_id=2 WHERE venta_id=".$venta_id." ";
+        $this->db->query($sql);
+        echo json_encode(true);
+    }
     
 }

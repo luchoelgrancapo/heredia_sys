@@ -779,7 +779,7 @@ function mostrar() {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header bg-primary" style="padding:3px;">
+      <div class="modal-header" style="color: white; background: #282973;padding:3px;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -827,11 +827,12 @@ function mostrar() {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Finalizar Compra</h4>
+      <div class="modal-header" style="color: white; background: #282973;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
+        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Finalizar Compra</h4>
+        
       </div>
       <!--Body-->
       <div class="modal-body">
@@ -852,10 +853,10 @@ function mostrar() {
             </select>
         </div>
         <div class="col-md-6">
-            <b>NIT:</b> <input type="text" class="form-control" value="" id="venta_nit" name="venta_nit" required="true">
+            <b>NIT:</b> <input type="text" onclick="(this.select())" class="form-control" value="" id="venta_nit" name="venta_nit" required="true">
         </div>
         <div class="col-md-6">
-            <b>Razón Social:</b> <input type="text" class="form-control" value="" id="venta_razon" name="venta_razon" required="true">
+            <b>Razón Social:</b> <input type="text" onclick="(this.select())" class="form-control" value="" id="venta_razon" name="venta_razon" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end)" required="true">
         </div>
         <div class="col-md-6">
             <b>Celular:</b> <input type="text" class="form-control" value="" id="venta_celular" name="venta_celular" required="true">
@@ -901,7 +902,7 @@ function mostrar() {
         <table class="table table-hover">
             
             
-            <tr>
+            <tr style="background-color: #000">
                 <td>    
                     <div class="row" >
                         

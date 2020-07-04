@@ -137,6 +137,7 @@ class Venta extends CI_Controller{
         $data['forma_pago'] = $this->Forma_pago_model->get_all_forma();
         $data['tipo_cliente'] = $this->Tipo_cliente_model->get_all_tipo_cliente();
         $data['parametro'] = $this->Parametro_model->get_parametros();
+        $data['all_categoria_cliente'] = $this->Categoria_cliente_model->get_all_categoria_cliente();
         $data['usuario_id'] = $usuario_id;
         $data['tipousuario_id'] = $tipousuario_id;
         $data['tipo_servicio'] = $this->Tipo_servicio_model->get_all_tipo_servicio();
