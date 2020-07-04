@@ -18,9 +18,6 @@
 <div class="box-header">
     <font size='4' face='Arial'><b>Configuracion Email</b></font>
     <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($configuracion_email); ?></font>
-    <div class="box-tools no-print">
-        <a href="<?php echo site_url('configuracion_email/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Configuración Email</a>
-    </div>
 </div>
 <div class="row">
     <div class="col-md-12">
@@ -66,8 +63,7 @@
                         <td><?php echo $c['email_copia']; ?></td>
                         <td><?php echo $c['estado_id']; ?></td>
                         <td>
-                            <a href="<?php echo site_url('configuracion_email/edit/'.$c['email_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
-                            <a href="<?php echo site_url('configuracion_email/remove/'.$c['email_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            <a href="<?php echo site_url('configuracion_email/edit/'.$c['email_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-edit"></span></a> 
                         </td>
                     </tr>
                     <?php } ?>

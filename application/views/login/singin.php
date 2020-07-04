@@ -378,7 +378,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="login-box">
     <h2><?php echo $empresa[0]["empresa_nombre"] ?><h2>              
                 <img align="center" src="<?php echo base_url('resources/images/empresas/'.$empresa[0]["empresa_imagen"].''); ?>"  style="width:80px;height:80px">
-                <h2>HEREDIA SYS</h2>
+                <h2>BUSINESS SYS</h2>
  
   <?php echo form_open('verificar'); ?>
     <div class="user-box">

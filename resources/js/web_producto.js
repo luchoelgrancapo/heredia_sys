@@ -961,7 +961,7 @@ function registrarcliente()
     var base_url = document.getElementById('base_url').value;
     
     var controlador = base_url+'website/registrarclienteonline';
-    
+    document.getElementById('loader1').style.display = 'block';
     var cliente_id = 0; //document.getElementById('cliente_id').value;
     
     var nit = 0;  //document.getElementById('nit').value;
@@ -1032,14 +1032,14 @@ function registrarcliente()
                                                         cliente_direccion:cliente_direccion, cliente_departamento:cliente_departamento, cliente_celular:cliente_celular, zona_id:zona_id,
                                                         cliente_email:cliente_email, cliente_clave:cliente_clave},
                                             success:function(respuesta){  
-                                                    
+                                                    document.getElementById('loader1').style.display = 'none';
                                                     html = "";
                                                     html += "<center>";
                                                     html += "<b>NOTIFICACIÓN</b>";
                                                     html += "<br>";
-                                                    html += "<br>Tu usuario fue registrado correctamente,";
-                                                    html += "<br>Te enviamos un enlace a tu correo electrónico para activar tu cuenta,";
-                                                    html += "<br>revisa tu bandeja de entrada o carpeta de correos no deseado";
+                                                    html += "<br>Tu usuario fue registrado correctamente.";
+                                                    html += "<br>Te enviamos la confirmación a tu correo electrónico para activar tu cuenta.";
+                                                    html += "<br>Revisa tu bandeja de entrada o carpeta de correos no deseado(spam).";
                                                     html += "</br>";
                                                     html += "<button class='btn btn-danger' type='button' data-dismiss='modal' style='width: 120px;'><fa class='fa fa-times'></fa> Cerrar</button>";
                                                     html += "</center>";

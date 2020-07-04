@@ -7,7 +7,7 @@
         ?>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>HEREDIA_SYS <?php if(isset($page_title)){ echo " - ".$page_title; }?> </title>
+        <title>BUSINESS SYS <?php if(isset($page_title)){ echo " - ".$page_title; }?> </title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap 3.3.6 -->
@@ -68,16 +68,16 @@
                   <span class="badge badge-danger"></span> Salir
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                  <a href="<?php echo site_url()?>admin/dashb/logout" class="dropdown-item">
+                  <a href="" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
                       <img height="90" width="90" src="<?php echo site_url('resources/images/usuarios/'.$session_data['usuario_imagen']);?>" class="img-circle" alt="User Avatar">
                       <div class="media-body">
                         <h3 class="dropdown-item-title">
-                          Cerrar Sesion
-                          <span class="float-right text-sm text-danger"><i class="fas fa-sign-out-alt"></i></span>
+                         <?php echo $session_data['usuario_nombre']; ?>
+                          
                         </h3>
-                        <p class="text-sm">Salir del sistema</p>
+                        <a href="<?php echo site_url()?>admin/dashb/logout" class="btn btn-danger btn-xs"><i class="fas fa-sign-out-alt"></i> Salir de BUSINESS SYS</a>
                       </div>
                     </div>
                     <!-- Message End -->
@@ -100,7 +100,7 @@
                 <a href="#" class="brand-link">
                   <img src="<?php echo site_url('resources/img/user2-160x160.jpg');?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                        style="opacity: .8">
-                  <span class="brand-text font-weight-light">LUISMAN</span>
+                  <span class="brand-text font-weight-light"><b>BUSINESS</b> SYS</span>
                 </a>
                 <!-- sidebar: style can be found in sidebar.less -->
                     <div class="sidebar">
@@ -304,7 +304,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('');?>" class="nav-link">
+                <a href="<?php echo site_url('configuracion_email');?>" class="nav-link">
                   <i class="fas fa-envelope nav-icon"></i>
                   <p>Mensajes</p>
                 </a>

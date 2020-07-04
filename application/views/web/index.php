@@ -956,7 +956,9 @@ function mostrar() {
 
                     </div>        
         
-        
+                    <div class="row" id='loader1'  style='display:none; text-align: center'>
+                    <img src="<?php echo base_url("resources/images/loader.gif"); ?>"  >
+                    </div>
                     <div style="display:none" id="registrarcli">
                         
                      <div class="col-md-6">

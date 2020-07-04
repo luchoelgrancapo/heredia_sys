@@ -8,6 +8,18 @@
 			<div class="box-body">
 				<div class="row clearfix">
 					<div class="col-md-6">
+						<label for="email_cabecera" class="control-label">Email Cabecera</label>
+						<div class="form-group">
+							<input type="text" name="email_cabecera" value="<?php echo ($this->input->post('email_cabecera') ? $this->input->post('email_cabecera') : $configuracion_email['email_cabecera']); ?>" class="form-control" id="email_cabecera" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="email_pie" class="control-label">Email Pie</label>
+						<div class="form-group">
+							<input type="text" name="email_pie" value="<?php echo ($this->input->post('email_pie') ? $this->input->post('email_pie') : $configuracion_email['email_pie']); ?>" class="form-control" id="email_pie" />
+						</div>
+					</div>
+					<div class="col-md-6">
 						<label for="email_protocolo" class="control-label">Email Protocolo</label>
 						<div class="form-group">
 							<input type="text" name="email_protocolo" value="<?php echo ($this->input->post('email_protocolo') ? $this->input->post('email_protocolo') : $configuracion_email['email_protocolo']); ?>" class="form-control" id="email_protocolo" />
@@ -83,7 +95,7 @@
 			</div>
 			<div class="box-footer">
             	<button type="submit" class="btn btn-success">
-					<i class="fa fa-check"></i> Save
+					<i class="fa fa-check"></i> Guardar
 				</button>
 	        </div>				
 			<?php echo form_close(); ?>
