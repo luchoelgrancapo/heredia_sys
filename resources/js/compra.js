@@ -113,9 +113,9 @@ function tabladetallecompra(){
                         descglo += Number(registros[i]["detallecomp_descglobal"]);
                         subtotal += Number(registros[i]["detallecomp_subtotal"]);
                         cantidad += Number(registros[i]["detallecomp_cantidad"]);
-                        total_detalle = Number(subtotal-(descuento*cantidad)); 
-                        descuentosum = Number(descuento*cantidad);
                         
+                        descuentosum += Number(registros[i]["detallecomp_descuento"])*Number(registros[i]["detallecomp_cantidad"]);
+                        total_detalle += Number(registros[i]["detallecomp_subtotal"])-(Number(registros[i]["detallecomp_descuento"])*Number(registros[i]["detallecomp_cantidad"]));
                         if (esMobil()){
 
                         html += "<tr>";

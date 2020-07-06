@@ -105,6 +105,7 @@
                     <tr>
                         <th>#</th>
                         <th>Cliente</th>
+                        <th>Ubic.</th>
                         <th>Venta</th>
                         <th>Monto</th>
                         <th>Servicio</th>

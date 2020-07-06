@@ -115,7 +115,7 @@ function buscar_producto()
         });
     }
     
-    html = "<option value='0' selected>TODOS</option>"                     
+    html = "<option value='0' selected>SUB CATEGORIAS</option>"                     
 
    $("#select_subcategoria").html(html);
 
@@ -167,7 +167,7 @@ function buscar_por_categoria(categoria_id)
                  subcat = JSON.parse(respuesta);
                  cant = subcat.length;
                  
-                html += "<option value='0' selected>TODOS</option>"                     
+                html += "<option value='0' selected>SUB CATEGORIAS</option>"                     
                  for(i=0;i<cant;i++){
                      html += "<option value='"+subcat[i]["subcategoria_id"]+"'>"+subcat[i]["subcategoria_nombre"]+"</option>"                     
                  }
@@ -177,7 +177,7 @@ function buscar_por_categoria(categoria_id)
             },
             error:function(respuesta){
                // alert("Algo salio mal...!!!");
-               html = "<option value='0' selected>TODOS</option>";
+               html = "<option value='0' selected>SUB CATEGORIAS</option>";
                $("#select_subcategoria").html(html);
             },
             complete: function (jqXHR, textStatus) {
@@ -272,12 +272,12 @@ function mostrar_tabla_resultados(respuesta,pag){
                 mimagen = "";
                 
                 if(registros[i]["producto_foto"] != null && registros[i]["producto_foto"] !=""){
-                    mimagen += "<a href='website/single/"+idioma_id+"/"+registros[i]["producto_id"]+"'>";
+                    mimagen += "<a href='"+base_url+"website/single/"+registros[i]["producto_id"]+"'>";
                     mimagen += "<img src='"+base_url+"resources/images/productos/"+registros[i]["producto_foto"]+"' class='img img-circle' width='"+ancho_imagen+"' height='"+alto_imagen+"' />";
 //                    mimagen += "<img src='"+base_url+"resources/images/productos/thumb_"+registros[i]["producto_foto"]+"' class='img img-circle' width='"+ancho_imagen+"' height='"+alto_imagen+"' />";
                     mimagen += "</a>";
                 }else{
-                    mimagen += "<a href='website/single/"+idioma_id+"/"+registros[i]["producto_id"]+"'>";
+                    mimagen += "<a href='website/single/"+registros[i]["producto_id"]+"'>";
                     mimagen += "<img src='"+base_url+"resources/images/productos/thumb_image.png' class='img img-circle' width='"+ancho_imagen+"' height='"+alto_imagen+"' />";
                     mimagen += "</a>";
                 }
@@ -309,13 +309,7 @@ function mostrar_tabla_resultados(respuesta,pag){
                 html += mimagen;
 //                html += "<a href='website/single/"+idioma_id+"/"+registros[i]["producto_id"]+"'><p><div class='text-center' title='"+cadena+"'>"+nombre+"</div></p></a>";
                 html += "<p style='margin-top: 0px; margin-bottom: 0px;'><div class='text-center' title='"+cadena+"'>"+nombre+"</div></p>";
-                /*html += "<div class='stars'>";
-                html += "<i class='fa fa-star blue-star' aria-hidden='true'></i>";
-                html += "<i class='fa fa-star blue-star' aria-hidden='true'></i>";
-                html += "<i class='fa fa-star blue-star' aria-hidden='true'></i>";
-                html += "<i class='fa fa-star blue-star' aria-hidden='true'></i>";
-                html += "<i class='fa fa-star gray-star' aria-hidden='true'></i>";
-                html += "</div>";*/
+               
                 html += "<h3 style='margin:0;'><center> Bs. "+Number(registros[i]["producto_precio"]).toFixed(2)+"<center></h3>";
                 html += "</div>";
                 html += "<div class='snipcart-details top_brand_home_details'>";
@@ -334,11 +328,11 @@ function mostrar_tabla_resultados(respuesta,pag){
                 //html += "<input type='button' value='Añadir al pedido' onclick='insertar("+registros[i]["producto_id"]+")'  class='button'>";
                 
                 if (Number(registros[i]["existencia"])>0){
-                    html += "<button type='button' onclick='insertar("+registros[i]["producto_id"]+")'  class='btn btn-sm btn-info'><fa class='fa fa-cart-plus'></fa> AÑADIR AL PEDIDO</button>";
+                    html += "<button type='button' onclick='insertar("+registros[i]["producto_id"]+")'  class='btn btn-sm btn-success'><fa class='fa fa-cart-plus'></fa> AGREGAR AL CARRRITO</button>";
                 }
                 else{
                     //html += "<button type='button' class='btn btn-sm btn-danger' style='background:red;'><fa class='fa fa-frown-o'></fa> AGOTADO</button>";
-                    html += "<img src='"+base_url+"resources/web/images/agotado.png"+"' alt=' ' class='img-responsive'>";
+                    html += "<button type='button' class='btn btn-sm btn-danger' disabled>AGOTADO</button>";
                 }
                 //html += "<input type='button' name='submit' data-toggle='modal' data-target='#modalCart' value='Añadir al pedido' class='button'>";
                 html += "</fieldset>";
@@ -365,7 +359,7 @@ function mostrar_tabla_resultados(respuesta,pag){
                 html += "<div class='btn-group' role='group' aria-label='Button group with nested dropdown'>";
                                 
 
-                html += "<select type='button' name='oferta' class='btn btn-info btn-xs' id='oferta' onchange='mostrar_tabla_resultados("+JSON.stringify(respuesta)+",this.value)'>";
+                html += "<select type='button' name='oferta' class='btn btn-danger btn-sm' id='oferta' onchange='mostrar_tabla_resultados("+JSON.stringify(respuesta)+",this.value)'>";
                 for (i=1; i<=paginas; i++){                    
                     if (pag==i){
                         seleccionado = "selected";
@@ -373,7 +367,7 @@ function mostrar_tabla_resultados(respuesta,pag){
                         seleccionado = "";                        
                     }
                     
-                    html += "<option value='"+i+"' "+seleccionado+">Pag. "+i+"</option>";
+                    html += "<option value='"+i+"' "+seleccionado+">Página: "+i+"</option>";
                 }
                 html += "</select>";
                                 
@@ -420,11 +414,11 @@ function buscar_categoria(categoria)
                     for (var i = 0; i < n ; i++){
                         var mimagen = "";
                         if(registros[i]["producto_foto"] != null && registros[i]["producto_foto"] !=""){
-                            mimagen += "<a href='website/single/"+idioma_id+"/"+registros[i]["producto_id"]+"'>";
+                            mimagen += "<a href='website/single/"+registros[i]["producto_id"]+"'>";
                             mimagen += "<img src='"+base_url+"resources/images/productos/thumb_"+registros[i]["producto_foto"]+"' class='img img-circle' width='50' height='50' />";
                             mimagen += "</a>";
                         }else{
-                            mimagen += "<a href='website/single/"+idioma_id+"/"+registros[i]["producto_id"]+"'>";
+                            mimagen += "<a href='website/single/"+registros[i]["producto_id"]+"'>";
                             mimagen += "<img src='"+base_url+"resources/images/productos/thumb_image.png' class='img img-circle' width='50' height='50' />";
                             mimagen += "</a>";
                         }
@@ -447,7 +441,7 @@ function buscar_categoria(categoria)
                         html += "<div class='snipcart-item block'>";
                         html += "<div class='snipcart-thumb'>";
                         html += mimagen;
-                        html += "<a href='website/single/"+idioma_id+"/"+registros[i]["producto_id"]+"'><p><b><div class='text-center' title='"+cadena+"'>"+nombre+"</div></b></p></a>";
+                        html += "<a href='website/single/"+registros[i]["producto_id"]+"'><p><b><div class='text-center' title='"+cadena+"'>"+nombre+"</div></b></p></a>";
                         /*html += "<div class='stars'>";
                         html += "<i class='fa fa-star blue-star' aria-hidden='true'></i>";
                         html += "<i class='fa fa-star blue-star' aria-hidden='true'></i>";
@@ -585,7 +579,7 @@ function quitarcarrito(producto_id){
 
 function tablacarrito(){
     
-    var estilo = "style='padding:0;'";
+    
     
     var cliente_id = document.getElementById('cliente').value;
     if(cliente_id==0){
@@ -595,7 +589,13 @@ function tablacarrito(){
     }
     var base_url = document.getElementById('base_url').value;
     var controlador = base_url+'website/carrito/';
- 
+    var escarrito=document.getElementById('escarrito').value;
+    if (escarrito==1) {
+    var estilo = "style='padding:0;'";     
+    } else {
+    var estilo = "style='padding:5px;'";        
+    }
+    
       $.ajax({url: controlador,
            type:"POST",
            data:{cliente:cliente},
@@ -621,8 +621,19 @@ function tablacarrito(){
                         total_detalle = Number(subtotal);
 
                         html += "<tr "+estilo+">";
+                        if (escarrito==2) {
+                            if(registros[i]["producto_foto"] != null && registros[i]["producto_foto"] !=""){
+                            
+                            var mimagen = "<img src='"+base_url+"resources/images/productos/thumb_"+registros[i]["producto_foto"]+"' class='img img-circle' width='50' height='50' />";
+                           
+                        }else{
+                            
+                            var mimagen = "<img src='"+base_url+"resources/images/productos/thumb_image.png' class='img img-circle' width='50' height='50' />";
+                         
+                        }
+                        html += "<td "+estilo+">"+mimagen+"</td>";
+                        }
 //                        html += "<td "+estilo+"><center>"+(i+1)+"</center></td>";
-                        html += "<td "+estilo+"><button class='btn btn-danger btn-xs' onclick='quitarcarrito("+registros[i]["producto_id"]+")'><i class='fa fa-times' style='color: white'> </i></button> </td>";
                         html += "<td "+estilo+">"+registros[i]["producto_nombre"];
                         html += " <input id='producto_id'  name='producto_id' type='hidden' class='form-control' value='"+registros[i]["producto_id"]+"'></td>";
                         html += "<td align='right' style='padding-top:0; padding-bottom:0;'>"+Number(registros[i]["carrito_precio"]).toFixed(2)+"<input type='hidden' id='carrito_precio"+registros[i]["producto_id"]+"' name='producto_precio' type='text' size='3' class='form-control'  value='"+registros[i]["carrito_precio"]+"' ></td> ";
@@ -637,21 +648,21 @@ function tablacarrito(){
 //                        html += "<td align='right' "+estilo+">"+Number(registros[i]["carrito_descuento"]).toFixed(2)+" <input type='hidden' id='carrito_descuento"+registros[i]["producto_id"]+"' name='descuento' size='3' type='text' class='form-control' value='"+registros[i]["carrito_descuento"]+"' ></td>";
 //                        html += "<td align='right'><center><span class='badge badge-success'><font size='4'> <b>"+Number(registros[i]["carrito_total"]).toFixed(2)+"</b></font></span></center></td>";
                         html += "<td align='right' style='padding-top:0; padding-bottom:0;'>"+Number(registros[i]["carrito_total"]).toFixed(2)+"</td>";
-                        
+                        html += "<td "+estilo+"><button class='btn btn-danger btn-xs' onclick='quitarcarrito("+registros[i]["producto_id"]+")'><i class='fa fa-times' style='color: white'> </i></button> </td>";
+
                        
 //                        html += "<td align='right' style='padding-top:0; padding-buttom:0;'>"+Number(registros[i]["carrito_total"]).toFixed(2)+"</td>";
                         html += "</tr>";
                        
                        }
                        html += "<tr style='color: white; background: #333333; padding: 0;'>";
-                      // html += "<td><input id='total'  name='total' type='text' class='form-control' value='"+total_detalle+"'></td>";
-//                       html += "<td style='padding:0;'></td>";
-//                       html += "<td></td>";
-//                       html += "<td></td>";
-                       html += "<td colspan='3' style='padding:0;'><center><b><font size='3'>TOTAL Bs.</b></font></center></td>";
+                       if (escarrito==2) {
+                        html += "<td></td>";
+                        }
+                       html += "<td colspan='2' style='padding:0;'><center><b><font size='3'>TOTAL Bs.</b></font></center></td>";
 //                       html += "<td></td>";
                        html += "<td colspan='2' align='right' style='padding:0;'><font size='3'><b>"+Number(suma).toFixed(2)+"</b></font></td>";
-//                       html += "<td style='padding:0;'></td>";
+                       html += "<td style='padding:0;'></td>";
                        html += "</tr>";
                        $("#carritos").html(html);
                        $("#modalCart").modal("show");
@@ -1178,5 +1189,34 @@ function enfocar(e,opc){
         if(opc==5) $("#cliente_repeticion").focus();
         if(opc==6) $("#boton_registrar_datos").focus();
     } 
+} 
+
+function enviar_clave(){
+        document.getElementById('loader2').style.display = 'block';
+        var cliente_email = document.getElementById('recliente_email').value;
+        var base_url = document.getElementById('base_url').value;
+        var controlador = base_url+'website/enviar_clave/';
+        if(email_valido(cliente_email)){
+                $.ajax({url: controlador,
+                                            type:"POST",
+                                            data:{cliente_email:cliente_email},
+                                            success:function(respuesta){  
+                                                    document.getElementById('loader2').style.display = 'none';
+                                                   
+                                                    alert('Se envio la clave a su correo.');
+                                                    
+
+                                            },
+                                            error: function(respuesta){
+                                //                            
+                                               alert('Este correo no esta registrado');
+                                            }
+
+                                    });
+        }else{
+            document.getElementById('loader2').style.display = 'none';
+            alert('Debe escribir un email valido');
+        }
+
+    }
     
-}

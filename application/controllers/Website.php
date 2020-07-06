@@ -149,10 +149,10 @@ class Website extends CI_Controller{
         }
     }
     
-    function single($idioma_id,$producto_id)
+    function single($producto_id)
     {
         
-        //$idioma_id = 1; //1 - español
+        $idioma_id = 1; //1 - español
         
         $pagina_web = $this->Pagina_web_model->get_pagina($idioma_id);
         
@@ -174,7 +174,7 @@ class Website extends CI_Controller{
                 $data['ofertasemanal'] = $this->Pagina_web_model->get_oferta_semanal(); //seccion 3
                 $data['ofertasdia'] = $this->Pagina_web_model->get_oferta_dia(); //seccion 3
                 $data['slider2'] = $this->Pagina_web_model->get_slider(2,$idioma_id); //tipo 2
-
+                $data['categorias'] = $this->Categoria_producto_model->get_all_categoria_producto(); //tipo 2
 
                 $data['idioma_id'] = $idioma_id;
 
@@ -443,10 +443,10 @@ class Website extends CI_Controller{
         header("location: https://www.passwordbolivia.com");
     }
 
-    function recuperarclave($idioma_id)
+    function reestablecer_clave()
     {
 
-        //$idioma_id = 1; //1 - español
+        $idioma_id = 1; //1 - español
         $data['idioma_id'] = $idioma_id;
         $data['pagina_web'] = $this->Pagina_web_model->get_pagina($idioma_id);
         $data['menu_cabecera'] = $this->Pagina_web_model->get_menu_cabecera($idioma_id);
@@ -458,9 +458,9 @@ class Website extends CI_Controller{
         $this->load->view('web/recuperarclave',$data);
     }
 
-    function miperfil($idioma_id)
+    function miperfil()
     {
-        //$idioma_id = 1; //1 - español
+        $idioma_id = 1; //1 - español
         $pagina_web = $this->Pagina_web_model->get_pagina($idioma_id);
         if (sizeof($pagina_web)>0){
             $data['pagina_web'] = $pagina_web;
@@ -492,9 +492,9 @@ class Website extends CI_Controller{
 
     }
 
-    function micarrito($idioma_id)
+    function micarrito()
     {
-        //$idioma_id = 1; //1 - español
+        $idioma_id = 1; //1 - español
         $pagina_web = $this->Pagina_web_model->get_pagina($idioma_id);
         if (sizeof($pagina_web)>0){
             $data['pagina_web'] = $pagina_web;
@@ -872,6 +872,92 @@ class Website extends CI_Controller{
 
     }
 
+
+    function enviar_clave() {
+
+            $this->load->library('email');
+            $this->email->set_newline("\r\n");
+            $cliente_email = $this->input->post('cliente_email');
+            $clave = explode("@", $cliente_email);
+            $nueva_clave = md5($clave[0]);
+            $sql1 = "update cliente set cliente_clave='".$nueva_clave."' where cliente_email = '".$cliente_email."'";
+            $this->db->query($sql1);
+            $sql = "select * from cliente where cliente_email = '".$cliente_email."'";
+            $cliente=$this->db->query($sql)->row_array();
+            $configuracion = $this->Configuracion_email_model->get_configuracion_email(1);
+            $config['protocol'] = $configuracion['email_protocolo'];
+            $config['smtp_host'] = $configuracion['email_host'];
+            $config['smtp_port'] = $configuracion['email_puerto'];
+            $config['smtp_user'] = $configuracion['email_usuario'];
+            $config['smtp_pass'] = $configuracion['email_clave'];
+            $config['smtp_from_name'] = $configuracion['email_nombre'];
+            $config['priority'] = $configuracion['email_prioridad'];
+            $config['charset'] = $configuracion['email_charset'];
+            $config['smtp_crypto'] = $configuracion['email_encriptacion'];
+            $config['wordwrap'] = TRUE;
+            $config['newline'] = "\r\n";
+            $config['mailtype'] = $configuracion['email_tipo'];
+            $email_copia = '';
+            
+            $this->email->initialize($config);
+
+            $this->email->from($config['smtp_user'], $config['smtp_from_name']);
+            $this->email->to($cliente_email);
+            $this->email->cc($configuracion['email_copia']);
+//            $this->email->bcc($attributes['cc']);
+            $this->email->subject("Recuperacion de contraseña");
+
+            
+            $html = "<html>";
+            $html = "<head>";
+            $html = "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css' integrity='sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M' crossorigin='anonymous'>";
+            $html = "</head>";
+            $html = "<body>";
+            
+            $html .= "<div class='container' style='font-family: Arial'>";
+            $html .= "<div class='col-md-2' style='background:gray;'></div>";
+            
+            $html .= "<div class='col-md-10'>";
+            $html .= "<center>";
+            $html .= "<h2>RECUPERACION DE CONTRASEÑA</h2>";
+            $html .= " ";
+            $html .= "<h4>SALUDOS ".$cliente['cliente_nombre']."</h4>";
+            $html .= "<br>";
+            $html .= "<br>";
+            $html .= "Su contraseña es:";
+            $html .= "<br>";
+            
+//            $html .= "<form method='get' action='/".$direccion."'>";
+//            $html .= "<button type='submit'>Activar mi Cuenta</button>";
+//            $html .= "</form>";
+            
+            $html .= "<br>";
+            $html .= "<b>";
+
+            $html .= $clave[0];
+            $html .= "</b>";
+            $html .= "<br>";
+            
+           
+            $html .= "</center>";
+            $html .= "</div>";
+            
+            $html .= "<div class='col-md-2'></div>";            
+            $html .= "</div>";
+            
+            $html .= "</body>";
+            $html .= "</html>";
+            
+            
+            $this->email->message($html);
+
+            if($this->email->send()) {
+                return true;        
+            } else {
+                return false;
+            }       
+
+    }
  
    
 

@@ -20,7 +20,7 @@ class Venta_online_model extends CI_Model
   {
         $detalle_venta = $this->db->query("
             SELECT
-                v.*, e.entrega_nombre, c.cliente_nombre, c.cliente_razon, c.cliente_nit, c.cliente_telefono, c.cliente_direccion, ts.tiposerv_descripcion, f.forma_nombre
+                v.*, e.entrega_nombre, c.cliente_nombre, c.cliente_razon, c.cliente_nit, c.cliente_telefono, c.cliente_direccion, ts.tiposerv_descripcion, f.forma_nombre,  c.cliente_celular,  c.cliente_latitud,  c.cliente_longitud
             FROM
                 venta_online v 
             

@@ -48,7 +48,16 @@ function buscarventas(){
                         html += "<tr style='background-color: "+color+"'>";
                       
                         html += "<td>"+(i+1)+"</td>";
-                        html += "<td><b>"+registros[i]["cliente_nombre"]+"<br></b><b>Dir.: </b>"+registros[i]["cliente_direccion"]+" <b>Tel.: </b>"+registros[i]["cliente_telefono"]+"<br><b>Nit: </b>"+registros[i]["cliente_nit"]+" <b>Razon: </b>"+registros[i]["cliente_razon"]+"<br></td>";
+                        html += "<td><b>"+registros[i]["cliente_nombre"]+"<br></b><b>Cel.: </b>"+registros[i]["cliente_celular"]+" <b>Tel.: </b>"+registros[i]["cliente_telefono"]+"<br><b>Nit: </b>"+registros[i]["cliente_nit"]+" <b>Razon: </b>"+registros[i]["cliente_razon"]+"<br></td>";
+                        html += "<td class='no-print' style='text-align: center'>";
+                        if ((registros[i]["cliente_latitud"]==0 && registros[i]["cliente_longitud"]==0) || (registros[i]["cliente_latitud"]==null && registros[i]["cliente_longitud"]==null) || (registros[i]["cliente_latitud"]== "" && registros[i]["cliente_longitud"]=="")){
+                            html += "<img src='"+base_url+"resources/images/noubicacion.png' width='30' height='30'>";
+                        }else{
+                            html += "<a href='https://www.google.com/maps/dir/"+registros[i]["cliente_latitud"]+","+registros[i]["cliente_longitud"]+"' target='_blank' title='lat:"+registros[i]["cliente_latitud"]+", long:"+registros[i]["cliente_longitud"]+"'>";                                                                
+                            html += "<img src='"+base_url+"resources/images/blue.png' width='30' height='30'>";
+                            html += "</a>";
+                        }
+                        html += "<br><b>Dir.: </b>"+registros[i]["cliente_direccion"]+"</td>";
                         html += "<td align='center'>"+registros[i]["venta_id"]+"</td>"; 
                         html += "<td align='center'>"+Number(registros[i]["venta_total"]).toFixed(2)+"</td>"; 
                         html += "<td align='center'>"+registros[i]["tiposerv_descripcion"]+"</td>";

@@ -357,7 +357,7 @@ window.onkeydown = compruebaTecla;
                                             <?php 
                                             foreach($all_categoria_cliente as $categoria_cliente)
                                             {
-                                                    $selected = ($categoria_cliente['categoriaclie_id'] == $this->input->post('categoriaclie_id')) ? ' selected="selected"' : "";
+                                                    $selected = ($categoria_cliente['categoriaclie_id'] == $cliente[0]['categoriaclie_id']) ? ' selected="selected"' : "";
 
                                                     echo '<option value="'.$categoria_cliente['categoriaclie_id'].'" '.$selected.'>'.$categoria_cliente['categoriaclie_descripcion'].'</option>';
                                             } 

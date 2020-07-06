@@ -135,244 +135,11 @@ tiendas, ventas, facturacion, contabilidad, distribucion" />
 
     
 <!-- header -->
-<!------------------ PRIMERA SECCION -------------------------------------->
-    <div class="agileits_header">
-            <div class="container" style="margin-bottom: -10px; ">
-                <div class="w3l_offers">                        
-                        <b> <?php if (strlen($pagina_web[0]['empresa_nombre'])>28) { ?> 
-                            <a href="<?php echo base_url();?>" style="color: white;  -webkit-text-stroke: 0px darkorange;font-size: 15px"><?php echo $pagina_web[0]['empresa_nombre']; } else { ?>
-                            <a href="<?php echo base_url();?>" style="color: white;  -webkit-text-stroke: 0px darkorange;font-size: 20px"><?php echo $pagina_web[0]['empresa_nombre']; } ?> </a></b>
-                </div>
-<!------------------ MENU CABECERA  ----------------------------------->                    
-                <div class="agile-login">
-                    <ul>
-                        <li><a href="" data-toggle="modal" data-target="#seguimientoOT">Clientes</a></li>
-                        <li><a href="" data-toggle="modal" data-target="#seguimientoservicio">servicio</a></li>
-                        <?php foreach($menu_cabecera as $cabecera) { ?>
-                        <li><a href="<?php echo base_url().$cabecera['menu_enlace']; ?>"><?php echo $cabecera['menu_nombre']; ?></a></li>
-                        <?php } ?>
-                        <!--<li><select class="selectpicker" data-width="fit">
-                    <option data-content='<span class="flag-icon flag-icon-us"></span> English'><span class="flag-icon flag-icon-us"></span>English</option>
-                    <option  data-content='<span class="flag-icon flag-icon-mx"></span> Español'>Español</option>
-                    </select></li>-->
-                    </ul>
 
-                </div>
-                    <!-- --------------- INICIO Modal para ver el avance de servicios --------------- -->
-                    <div class="modal fade" id="seguimientoservicio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                      <div class="modal-dialog" role="document">
-                            <br><br>
-                            <div class="modal-content text-left">
-                          <div class="modal-header">
-                              <label>Seguimiento:</label> Soporte Técnico
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                          </div>
-                            <?php
-                            echo form_open('seguimiento/index');
-                            ?>
-                          <div class="modal-body">
-                           <!-- --------------------------------------------------------------- -->
-                           <div class="row">
-                                <div class="col-md-6">
-                                    <label for="usuario" class="control-label"><span class="text-danger">*</span>Usuario</label>
-                                    <div class="form-group">
-                                        <input type="text" name="usuario" id="usuario" class="form-control" required  autocomplete="off" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="contrasen" class="control-label"><span class="text-danger">*</span>Contrase&ntilde;a</label>
-                                    <div class="form-group">
-                                        <input type="password" name="contrasen" id="contrasen" class="form-control" required autocomplete="off" />
-                                    </div>
-                                </div>
-                            </div>
-                           <!------------------------------------------------------------------->
-                          </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fa fa-binoculars"></i> Seguimiento
-                                    </button>
-                                </div>
-                            <?php echo form_close(); ?>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- --------------- F I N Modal para ver el avance de servicios --------------- -->
-                     <!-- --------------- INICIO Modal para ver el avance de OT --------------- -->
-                    <div class="modal fade" id="seguimientoOT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                      <div class="modal-dialog" role="document">
-                            <br><br>
-                            <div class="modal-content text-left">
-                          <div class="modal-header">
-                              <label>Seguimiento:</label> Ordenes de trabajo
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                          </div>
-                           
-                          <div class="modal-body">
-                           <!-- --------------------------------------------------------------- -->
-                           <div class="row">
-                            <div class="col-md-6">
-                                <label for="orden" class="control-label">Orden</label>
-                                <div class="form-group">
-                                    <input type="text" name="orden" id="orden" class="form-control" required  autocomplete="off" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="transaccion" class="control-label">Código</label>
-                                <div class="form-group">
-                                    <input type="text" name="transaccion" id="transaccion" class="form-control" required autocomplete="off" />
-                                </div>
-                            </div>
-                            </div>
-                            
-                           <!------------------------------------------------------------------->
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" onclick="buscarseguimiento()" class="btn btn-success">
-                                    <i class="fa fa-check "></i> Consultar
-                            </button>
-                          </div>
-                            
-                        </div>
-                      </div>
-                    </div>
-                    <!-- --------------- F I N Modal para ver el avance de OT --------------- -->
-                    
-                <div class="product_list_header">  
-                    <form action="#" method="post" class="last"> 
-                        <input type="hidden" name="cmd" value="_cart">
-                        <input type="hidden" name="display" value="1">
-                        <button class="w3view-cart" type="button" class="btn btn-primary" onclick="tablacarrito()"><i class="fa fa-cart-arrow-down" aria-hidden="true" title="Mi Carrito"></i></button>
-                        
-                        <?php if(isset($_COOKIE["cliente_id"])) { ?>
-                                <button class="w3view-cart" type="button" class="btn btn-primary" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesion"></i></button>
-                        <?php }  ?>
-
-                    </form>
-
-                </div>
-
-                   
-                    
-                    
-                <div class="clearfix"> </div>
-<!------------------ FIN MENU CABECERA  ----------------------------------->                    
-            </div>
-    </div>
-<!------------------ FIN PRIMERA SECCION ----------------------------------->
-
-
-<!------------------ SEGUNDA SECCION ------------------------>
-    <div class="logo_products" style="padding:0;">
-        <div class="container">
-        <div class="w3ls_logo_products_left1">
-                <ul class="phone_email">
-                    <li><i class="fa fa-phone" aria-hidden="true"></i><?php echo 'PEDIDOS: '.$pagina_web[0]['pagina_telefono']; ?></li>
-                    
-                </ul>
-            </div>
-            <div class="w3ls_logo_products_left">
-                <h1><a href="<?php echo base_url();?>"><?php echo $pagina_web[0]['empresa_nombre']; ?></a></h1>
-            </div>
-            
-            <div class="clearfix"> </div>
-        </div>
-    </div>
-
-<!---------------------------------- FIN SEGUNDA SECCION -------------------------------------->
-
-
-
-
-
-
-
+<?php include("header.php"); ?>
+<?php include('modalcarrito.php'); ?>
 <!-- //header -->    
     
-
-<!-- navigation -->
-    <div class="navigation-agileits">
-        <div class="container">
-            <nav class="navbar navbar-default">
-                            
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header nav_2">
-                                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div> 
-                            
-                            <!--------------------- MENU PRINCIPAL ---------------------------------------->                            
-                            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-                                    <ul class="nav navbar-nav">
-                                        
-                                        <?php foreach($menu_principal as $principal) { ?>                                                                                
-                                            <li class="active"><a href="<?php echo base_url(); ?>" class="act"><?php echo $principal['menu_nombre']; ?></a></li>
-                                        <?php } ?>                                        
-                                            
-                                            
-
-                                        
-
-                                        <!------- Bloque de codigo 1 ------------>
-                                        
-                        <?php if(isset($_COOKIE["cliente_id"])) { 
-                            
-                                        $nombre_cliente = ucwords(strtolower($_COOKIE["cliente_nombre"])); 
-                                        
-                                        if(strlen($nombre_cliente)>15){
-                                                $nombre_cliente = substr($nombre_cliente, 0, 12)."..";
-                                        }
-                        ?>
-                                    
-                                        <!------- Inicio menu usuario ------------>                                        
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fa class="fa fa-user"></fa><small> <?php echo $nombre_cliente; ?></small></a>
-                                            <ul class="dropdown-menu multi-column columns-3">
-                                                <div class="row">
-                                                    <div class="multi-gd-img">
-                                                        <ul class="multi-column-dropdown">
-                                                            <!--<h6>Todas</h6>-->
-                                                            <li><a href="<?php echo base_url("website/miperfil/").$idioma_id; ?>" >Mi perfil</a></li>
-                                                            <li><a href="<?php echo base_url("website/micarrito/").$idioma_id; ?>" >Mi carrito</a></li>
-                                                            <li><a href="<?php echo base_url("website/miscompras/").$idioma_id; ?>" >Mis Compras</a></li>
-                                                            <li><a href="<?php echo base_url("website/cerrarsesion/").$idioma_id; ?>" >Finalizar Sesion</a></li>
-                                                            
-                                                        </ul>
-                                                    </div>	
-
-                                                </div>
-                                        </ul>
-                                    </li>                                         
-                                    <!------- Fin menu usuario ------------>                                                                            
-                        <?php } else{ ?>                                    
-
-                                        <!------- Inicio iniciar sesion ------------>                                        
-                                        <li class="dropdown">
-                                            <a href="#modalCliente" data-target="#modalCliente"  class="dropdown-toggle" data-toggle="modal">Iniciar Sesión</a>
-                                        </li>                                         
-                                        <!------- Fin iniciar sesion ----------
-                                                                       
-                        <?php }  ?>                                    
-                                    
-                                        
-                                    </ul>
-                                <ul>
-                                
-                                </ul>
-                                
-                                </div>
-                                <!--------------------- FIN MENU PRINCIPAL ---------------------------------------->                            
-                            </nav>
-            </div>
-        </div>
-        
-<!-- //navigation -->
-
-
 <!-- breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
@@ -383,6 +150,9 @@ tiendas, ventas, facturacion, contabilidad, distribucion" />
         </div>
     </div>
 <!-- //breadcrumbs -->
+<!-- buscador -->
+<?php include("buscador.php"); ?>
+<!-- //buscador -->   
     <div class="products">
         <div class="container">
             <div class="agileinfo_single">
@@ -456,11 +226,11 @@ tiendas, ventas, facturacion, contabilidad, distribucion" />
                     
                     <div class="rating1">
                         <span class="starRating">
-                            <input id="rating5" type="radio" name="rating" value="5">
+                            <input id="rating5" type="radio" name="rating" value="5" checked="">
                             <label for="rating5">5</label>
                             <input id="rating4" type="radio" name="rating" value="4">
                             <label for="rating4">4</label>
-                            <input id="rating3" type="radio" name="rating" value="3" checked="">
+                            <input id="rating3" type="radio" name="rating" value="3">
                             <label for="rating3">3</label>
                             <input id="rating2" type="radio" name="rating" value="2">
                             <label for="rating2">2</label>
@@ -488,21 +258,7 @@ tiendas, ventas, facturacion, contabilidad, distribucion" />
                             <h3 class="m-sing" ><b>Bs <?php echo number_format($producto[0]['producto_precio'],2,'.',','); ?></b> </h3>
                         </div>
                         <div class="snipcart-details agileinfo_single_right_details">
-<!--                            <form action="#" method="post">
-                                <fieldset>
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="add" value="1">
-                                    <input type="hidden" name="business" value=" ">
-                                    <input type="hidden" name="item_name" value="pulao basmati rice">
-                                    <input type="hidden" name="amount" value="21.00">
-                                    <input type="hidden" name="discount_amount" value="1.00">
-                                    <input type="hidden" name="currency_code" value="USD">
-                                    <input type="hidden" name="return" value=" ">
-                                    <input type="hidden" name="cancel_return" value=" ">
-                                    
-                                    <input type="submit" name="submit" value="Add to cart" class="button">
-                                </fieldset>
-                            </form>-->
+                         
                             <form action="#" method="post">
                                 <fieldset>
                                     <input type="hidden" name="cmd" value="_cart" />
@@ -510,7 +266,7 @@ tiendas, ventas, facturacion, contabilidad, distribucion" />
                                     <input type="hidden" name="business" value=" " />
                                     <input type="hidden" name="item_name" value="<?php echo $producto[0]['producto_nombre'];?>" />
                                     <input type="hidden" name="amount" id="producto_precio<?php echo $producto[0]['producto_id'];?>" value="<?php echo $producto[0]['producto_precio'];?>" />
-                                    <input type="hidden" name="discount_amount" id="descuento<?php echo $producto[0]['producto_id'];?>" value="<?php echo ($producto[0]['producto_precio']); ?>" />
+                                    <input type="hidden" name="discount_amount" id="descuento<?php echo $producto[0]['producto_id'];?>" value="0" />
                                     <input type="hidden" name="currency_code" value="USD" />
                                     <input type="hidden" name="return" value=" " />
                                     <input type="hidden" name="cancel_return" value=" " />
@@ -518,49 +274,29 @@ tiendas, ventas, facturacion, contabilidad, distribucion" />
 <!--                                    <a href="<?php echo base_url("website/micarrito/".$idioma_id); ?>" type="button" name="submit" class="btn btn-info btn-sm" onclick="insertar(<?php echo $producto[0]['producto_id'];?>)">
                                             <fa class='fa fa-cart-plus'></fa> Mi Carrito
                                     </a>-->
-                                    <button type="button" name="submit" class="btn btn-info btn-sm" onclick="insertar(<?php echo $producto[0]['producto_id'];?>)"><fa class='fa fa-cart-plus'></fa> AÑADIR AL PEDIDO</button>
+                                    <button type="button" name="submit" class="btn btn-success btn-sm" onclick="insertar(<?php echo $producto[0]['producto_id'];?>)"><fa class='fa fa-cart-plus'></fa> AGREGAR AL CARRITO</button>
                                 </fieldset>
                             </form>
                         </div>
                     </div>
                 </div>
-                    
 
-                    
-                
-                    <div class="checkout-right-basket">
+                  
+                <div class="checkout-right-basket">
                                     <a href="<?php echo base_url(); ?>"><span class="fa fa-cart-arrow-down" aria-hidden="true"></span> Continuar Comprando</a>
-                    </div>
-                
+                </div>
+                <div class="clearfix"> </div>
                     <div class="clearfix"> </div>
 
             </div>
         </div>
     </div>
-
-
-            <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
-            <?php if(!isset($_COOKIE["cliente_id"])) {
-                    $cliente_ide = 0;
-                } else {
-                    $cliente_ide = $_COOKIE["cliente_id"];
-                }
-            ?>
-
-            <input type="hidden" name="cliente" id="cliente" value="<?php echo $cliente_ide; ?>" />
-            <input type="hidden" name="idioma_id" id="idioma_id" value="<?php echo $idioma_id; ?>" />
-            <input type="hidden" name="myip" id="myip" value="" />
-            <input type="hidden" name="seip" id="seip" value="" />
-            <input type="hidden" name="miip" id="miip" value="" />
-
-
-            
             
             
 <!-- new -->
     <div class="newproducts-w3agile">
         <div class="container">
-            <h3>NUESTRAS OFERTAS</h3>
+            <h3>PRODUCTOS RELACIONADOS</h3>
             
                 <div class="agile_top_brands_grids">
                                 <?php foreach($ofertasemanal as $os) { ?>
@@ -623,404 +359,8 @@ tiendas, ventas, facturacion, contabilidad, distribucion" />
     </div>
 <!-- //new -->
 
-
-
-
-<!-- Modal: modalCart -->
-<div class="modal fade" id="modalCart" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <!--Header-->
-      <div class="modal-header" style="padding:3px;">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Mi Carrito</h4>
-      </div>
-      <!--Body-->
-      <div class="modal-body" style="overflow-x: auto;">
-        
-        <div class="col-md-12"></div>
-        <table class="table table-hover" style="font-size: 12px;">
-          <thead>
-            <tr style="color: white; background: #333333; padding: 0;">
-              <!--<th>#</th>-->
-              <th style="padding:0;"></th>
-              <th style="padding:0; text-align: center;">Producto</th>
-              <th style="padding:0; text-align: center;">Precio</th>
-              <th style="padding:0; text-align: center;">Cant.</th>
-              <!--<th style="padding:0;">Desc.</th>-->
-              <th style="padding:0; text-align: center;">Total Bs.</th>
-
-            </tr>
-          </thead>
-          <tbody id="carritos">
-          </tbody>
-        </table>
-
-      </div>
-      <!--Footer-->
-      <div class="modal-footer">
-          
-          <center>
-            <button class="btn btn-primary" data-dismiss="modal" style="width: 140px;"><i class="fa fa-cart-arrow-down"></i> Continuar</button>
-            <button class="btn btn-success" data-dismiss="modal" onclick="realizarcompra()"  style="width: 140px;"><i class="fa fa-money"></i> Finalizar Compra</button>              
-          </center>
-          
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal: modalCart -->
-
-<!-- Modal: finalizar -->
-<div class="modal fade" id="modalFinalizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <!--Header-->
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Finalizar Compra</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <!--Body-->
-      <div class="modal-body">
-        <div class="col-md-12"></div>
-        <table class="table table-hover">
-         <div class="col-md-6">
-            <b>Método de pago:</b>             
-            <select class="form-control" name="metodo_pago" id="metodo_pago" required>
-                <option value="1">Pago en Entrega</option>
-                <option value="3">Transferencia</option>
-            </select>
-        </div>
-        <div class="col-md-6">
-            <b>Forma de envio:</b>             
-            <select class="form-control" name="metodo_envio" id="metodo_envio" required>
-                <option value="1">A Domicilio</option>
-                <option value="2">Sucursal</option>
-            </select>
-        </div>
-        <div class="col-md-6">
-            <b>NIT:</b> <input type="text" class="form-control" value="" id="venta_nit" name="venta_nit" required="true">
-        </div>
-        <div class="col-md-6">
-            <b>Razón Social:</b> <input type="text" class="form-control" value="" id="venta_razon" name="venta_razon" required="true">
-        </div>
-        <div class="col-md-6">
-            <b>Celular:</b> <input type="text" class="form-control" value="" id="venta_celular" name="venta_celular" required="true">
-        </div>
-        <div class="col-md-6">
-            <b>Teléfono:</b> <input type="text" class="form-control" value="" id="venta_telefono" name="venta_telefono" required="true">
-        </div>
-        <div class="col-md-6">
-            <b>Dirección:</b> <input type="text" class="form-control" value="" id="venta_direccion" name="venta_direccion" required="true"> <input type="hidden" class="form-control" value="" id="venta_subtotal" name="venta_subtotal" required="true">
-            <input type="hidden" class="form-control" value="" id="venta_descuento" name="venta_descuento" required="true">
-            <input type="hidden" class="form-control" value="" id="venta_total" name="venta_total" required="true">
-        </div>
-        
-        </table>
-
-      </div>
-      <!--Footer-->
-      <div class="modal-footer">
-        <div></div>
-        <button class="btn btn-primary" type="button" onclick="venta_online()"><i class="fa fa-money"></i> Finalizar Compra</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal: finalizar -->
-
-<!-- Modal: registro -->
-<div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <!--Header-->
-      <div class="modal-header" style="background-color: #000000;">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <!--<h4 class="modal-title" id="myModalLabel"><i class="fa fa-user"></i> Cliente</h4>-->
-          <img src="<?php echo base_url("resources/web/images/logo.png") ?>" width="30%" height="30%">
-      </div>
-      <!--Body-->
-      <div class="modal-body">
-        <div class="col-md-12"></div>
-        <table class="table table-hover">
-            
-            
-            <tr>
-                <td>    
-                    <div class="col-md-12" style="padding:0; border-bottom: silver;" >
-                        <div class="btn-group" role="group" aria-label="login">
-                                                            
-                        <button class="btn btn-primary"  style="width: 120px;" onclick="inisesion()" id="boton_sesion"><fa class="fa fa-key"></fa> Iniciar Sesion</button>
-                        <button class="btn btn-default" style="width: 120px;" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrate</button>
-                    </div>
-                    </div>
-                </td>    
-            </tr>
-            <tr>
-                <td>    
-            
-        <!--         <div class="col-md-2">
-
-                 </div>   -->
-        <!--         <div class="col-md-5"  style="padding:0;">
-                    <button class="btn btn-primary" style="width: 100%" onclick="inisesion()" type="button" >Iniciar Sesion</button>
-                 </div>  -->
-
-                    <div style="display:block;" id="inisesion" >
-                            <br>
-
-                        <div>
-
-                            <div class="col-md-6">
-                                <b><fa class="fa fa-user"></fa> Usuario: </b><input type="text" class="form-control" value="" id="cliente_login" name="cliente_login" required="true">
-                           </div>
-                           <div class="col-md-6">
-                               <b><fa class="fa fa-lock"></fa> Contraseña: </b><input type="text" class="form-control" value="" id="cliente_clave" name="cliente_clave" required="true">
-                               <a href="<?php echo base_url("website/recuperarclave/".$idioma_id); ?>" >¿Olvidaste tu contraseña?</a>
-                           </div>
-
-                           <div class="col-md-12" style="text-align: justify; line-height: 12px; font-family: Arial;">
-                               <p >
-                                   <small>
-                                    Al identificarte aceptas nuestras Condiciones de uso y venta. Consulta nuestro Aviso de privacidad y nuestras Aviso de Cookies y Aviso sobre publicidad basada en los intereses del usuario.                                       
-                                   </small>
-                               </p>
-                                   
-                               <center>
-                                   <button class="btn btn-danger" type="button" data-dismiss="modal" style="width: 100px;"><fa class="fa fa-times"></fa> Cerrar</button>                
-                                   <button class="btn btn-success" type="button" onclick="sesion()" style="width: 100px;"><fa class="fa fa-inbox"></fa> Ingresar</button>                
-                               </center>
-                           </div>
-                        </div>
-
-                    </div>        
-        
-        
-                    <div style="display:none" id="registrarcli">
-                     <div class="col-md-6">
-                        NOMBRE:  <input type="text" class="form-control" value="" id="cliente_nombre" name="cliente_nombre" required="true">
-                    </div>
-                    <div class="col-md-6">
-                        C.I.: <input type="text" class="form-control" value="" id="cliente_ci" name="cliente_ci" required="true">        
-                    </div>
-                    <div class="col-md-6">
-                        NIT: <input type="text" class="form-control" value="" id="cliente_nit" name="cliente_nit" required="true">
-                    </div>
-                    <div class="col-md-6">
-                        RAZON SOCIAL: <input type="text" class="form-control" value="" id="cliente_razon" name="cliente_razon" required="true">
-                    </div>
-                    <div class="col-md-6">
-                        TELF: <input type="text" class="form-control" value="" id="cliente_telefono" name="cliente_telefono" required="true">
-                    </div>
-                    <div class="col-md-6">
-                        DIRECCION: <input type="text" class="form-control" value="" id="cliente_direccion" name="cliente_direccion" required="true">
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                    <div class="col-md-6">
-                        <br>
-                    <button class="btn btn-success" type="button" onclick="registrarcliente()">Registrarse</button>
-                    </div>
-                    </div>
-        
-        
-                    
-        
-        
-                </td>
-            </tr>
-        
-        </table>
-        
-      </div>
-     
-    </div>
-  </div>
-</div>
-<!-- Modal: registro -->
-
-
-
-
-
-
-<!----------------- fin modal mensaje ---------------------------------------------->
-<div hidden="true">
-    
-<button type="button" id="boton_modal_mensaje" class="btn btn-primary" data-toggle="modal" data-target="#modalmensaje" >
-  Modal mensaje
-</button>
-</div>
-<!----------------- modal preferencias ---------------------------------------------->
-
-<div class="modal fade" id="modalmensaje" tabindex="-1" role="dialog" aria-labelledby="modalmensaje" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-                            
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                            </button>
-                            <center>
-                                <h4 class="modal-title" id="myModalLabel"><b>ADVERTENCIA</b></h4>
-                                <!--<b>ADVERTENCIA: Seleccione la </b>-->                                
-                            </center>
-                            
-                    </div>
-                    <div class="modal-body">
-                        <!--------------------- TABLA---------------------------------------------------->
-                        
-                        <div class="box-body table-responsive">
-
-                            <div class="col-md-3" id="imagen_advertencia">
-                                <center>
-                                    <img src="<?php echo base_url("resources/web/images/advertencia.png"); ?>" width="50px;" height="50px;" >                                    
-                                </center>
-                            </div>
-
-                            <div class="col-md-9">
-                                <center>
-                                    
-                                    <div class="form-group" id="mensaje_advertencia">
-                                        <b> La operacion es invalida...!</b>
-                                        <br> Revise los parámetros por favor...!!                                            
-                                    </div>
-
-                                </center>
-                            </div>
-
-                            
-             
-                        </div>
-
-                        <!----------------------FIN TABLA--------------------------------------------------->
-                    </div>
-                    
-                    <div class="modal-footer" >
-                        <center>
-                            <button class="btn btn-danger" id="cancelar_preferencia" data-dismiss="modal" >
-                                    <span class="fa fa-close"></span>  Aceptar
-                            </button>                                                    
-                        </center>
-                    </div>
-                    
-		</div>
-	</div>
-</div>
-
-
-<!----------------- fin modal preferencias ---------------------------------------------->
-
-
-
-
-
-
 <!-- //footer -->
-<div class="footer">
-        <div class="container">
-            <div class="w3_footer_grids">
-                <div class="col-md-3 w3_footer_grid">
-                    <center>
-<!--                    <h3>CONTACTOS</h3>
-                    
-                    <ul class="address">
-                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><?php echo $pagina_web[0]['empresa_direccion']; ?>, <?php echo $pagina_web[0]['empresa_departamento']; ?>.</li>
-                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:<?php echo $pagina_web[0]['empresa_email']; ?>"><?php echo $pagina_web[0]['empresa_email']; ?></a></li>
-                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i><?php echo $pagina_web[0]['empresa_telefono']; ?></li>
-                    </ul>-->
-                        <a href="<?php echo base_url("website/ximpleman"); ?>" target="_BLANK" >
-                            <img src="<?php echo base_url("resources/web/images/logo.png"); ?>" width="50%" height="50%">
-                        </a>
-                    </center>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <center>
-<!--                    <h3>INFORMACIÓN</h3>
-                    <ul class="info"> 
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.html">Contact Us</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="short-codes.html">Short Codes</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.html">FAQ's</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Special Products</a></li>
-                    </ul>-->
-                    <ul class="info"> <br>
-                        <li><i class="fa" aria-hidden="true"></i><a href="faq.html">Política de privacidad</a></li>
-                    
-                    </ul>
-                    </center>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <center>
-<!--                    <h3>CATEGORIAS</h3>
-                    <ul class="info"> 
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">Beverages</a></li>
-                    </ul>-->
-                    <ul class="info"> 
-                        <br>
-                        <li><i class="fa" aria-hidden="true"></i><a href="groceries.html">Un producto de </a></li>
-                    </ul>
-                    </center>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <center>
-                        
-                        
-<!--                    <h3>MENU</h3>
-                    <ul class="info"> 
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Store</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="checkout.html">My Cart</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.html">Login</a></li>
-                        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.html">Create Account</a></li>
-                    </ul>-->
-
-                        <a href="<?php echo base_url("website/password"); ?>" target="_BLANK" >
-                        <img src="<?php echo base_url("resources/web/images/logo_password.png"); ?>" width="50%" height="50%">
-                        </a>
-                    </center>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-        
-<!--        <div class="footer-copy">
-            
-            <div class="container">
-                <p>© <?php echo date('Y'); ?> Ximpleman, All rights reserved | <a href="http://www.passwordbolivia.com/">Password Ingeniería Hardware & Software </a></p>
-            </div>
-        </div>-->
-        
-    </div>  
-
-    <div class="footer-botm">
-            <div class="container">
-                <div class="w3layouts-foot">
-                    <ul>
-                        <li><a href="https://www.facebook.com/sisximpleman/" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="https://www.twitter.com/sisximpleman/" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <!--<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>-->
-                        <li><a href="https://www.vimeo.com/sisximpleman/" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-                <div class="payment-w3ls">  
-                    <img src="<?php echo $raiz;?>images/card.png" alt=" " class="img-responsive">
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-        </div>
+<?php include("footer.php"); ?>
 <!-- //footer -->   
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo $raiz;?>js/bootstrap.min.js"></script>
