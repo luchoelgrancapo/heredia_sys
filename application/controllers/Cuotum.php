@@ -820,24 +820,24 @@ class Cuotum extends CI_Controller{
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
-				'credito_id' => $this->input->post('credito_id'),
-				'usuario_id' => $this->input->post('usuario_id'),
-				'estado_id' => $this->input->post('estado_id'),
-				'cuota_numcuota' => $this->input->post('cuota_numcuota'),
-				'cuota_capital' => $this->input->post('cuota_capital'),
-				'cuota_interes' => $this->input->post('cuota_interes'),
-				'cuota_moradias' => $this->input->post('cuota_moradias'),
-				'cuota_multa' => $this->input->post('cuota_multa'),
-				'cuota_subtotal' => $this->input->post('cuota_subtotal'),
-				'cuota_descuento' => $this->input->post('cuota_descuento'),
-				'cuota_total' => $this->input->post('cuota_total'),
-				'cuota_fechalimite' => $this->input->post('cuota_fechalimite'),
-				'cuota_cancelado' => $this->input->post('cuota_cancelado'),
-				'cuota_fecha' => $this->input->post('cuota_fecha'),
-				'cuota_hora' => $this->input->post('cuota_hora'),
-				'cuota_numercibo' => $this->input->post('cuota_numercibo'),
-				'cuota_saldo' => $this->input->post('cuota_saldo'),
-				'cuota_glosa' => $this->input->post('cuota_glosa'),
+                'credito_id' => $this->input->post('credito_id'),
+                'usuario_id' => $this->input->post('usuario_id'),
+                'estado_id' => $this->input->post('estado_id'),
+                'cuota_numcuota' => $this->input->post('cuota_numcuota'),
+                'cuota_capital' => $this->input->post('cuota_capital'),
+                'cuota_interes' => $this->input->post('cuota_interes'),
+                'cuota_moradias' => $this->input->post('cuota_moradias'),
+                'cuota_multa' => $this->input->post('cuota_multa'),
+                'cuota_subtotal' => $this->input->post('cuota_subtotal'),
+                'cuota_descuento' => $this->input->post('cuota_descuento'),
+                'cuota_total' => $this->input->post('cuota_total'),
+                'cuota_fechalimite' => $this->input->post('cuota_fechalimite'),
+                'cuota_cancelado' => $this->input->post('cuota_cancelado'),
+                'cuota_fecha' => $this->input->post('cuota_fecha'),
+                'cuota_hora' => $this->input->post('cuota_hora'),
+                'cuota_numercibo' => $this->input->post('cuota_numercibo'),
+                'cuota_saldo' => $this->input->post('cuota_saldo'),
+                'cuota_glosa' => $this->input->post('cuota_glosa'),
             );
             
             $cuotum_id = $this->Cuotum_model->add_cuotum($params);
@@ -845,14 +845,14 @@ class Cuotum extends CI_Controller{
         }
         else
         {
-			$this->load->model('Credito_model');
-			$data['all_credito'] = $this->Credito_model->get_all_credito();
+            $this->load->model('Credito_model');
+            $data['all_credito'] = $this->Credito_model->get_all_credito();
 
-			$this->load->model('Usuario_model');
-			$data['all_usuario'] = $this->Usuario_model->get_all_usuario();
+            $this->load->model('Usuario_model');
+            $data['all_usuario'] = $this->Usuario_model->get_all_usuario();
 
-			$this->load->model('Estado_model');
-			$data['all_estado'] = $this->Estado_model->get_all_estado();
+            $this->load->model('Estado_model');
+            $data['all_estado'] = $this->Estado_model->get_all_estado();
             
             $data['_view'] = 'cuotum/add';
             $this->load->view('layouts/main',$data);
@@ -879,24 +879,24 @@ class Cuotum extends CI_Controller{
             if(isset($_POST) && count($_POST) > 0)     
             {   
                 $params = array(
-					'credito_id' => $this->input->post('credito_id'),
-					'usuario_id' => $usuario_id,
-					'estado_id' => 8,
-					'cuota_numcuota' => $this->input->post('cuota_numcuota'),
-					'cuota_capital' => $this->input->post('cuota_capital'),
-					'cuota_interes' => $this->input->post('cuota_interes'),
-					'cuota_moradias' => $this->input->post('cuota_moradias'),
-					'cuota_multa' => $this->input->post('cuota_multa'),
-					'cuota_subtotal' => $this->input->post('cuota_subtotal'),
-					'cuota_descuento' => $this->input->post('cuota_descuento'),
-					'cuota_total' => $this->input->post('cuota_total'),
-					'cuota_fechalimite' => $this->input->post('cuota_fechalimite'),
-					'cuota_cancelado' => $this->input->post('cuota_cancelado'),
-					//'cuota_fecha' =>  date('Y-m-d'),
-					//'cuota_hora' => date('H:i:s'),
-					'cuota_numercibo' => $this->input->post('cuota_numercibo'),
-					'cuota_saldo' => $this->input->post('cuota_saldo'),
-					'cuota_glosa' => $this->input->post('cuota_glosa'),
+                    'credito_id' => $this->input->post('credito_id'),
+                    'usuario_id' => $usuario_id,
+                    'estado_id' => 8,
+                    'cuota_numcuota' => $this->input->post('cuota_numcuota'),
+                    'cuota_capital' => $this->input->post('cuota_capital'),
+                    'cuota_interes' => $this->input->post('cuota_interes'),
+                    'cuota_moradias' => $this->input->post('cuota_moradias'),
+                    'cuota_multa' => $this->input->post('cuota_multa'),
+                    'cuota_subtotal' => $this->input->post('cuota_subtotal'),
+                    'cuota_descuento' => $this->input->post('cuota_descuento'),
+                    'cuota_total' => $this->input->post('cuota_total'),
+                    'cuota_fechalimite' => $this->input->post('cuota_fechalimite'),
+                    'cuota_cancelado' => $this->input->post('cuota_cancelado'),
+                    //'cuota_fecha' =>  date('Y-m-d'),
+                    //'cuota_hora' => date('H:i:s'),
+                    'cuota_numercibo' => $this->input->post('cuota_numercibo'),
+                    'cuota_saldo' => $this->input->post('cuota_saldo'),
+                    'cuota_glosa' => $this->input->post('cuota_glosa'),
                 );
 
                 $this->Cuotum_model->update_cuotum($cuota_id,$params);            
@@ -904,14 +904,14 @@ class Cuotum extends CI_Controller{
             }
             else
             {
-				$this->load->model('Credito_model');
-				$data['all_credito'] = $this->Credito_model->get_all_credito();
+                $this->load->model('Credito_model');
+                $data['all_credito'] = $this->Credito_model->get_all_credito();
 
-				$this->load->model('Usuario_model');
-				$data['all_usuario'] = $this->Usuario_model->get_all_usuario();
+                $this->load->model('Usuario_model');
+                $data['all_usuario'] = $this->Usuario_model->get_all_usuario();
 
-				$this->load->model('Estado_model');
-				$data['all_estado'] = $this->Estado_model->get_all_estado();
+                $this->load->model('Estado_model');
+                $data['all_estado'] = $this->Estado_model->get_all_estado();
 
                 $data['_view'] = 'cuotum/edit';
                 $this->load->view('layouts/main',$data);

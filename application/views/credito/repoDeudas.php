@@ -26,72 +26,58 @@ function inicio(){
 </script>   
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('resources/css/cabecera.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
-<!--<div class="box-header">
-               
-                 <div class="col-md-12"  >
-                 <div class="col-md-4"  >
-            
-            <br class="no-print">        
-        <div class="row">
-            Desde: <input type="date" class="btn btn-primary btn-sm " id="fecha_desde" name="fecha_desde" required="true" value="">
-       
-            Hasta: <input type="date" class="btn btn-primary btn-sm" id="fecha_hasta" name="fecha_hasta" required="true"  value="">
-        </div> <br>
-        
-          
-       </div> 
-        <div class="col-md-4">--->
-        <!--------------------- parametro de buscador --------------------->
-                  <!----  <div class="input-group"> 
-                    <input id="proveedor_id" type="text" size="90" class="form-control" placeholder="Ingrese el Proveedor">
-                  </div>--->
-        <!--------------------- fin parametro de buscador --------------------->
-   <!---- </div>
-    <div class="col-md-2">--->
-        <!--------------------- parametro de buscador
-                  <select  class="btn btn-primary"  id="estado_id" style="width: 100%; border: none;" ">
-                        <option value="8">Pendiente</option>
-                        <option value="9">Cancelado</option>
+<div class="row" style="display: block" id="cabeceraprint">
+    <table class="table" style="width: 100%; padding: 0;" >
+    <tr>
+        <td style="width: 25%; padding: 0; line-height:10px;" >
+                
+            <center>
+                               
+                    <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60"><br>
+                    <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
+                    <!--<font size="2" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
+                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
+                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
+                    <!--<font size="1" face="Arial"><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
+                
+
+            </center>                      
+        </td>
                    
-                       
-                    </select> --------------------->
-        <!--------------------- fin parametro de buscador
-    </div>
-         <div class="col-md-2">
-      
-     <button class="btn btn-sm btn-primary btn-sm btn-block no-print" onclick="buscar_fecha_deuda()">
-                <h5>
-                <span class="fa fa-search"></span>   Realizar  Busqueda  
-                </h5>
-          </button>
-       <br class="no-print">   
-</div>
-</div>
-</div> --------------------->
-<div class="cuerpo">
-                    <div class="columna_derecha">
-                        <center> 
-                        <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60">
+        <td style="width: 35%; padding: 0" > 
+            <center>
+            
+                <br><br>
+                <font size="3" face="arial"><b>DEUDAS POR PAGAR</b></font> <br>
+                <font size="2" face="arial"><b>COMPRAS AL CREDITO</b></font> <br>
+                
+                <font size="1" face="arial"><b><?php echo date("d/m/Y H:i:s"); ?></b></font> <br>
+
+            </center>
+        </td>
+        <td style="width: 20%; padding: 0" >
+                <center>
+                         
+                             
+                            
+                         
+                        
                     </center>
-                    </div>
-                    <div class="columna_izquierda">
-                       <center>  <font size="4"><b><u><?php echo $empresa[0]['empresa_nombre']; ?></u></b></font><br>
-                        <?php echo $empresa[0]['empresa_zona']; ?><br>
-                        <?php echo $empresa[0]['empresa_direccion']; ?><br>
-                        <?php echo $empresa[0]['empresa_telefono']; ?>
-                    </div> </center>
-                    <div class="columna_central">
-                        <center>      <h3 class="box-title"><u>DEUDAS POR PAGAR</u></h3>
-                            <b>COMPRAS AL CREDITO</b> <br>
-                <?php echo date('d/m/Y H:i:s'); ?>
-                </center>
-                    </div>
+        </td>
+    </tr>
+     
+    
+    
+</table>       
+        
 </div>
- <a onclick="imprimir()" class="btn btn-success btn-sm no-print"><i class="fa fa-print"> Imprimir</i></a>
+ <a onclick="imprimir()" class="btn btn-warning btn-sm no-print"><i class="fa fa-print"></i> Imprimir</a>
 <div class="row">  
 
          <div class="box">
@@ -223,12 +209,13 @@ function inicio(){
             </div>
                    
         </div>
-        <div>
+        
+    </div>
+</div>
+<div>
             <center>
                 <hr style="border-color: black; width: 20%; margin-bottom: 0;">
                 RESPONSABLE<BR>
                 FIRMA-SELLO
             </center>
         </div>
-    </div>
-</div>

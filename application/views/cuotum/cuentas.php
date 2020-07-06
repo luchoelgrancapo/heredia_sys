@@ -28,7 +28,7 @@
 
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
 <div class="box-header">
@@ -184,15 +184,15 @@ $(document).ready(function(){
                         if ($bandera==0) {
                                   if($rol[49-1]['rolusuario_asignado'] == 1){
                                 ?>
-                            <a href="#" data-toggle="modal" title="COBRAR" data-target="#pagar<?php echo $i; ?>" class="btn btn-success btn-xs"><span class="fa fa-dollar"></span></a>
+                            <a href="#" data-toggle="modal" title="COBRAR" data-target="#pagar<?php echo $i; ?>" class="btn btn-success btn-xs"><span class="fas fa-money-bill-alt"></span></a>
                             <?php }
                                   $bandera = 1;} ?>
-                            <a href="<?php echo site_url("cuotum/notacobro/".$c['cuota_id']."/".$c['credito_id']); ?>" target="_blank" title="NOTA DE COBRO" class="btn btn-facebook btn-xs"><span class="fa fa-print"></span></a>
+                            <a href="<?php echo site_url("cuotum/notacobro/".$c['cuota_id']."/".$c['credito_id']); ?>" target="_blank" title="NOTA DE COBRO" class="btn btn-warning btn-xs"><span class="fa fa-print"></span></a>
                              <?php if($rol[51-1]['rolusuario_asignado'] == 1){ ?>
-                                <a href="<?php echo site_url('cuotum/editar/'.$c['cuota_id']); ?>" title="EDITAR" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span></a>
+                                <a href="<?php echo site_url('cuotum/editar/'.$c['cuota_id']); ?>" title="EDITAR" class="btn btn-info btn-xs"><span class="fa fa-edit"></span></a>
                             <?php }
                             if($rol[52-1]['rolusuario_asignado'] == 1){ ?>
-                            <a class="btn btn-danger btn-xs" data-toggle="modal" title="ELIMINAR" data-target="#myModal<?php echo $i; ?>"  title="Eliminar"><span class="fa fa-trash"></span></a>
+                            <a class="btn bg-danger btn-xs" data-toggle="modal" title="ELIMINAR" data-target="#myModal<?php echo $i; ?>"  title="Eliminar"><span class="fas fa-trash"></span></a>
                             <?php } ?>
                             
                             <!------------------------ INICIO modal para confirmar eliminación ------------------->
@@ -222,10 +222,10 @@ $(document).ready(function(){
                             <a href="<?php echo site_url("cuotum/pendiente1/".$c['cuota_id']."/".$c['credito_id']."/".$c['cuota_numcuota']); ?>" title="REESTABLECER" class="btn btn-info btn-xs"><span class="fa fa-undo"></span></a>
                             <?php if ($cuota[0]['venta_id']>0) { ?>
                              <a href="<?php echo site_url('cuotum/recibocuentas/'.$c['cuota_id']); ?>" target="_blank" class="btn btn-success btn-xs"><span title="RECIBO" class="fa fa-print"></span></a>
-                             <a href="<?php echo site_url("cuotum/comprobantecuentas/".$c['cuota_id']."/".$c['credito_id']); ?>" target="_blank" title="RECIBO" class="btn btn-facebook btn-xs"><span class="fa fa-print"></span></a>
+                             <a href="<?php echo site_url("cuotum/comprobantecuentas/".$c['cuota_id']."/".$c['credito_id']); ?>" target="_blank" title="RECIBO" class="btn btn-warning btn-xs"><span class="fa fa-print"></span></a>
                            <?php } else { ?>
                              <a href="<?php echo site_url('cuotum/recibocuentaserv/'.$c['cuota_id']); ?>" target="_blank" class="btn btn-success btn-xs"><span class="fa fa-print"></span></a>
-                             <a href="<?php echo site_url("cuotum/comprobantecuentaserv/".$c['cuota_id']."/".$c['credito_id']); ?>" target="_blank" class="btn btn-facebook btn-xs"><span class="fa fa-print"></span></a>
+                             <a href="<?php echo site_url("cuotum/comprobantecuentaserv/".$c['cuota_id']."/".$c['credito_id']); ?>" target="_blank" class="btn btn-warning btn-xs"><span class="fa fa-print"></span></a>
                              <?php } ?>
                         </td>  
                        <?php } ?>
@@ -236,10 +236,11 @@ $(document).ready(function(){
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               
+                     <font face="Arial" size="3"><b>COBRAR CUOTA Nº: <?php echo $c['cuota_numcuota']; ?></b></font>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                     <font face="Arial" size="3"><b>COBRAR CUOTA Nº: <?php echo $c['cuota_numcuota']; ?></b></font><br>
               </div>
               <div class="modal-body" align="center">
                 <form action="<?php echo base_url('cuotum/cobrar/'.$c['cuota_id']); ?>"  method="POST" class="form" name="finpagar<?php echo $c['cuota_id']; ?>" id="finpagar<?php echo $c['cuota_id']; ?>">
@@ -255,7 +256,7 @@ $(document).ready(function(){
               <input type="checkbox" name="factura" id="factura" onclick="facturar(<?php echo $c['cuota_id']; ?>)"> Emitir Factura
                
             </div>
-          <div class="col-md-12">
+          <div class="row">
             <input type="hidden" name="cuota_id" value="<?php echo $c['cuota_id']; ?>" class="form-control" id="cuota_id" />
             <input type="hidden" name="estado_id" value="9" class="form-control" id="estado_id" />
           <div class="col-md-6">
@@ -296,16 +297,18 @@ $(document).ready(function(){
                     </div>
                     
                     <div id="clinit<?php echo $c['cuota_id']; ?>" style="display: none">
+                      <div class="row" style="padding-left: 10px">
                       <div class="col-md-6">
                         <label for="cuota_nit" class="control-label">Nit</label>
                         <div class="form-group">
-                       <input type="text" name="cuota_nit" id="cuota_nit<?php echo $c['cuota_id']; ?>" value="<?php echo $credito[0]['cliente_nit']; ?>" class="form-control"  />
+                       <input type="text" name="cuota_nit" id="cuota_nit<?php echo $c['cuota_id']; ?>" value="<?php echo $credito[0]['cliente_nit']; ?>" class="form-control"/>
                      </div></div>
                      <div class="col-md-6">
                       <label for="cuota_razon" class="control-label">Razon Social</label>
                         <div class="form-group">
                           <input type="text"  name="cuota_razon" id="cuota_razon<?php echo $c['cuota_id']; ?>" value="<?php echo $credito[0]['cliente_razon']; ?>" class="form-control" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);"  />
                         </div>
+                    </div>
                     </div>
                     </div>
             
@@ -315,16 +318,16 @@ $(document).ready(function(){
                 </div>
               <div class="modal-footer" align="right">
 
-            <button class="btn btn-lg btn-success"  type="button"  onclick="enviar_formulario(<?php echo $c['cuota_id']; ?>)">
-                <h4>
-                <span class="fa fa-money"></span>   Cobrar  
-                </h4>
+            <button class="btn btn-sm btn-success"  type="button"  onclick="enviar_formulario(<?php echo $c['cuota_id']; ?>)">
+                
+                <span class="fas fa-money-bill-alt"></span>   Cobrar  
+                
             </button> 
             </form>
-            <button class="btn btn-lg btn-danger" data-dismiss="modal">
-                <h4>
-                <span class="fa fa-close"></span>   Cancelar  
-                </h4>
+            <button class="btn btn-sm btn-danger" data-dismiss="modal">
+                
+                <span class="fa fa-times"></span>   Cancelar  
+                
             </button>
                          
         </div>

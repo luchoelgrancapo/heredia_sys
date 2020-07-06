@@ -77,7 +77,7 @@
                          <?php echo $session_data['usuario_nombre']; ?>
                           
                         </h3>
-                        <a href="<?php echo site_url()?>admin/dashb/logout" class="btn btn-danger btn-xs"><i class="fas fa-sign-out-alt"></i> Salir de BUSINESS SYS</a>
+                        <a href="<?php echo site_url()?>admin/dashb/logout" class="btn btn-danger btn-xs"><i class="fas fa-sign-out-alt"></i> Salir de<br>BUSINESS SYS</a>
                       </div>
                     </div>
                     <!-- Message End -->
@@ -127,13 +127,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo site_url('compra');?>" class="nav-link">
-                                <i class="nav-icon fas fa-shopping-basket fa-fw"></i> <p>Compras</p>
+                            <a href="<?php echo site_url('venta');?>" class="nav-link">
+                                <i class="nav-icon fas fa-cart-arrow-down fa-fw"></i> <p>Ventas</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo site_url('venta');?>" class="nav-link">
-                                <i class="nav-icon fas fa-cart-arrow-down fa-fw"></i> <p>Ventas</p>
+                            <a href="<?php echo site_url('compra');?>" class="nav-link">
+                                <i class="nav-icon fas fa-shopping-basket fa-fw"></i> <p>Compras</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -149,6 +149,16 @@
                         <li class="nav-item">
                             <a href="<?php echo site_url('egreso');?>" class="nav-link">
                                 <i class="nav-icon fas fa-hand-holding-usd fa-fw"></i> <p>Egresos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('credito/indexCuenta');?>" class="nav-link">
+                                <i class="nav-icon fas fa-hand-holding-usd fa-fw"></i> <p>Deudas por cobrar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('credito/indexDeuda');?>" class="nav-link">
+                                <i class="nav-icon fas fa-hand-holding-usd fa-fw"></i> <p>Deudas por pagar</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -181,21 +191,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('categoria_cliente');?>" class="nav-link">
+                <a href="<?php echo site_url('categoria_ingreso');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Cliente</p>
+                  <p>Ingreso</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo site_url('categoria_egreso');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Egreso</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo site_url('categoria_ingreso');?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ingreso</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -210,6 +214,12 @@
                   <p>Proveedor</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('categoria_cliente');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cliente</p>
+                </a>
+              </li>              
               <li class="nav-item">
                 <a href="<?php echo site_url('tipo_cliente');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -275,17 +285,18 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('reportes/egresorep');?>" class="nav-link">
-                  <i class="fas fa-file-import nav-icon"></i>
-                  <p>Egresos</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="<?php echo site_url('reportes/ingresorep');?>" class="nav-link">
                   <i class="fas fa-file-import nav-icon"></i>
                   <p>Ingresos</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('reportes/egresorep');?>" class="nav-link">
+                  <i class="fas fa-file-import nav-icon"></i>
+                  <p>Egresos</p>
+                </a>
+              </li>
+              
             </ul>
           </li>   
           <li class="nav-item has-treeview">

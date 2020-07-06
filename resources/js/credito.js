@@ -97,7 +97,7 @@ function tabladeudas(filtro) //Deudas por pagar
                if (registros != null){                   
                    
                     var n = registros.length; //tamaÃ±o del arreglo de la consulta
-                    $("#pillados").html("Registros Encontrados: "+n+" ");
+                    $("#pillados1").html("Registros Encontrados: "+n+" ");
                     //var total_detalle = Number(0);
                     //var suma = Number(0);
                     //var subtotal = Number(0);
@@ -107,8 +107,8 @@ function tabladeudas(filtro) //Deudas por pagar
                     html2 = "";
                     
                     html2 += "<tr>";  
-                    html2 += "<th>#</th>";  
-                    html2 += "<th>Cliente</th>";  
+                    html2 += "<th>Nº</th>";  
+                    html2 += "<th>Proveedor</th>";  
                     html2 += "<th>Crédito</th>";  
                     html2 += "<th>Compra</th>";  
                     html2 += "<th>Estado</th>";  
@@ -152,8 +152,8 @@ function tabladeudas(filtro) //Deudas por pagar
                         html += "<td style='text-align: center'>"+moment(registros[i]['credito_fecha']).format('DD/MM/YYYY')+"</td>";
                         html += "<td style='text-align: center'>"+registros[i]['credito_hora']+"</td>";
                         html += "<td style='text-align: center'>"+registros[i]['usuario_nombre']+"</td>";
-                        html += "<td><a href='"+base_url+"cuotum/deudas/"+registros[i]['credito_id']+"' target='_blank' class='btn btn-success btn-xs'><span class='fa fa-eye'></span></a>";
-                        html += "<a href='"+base_url+"cuotum/planDeuda/"+registros[i]['credito_id']+"' target='_blank' class='btn btn-facebook btn-xs'><span class='fa fa-print'></span></a></td>";
+                        html += "<td><a href='"+base_url+"cuotum/deudas/"+registros[i]['credito_id']+"' target='_blank' title='Pagar cuotas' class='btn btn-success btn-xs'><span class='fas fa-money-bill-alt'></span></a>";
+                        html += " <a href='"+base_url+"cuotum/planDeuda/"+registros[i]['credito_id']+"' target='_blank' title='Plan de pago' class='btn btn-warning btn-xs'><span class='fa fa-print'></span></a></td>";
 }
                    html += "<tr><td colspan=3 align=right><font size='2' face='Arial'><b>TOTAL</b></font></td>"; 
                    html += "<td colspan=3 align=right><font size='2' face='Arial'><b>"+Number(total).toFixed(2)+"</b></font></td>"; 
@@ -246,7 +246,7 @@ function tablacuentas(filtro) //Cuentas por cobrar
                     html2 = "";
                     
                     html2 += "<tr>";  
-                    html2 += "<th>#</th>";  
+                    html2 += "<th>Nº</th>";  
                     html2 += "<th>Cliente</th>";  
                     html2 += "<th>Crédito</th>";  
                     html2 += "<th>Transacción</th>";  
@@ -309,22 +309,22 @@ function tablacuentas(filtro) //Cuentas por cobrar
                         if (registros[i]['venta_id']>0) {
                         html += "<td style='text-align: center'>"+registros[i]['usuario_nombre']+"</td>";
                         
-                        html += "<td><a href='"+base_url+"cuotum/cuentas/"+registros[i]['credito_id']+"'  target='_blank' class='btn btn-success btn-xs' title='VER CUOTAS'><span class='fa fa-eye'></span></a>";
-                        html += " <a href='"+base_url+"cuotum/planCuenta/"+registros[i]['credito_id']+"' target='_blank' class='btn btn-facebook btn-xs' title='PLAN DE PAGOS'><span class='fa fa-print'></span></a>";
+                        html += "<td><a href='"+base_url+"cuotum/cuentas/"+registros[i]['credito_id']+"'  target='_blank' title='Cobrar cuotas' class='btn btn-success btn-xs'><span class='fas fa-money-bill-alt'></span></a>";
+                        html += " <a href='"+base_url+"cuotum/planCuenta/"+registros[i]['credito_id']+"' target='_blank' title='Plan de pago' class='btn btn-warning btn-xs'><span class='fa fa-print'></span></a>";
                         html += " <a href='"+base_url+"factura/imprimir_recibo/"+registros[i]['venta_id']+"' target='_blank' class='btn btn-primary btn-xs' title='VER DETALLE VENTA'><span class='fa fa-file'></span></a>";
                         
                         if (registros[i]['factura_id']>0) {
                         html += " <a href='"+base_url+"factura/imprimir_factura_id/"+registros[i]['factura_id']+"/2' target='_blank' class='btn btn-warning btn-xs' title='IMPRIMIR FACTURA'><span class='fa fa-list'></span></a>";
                       }else{
-                        html += " <button class='btn btn-facebook btn-xs' style='background-color:#000;' title='Generar factura' onclick='cargar_factura("+registros[i]['venta_id']+","+registros[i]['credito_id']+");'><span class='fa fa-modx'></span></button> ";
+                        html += " <button class='btn bg-navy btn-xs'  title='Generar factura' onclick='cargar_factura("+registros[i]['venta_id']+","+registros[i]['credito_id']+");'><span class='fas fa-file-invoice-dollar'></span></button> ";
                       }
 
                         if (registros[i]["estado_id"]==9){
                         //html += "<a href='"+base_url+"credito/factura/"+registros[i]['credito_id']+"' target='_blank' class='btn btn-warning btn-xs'><span class='fa fa-list'></span></a></td>";
                         }
                         } else { 
-                        html += "<td><a href='"+base_url+"cuotum/cuenta_serv/"+registros[i]['credito_id']+"'  target='_blank' class='btn btn-success btn-xs'><span class='fa fa-eye'></span></a>";
-                        html += "<a href='"+base_url+"cuotum/planCuentaServ/"+registros[i]['credito_id']+"' target='_blank' class='btn btn-facebook btn-xs'><span class='fa fa-print'></span></a></td>"; 
+                        html += "<td><a href='"+base_url+"cuotum/cuenta_serv/"+registros[i]['credito_id']+"'  target='_blank' class='btn btn-success btn-xs'><span class='fas fa-money-bill-alt'></span></a>";
+                        html += "<a href='"+base_url+"cuotum/planCuentaServ/"+registros[i]['credito_id']+"' target='_blank' class='btn btn-warning btn-xs'><span class='fa fa-print'></span></a></td>"; 
                         }
                         
                 }

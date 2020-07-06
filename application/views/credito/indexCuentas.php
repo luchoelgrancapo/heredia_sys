@@ -19,11 +19,17 @@
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
-<div class="box-header">
-    <div class="col-md-6 no-print">
-               <font size='4' face='Arial'><b>Cuentas por Cobrar</b></font>
-               <br><font size='2' face='Arial' id="pillados">Registros Econtrados: </font>
+<br>
+<div class="row">
+<div class="col-md-6">
+
+
+        <!--este es INICIO del Titulo buscador-->
+        <div class="box-header">
+                <h4><b>DEUDAS POR COBRAR</b> <small class="badge badge-secondary" id="pillados"></small></h4>
         </div>
+        <!--este es FIN del Titulo buscador-->
+</div> 
         <div class="col-md-6 no-print">
             <form action="<?php echo site_url('credito/repoCuentas'); ?>"  target="_blank" method="POST">
                 <input type="hidden" name="usu" id="usu">
@@ -38,7 +44,7 @@
               <label class="btn btn-info btn-md" style="float: right;"> <input  class="btn btn-xs" type="checkbox"  id="agrupar" name="agrupar" value="1" > Agrupar</label>
             </form>
         </div></div>
-                 <div class="col-md-12">
+                 <div class="row">
                      <div class="col-md-3">
         <!--------------------- parametro de buscador --------------------->
                 <label for="fecha_desde" class="control-label">Cliente</label>
@@ -48,18 +54,18 @@
     </div>
                      <div class="col-md-2" style="padding-left: -30px;"  >
             <label for="fecha_desde" class="control-label">Desde</label>
-              <input type="date" class="form-control btn btn-primary" id="fecha_desde" name="fecha_desde" required="true"value="">
+              <input type="date" class="form-control btn btn-secondary" id="fecha_desde" name="fecha_desde" required="true"value="">
         </div>
             <div class="col-md-2" style="padding-left: -30px;"  >
                 <label for="fecha_desde" class="control-label">Hasta</label>
-           <input type="date" class="form-control btn btn-primary" id="fecha_hasta" name="fecha_hasta" required="true" value="">
+           <input type="date" class="form-control btn btn-secondary" id="fecha_hasta" name="fecha_hasta" required="true" value="">
     
        </div> 
        
       <div class="col-md-2">
         <label for="estado_id" class="control-label">Estado</label>
         <!--------------------- parametro de buscador --------------------->
-                    <select  class="form-control btn btn-success"  id="estado_id" >
+                    <select  class="form-control btn btn-secondary"  id="estado_id" >
                         
                         <option value="8">PENDIENTE</option>
                         <option value="9">CANCELADO</option>
@@ -73,7 +79,7 @@
                         
 
                 <label for="usuario_id" class="control-label">Usuario</label>                     
-                           <select  name="usuario_id" id="usuario_id"  class="form-control btn btn-warning">
+                           <select  name="usuario_id" id="usuario_id"  class="form-control btn btn-secondary">
                                 <option value="">-TODOS-</option>
                                 <?php 
                                 foreach($all_usuario as $usuario)
@@ -87,17 +93,17 @@
 
   
     </div>
-         <div class="col-md-1" style="padding-bottom: 20px;padding-top: 5px;">
+         <div class="col-md-1" style="padding-top: 8px;">
        <br>
-     <button class="btn btn-facebook no-print" onclick="buscar_fecha_cuenta()">
+     <button class="btn btn-primary tn-sm form-control no-print no-print" onclick="buscar_fecha_cuenta()">
            
-                <span class="fa fa-search"></span>   Busqueda  
+                <span class="fa fa-search"></span>   Buscar 
              
           </button>
   
 </div>
 </div>
-
+<br>
 <div class="row">
     <div class="col-md-12">
         <!--------------------- parametro de buscador --------------------->

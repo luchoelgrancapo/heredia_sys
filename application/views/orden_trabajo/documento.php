@@ -1,4 +1,4 @@
-<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 <table class="table" style="width: 100%; padding: 0;" >
     <tr>
         <td style="width: 25%; padding: 0; line-height:10px;" >

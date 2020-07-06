@@ -25,7 +25,7 @@
 
 </script>
 
-<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet" type="text/css">
  
 <div class="box-header"  align="center">
                 <h4><b><u>COMISIONES</u></b></h4>

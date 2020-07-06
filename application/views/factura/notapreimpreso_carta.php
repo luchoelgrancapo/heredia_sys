@@ -4,7 +4,7 @@
 
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<!---<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet">--->
+<!---<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">--->
 
 <!-------------------------------------------------------->
 <?php $tipo_factura = $parametro[0]["parametro_altofactura"]; //15 tamaño carta 

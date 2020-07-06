@@ -27,7 +27,7 @@
 
 <!----------------------------- fin script buscador --------------------------------------->
 <!------------------ ESTILO DE LAS TABLAS ----------------->
-<link href="<?php echo base_url('resources/css/alejo.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('resources/css/tablasoficial.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <div class="box-header">
     <center>
@@ -163,15 +163,15 @@ $(document).ready(function(){
                           if ($bandera==0) { ?>
                              <?php
                             if($rol[43-1]['rolusuario_asignado'] == 1){ ?>
-                            <a href="#" data-toggle="modal" data-target="#pagar<?php echo $i; ?>" title="PAGAR" class="btn btn-success btn-xs"><span class="fa fa-dollar"></span></a>
+                            <a href="#" data-toggle="modal" data-target="#pagar<?php echo $i; ?>" title="PAGAR" class="btn btn-success btn-xs"><span class="fas fa-money-bill-alt"></span></a>
                             <?php }
                             $bandera = 1;} ?>
                             <?php
                             if($rol[45-1]['rolusuario_asignado'] == 1){ ?>
-                            <a href="<?php echo site_url('cuotum/edit/'.$c['cuota_id']); ?>" title="EDITAR" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span></a> 
+                            <a href="<?php echo site_url('cuotum/edit/'.$c['cuota_id']); ?>" title="EDITAR" class="btn btn-info btn-xs"><span class="fa fa-edit"></span></a> 
                             <?php }
                             if($rol[46-1]['rolusuario_asignado'] == 1){ ?>
-                             <a class="btn btn-danger btn-xs" data-toggle="modal" title="ELIMINAR" data-target="#myModal<?php echo $i; ?>"  title="Eliminar"><span class="fa fa-trash"></span></a>
+                             <a class="btn bg-danger btn-xs" data-toggle="modal" title="ELIMINAR" data-target="#myModal<?php echo $i; ?>"  title="Eliminar"><span class="fas fa-trash"></span></a>
                             <?php } ?>
                             
                             <!------------------------ INICIO modal para confirmar eliminación ------------------->
@@ -201,7 +201,7 @@ $(document).ready(function(){
                           <?php } else { ?>
                              <a href="<?php echo site_url("cuotum/pendiente/".$c['cuota_id']."/".$c['credito_id']."/".$c['cuota_numcuota']); ?>" title="REESTABLECER"class="btn btn-info btn-xs"><span class="fa fa-undo"></span></a>
                              <a href="<?php echo site_url('cuotum/recibodeudas/'.$c['cuota_id']); ?>" title="RECIBO" target="_blank" class="btn btn-success btn-xs"><span class="fa fa-print"></span></a>
-                             <a href="<?php echo site_url("cuotum/comprobantedeudas/".$c['cuota_id']."/".$c['credito_id']); ?>" target="_blank" title="RECIBO" class="btn btn-facebook btn-xs"><span class="fa fa-print"></span></a>
+                             <a href="<?php echo site_url("cuotum/comprobantedeudas/".$c['cuota_id']."/".$c['credito_id']); ?>" target="_blank" title="RECIBO" class="btn btn-warning btn-xs"><span class="fa fa-print"></span></a>
 
                         </td>  
                        <?php } ?>
@@ -223,15 +223,15 @@ $(document).ready(function(){
                <h1><b> <span class="mail-box" >Cancelar Cuota<br><i class="fa fa-money"></i>
                     <?php echo $c['cuota_total']; ?></span>
               </b></h1>
-     <span class="btn btn-xs" style="border-color: orange;">
+     <span class="btn btn-xs" style="border-color: orange;" >
     <input type="radio" id="cuota_orde" name="cuota_ordenpago" value="0" checked/>
     <label for="cuota_orde">Dinero de caja</label></span>
-    <span class="btn btn-xs" style="border-color: orange;">
+    <span class="btn btn-xs" style="border-color: orange;" hidden="">
     <input type="radio" id="cuota_ordenpago1" name="cuota_ordenpago" value="1"  />
     <label for="cuota_ordenpago1">Generar orden de pago</label></span>
           </div>
 
-          <div class="col-md-12">
+          <div class="row">
             <input type="hidden" name="cuota_id" value="<?php echo $c['cuota_id']; ?>" class="form-control" id="cuota_id" />
             <input type="hidden" name="estado_id" value="9" class="form-control" id="estado_id" />
                
@@ -272,16 +272,16 @@ $(document).ready(function(){
                 </div>
               <div class="modal-footer" align="right">
 
-            <button class="btn btn-lg btn-success"  type="submit">
-                <h4>
-                <span class="fa fa-money"></span>   Pagar  
-                </h4>
+            <button class="btn btn-sm btn-success"  type="submit">
+                
+                <span class="fas fa-money-bill-alt"></span>   Pagar  
+                
             </button> 
             </form>
-            <button class="btn btn-lg btn-danger" data-dismiss="modal">
-                <h4>
-                <span class="fa fa-close"></span>   Cancelar  
-                </h4>
+            <button class="btn btn-sm btn-danger" data-dismiss="modal">
+               
+                <span class="fa fa-times"></span>   Cancelar  
+              
             </button>
                          
         </div>
