@@ -11,7 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Ximpleman, ventas online, supermecado, micromercado, 
+<meta name="keywords" content="Business Sys, ventas online, supermecado, micromercado, 
 tiendas, ventas, facturacion, contabilidad, distribucion" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -270,11 +270,12 @@ tiendas, ventas, facturacion, contabilidad, distribucion" />
                                     <input type="hidden" name="currency_code" value="USD" />
                                     <input type="hidden" name="return" value=" " />
                                     <input type="hidden" name="cancel_return" value=" " />
-                                    <!--<input type="button" name="submit" value="Añadir al pedido" class="button" onclick="insertar(<?php echo $producto[0]['producto_id'];?>)"/>-->
-<!--                                    <a href="<?php echo base_url("website/micarrito/".$idioma_id); ?>" type="button" name="submit" class="btn btn-info btn-sm" onclick="insertar(<?php echo $producto[0]['producto_id'];?>)">
-                                            <fa class='fa fa-cart-plus'></fa> Mi Carrito
-                                    </a>-->
+                                    <?php if ($producto[0]['existencia']>0) { ?>
                                     <button type="button" name="submit" class="btn btn-success btn-sm" onclick="insertar(<?php echo $producto[0]['producto_id'];?>)"><fa class='fa fa-cart-plus'></fa> AGREGAR AL CARRITO</button>
+                                    <?php }else{ ?>
+                                    <button type='button' class='btn btn-sm btn-danger' disabled>AGOTADO</button>
+                                    <?php } ?>
+                                    
                                 </fieldset>
                             </form>
                         </div>

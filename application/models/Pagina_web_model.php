@@ -199,7 +199,7 @@ class Pagina_web_model extends CI_Model
     }
     function get_producto($producto_id)
     {
-        $sql = "select c.*, p.* from categoria_producto c, producto p 
+        $sql = "select c.*, p.* from categoria_producto c, inventario p 
                 where c.categoria_id = p.categoria_id and p.producto_id=".$producto_id."";
        
         $resultado = $this->db->query($sql)->result_array();

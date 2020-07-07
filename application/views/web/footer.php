@@ -13,7 +13,7 @@
                         <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:<?php echo $pagina_web[0]['empresa_email']; ?>"><?php echo $pagina_web[0]['empresa_email']; ?></a></li>
                         <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i><?php echo $pagina_web[0]['empresa_telefono']; ?></li>
                     </ul>-->
-                        <a href="<?php echo base_url("website/ximpleman"); ?>" target="_BLANK" >
+                        <a href="<?php echo base_url("website/Business Sys"); ?>" target="_BLANK" >
                             <img src="<?php echo base_url("resources/web/images/logo2.png"); ?>">
                         </a>
                     </center>
@@ -44,7 +44,7 @@
 <!--        <div class="footer-copy">
             
             <div class="container">
-                <p>© <?php echo date('Y'); ?> Ximpleman, All rights reserved | <a href="http://www.passwordbolivia.com/">Password Ingeniería Hardware & Software </a></p>
+                <p>© <?php echo date('Y'); ?> Business Sys, All rights reserved | <a href="http://www.passwordbolivia.com/">Password Ingeniería Hardware & Software </a></p>
             </div>
         </div>-->
         
@@ -54,10 +54,10 @@
             <div class="container">
                 <div class="w3layouts-foot">
                     <ul>
-                        <li><a href="https://www.facebook.com/sisximpleman/" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="https://www.twitter.com/sisximpleman/" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.facebook.com/sisBusiness Sys/" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.twitter.com/sisBusiness Sys/" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                         <!--<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>-->
-                        <li><a href="https://www.vimeo.com/sisximpleman/" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.vimeo.com/sisBusiness Sys/" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
                         
                        
                        

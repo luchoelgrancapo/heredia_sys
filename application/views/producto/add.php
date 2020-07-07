@@ -140,7 +140,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2" hidden>
                         <label for="producto_unidadentera" class="control-label">Unidad Entera</label>
                         <div class="form-group">
                             <input type="number" step="any" min="0" name="producto_unidadentera" value="<?php echo ($this->input->post('producto_unidadentera') ? $this->input->post('producto_unidadentera') : "1"); ?>" class="form-control" id="producto_unidadentera" />
@@ -214,7 +214,7 @@
                                     </select>
                             </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                             <label for="moneda_id" class="control-label"><span class="text-danger">*</span>Moneda</label>
                             <div class="form-group">
                                     <select name="moneda_id" class="form-control" required>

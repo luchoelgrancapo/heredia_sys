@@ -137,7 +137,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2" hidden>
                         <label for="producto_unidadentera" class="control-label">Unidad Entera</label>
                         <div class="form-group">
                             <input type="number" step="any" min="0" name="producto_unidadentera" value="<?php echo ($this->input->post('producto_unidadentera') ? $this->input->post('producto_unidadentera') : $producto['producto_unidadentera']); ?>" class="form-control" id="producto_unidadentera" />
@@ -168,7 +168,7 @@
                             <span class="text-danger"><?php echo form_error('producto_codigo');?></span>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label for="categoria_id" class="control-label"><span class="text-danger">*</span>Categoria</label>
                         <div class="form-group" style="display: flex">
                             <select name="categoria_id" class="form-control" required id="categoria_id" onchange="mostrar_subcategoriaproducto(this.value)">

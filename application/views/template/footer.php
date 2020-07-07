@@ -1,7 +1,7 @@
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    <strong>Developed By <a href="http://www.passwordsrl.com/ximpleman">Ximpleman</a> web</strong>
+    <strong>Developed By <a href="http://www.passwordsrl.com/Business Sys">Business Sys</a> web</strong>
 </footer>
 
 <!-- Control Sidebar -->

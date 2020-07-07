@@ -11,7 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Ximpleman, Sistema de facturación, Sistema de ventas, facturacíon, Password SRL, Password Ingenieria Hardware & Software" />
+<meta name="keywords" content="" />
 <meta property="og:image" content="<?php echo site_url('resources/images/icono.png');?>" >
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -292,7 +292,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="w3_agile_social_icons w3_agile_social_icons_contact">
                             <ul>
                                 <li><a href="#" class="icon icon-cube agile_facebook"></a></li>
-                                <li><a href="#" class="icon icon-cube agile_rss"></a></li>
+                                <li><a href="#" class="icon icon-cube agile_instagram"></a></li>
                                 <li><a href="#" class="icon icon-cube agile_t"></a></li>
                             </ul>
                         </div>
@@ -301,24 +301,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             
             <div class="col-md-6 w3_agileits_contact_grid_right">
-                <h2 class="w3_agile_header">Dejanos<span> un Mensaje</span></h2>
+                <h2 class="w3_agile_header">Envíanos<span> un Mensaje</span></h2>
 
                 <?php echo form_open('website/email'); ?>
                     <span class="input input--ichiro">
                         <input class="input__field input__field--ichiro" type="text" id="input-25" name="nomemail" placeholder=" " required="" />
                         <label class="input__label input__label--ichiro" for="input-25">
-                            <span class="input__label-content input__label-content--ichiro">Tu Nombre</span>
+                            <span class="input__label-content input__label-content--ichiro">Tu nombre</span>
                         </label>
                     </span>
                     <span class="input input--ichiro">
                         <input class="input__field input__field--ichiro" type="email" id="input-26" name="froemail" placeholder=" " required="" />
 
                         <label class="input__label input__label--ichiro" for="input-26">
-                            <span class="input__label-content input__label-content--ichiro">Tu Email</span>
+                            <span class="input__label-content input__label-content--ichiro">Tu email</span>
                         </label>
                     </span>
                     <input class="form-control" type="hidden" id="empresa_email" name="empresa_email" value="<?php echo $pagina_web[0]['empresa_email']; ?>" />
-                    <textarea placeholder="Escribe Tu Mensaje..." required="" id="mensaje12" name="mensaje12"></textarea>
+                    <textarea placeholder="Escribe un mensaje..." required="" id="mensaje12" name="mensaje12"></textarea>
                     <input type="submit" value="Enviar">
                 <?php echo form_close(); ?>
             </div>

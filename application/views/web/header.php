@@ -1,16 +1,16 @@
 <!------------------ PRIMERA SECCION -------------------------------------->
     <div class="agileits_header">
-            <div class="container" style="margin-bottom: -10px; ">
-                <div class="w3l_offers">                        
-                        <b> <?php if (strlen($pagina_web[0]['empresa_nombre'])>28) { ?> 
-                            <a href="<?php echo base_url();?>" style="color: white;  -webkit-text-stroke: 0px darkorange;font-size: 15px"><?php echo $pagina_web[0]['empresa_nombre']; } else { ?>
-                            <a href="<?php echo base_url();?>" style="color: white;  -webkit-text-stroke: 0px darkorange;font-size: 20px"><?php echo $pagina_web[0]['empresa_nombre']; } ?> </a></b>
+            <div class="container" style="margin-bottom: -5px; ">
+                <div class="w3l_offers" align="center">                        
+                        <b> <?php if (strlen($pagina_web[0]['empresa_nombre'])>30) { ?> 
+                            <a href="<?php echo base_url();?>" style="color: white;  -webkit-text-stroke: 0px red;font-size: 18px"><?php echo $pagina_web[0]['empresa_nombre']; } else { ?>
+                            <a href="<?php echo base_url();?>" style="color: white;  -webkit-text-stroke: 0px red;font-size: 24px"><?php echo $pagina_web[0]['empresa_nombre']; } ?> </a></b>
                 </div>
 <!------------------ MENU CABECERA  ----------------------------------->                    
                 <div class="agile-login">
                     <ul>
                         
-                        <li><a href="<?php echo base_url('login'); ?>">Ingresar</a></li>
+                        <li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-lock"></i> Usuario</a></li>
                        
                           <?php if(isset($_COOKIE["cliente_id"])) { 
                             
@@ -45,7 +45,7 @@
 
                                         <!------- Inicio iniciar sesion ------------>                                        
                                         <li class="dropdown">
-                                            <a href="#modalCliente" data-target="#modalCliente"  class="dropdown-toggle" data-toggle="modal">Cliente</a>
+                                            <a href="#modalCliente" data-target="#modalCliente"  class="dropdown-toggle" data-toggle="modal"><i class="fa fa-sign-in"></i> Cliente</a>
                                         </li>                                         
                                         <!------- Fin iniciar sesion ---------->
                                                                        
@@ -138,7 +138,7 @@
                     <form action="#" method="post" class="last"> 
                         <input type="hidden" name="cmd" value="_cart">
                         <input type="hidden" name="display" value="1">
-                        <button class="w3view-cart" type="button" class="btn btn-primary" onclick="tablacarrito()"><i class="fa fa-cart-arrow-down" aria-hidden="true" title="Mi Carrito"></i></button>
+                        <button class="w3view-cart" type="button" class="btn btn-primary" onclick="tablacarrito()"><i class="fa fa-shopping-cart" aria-hidden="true" title="Mi Carrito"></i></button>
                         
                         <?php if(isset($_COOKIE["cliente_id"])) { ?>
                                 <button class="w3view-cart" type="button" class="btn btn-primary" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesión"></i></button>
@@ -325,6 +325,7 @@
                                     Las cookies nos permiten ofrecer nuestros serivicios. Al utilizar nuestro servicio aceptas el uso que hacemos de las cookies.                                       
                                    </small>
                                </p>
+                               <br>
                                 
                                <center>
                                  <button class="btn btn-success" type="button" onclick="sesion()" id="boton_login"><fa class="fa fa-sign-in"></fa> Ingresar</button>     
