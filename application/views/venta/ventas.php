@@ -354,6 +354,7 @@ window.onkeydown = compruebaTecla;
             <label for="categoriaclie_id" class="control-label" style="margin-bottom: 0;"><span class="text-danger" style="margin-bottom: 0;">*</span>CATEGORIA</label>
                             <div class="form-group" style="display: flex">
                                     <select name="categoriaclie_id" id="categoriaclie_id" class="form-control" onchange="codigo()" required>
+                                        <option value="">Categoria</option>
                                             <?php 
                                             foreach($all_categoria_cliente as $categoria_cliente)
                                             {

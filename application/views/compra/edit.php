@@ -139,7 +139,7 @@ input[type=number] { -moz-appearance:textfield;
     <div class="info-box">
         <center>            
             <a href="#" data-toggle="modal" data-target="#modalbuscar" class="btn bg-primary btn-app" title="Buscar Proveedores"><i class="fa fa-search"></i>Buscar Proveedor</a>
-            <a href="#" data-toggle="modal" data-target="#modalproveedor"class="btn bg-success btn-app" title="Registrar nuevo Proveedor"><i class="fa fa-user-plus"></i>Registrar Proveedor</a>
+            <a href="#" data-toggle="modal" data-target="#modalproveedor" class="btn bg-success btn-app" onclick="codigo()" title="Registrar nuevo Proveedor"><i class="fa fa-user-plus"></i>Registrar Proveedor</a>
             <a href="#" data-toggle="modal" data-target="#modalproducto" class="btn bg-dark btn-app" title="Registrar nuevo Producto"><i class="fa fa-plus-circle"></i>Nuevo Producto</a> 
        
         </center>  
@@ -656,7 +656,7 @@ input[type=number] { -moz-appearance:textfield;
                             <label for="categoriaprov_id" class="control-label"><span class="text-danger">*</span>Categoria</label>
                             <div class="form-group" style="display: flex">
                                     <select name="categoriaprov_id" id="categoriaprov_id" class="form-control" onchange="codigo()" required>
-                                            <option value="">- CATEGORIA -</option>
+                                            
                                             <?php 
                                             foreach($all_categoria_proveedor as $categoria_proveedor)
                                             {

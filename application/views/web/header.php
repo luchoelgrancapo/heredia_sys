@@ -327,7 +327,7 @@
                                </p>
                                 
                                <center>
-                                 <button class="btn btn-success" type="button" onclick="sesion()" id="boton_login"><fa class="fa fa-inbox"></fa> Ingresar</button>     
+                                 <button class="btn btn-success" type="button" onclick="sesion()" id="boton_login"><fa class="fa fa-sign-in"></fa> Ingresar</button>     
                                  <button class="btn btn-danger" type="button" data-dismiss="modal"><fa class="fa fa-times"></fa> Cerrar</button>                
                                              
                                </center>
