@@ -39,7 +39,7 @@ pre {
  <link href="<?php echo base_url('resources/css/cabecera.css'); ?>" rel="stylesheet">
 <table class="table" style="width: 20cm; padding: 0;" >
     <tr>
-        <td style="width: 6cm; padding: 0; line-height:10px;" >
+        <td style="width: 8cm; padding: 0; line-height:10px;" >
                 
             <center>
                                
@@ -56,7 +56,7 @@ pre {
             </center>                      
         </td>
                    
-        <td style="width: 6cm; padding: 0" > 
+        <td style="width: 8cm; padding: 0" > 
             <center>
             
                 <br><br>

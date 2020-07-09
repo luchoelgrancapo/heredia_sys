@@ -159,6 +159,11 @@ class Website extends CI_Controller{
         if (sizeof($pagina_web)>0){ //si es idioma valido
             
             $producto = $this->Pagina_web_model->get_producto($producto_id);
+            if ($producto[0]['subcategoria_id']=='' || $producto[0]['subcategoria_id']==null) {
+               $subcateroria ='';
+            }else{
+                $subcateroria = " and p.subcategoria_id=".$producto[0]['subcategoria_id']."";
+            }
             
             if(sizeof($producto)>0){ //si el producto es valido
 
@@ -173,7 +178,7 @@ class Website extends CI_Controller{
                 $data['seccion3'] = $this->Pagina_web_model->get_seccion(3,$idioma_id); //seccion 3        
                 $data['ofertasemanal'] = $this->Pagina_web_model->get_oferta_semanal(); //seccion 3
                 $data['ofertasdia'] = $this->Pagina_web_model->get_oferta_dia(); //seccion 3
-                $data['relacionados'] = $this->Pagina_web_model->get_relacionados($producto[0]['categoria_id'], $producto[0]['subcategoria_id'], $producto_id); //seccion 3
+                $data['relacionados'] = $this->Pagina_web_model->get_relacionados($producto[0]['categoria_id'], $subcateroria, $producto_id); //seccion 3
                 $data['slider2'] = $this->Pagina_web_model->get_slider(2,$idioma_id); //tipo 2
                 $data['categorias'] = $this->Categoria_producto_model->get_all_categoria_producto(); //tipo 2
 

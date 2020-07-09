@@ -9,7 +9,7 @@
 <style type="text/css">
     @media print {
     #mitabla th {
-        background-color: rgba(127,127,127,0.5) !important;
+        background-color: rgba(127,127,127,0.3) !important;
         color: black !important;
         -webkit-print-color-adjust: exact;
     }
@@ -133,7 +133,7 @@
                 </td>
 
                 <td  style="text-align: right;">
-                    <span class="badge badge-success">
+                    <span class="badge badge-primary">
                          <b><?php echo number_format($d['detallecot_total'],2,".",","); ?></b></font> <br>                                        
                     </span>
                     <!--<button type="submit" class="btn btn-success hidden">
@@ -154,7 +154,7 @@
                 <th rowspan="2" colspan="3" class="text-center" style="font-size: 13pt; padding: 3px">TOTAL</th>
                 <th colspan="3" class="text-center" style="font-size: 11px; padding: 3px">NUMERAL(Bs.)</th>
                 <th class="text-right" style=" padding: 3px">
-                    <span class="badge badge-success"><font size="3"><b><?php echo number_format($totalfinal,2,".",","); ?></b></font></span>
+                    <span class="badge badge-secondary"><font size="3"><b><?php echo number_format($totalfinal,2,".",","); ?></b></font></span>
                 </th>
             </tr>
             <tr>

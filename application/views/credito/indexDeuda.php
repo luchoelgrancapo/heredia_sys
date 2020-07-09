@@ -48,7 +48,7 @@
                  <div class="row">
                     <div class="col-md-3">
         <!--------------------- parametro de buscador --------------------->
-                <label for="fecha_desde" class="control-label">Proveedor</label>
+                <label for="proveedor_id" class="control-label">Proveedor</label>
                <input id="proveedor_id" type="text" style="width: 100%;" onkeypress="buscardeuda(event)" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);"  class="form-control" placeholder="Ingrese el Proveedor">
                   
         <!--------------------- fin parametro de buscador --------------------->

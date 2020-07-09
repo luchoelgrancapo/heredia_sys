@@ -162,6 +162,20 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?php echo site_url('cotizacion');?>" class="nav-link">
+                                <i class="nav-icon fas fa-money-check-alt fa-fw"></i> <p>Cotizaciones</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-edit"></i>
+              <p>
+                Registros
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                        <li class="nav-item">
                             <a href="<?php echo site_url('producto');?>" class="nav-link">
                                 <i class="nav-icon fas fa-gifts fa-fw"></i> <p>Productos</p>
                             </a>
@@ -181,6 +195,8 @@
                                 <i class="nav-icon fas fa-user-lock fa-fw"></i> <p>Usuarios</p>
                             </a>
                         </li>
+                         </ul>
+          </li> 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-closed-captioning"></i>

@@ -241,25 +241,29 @@ function mostrar() {
                         </div>
                     </div>
                      <?php foreach($relacionados as $os) { ?>
-
+                        
                     <!-- product -->
                     <div class="col-md-3 col-xs-6">
                         <div class="product">
-                            <a href="<?php echo base_url("website/single/".$os['producto_id']); ?>"><div class="product-img">
-                                <img title="" alt="" src="<?php echo base_url()."resources/images/productos/".$os['producto_foto']; ?>">
+                            <div class="product-img">
+                               <?php if ($os['producto_foto']==''){ ?>
+                            <img src="<?php echo base_url('resources/images/productos/producto.jpg')?>" alt="">
+                            <?php } else { ?>
+                            <img src="<?php echo base_url('resources/images/productos/'.$os['producto_foto'].'')?>" alt="">
+                            <?php } ?>
                                 <div class="product-label">
                                    
                                 </div>
-                            </div></a>
-                            <div class="product-body">
+                            </div>
+                            <a href="<?php echo base_url("website/single/".$os['producto_id']); ?>"><div class="product-body">
                                 <p class="product-category"></p>
-                                <h3 class="product-name"><a href="<?php echo base_url("website/single/".$os['producto_id']); ?>"><?php echo $os['producto_nombre'];?></a></h3>
+                                <h3 class="product-name"><?php echo $os['producto_nombre'];?></h3>
                                 <h4 class="product-price"><?php echo number_format($os['producto_precio'], 2, '.', ','); ?></h4>
                                 <div class="product-rating">
                                 </div>
                                 <div class="product-btns">
                                 </div>
-                            </div>
+                            </div></a>
                             <div class="add-to-cart">
                                 <input type="hidden" name="cmd" value="_cart" />
                                                                     <input type="hidden" name="add" id="cantidad<?php echo $os['producto_id'];?>" value="1" />

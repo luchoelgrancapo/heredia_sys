@@ -915,10 +915,10 @@ function fechacotizacion(parametro){
                         html += "<td align='right'>"+Number(registros[i]["cotizacion_total"]).toFixed(2)+"</td>";
                         html += "<td>"+registros[i]["usuario_nombre"]+"</td>";
                         
-                        html += "<td class='no-print'><a href='"+base_url+"cotizacion/add/"+registros[i]["cotizacion_id"]+"'  class='btn btn-info btn-xs'><span class='fa fa-pencil'></span></a>";
+                        html += "<td class='no-print'><a href='"+base_url+"cotizacion/add/"+registros[i]["cotizacion_id"]+"'  class='btn btn-info btn-xs'><span class='fa fa-edit'></span></a>";
                         
-                        html += " <a href='"+base_url+"cotizacion/cotizarecibo/"+registros[i]["cotizacion_id"]+"' target='_blank' class='btn btn-success btn-xs'><span class='fa fa-print'></span></a>";
-                        html += " <a href='"+base_url+"cotizacion/recibo/"+registros[i]["cotizacion_id"]+"' target='_blank' class='btn btn-facebook btn-xs'><span class='fa fa-print'></span></a>";
+                        html += " <a href='"+base_url+"cotizacion/cotizarecibo/"+registros[i]["cotizacion_id"]+"' target='_blank' title='Formato Contrato' class='btn btn-warning btn-xs'><span class='fa fa-print'></span></a>";
+                        html += " <a href='"+base_url+"cotizacion/recibo/"+registros[i]["cotizacion_id"]+"' target='_blank' title='Formato Normal' class='btn btn-warning btn-xs'><span class='fa fa-print'></span></a>";
                         html += "  <a href='#' data-toggle='modal'  data-target='#modalanular"+registros[i]["cotizacion_id"]+"' class='btn btn-xs btn-danger' style=''><i class='fa fa-ban'></i></a>";
                         html += "                       <!------------------------ modal para eliminar el producto ------------------->";
                         html += " <div class='modal fade' id='modalanular"+registros[i]['cotizacion_id']+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel"+registros[i]['orden_id']+"'>";
@@ -947,7 +947,7 @@ function fechacotizacion(parametro){
                         html += "   </div>";
                         html += "    <div class='modal-footer aligncenter'>";
                         html += "   <center>";                                        
-                        html += "  <a href='"+base_url+"cotizacion/remove/"+registros[i]['cotizacion_id']+"' class='btn btn-danger  btn-sm'><em class='fa fa-pencil'></em> Si </a>";
+                        html += "  <a href='"+base_url+"cotizacion/remove/"+registros[i]['cotizacion_id']+"' class='btn btn-danger  btn-sm'><em class='fa fa-check'></em> Si </a>";
 
                         html += "  <a href='#' class='btn btn-success btn-sm' data-dismiss='modal'><em class='fa fa-times'></em> No </a>";
                         html += "  </center>";

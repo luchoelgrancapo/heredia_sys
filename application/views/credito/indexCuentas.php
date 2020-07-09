@@ -47,7 +47,7 @@
                  <div class="row">
                      <div class="col-md-3">
         <!--------------------- parametro de buscador --------------------->
-                <label for="fecha_desde" class="control-label">Cliente</label>
+                <label for="cliente_id" class="control-label">Cliente</label>
                <input id="cliente_id" type="text" onkeypress="buscarcuenta(event)" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);"  style="width: 100%;"  class="form-control" placeholder="Ingrese el Cliente">
                   
         <!--------------------- fin parametro de buscador --------------------->

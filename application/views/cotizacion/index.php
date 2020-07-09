@@ -25,7 +25,7 @@
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
 <input type="hidden" name="cotizacion_id" id="cotizacion_id" value="0">
 <!-------------------------------------------------------->
-<div class="row micontenedorep" style="display: none" id="cabeceraprint">
+<div class="row" style="display: none;" id="cabeceraprint">
     <table class="table" style="width: 100%; padding: 0;" >
     <tr>
         <td style="width: 25%; padding: 0; line-height:10px;" >
@@ -78,22 +78,32 @@
 
         <!--este es INICIO del BREADCRUMB buscador-->
         <div class="box-header">
-                <font size='4' face='Arial'><b>Cotizaciones</b></font>
-                <br><font size='2' face='Arial' id="pillados">Registros Encontrados:</font>
+                <h4><b>DEUDAS POR COBRAR</b> <small class="badge badge-secondary" id="pillados"></small></h4>
         </div>
         <!--este es FIN del BREADCRUMB buscador-->
- 
+</div> 
+     <div class="col-md-6 no-print">
+        
+    <div class="box-tools">
+        <center>    
+            <a href="<?php echo site_url('cotizacion/creacotizacion'); ?>" class="btn bg-success btn-app"><i class="fa fa-cart-plus"></i>Cotizar</a>
+            
+            <button data-toggle="modal" data-target="#modalbuscar" class="btn bg-primary btn-app" onclick="fechacotizacion('and 1')" ><i class="fa fa-search"></i>Ver Todos</button>
+            
+            <a href="#" onclick="imprimir()" class="btn bg-warning btn-app"><i class="fa fa-print"></i>Imprimir</a>
+             
+        </center>            
+    </div>
+    </div>   
         <!--este es INICIO de input buscador-->
-        <div class="col-md-8 no-print">
-            <div class="input-group">
-                      <span class="input-group-addon"> 
-                        Buscar 
-                      </span>           
+        <div class="col-md-6 no-print">
+            <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-search"></i></span>         
                 <input id="cotizar_cli" type="text" class="form-control" placeholder="Ingresa el nombre de cliente" onkeypress="buscar_porcliente(event)" >
             </div></div>
-            <div class="col-md-4 no-print">
+            <div class="col-md-3 no-print">
                 
-                <select  class="btn btn-primary btn-sm"  id="select_fecha" onchange="busqueda_cotizacion()">
+                <select  class="btn btn-secondary btn-block"  id="select_fecha" onchange="busqueda_cotizacion()">
                     
                     <option value="1">Cotizaciones de Hoy</option>
                     <option value="2">Cotizaciones de Ayer</option>
@@ -106,47 +116,32 @@
         <!--este es FIN de input buscador-->
 
         <!-- **** INICIO de BUSCADOR select y productos encontrados *** -->
-         <div class="row" id='loader'  style='display:none; text-align: center'>
+         <div class="col-md-12" id='loader'  style='display:none; text-align: center'>
             <img src="<?php echo base_url("resources/images/loader.gif"); ?>"  >
         </div>
         <!-- **** FIN de BUSCADOR select y productos encontrados *** -->
-      </div>
-     <div class="col-md-6 no-print">
-        
-    <div class="box-tools">
-        <center>    
-            <a href="<?php echo site_url('cotizacion/creacotizacion'); ?>" class="btn btn-success btn-foursquarexs"><font size="5"><span class="fa fa-cart-plus"></span></font><br><small>Cotizar</small></a>
-            
-            <button data-toggle="modal" data-target="#modalbuscar" class="btn btn-warning btn-foursquarexs" onclick="fechacotizacion('and 1')" ><font size="5"><span class="fa fa-search"></span></font><br><small>Ver Todos</small></button>
-            
-            <a href="#" onclick="imprimir()" class="btn btn-info btn-foursquarexs"><font size="5"><span class="fa fa-print"></span></font><br><small>Imprimir</small></a>
-             
-        </center>            
-    </div>
-    </div>   
-        
-    </div>
-     <div class="panel panel-primary col-md-12 no-print" id='buscador_oculto' style='font-family: Arial; display:none; padding-bottom: 10px;'>
-                <br>
-                <center>            
+     </div> 
+     <div class="col-md-12 no-print" id='buscador_oculto' style='font-family: Arial; display:none; padding-bottom: 10px;'>
+                    <div class="row"> 
                     <div class="col-md-4">
-                        Desde: <input type="date" class="btn btn-primary btn-sm form-control" style=" width: 80%;"  id="fecha_desde" value="<?php echo date('Y-m-d') ?>" name="fecha_desde" required="true">
+                        Desde: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_desde" value="<?php echo date('Y-m-d') ?>" name="fecha_desde" required="true">
                     </div>
                     <div class="col-md-4">
-                        Hasta: <input type="date" class="btn btn-primary btn-sm form-control" style=" width: 80%; "  id="fecha_hasta" value="<?php echo date('Y-m-d') ?>" name="fecha_hasta" required="true">
+                        Hasta: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_hasta" value="<?php echo date('Y-m-d') ?>" name="fecha_hasta" required="true">
                     </div>
 
                    
-                    <div class="col-md-4">
+                    <div class="col-md-4"><br>
                         <button class="btn btn-primary btn-sm form-control" face='Arial' tyle='font-family: Arial;' onclick="buscar_por_fecha()"><span class="fa fa-search"></span> Buscar</button>
                         
                     </div>
-                    <br>
-
-
-                </center>    
-                <br>    
+                 
+</div>    
+    
+                
             </div>
+    
+    <br>    
     <div class="col-md-12">
         
         <div class="box">
@@ -154,7 +149,7 @@
             <div class="box-body table-responsive">
                 <table class="table table-striped" id="mitabla">
                     <tr>
-						<th>#</th>
+						<th>Nº</th>
                         <th>Cliente</th>
 						<th>Fecha</th>
 						<th>Validez</th>

@@ -100,12 +100,13 @@ input[type=number] { -moz-appearance:textfield; }
           
 
       		<div class="box-body">
-          		<div class="row clearfix">
+          		<div class="row">
                 <div class="col-md-12">
 						<label for="cotizacion_cliente" class="control-label">Cliente</label>
 						<div class="form-group">
 							<input type="text" name="cotizacion_cliente" value="<?php echo ($this->input->post('cotizacion_cliente') ? $this->input->post('cotizacion_cliente') : $cotizacion['cotizacion_cliente']); ?>"  class="form-control" id="cotizacion_cliente" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
 					</div>
+          </div>
                            <div class="col-md-3">
 						<label for="cotizacion_fecha" class="control-label">Fecha</label>
 						<div class="form-group">
@@ -179,7 +180,8 @@ input[type=number] { -moz-appearance:textfield; }
          </div>
     
 </div>
-							<div class="col-md-4" style="float: right;">
+<div class="row">
+							<div class="col-md-12" style="text-align:  right;">
             <button   onclick="enviar_formulario(<?php echo $cotizacion_id; ?>)" class="btn btn-xs btn-success">
                 <i class="fa fa-check"></i>Finalizar Cotizacion
               </button></form>
@@ -188,14 +190,14 @@ input[type=number] { -moz-appearance:textfield; }
               </button></a>
             </div>
           	</form>
-          			     
+</div>          			     
   
 <!---------------------------------------TABLA DE DETALLE cotizacion------------------------------------>
-<div class="col-md-12">
+<div class="row">
    <div class="col-md-4" style="padding-left:0px;">
                         
-      <div class="input-group"> <span class="input-group-addon">Buscar</span>
-        <input id="cotizar" type="text" class="form-control" autocomplete="off" placeholder="Ingresa el nombre de producto, código o descripción"  onkeypress="cotivalidar(event,4)">
+      <div class="input-group-prepend"> <span class="input-group-text"><i class="fas fa-search"></i></span> 
+        <input id="cotizar" type="text" class="form-control" autocomplete="off" placeholder="Bsucar producto"  onkeypress="cotivalidar(event,4)">
       </div>
       <!-------------------- CATEGORIAS------------------------------------->
 <div class="container" id="categoria">
@@ -211,10 +213,10 @@ input[type=number] { -moz-appearance:textfield; }
                                 
             
           
-                <table class="table table-striped" id="mitabla">
+                <table class="table table-striped" id="tabla_detalle">
                     
                      <tr>
-                                                <th>#</th>
+                                                <th>Nº</th>
                                                 <th>Producto</th>
                     </tr>
                     <tbody class="buscar" id="tablaresultados">
@@ -226,14 +228,13 @@ input[type=number] { -moz-appearance:textfield; }
             </div>
 
                         <!----------------------FIN TABLA--------------------------------------------------->
-            
       
 
 <div class="col-md-8"> 
 <div class="box">
              <h4 class="modal-title" id="myModalLabel">Detalle Cotizacion</h4>
             <div class="box-body table-responsive">
-                <table class="table table-striped table-condensed" id="mitabla">
+                <table class="table table-striped table-condensed" id="tabla_detalle">
                     <tr>
                             <th>#</th>
                             <th>Producto</th>
@@ -249,7 +250,7 @@ input[type=number] { -moz-appearance:textfield; }
        
                    
 
-                    
+                    </tbody>
                 </table>
                 
             </div>
@@ -266,15 +267,15 @@ input[type=number] { -moz-appearance:textfield; }
     </div>
  <div class="col-md-12" align="right"> 
   <center>
-            <a type="button" onclick="enviar_formulario(<?php echo $cotizacion_id; ?>)" class="btn btn-sq-lg btn-success" style="width: 120px !important; height: 120px !important;">
-                <i class="fa fa-money fa-4x"></i><br>
+            <a type="button" onclick="enviar_formulario(<?php echo $cotizacion_id; ?>)" class="btn bg-success btn-app" style="width: 90px !important; height: 90px !important;">
+                <i class="fa fa-check"></i>
                Finalizar<br>Cotización<br>
             </a>
 
             
-            <a  href="<?php echo site_url('cotizacion/index'); ?>" class="btn btn-sq-lg btn-danger" style="width: 120px !important; height: 120px !important;">
-                <i class="fa fa-sign-out fa-4x"></i><br><br>
-               Cancelar<br>
+            <a  href="<?php echo site_url('cotizacion/index'); ?>" class="btn bg-danger btn-app" style="width: 90px !important; height: 90px !important;">
+                <i class="fas fa-times"></i>
+               Cancelar
             </a>    
               
             </center>

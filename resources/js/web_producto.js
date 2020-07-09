@@ -279,7 +279,7 @@ function mostrar_tabla_resultados(respuesta,pag){
                     
                 }else{
                     
-                    mimagen += "<img src='"+base_url+"resources/images/productos/thumb_image.png'  alt=''/>";
+                    mimagen += "<img src='"+base_url+"resources/images/productos/producto.jpg'  alt=''/>";
                    
                 }
                 
@@ -293,17 +293,17 @@ function mostrar_tabla_resultados(respuesta,pag){
                 
                 html += "<div class='col-md-3 col-xs-6'>";
                 html += "<div class='product'>";
-                html += "<a href='"+base_url+"website/single/"+registros[i]["producto_id"]+"'><div class='product-img'>";
+                html += "<div class='product-img'>";
                 html += mimagen;
-                html += "</div></a>";
-                html += "<div class='product-body'>";
-                html += "<p class='product-category'></p><h3 href='website/single/"+registros[i]["producto_id"]+"' class='product-name' title='"+cadena+"'>"+nombre+"</h3>";
+                html += "</div>";
+                html += "<a href='website/single/"+registros[i]["producto_id"]+"'><div class='product-body'>";
+                html += "<p class='product-category'></p><h3  class='product-name' title='"+cadena+"'>"+nombre+"</h3>";
                 html += "<h4 class='product-price'>Bs. "+Number(registros[i]["producto_precio"]).toFixed(2)+"</h4>";
                 html += "<div class='product-rating'>";
                 html += "</div>";
                 html += "<div class='product-btns'>";
                 html += "</div>";
-                html += "</div>";
+                html += "</div></a>";
                 html += "<div class='add-to-cart'>";
                 
                 html += "<input type='hidden' name='cmd' value='_cart'>";

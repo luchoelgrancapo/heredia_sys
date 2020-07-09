@@ -8,7 +8,7 @@
                             <div class="header-search">
                                 <form action="javascript:void(0);">
                                     <select onchange="buscar_por_categoria(this.value)" name="select_categoria" id="select_categoria" class="input-select" autocomplete="off" >
-                                        <option value="0" selected>BUSCAR POR CATEGORIAS</option>
+                                        <option value="0" selected>CATEGORIA</option>
                                                 
                                                     <?php 
                                                         foreach($categorias as $cat){?>    
@@ -52,7 +52,7 @@
             <!-- container -->
             <div class="container">
                 <!-- row -->
-                <div class="row">
+                <div class="col-md-12">
                 <div class="section-title">
                             <h3 class="title">PRODUCTOS</h3>
                             <div class="section-nav">
