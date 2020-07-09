@@ -1,181 +1,119 @@
-<!------------------ PRIMERA SECCION -------------------------------------->
-    <div class="agileits_header">
-            <div class="container" style="margin-bottom: -5px; ">
-                <div class="w3l_offers" align="center">                        
-                        <b> <?php if (strlen($pagina_web[0]['empresa_nombre'])>30) { ?> 
+    <!-- HEADER -->
+    <header>
+      <!-- TOP HEADER -->
+      <div id="top-header">
+        <div class="container">
+          <ul class="header-links pull-left">
+            <li><a href="#"><i class="fa fa-phone"></i> <?php echo $pagina_web[0]['empresa_telefono']; ?></a></li>
+            <li><a href="mailto:<?php echo $pagina_web[0]['empresa_email']; ?>"><i class="fa fa-envelope-o"></i> <?php echo $pagina_web[0]['empresa_email']; ?></a></li>
+            <li><a href="#"><i class="fa fa-map-marker"></i> <?php echo $pagina_web[0]['empresa_direccion']; ?>, <?php echo $pagina_web[0]['empresa_departamento']; ?>.</a></li>
+          </ul>
+          <ul class="header-links pull-right">
+            <li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-lock"></i> Mi Cuenta</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /TOP HEADER -->
+
+      <!-- MAIN HEADER -->
+      <div id="header">
+        <!-- container -->
+        <div class="container">
+          <!-- row -->
+          <div class="row">
+            <!-- LOGO -->
+            <div class="col-md-3">
+              <div class="header-logo">
+                <a href="#" class="logo">
+                  <h1 style="color: white"><b> <?php if (strlen($pagina_web[0]['empresa_nombre'])>30) { ?> 
                             <a href="<?php echo base_url();?>" style="color: white;  -webkit-text-stroke: 0px red;font-size: 18px"><?php echo $pagina_web[0]['empresa_nombre']; } else { ?>
-                            <a href="<?php echo base_url();?>" style="color: white;  -webkit-text-stroke: 0px red;font-size: 24px"><?php echo $pagina_web[0]['empresa_nombre']; } ?> </a></b>
-                </div>
-<!------------------ MENU CABECERA  ----------------------------------->                    
-                <div class="agile-login">
-                    <ul>
-                        
-                        <li><a href="<?php echo base_url('login'); ?>"><i class="fa fa-lock"></i> Usuario</a></li>
-                       
-                          <?php if(isset($_COOKIE["cliente_id"])) { 
+                            <a href="<?php echo base_url();?>" style="color: white;  -webkit-text-stroke: 0px red;font-size: 24px"><?php echo $pagina_web[0]['empresa_nombre']; } ?> </a></b></h1>
+                </a>
+              </div>
+            </div>
+            <!-- /LOGO -->
+
+            <!-- SEARCH BAR -->
+            <div class="col-md-3">
+              
+            </div>
+            <!-- /SEARCH BAR -->
+
+            <!-- ACCOUNT -->
+            <div class="col-md-6 clearfix">
+              <div class="header-ctn">
+                <!-- Wishlist -->
+                 <?php if(isset($_COOKIE["cliente_id"])) { 
                             
                                         $nombre_cliente = ucwords(strtolower($_COOKIE["cliente_nombre"])); 
                                         
-                                        if(strlen($nombre_cliente)>15){
-                                                $nombre_cliente = substr($nombre_cliente, 0, 12)."..";
+                                        if(strlen($nombre_cliente)>11){
+                                                $nombre_cliente = substr($nombre_cliente, 0, 11)."..";
                                         }
                         ?>
-                                    
-                                        <!------- Inicio menu usuario ------------>                                        
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fa class="fa fa-user"></fa><small> <?php echo $nombre_cliente; ?></small></a>
-                                            <ul class="dropdown-menu multi-column columns-3">
-                                                <div class="row">
-                                                    <div class="multi-gd-img">
-                                                        <ul class="multi-column-dropdown">
-                                                            <!--<h6>Todas</h6>-->
-                                                            <li><a href="<?php echo base_url("website/miperfil/"); ?>" >Mi Perfil</a></li>
-                                                            <li><a href="<?php echo base_url("website/micarrito/"); ?>" >Mi Carrito</a></li>
-                                                            <!--<li><a href="<?php echo base_url("website/miscompras/").$idioma_id; ?>" >Mis Compras</a></li>-->
-                                                            <li><a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()">Cerrar Sesión</a></li>
+                <div class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-user"></i><span><?php echo $nombre_cliente; ?></span></a>  
+                   <div class="cart-dropdown">
+                                                <div class="cart-list">
+                                                    <div class="product-widget">
+                                                     <a href="<?php echo base_url("website/miperfil/"); ?>" >Mi Perfil</a>
+                                                   </div>
+                                                   <div class="product-widget">
+                                                     <a href="<?php echo base_url("website/micarrito/"); ?>" >Mi Carrito</a>
+                                                            <!--<a href="<?php echo base_url("website/miscompras/").$idioma_id; ?>" >Mis Compras</a></li>-->
+                                                    </div>
+                                                    <div class="product-widget">
+                                                      <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()">Cerrar Sesión</a>
                                                             
-                                                        </ul>
-                                                    </div>  
+                                                    </div>
+                                                    
 
                                                 </div>
-                                        </ul>
-                                    </li>                                         
-                                    <!------- Fin menu usuario ------------>                                                                            
-                        <?php } else{ ?>                                    
-
-                                        <!------- Inicio iniciar sesion ------------>                                        
-                                        <li class="dropdown">
-                                            <a href="#modalCliente" data-target="#modalCliente"  class="dropdown-toggle" data-toggle="modal"><i class="fa fa-sign-in"></i> Cliente</a>
-                                        </li>                                         
-                                        <!------- Fin iniciar sesion ---------->
-                                                                       
-                        <?php }  ?>    
-                      
-                    </ul>
-
+                                        </div> 
                 </div>
-                    <!-- --------------- INICIO Modal para ver el avance de servicios --------------- -->
-                    <div class="modal fade" id="seguimientoservicio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                      <div class="modal-dialog" role="document">
-                            <br><br>
-                            <div class="modal-content text-left">
-                          <div class="modal-header">
-                              <label>Seguimiento:</label> Soporte Técnico
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                          </div>
-                            <?php
-                            echo form_open('seguimiento/index');
-                            ?>
-                          <div class="modal-body">
-                           <!-- --------------------------------------------------------------- -->
-                           <div class="row">
-                                <div class="col-md-6">
-                                    <label for="usuario" class="control-label"><span class="text-danger">*</span>Usuario</label>
-                                    <div class="form-group">
-                                        <input type="text" name="usuario" id="usuario" class="form-control" required  autocomplete="off" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="contrasen" class="control-label"><span class="text-danger">*</span>Contrase&ntilde;a</label>
-                                    <div class="form-group">
-                                        <input type="password" name="contrasen" id="contrasen" class="form-control" required autocomplete="off" />
-                                    </div>
-                                </div>
-                            </div>
-                           <!------------------------------------------------------------------->
-                          </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fa fa-binoculars"></i> Seguimiento
-                                    </button>
-                                </div>
-                            <?php echo form_close(); ?>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- --------------- F I N Modal para ver el avance de servicios --------------- -->
-                     <!-- --------------- INICIO Modal para ver el avance de OT --------------- -->
-                    <div class="modal fade" id="seguimientoOT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                      <div class="modal-dialog" role="document">
-                            <br><br>
-                            <div class="modal-content text-left">
-                          <div class="modal-header">
-                              <label>Seguimiento:</label> Ordenes de trabajo
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                          </div>
-                           
-                          <div class="modal-body">
-                           <!-- --------------------------------------------------------------- -->
-                           <div class="row">
-                            <div class="col-md-6">
-                                <label for="orden" class="control-label">Orden</label>
-                                <div class="form-group">
-                                    <input type="text" name="orden" id="orden" class="form-control" required  autocomplete="off" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="transaccion" class="control-label">Código</label>
-                                <div class="form-group">
-                                    <input type="text" name="transaccion" id="transaccion" class="form-control" required autocomplete="off" />
-                                </div>
-                            </div>
-                            </div>
-                            
-                           <!------------------------------------------------------------------->
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" onclick="buscarseguimiento()" class="btn btn-success">
-                                    <i class="fa fa-check "></i> Consultar
-                            </button>
-                          </div>
-                            
-                        </div>
-                      </div>
-                    </div>
-                    <!-- --------------- F I N Modal para ver el avance de OT --------------- -->
-                    
-                <div class="product_list_header">  
-                    <form action="#" method="post" class="last"> 
-                        <input type="hidden" name="cmd" value="_cart">
-                        <input type="hidden" name="display" value="1">
-                        <button class="w3view-cart" type="button" class="btn btn-primary" onclick="tablacarrito()"><i class="fa fa-shopping-cart" aria-hidden="true" title="Mi Carrito"></i></button>
+                <?php } else{ ?>                   
+                <div>
+                  <a href="#modalCliente" data-target="#modalCliente"  class="dropdown-toggle" data-toggle="modal">
+                    <i class="fa fa-sign-in"></i>
+                    <span>Cliente</span>
+                  </a>
+                </div>
+                <?php }  ?>
+
+                 <input type="hidden" name="cmd" value="_cart">
+                 <input type="hidden" name="display" value="1">
                         
-                        <?php if(isset($_COOKIE["cliente_id"])) { ?>
-                                <button class="w3view-cart" type="button" class="btn btn-primary" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesión"></i></button>
-                        <?php }  ?>
-
-                    </form>
-
+                        
+                <div>
+                  <a href="#" onclick="tablacarrito()">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span>Mi Carrito</span>
+                  </a>
                 </div>
+                <?php if(isset($_COOKIE["cliente_id"])) { ?>
+                <div>
+                <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesión"></i><span>Cerrar Sesión</span></a>
+                        <?php }  ?>
+                </div>
+                <!-- /Wishlist -->
 
-                   
-                    
-                    
-                <div class="clearfix"> </div>
-<!------------------ FIN MENU CABECERA  ----------------------------------->                    
-            </div>
-    </div>
-<!------------------ FIN PRIMERA SECCION ----------------------------------->
 
-<!------------------ SEGUNDA SECCION 
-    <div class="logo_products">
-        <div class="container">
-        <div class="w3ls_logo_products_left1">
-                <ul class="phone_email">
-                    <li><i class="fa fa-phone" aria-hidden="true"></i><?php echo 'PEDIDOS: '.$pagina_web[0]['pagina_telefono']; ?></li>
-                    
-                </ul>
+                <!-- Menu Toogle -->
+               
+                <!-- /Menu Toogle -->
+              </div>
             </div>
-            <div class="w3ls_logo_products_left">
-                <h1><a href="<?php echo base_url();?>"><?php echo $pagina_web[0]['empresa_nombre']; ?></a></h1>
-            </div>
+            <!-- /ACCOUNT -->
+          </div>
+          <!-- row -->
         </div>
-    </div>
-
- FIN SEGUNDA SECCION -------------------------------------->
+        <!-- container -->
+      </div>
+      <!-- /MAIN HEADER -->
+    </header>
+    <!-- /HEADER -->
 
 <!--  DATOS IMPORTANTES DE CABECERA -->       
-        <div class="w3l_search">
+        <div class="w3l_search" hidden>
             <center>
                 
                 
@@ -205,7 +143,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header" style="color: white; background: #081066;">
+      <div class="modal-header" style="color: white; background: #333333;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -266,7 +204,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header" style="background-color: #081066;">
+      <div class="modal-header" style="background-color: #333333;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span style="color: white" aria-hidden="true" class="fa fa-times"></span>
         </button>
@@ -288,7 +226,7 @@
                         <button class="btn btn-primary btn-block form-control" onclick="inisesion()" id="boton_sesion"><fa class="fa fa-key"></fa> Iniciar Sesion</button>
                     </div>
                         <div class="col-md-6">
-                        <button class="btn btn-default btn-block" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrate</button>
+                        <button class="btn btn-default btn-block" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrarse</button>
                     </div>
                     
                     </div>
@@ -326,12 +264,14 @@
                                    </small>
                                </p>
                                <br>
-                                
-                               <center>
-                                 <button class="btn btn-success" type="button" onclick="sesion()" id="boton_login"><fa class="fa fa-sign-in"></fa> Ingresar</button>     
-                                 <button class="btn btn-danger" type="button" data-dismiss="modal"><fa class="fa fa-times"></fa> Cerrar</button>                
+                            </div>    
+                            <div class="col-md-6">
+                                 <button class="btn btn-success btn-block" type="button" onclick="sesion()" id="boton_login"><fa class="fa fa-sign-in"></fa> Ingresar</button>
+                            </div>
+                            <div class="col-md-6">     
+                                 <button class="btn btn-danger btn-block" type="button" data-dismiss="modal"><fa class="fa fa-times"></fa> Cerrar</button>                
                                              
-                               </center>
+                               
                            </div>
                         </div>
 
@@ -393,15 +333,17 @@
                         TELF: <input type="text" class="form-control" value="0" id="cliente_telefono" name="cliente_telefono" required="true">
                     </div>
                         
-                    <div class="col-md-6">
-                    </div>
                     
-                    <div class="col-md-12">
-                        <center>
-                            <button class="btn btn-success" type="button" onclick="registrarcliente()"  id="boton_registrar_datos"><fa class="fa fa-floppy-o"></fa> Registrarse</button>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal"><fa class="fa fa-times"></fa> Cerrar</button>   
+                    
+                    <div class="col-md-6">
+                    <br>    
+                            <button class="btn btn-success btn-block" type="button" onclick="registrarcliente()"  id="boton_registrar_datos"><fa class="fa fa-floppy-o"></fa> Registrarse</button>
+                    </div>
+                    <div class="col-md-6">  
+                    <br>
+                            <button class="btn btn-danger btn-block" type="button" data-dismiss="modal"><fa class="fa fa-times"></fa> Cerrar</button>   
                                                         
-                        </center>                            
+                                                   
                     </div>
                         
                     </div>

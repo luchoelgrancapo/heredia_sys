@@ -223,14 +223,15 @@ function buscar_por_subcategoria(subcategoria_id)
 }
 
 function mostrar_tabla_resultados(respuesta,pag){
-    
+        var borrar = "";//esto aumenteeeeeee//  
+        $("#tablaresultados").html(borrar);  
         var objeto = respuesta;
         var registros = JSON.parse(respuesta);
         var base_url = document.getElementById('base_url').value;
         
         var n = registros.length; //tamaño del arreglo de la consulta
-        var ancho_imagen = 120;  
-        var alto_imagen = 120; 
+        var ancho_imagen = 240;  
+        var alto_imagen = 240; 
         var idioma_id = document.getElementById('idioma_id').value;
         
         var bloque = 12; 
@@ -272,14 +273,14 @@ function mostrar_tabla_resultados(respuesta,pag){
                 mimagen = "";
                 
                 if(registros[i]["producto_foto"] != null && registros[i]["producto_foto"] !=""){
-                    mimagen += "<a href='"+base_url+"website/single/"+registros[i]["producto_id"]+"'>";
-                    mimagen += "<img src='"+base_url+"resources/images/productos/"+registros[i]["producto_foto"]+"' class='img img-circle' width='"+ancho_imagen+"' height='"+alto_imagen+"' />";
+                   
+                    mimagen += "<img src='"+base_url+"resources/images/productos/"+registros[i]["producto_foto"]+"' alt=''/>";
 //                    mimagen += "<img src='"+base_url+"resources/images/productos/thumb_"+registros[i]["producto_foto"]+"' class='img img-circle' width='"+ancho_imagen+"' height='"+alto_imagen+"' />";
-                    mimagen += "</a>";
+                    
                 }else{
-                    mimagen += "<a href='website/single/"+registros[i]["producto_id"]+"'>";
-                    mimagen += "<img src='"+base_url+"resources/images/productos/thumb_image.png' class='img img-circle' width='"+ancho_imagen+"' height='"+alto_imagen+"' />";
-                    mimagen += "</a>";
+                    
+                    mimagen += "<img src='"+base_url+"resources/images/productos/thumb_image.png'  alt=''/>";
+                   
                 }
                 
                 cadena = registros[i]["producto_nombre"];
@@ -290,31 +291,21 @@ function mostrar_tabla_resultados(respuesta,pag){
                     nombre = registros[i]["producto_nombre"];
                 }
                 
-                html += "<div class='col-md-3 top_brand_left-1'>";
-                html += "<div class='hover14 column'>";
-                html += "<div class='agile_top_brand_left_grid'>";
-                
-                //inicio oferta
-                html += "<div class='agile_top_brand_left_grid_pos'>";
-                
-                //html += "<img src='"+base_url+"resources/web/images/offer.png"+"' alt=' ' class='img-responsive'>";
-                
-                html += "</div>";
-                //fin oferta
-            
-                html += "<div class='agile_top_brand_left_grid1' style='padding:0;'>";
-                html += "<figure>";
-                html += "<div class='snipcart-item block'>";
-                html += "<div class='snipcart-thumb'>";
+                html += "<div class='col-md-3 col-xs-6'>";
+                html += "<div class='product'>";
+                html += "<a href='"+base_url+"website/single/"+registros[i]["producto_id"]+"'><div class='product-img'>";
                 html += mimagen;
-//                html += "<a href='website/single/"+idioma_id+"/"+registros[i]["producto_id"]+"'><p><div class='text-center' title='"+cadena+"'>"+nombre+"</div></p></a>";
-                html += "<p style='margin-top: 0px; margin-bottom: 0px;'><div class='text-center' title='"+cadena+"'>"+nombre+"</div></p>";
-               
-                html += "<h3 style='margin:0;'><center> Bs. "+Number(registros[i]["producto_precio"]).toFixed(2)+"<center></h3>";
+                html += "</div></a>";
+                html += "<div class='product-body'>";
+                html += "<p class='product-category'></p><h3 href='website/single/"+registros[i]["producto_id"]+"' class='product-name' title='"+cadena+"'>"+nombre+"</h3>";
+                html += "<h4 class='product-price'>Bs. "+Number(registros[i]["producto_precio"]).toFixed(2)+"</h4>";
+                html += "<div class='product-rating'>";
                 html += "</div>";
-                html += "<div class='snipcart-details top_brand_home_details'>";
-                html += "<form action='#' method='post'>";
-                html += "<fieldset>";
+                html += "<div class='product-btns'>";
+                html += "</div>";
+                html += "</div>";
+                html += "<div class='add-to-cart'>";
+                
                 html += "<input type='hidden' name='cmd' value='_cart'>";
                 html += "<input type='hidden' name='add' id='cantidad"+registros[i]["producto_id"]+"' value='1'>";  
                 html += "<input type='hidden' name='business' value=' '>";
@@ -328,25 +319,23 @@ function mostrar_tabla_resultados(respuesta,pag){
                 //html += "<input type='button' value='Añadir al pedido' onclick='insertar("+registros[i]["producto_id"]+")'  class='button'>";
                 
                 if (Number(registros[i]["existencia"])>0){
-                    html += "<button type='button' onclick='insertar("+registros[i]["producto_id"]+")'  class='btn btn-sm btn-success'><fa class='fa fa-cart-plus'></fa> AGREGAR AL CARRRITO</button>";
+                    html += "<button type='button' onclick='insertar("+registros[i]["producto_id"]+")'  class='add-to-cart-btn'><fa class='fa fa-cart-plus'></fa> AGREGAR AL CARRRITO</button>";
                 }
                 else{
                     //html += "<button type='button' class='btn btn-sm btn-danger' style='background:red;'><fa class='fa fa-frown-o'></fa> AGOTADO</button>";
                     html += "<button type='button' class='btn btn-sm btn-danger' disabled>AGOTADO</button>";
                 }
                 //html += "<input type='button' name='submit' data-toggle='modal' data-target='#modalCart' value='Añadir al pedido' class='button'>";
-                html += "</fieldset>";
-                html += "</form>";
+              
                 html += "</div>";
                 html += "</div>";
-                html += "</figure>";
-                html += "</div>";
-                html += "</div>";
+
                 html += "</div>";
                 html += "</div>";
                 
+                
                 if ((i+1) % 4 ==0) {
-                html += "<div class='clearfix'> </div>";
+                html += "<div class='clearfix visible-sm visible-xs'> </div>";
                 }
 
            }

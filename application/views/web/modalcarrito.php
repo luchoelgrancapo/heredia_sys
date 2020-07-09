@@ -6,11 +6,11 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header" style="color: white; background: #081066;padding:3px;">
+      <div class="modal-header" style="color: white; background: #333333;padding:3px;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span  aria-hidden="true" class="fa fa-times"></span>
         </button>
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Lista de Compra</h4>
+        <h4 style="color: white;" class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Lista de Compra</h4>
       </div>
       <!--Body-->
       <div class="modal-body" style="overflow-x: auto;">

@@ -181,6 +181,13 @@ class Pagina_web_model extends CI_Model
     /*
      * Ofertas
      */
+    function get_relacionados($categoria_id,$subcategoria_id,$producto_id)
+    {
+        $sql = "select * from inventario p where p.categoria_id=".$categoria_id." and p.subcategoria_id=".$subcategoria_id." and p.producto_id <> ".$producto_id." ";
+        $resultado = $this->db->query($sql)->result_array();
+        return $resultado;        
+    }
+
     function get_oferta_dia()
     {
         $sql = "select * from producto p, promocion m where p.producto_id = m.producto_id and m.promocion_fecha=date(now())";

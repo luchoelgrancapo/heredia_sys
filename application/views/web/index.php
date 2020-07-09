@@ -11,21 +11,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
+<meta name="keywords" content="Business Sys, Sistema de facturación, Sistema de ventas, facturacíon, Password SRL, Password Ingenieria Hardware & Software" />
 <meta property="og:image" content="<?php echo site_url('resources/images/icono.png');?>" >
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <?php $raiz = base_url('resources/web/'); ?>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-<link href="<?php echo $raiz;?>css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo $raiz;?>css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo $raiz;?>css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- font-awesome icons -->
-<link href="<?php echo $raiz;?>css/font-awesome.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/font-awesome.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/nouislider.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/slick.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/slick-theme.css" rel="stylesheet"> 
 
 <!-- //font-awesome icons -->
 <!-- js -->
-<script src="<?php echo $raiz;?>js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo $raiz;?>js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url('resources/js/web_producto.js'); ?>"></script>
 <!-- //js -->
 <link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -43,16 +47,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     });
     
     
+function mostrar() {
+       // $('#map').css({ 'width':'100%', 'height':'400px' });
+   
+//    obj = document.getElementById('oculto'+a);
+//    //obj.style.visibility = (obj.style.visibility == 'hidden') ? 'visible' : 'hidden';
+//    //objm = document.getElementById('map');
+//    if(obj.style.visibility == 'hidden'){
+//        $('#map').css({ 'width':'0px', 'height':'0px' });
+//        $('#mosmapa').text("Modificar Ubicación del negocio");
+//    }else{
+//        $('#map').css({ 'width':'100%', 'height':'400px' });
+//        $('#mosmapa').text("Cerrar mapa");
+//    }
+
+}
+    
     
 </script>
 <script src="//norfipc.com/js/jquery.cookie.js"></script>
 <script src="//norfipc.com/js/cookiecompliance.js"></script>
 
-<link href="<?php echo $raiz;?>css/flag-icon.min.css" rel="stylesheet"> 
-<link href="<?php echo $raiz;?>css/bootstrap-select.min.css" rel="stylesheet"> 
+<!--<link href="<?php echo $raiz;?>css/flag-icon.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/bootstrap-select.min.css" rel="stylesheet"> -->
 <link rel="shortcut icon" href="<?php echo site_url('resources/images/icono.png');?>" />
+<input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
 <!-- start-smoth-scrolling -->
 </head>
+    
     
 <body onload="buscar_por_categoria(<?php echo $parametro[0]["parametro_mostrarcategoria"]; ?>)">
 <!-- header -->
@@ -60,8 +82,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php include('modalcarrito.php'); ?>
 <!-- //header -->    
 <!-- //navigation -->
-    <!-- main-slider -->                                       
-        <ul id="demo1">
+    <!-- main-slider -->     
+                          
+        <ul id="demo1" class="slides">
                     <?php 
                         
                     foreach($slider as $s){
@@ -79,6 +102,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <?php } ?>
 
         </ul>
+<div id="newsletter" class="section"> 
 <?php include('buscador.php'); ?>
  <!-- Carousel -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -119,62 +143,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           </center>
     
     </div>
+    </div>      
  <!-- /.carousel -->   
-<!--brands-->
-<!--    <div class="brands">
-        <div class="container">
-        <h3>CATEGORIA PRODUCTOS</h3>
-            <div class="brands-agile">-->
-                
-<!--                <?php foreach ($categorias as $cat) { 
-                    
-                    if (strlen($cat["categoria_nombre"])<13){ ?>
-                
-                        <div class="col-md-3 w3layouts-brand">
-                          <div class="brands-w3l">
-                              <p><a onclick="buscar_por_categoria(<?php echo $cat["categoria_id"]; ?>)" >
-                                  <small>
-                                        <fa class="fa fa-cart-arrow-down" ></fa>
-                                         <?php echo $cat["categoria_nombre"]; ?>                                      
-                                  </small>
-                                  </a></p><br>
-                          </div>
-                      </div>
-                
-                <?php } else { ?>
-                
-                    <div class="col-md-3 w3layouts-brand">
-                       <div class="brands-w3l">
-                           <p><a onclick="buscar_por_categoria(<?php echo $cat["categoria_id"]; ?>)" >
-                                  <small>
-                               <?php echo $cat["categoria_nombre"]; ?>
-                                  </small>
-                               </a></p><br>
-                       </div>
-                   </div>
-                
-                <?php } } ?>
-                -->
-                
-                
-<!--                
-            </div>
-             <div class="row" id='loader1'  style='display:none; text-align: center'>
-                <img src="<?php echo base_url("resources/images/loader.gif"); ?>"  >
-            </div>
-            <center><a><h2 id="la_categoria"></h2></a></center>
-                <div class="clearfix"></div>
-            <div id="tablacategorias"></div>
-        </div>
-    </div>  -->
-
-<!--//brands-->
 
 <!-- contact -->
-    <div class="about">
-        <div class="w3_agileits_contact_grids">
-            <div class="col-md-6 w3_agileits_contact_grid_left">
-                <div class="agile_map">
+    <div id="newsletter" class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                
+            <div class="col-md-6">
+                <div class="agile_map" style="border: 2px solid #333">
                    
                         <?php 
                             $latitud = $pagina_web[0]['empresa_latitud'];
@@ -186,7 +165,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <input type="hidden" value="<?php echo $latitud; ?>" id="empresa_latitud"/>
                             <input type="hidden" value="<?php echo $longitud; ?>" id="empresa_longitud"/>
                             
-                        <div id="map" style="width:100%; height:550px; "></div>
+                        <div id="map" style="width:100%; height:350px; "></div>
                         <script type="text/javascript">
                             var marker;          //variable del marcador
                             var coords_lat = {};    //coordenadas obtenidas con la geolocalización
@@ -279,52 +258,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 
                 </div>
                         
-                <div class="agileits_w3layouts_map_pos">
-                    <div class="agileits_w3layouts_map_pos1" style="padding: 5px;">
-                        <h3 style="margin-top: 10px;">Informacion</h3>
-                        
-                        <p><?php echo $pagina_web[0]['empresa_direccion']; ?>, <?php echo $pagina_web[0]['empresa_departamento']; ?>.</p>
-                        
-                        <ul class="wthree_contact_info_address">
-                            <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:<?php echo $pagina_web[0]['empresa_email']; ?>"><?php echo $pagina_web[0]['empresa_email']; ?></a></li>
-                            <li><i class="fa fa-phone" aria-hidden="true" style="padding-right: 0px;"></i> <?php echo $pagina_web[0]['empresa_telefono']; ?></li>
-                        </ul>
-                        <div class="w3_agile_social_icons w3_agile_social_icons_contact">
-                            <ul>
-                                <li><a href="#" class="icon icon-cube agile_facebook"></a></li>
-                                <li><a href="#" class="icon icon-cube agile_instagram"></a></li>
-                                <li><a href="#" class="icon icon-cube agile_t"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <div class="col-md-6">
+                        <!-- Billing Details -->
+                        <div class="billing-details">
+            <div class="billing-details">
+                            <div class="section-title">
+                                <h3 class="title">Envíanos un Mensaje</h3>
+                            </div>
             
-            <div class="col-md-6 w3_agileits_contact_grid_right">
-                <h2 class="w3_agile_header">Envíanos<span> un Mensaje</span></h2>
-
                 <?php echo form_open('website/email'); ?>
-                    <span class="input input--ichiro">
-                        <input class="input__field input__field--ichiro" type="text" id="input-25" name="nomemail" placeholder=" " required="" />
-                        <label class="input__label input__label--ichiro" for="input-25">
-                            <span class="input__label-content input__label-content--ichiro">Tu nombre</span>
-                        </label>
-                    </span>
-                    <span class="input input--ichiro">
-                        <input class="input__field input__field--ichiro" type="email" id="input-26" name="froemail" placeholder=" " required="" />
-
-                        <label class="input__label input__label--ichiro" for="input-26">
-                            <span class="input__label-content input__label-content--ichiro">Tu email</span>
-                        </label>
-                    </span>
-                    <input class="form-control" type="hidden" id="empresa_email" name="empresa_email" value="<?php echo $pagina_web[0]['empresa_email']; ?>" />
-                    <textarea placeholder="Escribe un mensaje..." required="" id="mensaje12" name="mensaje12"></textarea>
-                    <input type="submit" value="Enviar">
+                <div class="form-group">
+                                <input class="input" type="text" name="nomemail" placeholder="Tu nombre">
+                            </div>
+                            <div class="form-group">
+                                <input class="input" type="text" name="froemail" placeholder="Tu correo">
+                            </div>
+                            <input class="form-control" type="hidden" id="empresa_email" name="empresa_email" value="<?php echo $pagina_web[0]['empresa_email']; ?>" />
+                            <div class="order-notes">
+                    <textarea placeholder="Escribe un mensaje..." class="input" required="" id="mensaje12" name="mensaje12"></textarea>
+                </div>
+                    <input type="submit" class="btn btn-primary" value="Enviar">
+                    
                 <?php echo form_close(); ?>
             </div>
             
             <div class="clearfix"> </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 <!-- contact -->
 
@@ -338,7 +301,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="<?php echo $raiz;?>js/bootstrap.min.js"></script>
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
-    <script type="text/javascript">
+ <script type="text/javascript">
         $(document).ready(function() {
             /*
                 var defaults = {
@@ -353,6 +316,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 
             });
     </script>
+
 <!-- //here ends scrolling icon -->
 <script src="<?php echo $raiz;?>js/minicart.min.js"></script>
 <script>
@@ -366,6 +330,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     }
 </script>
 <!-- main slider-banner -->
+
+<script src="<?php echo $raiz;?>js/slick.min.js"></script>
+<script src="<?php echo $raiz;?>js/nouislider.min.js"></script>
+<script src="<?php echo $raiz;?>js/jquery.zoom.min.js"></script>
+<script src="<?php echo $raiz;?>js/main.js"></script>
 <script src="<?php echo $raiz;?>js/skdslider.min.js"></script>
 <link href="<?php echo $raiz;?>css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
@@ -379,8 +348,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
 </script> 
 <!-- //main slider-banner --> 
-    <?php 
-        $var = "827ccb0eea8a706c4c34a16891f84e7b"; 
-        //echo md5($var); ?> 
+    
     </body>
 </html>

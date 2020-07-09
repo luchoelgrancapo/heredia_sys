@@ -17,15 +17,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <?php $raiz = base_url('resources/web/'); ?>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-<link href="<?php echo $raiz;?>css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo $raiz;?>css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo $raiz;?>css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- font-awesome icons -->
-<link href="<?php echo $raiz;?>css/font-awesome.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/font-awesome.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/nouislider.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/slick.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/slick-theme.css" rel="stylesheet"> 
 
 <!-- //font-awesome icons -->
 <!-- js -->
-<script src="<?php echo $raiz;?>js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo $raiz;?>js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url('resources/js/web_producto.js'); ?>"></script>
 <!-- //js -->
 <link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -111,14 +115,14 @@ function toggle(source) {
 
 
 
-<link href="<?php echo $raiz;?>css/flag-icon.min.css" rel="stylesheet"> 
-<link href="<?php echo $raiz;?>css/bootstrap-select.min.css" rel="stylesheet"> 
+<!--<link href="<?php echo $raiz;?>css/flag-icon.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/bootstrap-select.min.css" rel="stylesheet"> -->
 <link rel="shortcut icon" href="<?php echo site_url('resources/images/icono.png');?>" />
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
 <!-- start-smoth-scrolling -->
 </head>
     
-<body onload="buscar_por_categoria(<?php echo $parametro[0]["parametro_mostrarcategoria"]; ?>)">
+<body>
 <!-- header -->
 <?php include("header.php"); ?>
 <?php include('modalcarrito.php'); ?>
@@ -128,7 +132,7 @@ function toggle(source) {
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="<?php echo base_url(); ?>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Inicio</a></li>
+				<li><a href="<?php echo base_url(); ?>"><span class="fa fa-home" aria-hidden="true"></span>Inicio</a></li>
 				<li class="active">Mi Perfil</li>
 			</ol>
 		</div>
@@ -137,13 +141,7 @@ function toggle(source) {
 
 <!------------------------------------ contenido -------------------->
 
-
-
-
-
-<div class="row">
-    
-    
+  <div class="container">  
     <div class="col-md-2"></div>
     
     <div class="col-md-8">

@@ -17,15 +17,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <?php $raiz = base_url('resources/web/'); ?>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-<link href="<?php echo $raiz;?>css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo $raiz;?>css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo $raiz;?>css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- font-awesome icons -->
-<link href="<?php echo $raiz;?>css/font-awesome.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/font-awesome.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/nouislider.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/slick.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/slick-theme.css" rel="stylesheet"> 
 
 <!-- //font-awesome icons -->
 <!-- js -->
-<script src="<?php echo $raiz;?>js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo $raiz;?>js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url('resources/js/web_producto.js'); ?>"></script>
 <!-- //js -->
 <link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -64,13 +68,24 @@ function mostrar() {
 <script src="//norfipc.com/js/jquery.cookie.js"></script>
 <script src="//norfipc.com/js/cookiecompliance.js"></script>
 
-<link href="<?php echo $raiz;?>css/flag-icon.min.css" rel="stylesheet"> 
-<link href="<?php echo $raiz;?>css/bootstrap-select.min.css" rel="stylesheet"> 
+<!--<link href="<?php echo $raiz;?>css/flag-icon.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/bootstrap-select.min.css" rel="stylesheet"> -->
 <link rel="shortcut icon" href="<?php echo site_url('resources/images/icono.png');?>" />
 <!-- start-smoth-scrolling -->
 </head>
  
 <body>
+    <?php if(!isset($_COOKIE["cliente_id"])) {
+                    $cliente_ide = 0;
+                } else {
+                    $cliente_ide = $_COOKIE["cliente_id"];
+                }
+            ?>
+     <input type="hidden" name="cliente" id="cliente" value="<?php echo $cliente_ide; ?>" />
+            <input type="hidden" name="idioma_id" id="idioma_id" value="<?php echo $idioma_id; ?>" />
+            <input type="hidden" name="myip" id="myip" value="" />
+            <input type="hidden" name="seip" id="seip" value="" />
+            <input type="hidden" name="miip" id="miip" value="" />
 <!-- header -->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
 
@@ -78,7 +93,7 @@ function mostrar() {
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="<?php echo base_url(); ?>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Inicio</a></li>
+				<li><a href="<?php echo base_url(); ?>"><span class="fa fa-home" aria-hidden="true"></span>Inicio</a></li>
 				<li class="active">Recuperar Contraseña</li>
 			</ol>
 		</div>
@@ -86,31 +101,30 @@ function mostrar() {
 <!-- //breadcrumbs -->
 
 <!-- register -->
+            <div id="newsletter" class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="newsletter"><img src="<?php echo base_url("resources/web/images/logo1.png") ?>" width="25%" height="25%">
+                            <p>Recuperar <strong>contraseña</strong></p>
+                            Introduzca la dirección de correo electrónico asociado con su cuenta a BusinessSys, para la empresa <?php echo $pagina_web[0]['empresa_nombre']; ?>.
+                            <form action="javascript:void(0);">
+                                <input class="input" id="recliente_email" placeholder="Correo electrónico">
+                                <button class="newsletter-btn" onclick="enviar_clave()"><i class="fa fa-envelope"></i> Enviar</button>
 
-			<div class="login-form-grids">
-                            <div style="background-color: #081066;padding: 5px">
-                               
-                                <img src="<?php echo base_url("resources/web/images/logo2.png") ?>" width="25%" height="25%">
-                            </div>
-                            <br>
-                            <h5><b>Recuperar contraseña</b></h5>
-                                <p style="text-align: justify;">
-                                    Introduzca la dirección de correo electrónico asociado con su cuenta a BusinessSys, para la empresa <?php echo $pagina_web[0]['empresa_nombre']; ?>.
-                                </p>
-				
-					<input type="text" id="recliente_email" placeholder="Correo electrónico" required>
-                    <br>
-                    <input type="button" class="btn btn-primary btn-block" value="Enviar" onclick="enviar_clave()">
-				    <div class="row" id='loader2'  style='display:none; text-align: center'>
+                            </form>
+                    <div class="row" id='loader2'  style='display:none; text-align: center'>
                     <img src="<?php echo base_url("resources/images/loader.gif"); ?>"  >
                     </div>
-                    
-                    <br>
-                    <br>
-                    <a href="<?php echo base_url(); ?>" class="btn btn-danger btn-block"><fa class="fa fa-home"></fa> Inicio</a>
-
-			</div>
-	
+                        </div>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
 <!-- //register -->
 <!-- //footer -->
 <?php include("footer.php"); ?>

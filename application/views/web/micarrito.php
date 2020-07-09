@@ -17,15 +17,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
 <?php $raiz = base_url('resources/web/'); ?>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-<link href="<?php echo $raiz;?>css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo $raiz;?>css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo $raiz;?>css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- font-awesome icons -->
-<link href="<?php echo $raiz;?>css/font-awesome.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/font-awesome.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/nouislider.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/slick.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/slick-theme.css" rel="stylesheet"> 
 
 <!-- //font-awesome icons -->
 <!-- js -->
-<script src="<?php echo $raiz;?>js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo $raiz;?>js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url('resources/js/web_producto.js'); ?>"></script>
 <!-- //js -->
 <link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -64,8 +68,8 @@ function mostrar() {
 <script src="//norfipc.com/js/jquery.cookie.js"></script>
 <script src="//norfipc.com/js/cookiecompliance.js"></script>
 
-<link href="<?php echo $raiz;?>css/flag-icon.min.css" rel="stylesheet"> 
-<link href="<?php echo $raiz;?>css/bootstrap-select.min.css" rel="stylesheet"> 
+<!--<link href="<?php echo $raiz;?>css/flag-icon.min.css" rel="stylesheet"> 
+<link href="<?php echo $raiz;?>css/bootstrap-select.min.css" rel="stylesheet"> -->
 <link rel="shortcut icon" href="<?php echo site_url('resources/images/icono.png');?>" />
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
 <!-- start-smoth-scrolling -->
@@ -82,7 +86,7 @@ function mostrar() {
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="<?php echo base_url(); ?>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Inicio</a></li>
+				<li><a href="<?php echo base_url(); ?>"><span class="fa fa-home" aria-hidden="true"></span>Inicio</a></li>
 				<li class="active">Mi Carrito</li>
 			</ol>
 		</div>
@@ -107,13 +111,13 @@ function mostrar() {
 
 
                     </div>
-                    <h2>contiene: <span><b><?php echo sizeof($productos)." PRODUCTOS"; ?></b></span></h2>
+                    <h2>Contiene: <span><b><?php echo sizeof($productos)." PRODUCTO(S)"; ?></b></span></h2>
 			<div class="checkout-right">
 				<table width="100%" >
 					<thead>
 						<tr style="color: white; background: #333333;">
 
-							<th>#</th>	
+							<th></th>	
                             <th>Producto</th>   
 							<th>Precio</th>
 							<th>Cantidad</th>
@@ -129,11 +133,11 @@ function mostrar() {
 				</table>
 			</div><br>
 			<button class="btn btn-success" data-dismiss="modal" onclick="realizarcompra()" ><i class="fa fa-money"></i> Finalizar Compra</button>
+            <div class="clearfix"> </div><br>
+            <div align="right">
+				<a href="<?php echo base_url(); ?>" class="primary-btn order-submit">Continuar Comprando</a>
+			</div><br>	
 				
-				<div class="checkout-right-basket">
-                                    <a href="<?php echo base_url(); ?>"><span class="fa fa-cart-arrow-down" aria-hidden="true"></span> Continuar Comprando</a>
-				</div>
-				<div class="clearfix"> </div>
 		
 		</div>
 	</div>
