@@ -219,6 +219,10 @@ function mostrar() {
                                 <li><b>Industria:</b></li>
                                 <li><?php echo $producto[0]['producto_industria']; ?></li>
                             </ul>
+                            <ul class="product-links">
+                                <li><b>Descripción:</b></li>
+                                <li><?php echo $producto[0]['producto_caracteristicas']; ?></li>
+                            </ul>
 
                         </div>
                     </div>

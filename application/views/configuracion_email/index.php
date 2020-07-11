@@ -16,21 +16,19 @@
 <!----------------------------- fin script buscador --------------------------------------->
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <div class="box-header">
-    <font size='4' face='Arial'><b>Configuracion Email</b></font>
-    <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($configuracion_email); ?></font>
+    <h4><b>Configuracion Email</b></h4>
+   
 </div>
 <div class="row">
     <div class="col-md-12">
         <!--------------------- parametro de buscador --------------------->
-            <div class="input-group no-print"> <span class="input-group-addon">Buscar</span>
-                <input id="filtrar" type="text" class="form-control" placeholder="Ingrese correo, protocolo, puerto...">
-            </div>
+          
         <!--------------------- fin parametro de buscador --------------------->
         <div class="box">
             <div class="box-body table-responsive">
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
-                        <th>#</th>
+                        
                         <th>Protocolo</th>
                         <th>Host</th>
                         <th>Puerto</th>
@@ -49,7 +47,7 @@
                     <?php $cont = 0;
                         foreach($configuracion_email as $c){ ?>
                     <tr>
-                        <td><?php echo $c['email_id']; ?></td>
+                        
                         <td><?php echo $c['email_protocolo']; ?></td>
                         <td><?php echo $c['email_host']; ?></td>
                         <td><?php echo $c['email_puerto']; ?></td>

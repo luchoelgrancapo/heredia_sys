@@ -296,7 +296,7 @@ function mostrar_tabla_resultados(respuesta,pag){
                 html += "<div class='product-img'>";
                 html += mimagen;
                 html += "</div>";
-                html += "<a href='website/single/"+registros[i]["producto_id"]+"'><div class='product-body'>";
+                html += "<a href='"+base_url+"website/single/"+registros[i]["producto_id"]+"'><div class='product-body'>";
                 html += "<p class='product-category'></p><h3  class='product-name' title='"+cadena+"'>"+nombre+"</h3>";
                 html += "<h4 class='product-price'>Bs. "+Number(registros[i]["producto_precio"]).toFixed(2)+"</h4>";
                 html += "<div class='product-rating'>";
