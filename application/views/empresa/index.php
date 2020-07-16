@@ -57,13 +57,11 @@
                     <tr>
                         
                         <th>Empresa</th>
-                        <th>Mapa</th>
-                        <th>Eslogan</th>
-                        <th>Dirección</th>
-                        <th>Teléfono</th>
-                        <th>Zona</th>
+                        <th>Propietario</th>
                         <th>Ubicación</th>
-                        <th>Departamento</th>
+                        <th>Dirección</th>
+                        <th>Contacto</th>
+                       
                         <th></th>
                     </tr>
                     <tbody class="buscar">
@@ -92,9 +90,17 @@
                                     ?>
                                 </div>
                                     <div style="padding-left: 4px">
-                                        <?php echo "<b id='masg'>".$e['empresa_nombre']."</b>";
-                                        if($e['empresa_propietario']){
-                                            echo "<br><b>De: </b>".$e['empresa_propietario'];
+                                        <?php echo "<b>".$e['empresa_nombre']."</b>"; ?>
+                                        <br><?php echo $e['empresa_eslogan']; ?>
+                                        
+                                        
+                                    </div>
+                            </div>
+                            
+                        </td>
+                        <td>
+                            <?php if($e['empresa_propietario']){
+                                            echo "<b></b>".$e['empresa_propietario'];
                                         }
                                         if($e['empresa_profesion']){
                                             echo "<br><b>Profesión: </b>".$e['empresa_profesion'];
@@ -106,9 +112,6 @@
                                             echo "<br><b>Código: </b>".$e['empresa_codigo'];
                                         }
                                         ?>
-                                    </div>
-                            </div>
-                            
                         </td>
                         <td class="no-print" style="text-align: center">
                             <?php
@@ -123,17 +126,17 @@
                             </a>
                             <?php
                                 }
-                            ?>
+                            ?><br>
+                        <?php echo $e['empresa_zona']; ?><br>
+                        <?php echo $e['empresa_ubicacion']; ?>
                         </td>
-                        <td><?php echo $e['empresa_eslogan']; ?></td>
-                        <td><?php echo $e['empresa_direccion'];
-                                  if($e['empresa_email']){
+                        <td><?php echo $e['empresa_direccion'];?><br>
+                        <?php echo $e['empresa_departamento']; ?></td>
+                                  
+                        <td><?php echo $e['empresa_telefono']; if($e['empresa_email']){
                                             echo "<br><b>e-mail: </b>".$e['empresa_email'];
                                         } ?></td>
-                        <td><?php echo $e['empresa_telefono']; ?></td>
-                        <td><?php echo $e['empresa_zona']; ?></td>
-                        <td><?php echo $e['empresa_ubicacion']; ?></td>
-                        <td><?php echo $e['empresa_departamento']; ?></td>
+                        
                         <td>
                             <a href="<?php echo site_url('empresa/edit/'.$e['empresa_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-edit"></span></a> 
                             <!--<a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal<?php echo $i; ?>"  title="Eliminar"><span class="fa fa-trash"></span></a>-->

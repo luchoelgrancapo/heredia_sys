@@ -62,12 +62,12 @@
 <div class="row">
     
     <div class="col-md-6">
-<h4 class="box-title"><b>VENTAS</b> <small class="badge badge-secondary" id="pillados"></small></h4>
+<h4 class="box-title"><b>VENTAS</b> <small class="badge badge-secondary" id="encontrados"></small></h4>
 </div>
         <!---------------- BOTONES --------->
     <div class="col-md-6">
             	<div class="box-tools">                    
-                     <a href="<?php echo site_url('venta/ventas'); ?>" class="btn bg-success btn-app"><i class="fa fa-cart-arrow-down"></i> Ventas</a>
+                     <a href="<?php echo site_url('venta/ventas'); ?>" class="btn bg-success btn-app"><i class="fa fa-cart-arrow-down"></i>Venta</a>
                     <button class="btn bg-pink btn-app" onclick="verificar_ventas()"><i class="fa fa-binoculars"></i> Verificar </button>
                    
                 </div>
@@ -172,9 +172,9 @@
                     <tr>
 						<th>Nº</th>
 						<th>Cliente</th>
-						<th>Totales</th>						
-						<th>Trans.</th>
-						<th>Tipo</th>
+						<th>Venta</th>						
+						<th>Totales</th>
+						<th>Estado</th>
 						<th>Fecha</th>
 						<th></th>
 

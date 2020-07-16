@@ -36,21 +36,39 @@
 <!--<input id='tipo_venta' name='tipo_venta' value='<?php echo json_encode($tipo_venta); ?>' hidden>-->
 
 <!--<div class="box-header">
-<div class="row clearfix">-->
-<div class="box-body col-md-6" style="padding: 0">
-    <center>
-        <h3 class="box-title" style="font-family: Arial; margin: 0;" >Pedidos Realizados</h3>
-    </center>
-</div>
+<div class="row clearfix">--> 
+    <br>
 
-<div class="box-body col-md-6"  style="padding:0">
-<div class="row clearfix" style="padding:0">
-                    
+<div class="row">
+    
+    <div class="col-md-6">
+<h4 class="box-title"><b>PEDIDOS</b> <small class="badge badge-secondary" id="pillados"></small></h4>
+</div>
+        <!---------------- BOTONES --------->
+    <div class="col-md-6">
+               <div class="box-tools">
+            
+                <!--<a href="<?php echo site_url('pedido/misclientes'); ?>" class="btn bg-secondary btn-app" target="_blank"><i class="fa fa-users"></i> Clientes</a>-->
+                <a href="<?php echo site_url('pedido/pedidoabierto/0'); ?>" class="btn bg-success btn-app" target="_blank"><i class="fa fa-cart-arrow-down"></i>Pedido</a>
+                <a href="<?php echo site_url('recorrido'); ?>" class="btn bg-info btn-app" ><i class="fas fa-chart-pie"></i> Estadistica</a>
+                <a href="<?php echo site_url('pedido/mapa_entregas'); ?>" target="_blank" class="btn bg-danger btn-app"><i class="fa fa-map"></i> Mapa</a>                
+          
+        </div>
+</div>
+</div>
+<div class="row">
+<div class="box-body col-md-6" >
+ <div class="input-group-prepend" style=" margin-bottom: 0; margin-top: 0;"> <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese el cliente, fecha, total">
+                  </div>
+                  </div>
+
+
     <?php if($tipousuario_id == 1){ ?>
     <div class="col-md-3"  style="padding:3px; margin-bottom: 0; margin-top: 0;">
         <div class="form-group" style="padding: 0;  margin-bottom: 0; margin-top: 0;">
 
-            <select class="btn btn-warning btn-sm form-control" id="select_usuarios" onclick="cambiar_usuario()">
+            <select class="btn btn-secondary btn-sm form-control" id="select_usuarios" onclick="cambiar_usuario()">
                     <option value="0"><?php echo "TODOS"; ?></option>
                     <!--<option value="<?php echo $usuario_id; ?>"><?php echo $usuario_nombre; ?></option>-->
             <?php foreach($usuario as $u){ ?>
@@ -64,7 +82,7 @@
                  
     <div class="col-md-3"  style="padding:3px;  margin-bottom: 0; margin-top: 0;">
         <div class="form-group" style=" margin-bottom: 0; margin-top: 0;">
-        <select class="btn btn-facebook btn-sm form-control" id="select_pedidos" onchange="buscar_pedidos()">
+        <select class="btn btn-secondary btn-sm form-control" id="select_pedidos" onchange="buscar_pedidos()">
             <option value="1">Pedidos de Hoy</option>
             <option value="2">Pedidos de Ayer</option>
             <option value="3">Pedidos de la semana</option>
@@ -78,72 +96,57 @@
         </select>
     </div>
     </div>
-                
-    <div class="col-md-6"  style="padding:3px">
-        <div class="form-group" style="margin-bottom: 0;">
-            <center>
-                <a href="<?php echo site_url('pedido/misclientes'); ?>" class="btn btn-facebook btn-sm " target="_blank" style="width: 80px; background-color: purple;"><span class="fa fa-user-circle-o"></span> Clientes</a>
-                <a href="<?php echo site_url('pedido/pedidoabierto/0'); ?>" class="btn btn-success btn-sm " target="_blank" style="width: 80px;"><span class="fa fa-cart-arrow-down"></span> </span> <span class="fa fa-user-plus"></span> Pedido</a>
-                <a href="<?php echo site_url('recorrido'); ?>" class="btn btn-info btn-sm" style="width: 80px;"><span class="fa fa-pie-chart"></span> Estadistica</a>
-                <a href="<?php echo site_url('pedido/mapa_entregas'); ?>" target="_blank" class="btn btn-facebook btn-sm" style="width: 80px;"><span class="fa fa-map"></span> Mapa</a>                
-            </center>
-        </div>
-    </div>
+ 
     
     
     
-</div>
 </div>
 <!---------------------------------- panel oculto para busqueda--------------------------------------------------------->
 <?php
     $date = date('Y-m-d');
 ?>
-<div class="panel panel-primary col-md-12" id='buscador_oculto' style='display:none;'>
-    <br>
-    <center>            
+<div class="box" id='buscador_oculto' style='display:none;'>
+   <div class="row">        
         <div class="col-md-2">
-            Desde: <input type="date" class="btn btn-warning btn-sm form-control" id="fecha_desde" name="fecha_desde" required="true" value="<?php echo $date; ?>">
+            Desde: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_desde" name="fecha_desde" required="true" value="<?php echo $date; ?>">
         </div>
         <div class="col-md-2">
-            Hasta: <input type="date" class="btn btn-warning btn-sm form-control" id="fecha_hasta" name="fecha_hasta" required="true" value="<?php echo $date; ?>">
+            Hasta: <input type="date" class="btn btn-secondary btn-sm form-control" id="fecha_hasta" name="fecha_hasta" required="true" value="<?php echo $date; ?>">
         </div>
         
         <div class="col-md-2">
             Tipo:             
-            <select  class="btn btn-warning btn-sm form-control" id="estado_id" required="true">
+            <select  class="btn btn-secondary btn-sm form-control" id="estado_id" required="true">
                 <?php foreach($estado as $es){?>
                     <option value="<?php echo $es['estado_id']; ?>"><?php echo $es['estado_descripcion']; ?></option>
                 <?php } ?>
             </select>
         </div>
-        <br>
+       
         <div class="col-md-3">
 <!--<form method="post" onclick="buscar_por_fecha()">-->
             
-<!--            <a href="<?php echo site_url('pedido/crearpedido'); ?>" class="btn btn-success btn-sm"><span class="fa fa-cart-arrow-down"></span> Nuevo pedido</a>-->
-            <button class="btn btn-sm btn-facebook btn-sm btn-block"  onclick="buscar_por_fecha()" type="submit">
-                <h4>
+<!--            <a href="<?php echo site_url('pedido/crearpedido'); ?>" class="btn btn-success btn-sm"><span class="fa fa-cart-arrow-down"></span> Nuevo pedido</a>--><br>
+            <button class="btn  btn-primary form-control btn-block"  onclick="buscar_por_fecha()" type="submit">
+                
                 <span class="fa fa-search"></span>   Buscar
-                </h4>
+               
           </button>
-            <br>
+            
 <!--</form>-->
         </div>
         
-    </center>    
-    <br>    
+    </div>     
 </div>
 <!------------------------------------------------------------------------------------------->
 
-
+<br>
 <div class="row">
     <div class="col-md-12" style=" margin-bottom: 0; margin-top: 0;">
                 
 
         <!--------------------- parametro de buscador --------------------->
-                  <div class="input-group" style=" margin-bottom: 0; margin-top: 0;"> <span class="input-group-addon">Buscar</span>
-                    <input id="filtrar" type="text" class="form-control" placeholder="Ingrese el cliente, fecha, total">
-                  </div>
+               
             <!--------------------- fin parametro de buscador --------------------->
         <div class="box">
         
@@ -160,11 +163,12 @@
             <div class="box-body table-responsive" style="padding: 0;">
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
-                        <th style="padding: 0;">#</th>
+                        <th style="padding: 0;">Nº</th>
                         <th style="padding: 0;">Cliente</th>
-                        <th style="padding: 0;" align="center">COD</th>
+                        <th style="padding: 0;">Pedido</th>
                         <th style="padding: 0;">Total</th>
-                        <th style="padding: 0;">Fecha<br>entrega</th>
+                        <th style="padding: 0;">Estado</th>
+                        <th style="padding: 0;">Fecha<br>Entrega</th>
 
                         <th style="padding: 0;"> </th>
                     </tr>

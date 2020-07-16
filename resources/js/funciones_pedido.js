@@ -242,7 +242,7 @@ function tablaproductos()
                         html = "";
                         html += "<table class='table table-striped table-condensed' id='mitablaventas'>";
                         html += "                    <tr>";
-                        html += "                            <th style='padding:0'>#</th>";
+                        html += "                            <th style='padding:0'>Nº</th>";
                         html += "                            <th style='padding:0'>Descripción</th>";
                         
                         if(esMobil()){
@@ -271,7 +271,7 @@ function tablaproductos()
                            cant_total+= parseFloat(registros[i]["detalleven_cantidad"]);
                            total_detalle+= parseFloat(registros[i]["detalleven_total"]);
                            
-                            if (i == 0) color = "style='background-color: GoldenRod; padding:0;'"
+                            if (i == 0) color = "style='background-color: white; padding:0;'"
                             else color = "style='padding:0'";
                             
                         html += "                    <tr>";
@@ -460,7 +460,7 @@ function tabladetalle(subtotal,descuento,totalfinal)
     $("#venta_totalfinal").val(venta_totalfinal.toFixed(2));
     
     html = "";
-    html += "<div class='box'>";
+    html += "<div class='box' hidden>";
     html += "        <div class='box-body table-responsive table-condensed'>";
     html += "            <table class='table table-striped table-condensed' id='miotratabla'>";
     html += "<tr>";
@@ -1252,7 +1252,7 @@ function tablaresultados(opcion)
                     }
                     
                    html += "                <tr style='background-color: black; '>";
-                   html += "                <th style='padding:0; background: black;'>#</th> ";
+                   html += "                <th style='padding:0; background: black;'>N</th> ";
                    html += "                <th style='padding:0; background: black;'>PRODUCTOS</th>";
                    
                     if(! esMobil()) { //si no es dispositivo mobil
@@ -1678,8 +1678,8 @@ function tablaresultados(opcion)
                
             }
             
-            document.getElementById('buscador1').style.display = 'none';
-            document.getElementById('categoria').style.display = 'none';
+            document.getElementById('buscador1').style.display = 'block';
+            document.getElementById('categoria').style.display = 'block';
                        
         },
         error:function(respuesta){
@@ -2596,7 +2596,7 @@ function buscar_clientes_pedido()
 
 
                 cliente_nombre = "<b>"+c[i]["cliente_nombre"]+"</b>";
-                html += "            <a href='"+base_url+"pedido/pedidoabierto/"+c[i]["cliente_id"]+"' class='btn btn-warning btn-xs'>"+"<fa class='fa fa-user'></fa> "+cliente_nombre+"</a>";
+                html += "            <a href='"+base_url+"cliente/cambiarcliente/"+c[i]['cliente_id']+"/"+pedido_id+"' class='btn btn-warning btn-xs'>"+"<fa class='fa fa-user'></fa> "+cliente_nombre+"</a>";
                 
 //                html += "                <b> "+c[i]["cliente_nombre"]+"</b> , COD.: "+c[i]["cliente_codigo"]+" <br>";
                 html += "<br>";
@@ -3110,3 +3110,4 @@ function focus_cantidad(producto_id){
         $('#'+campo).select();
     });
 }
+

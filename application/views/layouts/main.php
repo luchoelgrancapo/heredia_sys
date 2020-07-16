@@ -137,6 +137,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?php echo site_url('pedido');?>" class="nav-link">
+                                <i class="nav-icon fas fa-paste fa-fw"></i> <p>Pedidos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?php echo site_url('inventario');?>" class="nav-link">
                                 <i class="nav-icon fas fa-cubes fa-fw"></i> <p>Inventario</p>
                             </a>

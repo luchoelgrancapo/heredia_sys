@@ -223,36 +223,52 @@ class Pedido extends CI_Controller{
     function modificarpedido($pedido_id)
     {
         if($this->acceso(31)) {
-        //**************** inicio contenido ***************            
-        
-        $data['page_title'] = "Modificar Pedido";
+        //**************** inicio contenido ***************  
         $usuario_id = $this->session_data['usuario_id'];
+        $tipousuario_id = $this->session_data['tipousuario_id'];
+        $data['rolusuario'] = $this->session_data['rol'];          
+         $this->load->model('Cliente_model');
+        $this->load->model('Tipo_cliente_model');
+        $this->load->model('Dosificacion_model');
+        $this->load->model('Parametro_model');
+        $this->load->model('Tipo_servicio_model');
+        $this->load->model('Preferencia_model');
+        $data['page_title'] = "Modificar Pedido";
+        $data['categoria_producto'] = $this->Venta_model->get_categoria_producto();
+        $data['tipo_transaccion'] = $this->Tipo_transaccion_model->get_all_tipo();
+        $data['forma_pago'] = $this->Forma_pago_model->get_all_forma();
+        $data['tipo_cliente'] = $this->Tipo_cliente_model->get_all_tipo_cliente();
+        $data['parametro'] = $this->Parametro_model->get_parametros();
+        $data['usuario_id'] = $usuario_id;
+        $data['tipousuario_id'] = $tipousuario_id;
+        $data['tipo_servicio'] = $this->Tipo_servicio_model->get_all_tipo_servicio();
+        $data['preferencia'] = $this->Preferencia_model->get_all_preferencia();
+        $data['usuarios'] = $this->Usuario_model->get_all_usuario_activo();
+        $data['tipo_respuesta'] = $this->Usuario_model->get_tipo_respuesta();
         
+        $data['pedido_id'] = $pedido_id;
         $pedido = $this->Pedido_model->get_cliente_id($pedido_id);
         
         if(sizeof($pedido)>0){
-            $cliente_id = $pedido[0]['cliente_id'];
-            $usuario_id = $pedido[0]['usuario_id'];
-            
+            $cliente_id = $pedido[0]['cliente_id'];    
+        }        
+        else{
+            $cliente_id = 0;
+        }
+           
+        
+        if ($cliente_id>0){
+            $cliente = $this->Cliente_model->get_cliente_by_id($cliente_id);
+            if (sizeof($cliente)>0)
+                $data['cliente'] = $cliente;
+            else
+                $data['cliente'] = $this->Venta_model->get_cliente_inicial();
         }        
         else
-            $cliente_id = 0;
+        {    $data['cliente'] = $this->Venta_model->get_cliente_inicial();}
         
-        
-            if ($cliente_id == 0) //si el pedido aun no fue registrado a un cliente
-            {    $data['pedido'] = $this->Pedido_model->get_pedido($pedido_id,$usuario_id); 
-            
-            }
-            else
-            {    
-                $data['pedido'] = $this->Pedido_model->get_pedido_cliente($pedido_id,$usuario_id); 
-                $data['zona'] = $this->Categoria_clientezona_model->get_cliente_zona($pedido[0]['cliente_id']);
-            }
 
-            $data['pedido_id'] = $pedido_id;
-            $data['usuarios'] = $this->Usuario_model->get_all_usuario_activo();
-            $data['usuario_activo'] = $usuario_id;
-            
+          
             
            
             //$data['cliente'] = $this->Pedido_model->get_all_cliente($usuario_id);
@@ -599,7 +615,109 @@ function registrarpedido()
         }
         
     }
-    
+    function modificar_pedido()
+    {  
+        if($this->acceso(30)){ //12 ventas o 30 pedidos
+        //**************** inicio contenido ***************        
+        
+        $usuario_id = $this->session_data['usuario_id'];
+        
+        
+        $porcentaje = 0;
+        
+        //$cad = $this->input->post('cad'); // recuperamos la consulta sql enviada mediante JS para el insert en la venta
+        $pedido_fecha = $this->input->post('pedido_fecha'); // recuperamos la consulta sql enviada mediante JS para el insert en la venta
+        $pedido_id = $this->input->post('pedido_id'); // recuperamos la consulta sql enviada mediante JS para el insert en la venta
+        $pedido_hora = $this->input->post('pedido_hora'); // recuperamos la consulta sql enviada mediante JS para el insert en la venta
+        $cliente_id = $this->input->post('cliente_id'); 
+        $tipotrans_id = $this->input->post('tipotrans_id'); 
+        $venta_total = $this->input->post('pedido_total'); // recuperamos la consulta sql enviada mediante JS
+        $venta_descuento = $this->input->post('pedido_descuento'); // descuento de la venta
+        $pedido_glosa = $this->input->post('pedido_glosa'); // descuento de la venta
+        $pedido_horaentrega = $this->input->post('pedido_horaentrega'); // descuento de la venta
+        $pedido_fechaentrega = $this->input->post('pedido_fechaentrega'); // descuento de la venta
+        $pedido_longitud = $this->input->post('pedido_longitud'); // descuento de la venta
+        $pedido_latitud = $this->input->post('pedido_latitud'); // descuento de la venta
+        $regusuario_id = $this->input->post('regusuario_id'); // descuento de la venta
+        
+        $sql = "UPDATE pedido SET usuario_id = ".$usuario_id.", estado_id=11, tipotrans_id=".$tipotrans_id.", pedido_fecha='".$pedido_fecha."', 
+            pedido_subtotal=".$venta_total.", pedido_descuento=".$venta_descuento.", pedido_total=".$venta_total.", pedido_glosa=".$pedido_glosa.", pedido_fechaentrega=".$pedido_fechaentrega.", pedido_horaentrega=".$pedido_horaentrega.", pedido_latitud='".$pedido_latitud."', 
+            pedido_longitud='".$pedido_longitud."', regusuario_id=".$regusuario_id." WHERE pedido_id=".$pedido_id." ";
+        $this->db->query($sql);
+        // ejecutamos la consulta para registrar la venta y recuperamos venta_id
+        
+        $borrar = "DELETE FROM detalle_pedido where pedido_id=".$pedido_id." ";
+        $this->db->query($borrar);
+                
+        if (($venta_total+$venta_descuento)>0)
+            $porcentaje = $venta_descuento / ($venta_total+$venta_descuento);
+        else
+            $porcentaje = 0;
+            
+        $sql1 =  "insert into detalle_pedido
+        (   
+            pedido_id,
+            producto_id,
+            detalleped_codigo,
+            detalleped_foto,
+            detalleped_nombre,
+            detalleped_unidad,
+            detalleped_costo,
+            detalleped_cantidad,
+            detalleped_precio,
+            detalleped_descuento,
+            detalleped_subtotal,
+            detalleped_total,
+            detalleped_preferencia,
+            detalleped_comision          
+        )
+        (SELECT           
+          ".$pedido_id." as pedido_id,
+          producto_id,
+          producto_codigobarra,
+          '-' as detalleped_foto,
+          producto_nombre,
+          detalleven_unidad,
+          detalleven_costo,
+          detalleven_cantidad,
+          detalleven_precio - (detalleven_subtotal*".$porcentaje."/detalleven_cantidad),
+          (detalleven_subtotal*".$porcentaje."/detalleven_cantidad),
+          detalleven_subtotal,
+          detalleven_total * (1 - ".$porcentaje."),
+          detalleven_preferencia,
+          detalleven_comision
+
+        FROM
+          detalle_venta_aux
+        WHERE 
+          usuario_id=".$usuario_id.")";
+        
+        //echo $sql;
+        $this->Pedido_model->ejecutar($sql1);// cargar los productos del detalle_aux al detalle_venta
+        
+        
+        //************* reducir inventario
+        
+        $this->Inventario_model->reducir_inventario_aux($usuario_id);
+
+        $tiporespuesta_id = 0;
+        //$pedido_id ya existe
+        //$cliente_id = 0; //no es necesario
+        //$usuario_id ya existe
+        $recorrido_fecha = "'".$pedido_fecha."'";
+        $recorrido_hora = "'".$pedido_hora."'";
+        $recorrido_detalleresp = "'PEDIDO REALIZADO'";
+
+        $sql2 = "UPDATE recorrido_usuario set tiporespuesta_id = ".
+                $tiporespuesta_id.",
+                cliente_id=".$cliente_id.",usuario_id=".$usuario_id.",recorrido_fecha=".$recorrido_fecha.",
+                recorrido_hora=".$recorrido_hora.",recorrido_detalleresp=".$recorrido_detalleresp." where pedido_id=".$pedido_id." ";
+        $this->Pedido_model->ejecutar($sql2);// cargar los productos del detalle_aux al detalle_venta
+     
+        //**************** fin contenido ***************
+        }
+        
+    }
     
     /*
      * Registrar pedido
@@ -1079,6 +1197,8 @@ function registrarpedido()
             $usuario_id = $this->session_data['usuario_id']; //$this->session->userdata('id_usu');
             
             $data['all_pedido'] = $this->Pedido_model->get_mis_pedidos($usuario_id);
+           
+            $data['parametro'] = $this->Parametro_model->get_parametros();
             //$data['puntos_referencia'] = $this->Puntos_referencia_model->get_all_puntos_referencia();
             $data['_view'] = 'pedido/mapaentregas';
             
@@ -1334,6 +1454,54 @@ function registrarpedido()
         //**************** fin contenido ***************
         }
         
+    }
+
+    function vaciar_adetalle()
+    {
+        $usuario_id = $this->session_data['usuario_id'];
+        $pedido_id = $this->input->post('pedido_id');
+        $borrar = "DELETE FROM detalle_venta_aux where usuario_id=".$usuario_id." ";
+        $this->db->query($borrar);
+        $sql =  "insert into detalle_venta_aux
+        (   
+          
+          producto_id,
+          producto_codigobarra,
+          producto_nombre,
+          producto_unidad,
+          detalleven_costo,
+          detalleven_cantidad,
+          detalleven_precio,
+          detalleven_descuento,
+          detalleven_subtotal,
+          detalleven_total,
+          detalleven_preferencia,
+          detalleven_comision,
+          usuario_id
+           
+        )
+        (SELECT           
+            
+            producto_id,
+            detalleped_codigo,
+            detalleped_nombre,
+            detalleped_unidad,
+            detalleped_costo,
+            detalleped_cantidad,
+            detalleped_precio,
+            detalleped_descuento,
+            detalleped_subtotal,
+            detalleped_total,
+            detalleped_preferencia,
+            detalleped_comision,
+            ".$usuario_id."      
+
+        FROM
+          detalle_pedido
+        WHERE 
+          pedido_id=".$pedido_id.")";
+       $this->db->query($sql);
+        echo json_encode(true);
     }
     
     

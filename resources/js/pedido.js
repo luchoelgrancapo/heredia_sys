@@ -58,7 +58,7 @@ function tabla_pedidos(filtro)
                 tipotrans = p[i]["tipotrans_nombre"];
                 nombreusuario = p[i]["usuario_nombre"];
                 
-                if (nombreusuario.length>12){
+                if (nombreusuario.length>15){
                     nombreusuario = nombreusuario.substr(0,10)+'..';
                 }
                 cont += 1;//    html += "             $cont = $cont+1;  ";
@@ -67,7 +67,7 @@ function tabla_pedidos(filtro)
                 html += "<tr> ";
                 html += "    <td>"+cont+"</td> ";
 
-                html += "    <td  bgcolor='"+p[i]["estado_color"]+"' style='line-height: 9px; padding:0; padding:"+padding+";'><font size='3'><b>"+p[i]["cliente_nombre"]+"</b></font> <sub>["+p[i]["cliente_id"]+"]</sub> ";
+                html += "    <td><b>"+p[i]["cliente_nombre"]+"</b> ["+p[i]["cliente_id"]+"] ";
                 
 //                if (isNaN(p[i]["cliente_latitud"]) || isNaN(["cliente_longitud"])){  
                 
@@ -101,29 +101,34 @@ function tabla_pedidos(filtro)
                 html += "     ";
                 html += "    </td> ";
                 
-                html += "    <td align='center' bgcolor='"+p[i]["estado_color"]+"'  style='line-height: 10px; padding:"+padding+";'> ";
+                html += "    <td align='center'>  ";
 //                html += "        <a href='"+base_url+'pedido/pedidoabierto/'+p[i]["pedido_id"]+"'> ";
-                html += "        <font size='3' color='white'><b>"+'00'+p[i]["pedido_id"]+"</b></font> <br> ";
-                html += "        <font size='1' color='white'>"+p[i]["estado_descripcion"]+"</font> ";
-                html += "        "+'<br><b>'+tipotrans+" </b> ";                
+                html += "        <font size='5'><b>"+p[i]["pedido_id"]+"</b></font> <br> ";
+                 html += "        Usuario:     "+nombreusuario+"";
+                            
                 html += "         ";
 //                html += "        </a> ";
                 html += "    </td> ";
 
 
-                html += "    <td align='right' bgcolor='"+p[i]["estado_color"]+"' style='line-height: 10px; padding:"+padding+";'> ";
-                html += "        "+'Sub Total: '+parseFloat(p[i]["pedido_subtotal"]).toFixed(2)+"<br>  ";
-                html += "        "+'Desc.: '+parseFloat(p[i]["pedido_descuento"]).toFixed(2)+"<br>   ";
-                html += "        <font size='3'><b>"+parseFloat(p[i]["pedido_total"]).toFixed(2)+"</b></font> ";
+                html += "    <td align='right' > ";
+                html += "        "+'Sub Total: Bs.  '+parseFloat(p[i]["pedido_subtotal"]).toFixed(2)+"<br>  ";
+                html += "        "+'Desc.: Bs.  '+parseFloat(p[i]["pedido_descuento"]).toFixed(2)+"<br>   ";
+                html += "        <b>Total: Bs. "+parseFloat(p[i]["pedido_total"]).toFixed(2)+"</b> ";
                 html += "    </td> ";
 
-                html += "    <td bgcolor='"+p[i]["estado_color"]+"' style='line-height: 10px; padding:"+padding+";'> ";
+                html += "    <td align='center' style='background-color: #"+p[i]["estado_color"]+" '> ";
+                html += "         "+p[i]["estado_descripcion"]+" ";
+                html += "        "+'<br><b>'+tipotrans+" </b> ";   
+                html += "    </td> ";
+
+                html += "    <td> ";
                 html += "        <center> ";        
-                html += "        <font size='1'> ";        
+                html += "         ";        
                 html += "        "+formato_fecha(p[i]["pedido_fechaentrega"])+'<br>'+p[i]["pedido_horaentrega"];
                 
-                html += "        <br> <small>"+nombreusuario+"</small>"
-                html += "        </font> ";
+               
+                html += "        ";
                 html += "        </center>  ";
                 html += "    </td> ";
 
@@ -133,15 +138,15 @@ function tabla_pedidos(filtro)
                     if (p[i]["estado_id"]>=10 && p[i]["estado_id"]<=14){
                         
                         if (p[i]["estado_id"]==13){
-                            html += "        <a href='"+base_url+'pedido/nota_pedido/'+p[i]["pedido_id"]+"' class='btn btn-warning btn-sm' title='Imprimir comprobante de pedido'><span class='fa fa-print'></span></a> ";
+                            html += "        <a href='"+base_url+'pedido/nota_pedido/'+p[i]["pedido_id"]+"' class='btn btn-success btn-xs' title='Imprimir comprobante de pedido'><span class='fa fa-print'></span></a> ";
                         }
                         else{
-                        html += "        <a href='"+base_url+'pedido/nota_pedido/'+p[i]["pedido_id"]+"' target='_blank' class='btn btn-warning btn-sm' title='Imprimir comprobante de pedido'><span class='fa fa-print'></span></a> ";
+                        html += "        <a href='"+base_url+'pedido/nota_pedido/'+p[i]["pedido_id"]+"' target='_blank' class='btn btn-success btn-xs' title='Imprimir comprobante de pedido'><span class='fa fa-print'></span></a> ";
                         if(esrol == 1){
-                            html += "        <a href='"+base_url+'pedido/modificarpedido/'+p[i]["pedido_id"]+"' class='btn btn-success btn-sm' title='Modificar datos de pedido'><span class='fa fa-cubes'></span></a> ";
+                            html += "        <a href='"+base_url+'pedido/modificarpedido/'+p[i]["pedido_id"]+"' target='_blank' class='btn btn-info btn-xs' title='Modificar datos de pedido'><span class='fa fa-edit'></span></a> ";
                         }
                  // ****************************** anular pedido ***************************************
-                        html += "      <button type='button' class='btn btn-danger btn-sm'  title='Anular pedido' data-toggle='modal' data-target='#modalanular"+p[i]["pedido_id"]+"'> ";
+                        html += "      <button type='button' class='btn btn-danger btn-xs'  title='Anular pedido' data-toggle='modal' data-target='#modalanular"+p[i]["pedido_id"]+"'> ";
                         html += "           <span class='fa fa-trash'></span> ";
                         html += "      </button>  ";
   
@@ -152,15 +157,13 @@ function tabla_pedidos(filtro)
                         html += "  <div class='modal-dialog' role='document'> ";
                         html += "    <div class='modal-content'> ";
 
-                        html += "      <div class='modal-header' style='background-color: #CDCDCD'> ";
-                        html += "          <center> ";
+                        html += "      <div class='modal-header btn-danger' > ";
+                        html += "          <h3 class='modal-title' id='exampleModalLabel'><b> Anular pedido</span></b></h3> ";
 
-                        html += "          <h3 class='modal-title' id='exampleModalLabel'><b><span class='fa fa-money'></span>  Anular pedido <span class='fa fa-save'></span></b></h3> ";
                         html += "        <button type='button' class='close' data-dismiss='modal' aria-label='Close'> ";
                         html += "          <span aria-hidden='true'>&times;</span> ";
                         html += "        </button>  ";
-
-                        html += "          </center> ";
+                      
                         html += "      </div> ";
 
                         html += "      <div class='modal-body'> ";
@@ -171,8 +174,8 @@ function tabla_pedidos(filtro)
                         html += "          </center> ";
                         html += "      </div> ";
                         html += "      <div class='modal-footer'> ";
+                        html += "        <button  class='btn btn-primary' data-dismiss='modal'  onclick='anular_pedido("+p[i]["pedido_id"]+")'><span class='fa fa-ban'></span> Anular</button> ";
                         html += "        <button type='button' class='btn btn-danger' data-dismiss='modal'><span class='fa fa-times'></span> Cancelar</button> ";
-                        html += "        <button  class='btn btn-primary' data-dismiss='modal'  onclick='anular_pedido("+p[i]["pedido_id"]+")'><span class='fa fa-money'></span> Anular</button> ";
                         html += "      </div> ";
                         html += "    </div> ";
                         html += "  </div> ";
@@ -181,7 +184,7 @@ function tabla_pedidos(filtro)
                 // ****************************** fin anular pedido ***************************************
                  // ****************************** consolidar pedido a ventas ***************************************
                         if(esrolconsolidar == 1){
-                        html += "   <button type='button' class='btn btn-facebook btn-sm' data-toggle='modal'  title='Consolida Pedido' data-target='#modalconsolidar"+p[i]["pedido_id"]+"'> ";
+                        html += "   <button type='button' class='btn bg-navy btn-xs' data-toggle='modal'  title='Consolida Pedido' data-target='#modalconsolidar"+p[i]["pedido_id"]+"'> ";
                         html += "           <span class='fa fa-cart-plus'></span>  ";
                         html += "      </button>  ";
                         }
@@ -192,15 +195,14 @@ function tabla_pedidos(filtro)
                         html += "  <div class='modal-dialog' role='document'> ";
                         html += "    <div class='modal-content'> ";
 
-                        html += "      <div class='modal-header' style='background-color: #CDCDCD'> ";
-                        html += "          <center> ";
+                        html += "      <div class='modal-header btn-info'> ";
+                      
 
-                        html += "          <h3 class='modal-title' id='exampleModalLabel'><b><span class='fa fa-cart-plus'></span>  Enviar pedido a ventas<span class='fa fa-cart-plus'></span></b></h3> ";
+                        html += "          <h3 class='modal-title' id='exampleModalLabel'><b>  Enviar pedido a ventas<span class='fa fa-cart-plus'></span></b></h3> ";
                         html += "        <button type='button' class='close' data-dismiss='modal' aria-label='Close'> ";
                         html += "          <span aria-hidden='true'>&times;</span> ";
                         html += "        </button>  ";
 
-                        html += "          </center> ";
                         html += "      </div> ";
 
                         html += "      <div class='modal-body'> ";
@@ -220,8 +222,9 @@ function tabla_pedidos(filtro)
                         html += "          </center> ";
                         html += "      </div> ";
                         html += "      <div class='modal-footer'> ";
-                        html += "        <button type='button' class='btn btn-danger' data-dismiss='modal'><span class='fa fa-times'></span> Cancelar</button> ";
                         html += "        <button type='button' class='btn btn-primary' data-dismiss='modal'  onclick='consolidar_pedido("+p[i]["pedido_id"]+","+p[i]["pedido_total"]+")'><span class='fa fa-cart-plus'></span> Vender</button> ";
+
+                        html += "        <button type='button' class='btn btn-danger' data-dismiss='modal'><span class='fa fa-times'></span> Cancelar</button> ";
                         html += "      </div> ";
                         html += "    </div> ";
                         html += "  </div> ";
@@ -242,22 +245,19 @@ function tabla_pedidos(filtro)
                 html += "    <th style='padding: 0;'> </th> ";
 
                 html += "         ";
-                html += "    <th style='padding: 0; line-height: 13px;'> ";
-                html += "        <center>  ";
-                html += "        PEDIDOS<br> ";
-                html += "        <font size='3'><b>"+cont+"</b></font> ";
-                html += "        </center> ";
+                html += "    <th> TOTAL";
+                    
                 html += "   </th> ";
 
-                html += "   <th style='padding: 0; line-height: 13px;'> ";
+                html += "   <th> ";
                 html += "        <center> ";
-                html += "            TOTAL Bs<br> ";
                 
-                html += "        <font size='3'><b>"+total_pedido.toFixed(2)+"</b></font> ";
+                html += "        <font size='4'>Bs. "+total_pedido.toFixed(2)+"</font> ";
 //                html += "        <font size='3'><b>"+formato_numerico(parseFloat(total_pedido).toFixed(2))+"</b></font> ";
                 html += "        </center> ";
                 html += "   </th> ";
                 html += "     ";
+                html += "    <th style='padding: 0;'></th> ";
                 html += "    <th style='padding: 0;'></th> ";
                 html += "    <th style='padding: 0;'> </th> ";
                 html += "</tr>      ";

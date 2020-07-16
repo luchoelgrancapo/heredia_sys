@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Negocios</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
     <style>
+      
       #map{
-        width: 800px; 
+        width: 100%;
         height: 600px;
+        border: 2px solid black;
       }
     </style>
-  </head>
+
   <body>
-      <div class="container">
-          <h4><b>Entregas para hoy: <?php echo sizeof($all_pedido); ?></b>
-          <a href="<?php echo site_url('pedido'); ?>" class="btn btn-danger btn-sm"><span class="fa fa-list"></span> Pedidos</a>
+      <div class="box">
+          <h4><b>Mapa de pedidos para hoy: <?php echo sizeof($all_pedido); ?></b>
+          <a href="<?php echo site_url('pedido'); ?>" class="btn bg-primary btn-app"><span class="fa fa-list"></span>Ver Pedidos</a>
           </h4>
-          <div class="col col-md-12 table-responsive">
-              <table class="table">
-                  <tr>
-                      <td>
+         
                       
     <div id="map"></div> <!-- mapa -->
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClNsJugfWI4xOf1Or9Wdg5lD_qUqaik58"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $parametro[0]['parametro_apikey']?>"></script>
     <script>      
       //coordada inicial del mapa
       var coordenadas= new google.maps.LatLng(-17.4038, -66.1635);
@@ -80,7 +75,7 @@
               animation: google.maps.Animation.DROP, //animacion           
               nombre: place[0], //personalizado - nombre del punto
               info: place[3], //personalizado - informacion adicional
-              link: '<?php echo base_url().'pedido/comprobante/'; ?>'+place[4], //personalizado - informacion adicional              
+              link: '<?php echo base_url().'pedido/nota_pedido/'; ?>'+place[4], //personalizado - informacion adicional              
               icon:'<?php echo base_url().'resources/images/blue.png'; ?>'
                      
           });
@@ -114,11 +109,8 @@
       initialize(); //inicializar el mapa
     </script>
     
-                    </td>
-                  </tr>
-              </table>
+             
     
         </div>
     </div>
-  </body>
-</html>
+ 

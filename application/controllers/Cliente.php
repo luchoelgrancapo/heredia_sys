@@ -206,10 +206,11 @@ class Cliente extends CI_Controller{
                     'cliente_ordenvisita' => $this->input->post('cliente_ordenvisita'),
                     'cliente_clave' => $la_contraseña,
                 );
+                $cliente_id = $this->Cliente_model->add_cliente($params);
                 $categorias=$this->input->post('categoriaclie_id');
                 $sql = "UPDATE categoria_cliente SET categoriaclie_numero=categoriaclie_numero+1 WHERE categoriaclie_id = ".$categorias." "; 
                 $this->db->query($sql);
-                $cliente_id = $this->Cliente_model->add_cliente($params);
+                
                 redirect('cliente/index');
                 }
             }
@@ -930,6 +931,9 @@ class Cliente extends CI_Controller{
     //            redirect('cliente/index');
     //            
                     $cliente_id = $this->Cliente_model->add_cliente($params);
+                    $categorias=$this->input->post('categoriaclie_id');
+                $sql = "UPDATE categoria_cliente SET categoriaclie_numero=categoriaclie_numero+1 WHERE categoriaclie_id = ".$categorias." "; 
+                $this->db->query($sql);
                     //$this->load->model('Pedido_model');
                     //$this->Pedido_model->cambiar_cliente($pedido_id,$cliente_id);            
                     //redirect('pedido/pedidoabierto/'.$pedido_id);            
@@ -953,7 +957,8 @@ class Cliente extends CI_Controller{
 
                 $this->load->model('Categoria_cliente_model');
                 $data['all_categoria_cliente'] = $this->Categoria_cliente_model->get_all_categoria_cliente();
-
+                $this->load->model('Parametro_model');
+                $data['parametro'] = $this->Parametro_model->get_parametros();
                 $data['resultado'] = 0;
     //            
     //            $data['_view'] = 'cliente/add';
@@ -979,7 +984,12 @@ class Cliente extends CI_Controller{
 //                "where cliente_id = ".$cliente_id;        
 //        $this->Pedido_model->ejecutar($sql);       
         $this->Pedido_model->cambiar_cliente($pedido_id,$cliente_id);
-        redirect('pedido/pedidoabierto/'.$pedido_id);
+        if ($pedido_id>0) {
+             redirect('pedido/modificarpedido/'.$pedido_id);
+        }else{
+            redirect('pedido/pedidoabierto/'.$cliente_id);
+        }
+        
         
     }
     

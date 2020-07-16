@@ -194,9 +194,8 @@
       <th>Proveedor</th>
       <th>Compra</th>
     <th>Totales</th>
-    <th>Fecha</th>
     <th>Estado</th>
-    <th>Usuario</th>
+    <th>Fecha</th>
     <th class="no-print"></th>
     </tr>
 <!-- <tbody class="buscar" id="compraproveedor">-->

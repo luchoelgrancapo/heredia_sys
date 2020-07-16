@@ -37,6 +37,28 @@ class Venta_online_model extends CI_Model
 
         return $detalle_venta;
   }
+
+  function ventas_pendientes()
+  {
+        $detalle_venta = $this->db->query("
+            SELECT
+                v.*, e.entrega_nombre, c.cliente_nombre, c.cliente_razon, c.cliente_nit, c.cliente_telefono, c.cliente_direccion, ts.tiposerv_descripcion, f.forma_nombre,  c.cliente_celular,  c.cliente_latitud,  c.cliente_longitud
+            FROM
+                venta_online v 
+            
+            LEFT JOIN entrega e on v.entrega_id=e.entrega_id
+            LEFT JOIN cliente c on v.cliente_id=c.cliente_id
+            LEFT JOIN tipo_servicio ts on v.tiposerv_id=ts.tiposerv_id
+            LEFT JOIN forma_pago f on v.forma_id=f.forma_id
+            WHERE
+            1=1
+            and v.entrega_id=1
+            ORDER BY v.venta_id  
+            
+        ")->result_array();
+
+        return $detalle_venta;
+  }
   /* obtiene detalle venta online y existencia para comparar existencia.... en modal */
   function get_detalle($venta)
     {

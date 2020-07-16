@@ -191,6 +191,7 @@ window.onkeydown = compruebaTecla;
 <input type="text" value='<?php echo json_encode($categoria_producto); ?>' id="categoria_producto" hidden>
 <input type="text" id="pedido_id" value="0" name="pedido_id" hidden>
 <input type="text" id="orden_id" value="0" name="orden_id" hidden>
+<input type="text" id="venta_online" value="0" name="venta_online" hidden>
 <input type="text" id="usuarioprev_id" value="0" name="usuarioprev_id" hidden>
 <input type="text" id="venta_comision" value="0" name="venta_comision" hidden>
 <input type="text" id="venta_tipocambio" value="1" name="venta_tipocambio" hidden>
@@ -540,17 +541,18 @@ window.onkeydown = compruebaTecla;
                 
                 
             <!--------------- botones ---------------------->
-           <!--<?php if($parametro[0]["parametro_modulorestaurante"]==0){ //1 es normal ?>
+           <?php if($parametro[0]["parametro_modulorestaurante"]==0){ //1 es normal ?>
                 <?php if($rolusuario[13-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="#" data-toggle="modal" data-target="#modalpedidos" class="btn btn-facebook btn-xs" onclick="pedidos_pendientes()" title="Pedidos Pendientes"><span class="fa fa-cubes"></span><b> Pedidos</b></a> 
-            <a href="#" data-toggle="modal" data-target="#modalordenes" class="btn btn-facebook btn-xs" style="background-color: black" onclick="ordenes_pendientes()" title="Ordenes de Trabajo"><span class="fa fa-book"></span><b> OT's</b></a> 
+                    <a href="#" data-toggle="modal" data-target="#modalonline" class="btn bg-orange btn-xs" onclick="pedidos_online()" title="Pedidos Online"><span class="fa fa-globe"></span><b> Online</b></a> 
+            <a href="#" data-toggle="modal" data-target="#modalpedidos" class="btn btn-secondary btn-xs" onclick="pedidos_pendientes()" title="Pedidos Pendientes"><span class="fa fa-cubes"></span><b> Pedidos</b></a> 
+            <!--<a href="#" data-toggle="modal" data-target="#modalordenes" class="btn btn-facebook btn-xs" style="background-color: black" onclick="ordenes_pendientes()" title="Ordenes de Trabajo"><span class="fa fa-book"></span><b> OT's</b></a> -->
                 <?php }
                 } ?>
                     
             <?php if($parametro[0]["parametro_modulorestaurante"]==1){ //1 es modo restaurante?>            
                     <a href="<?php echo base_url('venta/ultimacomanda');?>" data-toggle="modal" target="_blank" class="btn btn-facebook btn-xs" id="imprimir_comanda" title="Comanda"><span class="fa fa-print"></span><b> Comanda</b></a> 
             <?php } ?>            
-           -->
+        
              <?php 
             if($rolusuario[15-1]['rolusuario_asignado'] == 1){ ?>
             <button onclick='costo_cero()' class='btn btn-danger btn-xs'><span class='fab fa-creative-commons-zero' title="Costo Cero"></span><b> 0.00</b></button> 
@@ -1021,23 +1023,24 @@ window.onkeydown = compruebaTecla;
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-                            
+                       <h4 class="modal-title" id="myModalLabel"><b>PEDIDOS/PREVENTAS</b></h4>     
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-                            <h4 class="modal-title" id="myModalLabel"><b>PEDIDOS/PREVENTAS</b></h4>
+                            
                                 
-                            <div class="input-group"> <span class="input-group-addon">Buscar</span>
+                            
+			</div>
+            <div class="input-group"> <span class="input-group-text">Buscar</span>
                               <input id="filtrar3" type="text" class="form-control" placeholder="Ingresa el nombre de producto, código o descripción">
                             </div>
                                 
-			</div>
 			<div class="modal-body table-responsive">
                         <!--------------------- TABLA---------------------------------------------------->
                         <div class="box-body table-responsive">
                             <table class="table table-striped table-condensed" id="tabla_detalle">
                                 <tr>
-                                    <th>#</th>
+                                    <th>Nº</th>
                                     <th>Cliente</th>
                                     <th align="center">COD</th>
                                     <th>Total</th>
@@ -1091,7 +1094,7 @@ window.onkeydown = compruebaTecla;
                         <div class="box-body table-responsive">
                             <table class="table table-striped table-condensed" id="tabla_detalle">
                                 <tr>
-                                    <th>#</th>
+                                    <th>Nº</th>
                                     <th>Cliente</th>
                                     <th align="center">O.T.</th>
                                     <th>Total</th>
@@ -1114,7 +1117,51 @@ window.onkeydown = compruebaTecla;
 </div>
             
 <!---------------------- fin modal ordenes --------------------------------------------------->
+<!----------------- modal online---------------------------------------------->
 
+
+<div class="modal fade" id="modalonline" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+               <h4 class="modal-title" id="myModalLabel"><b>Ventas ONLINE</b></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                                      
+                                
+            </div>
+            <div class="input-group"> <span class="input-group-text">Buscar</span>
+                              <input id="filtrar4" type="text" class="form-control" placeholder="Ingresa el nombre del cliente/ Numero de orden">
+                            </div>
+            <div class="modal-body table-responsive">
+                        <!--------------------- TABLA---------------------------------------------------->
+                        <div class="box-body table-responsive">
+                            <table class="table table-striped table-condensed" id="tabla_detalle">
+                                <tr>
+                                    <th>Nº</th>
+                                    <th>Cliente</th>
+                                    <th align="center">COD</th>
+                                    <th>Total</th>
+                                </tr>
+
+                                <tbody class="buscar4" id="pedidos_online">
+
+
+
+
+                                </tbody>
+                            </table>
+             
+                        </div>
+
+                        <!----------------------FIN TABLA--------------------------------------------------->
+            </div>
+        </div>
+    </div>
+</div>
+            
+<!---------------------- fin modal online --------------------------------------------------->
 <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
 <div id="modalespera">

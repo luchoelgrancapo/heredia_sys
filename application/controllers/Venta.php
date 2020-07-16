@@ -57,7 +57,7 @@ class Venta extends CI_Controller{
         //**************** inicio contenido ***************
         $data['rolusuario'] = $this->session_data['rol'];
         //$data['venta'] = $this->Venta_model->get_all_venta($params);
-        $data['page_title'] = "Ventas del dia";
+        $data['page_title'] = "Ventas";
         $data['parametro'] = $this->Parametro_model->get_parametros();
         $data['estado'] = $this->Estado_model->get_tipo_estado(1);
         $data['usuario'] = $this->Venta_model->get_usuarios();
@@ -280,6 +280,7 @@ class Venta extends CI_Controller{
         $venta_descuento = $this->input->post('venta_descuento'); // descuento de la venta
         $usuarioprev_id = $this->input->post('usuarioprev_id'); // descuento de la venta
         $orden_id = $this->input->post('orden_id'); // Orden de trabajo        
+        $venta_online = $this->input->post('venta_online'); // Orden de trabajo        
         $venta_efectivo = $this->input->post('venta_efectivo'); // efectivo cancelado
         $venta_cambio = $this->input->post('venta_cambio'); // Cambio devuelto  
         
@@ -603,6 +604,13 @@ class Venta extends CI_Controller{
                 $id = $this->Venta_model->ejecutar($sql);              
                 
             }            
+        }
+
+        if($venta_online > 0)
+        {
+           
+        $veo = "UPDATE venta_online set venta_numeroventa=0, entrega_id=2 WHERE venta_id=".$venta_online." ";
+        $this->db->query($veo);
         }
 
         //**************** fin contenido ***************

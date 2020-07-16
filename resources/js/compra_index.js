@@ -117,27 +117,32 @@ function fechadecompra(filtro)
                       
                         html += "<td>"+(i+1)+"</td>";
                         html += "<td><b>"+registros[i]["proveedor_nombre"]+"</b> ["+registros[i]["proveedor_id"]+"]<br>";
+                        html += "<b>Contacto: </b> "+registros[i]["proveedor_contacto"]+"<br>"; 
+                        html += "<b>Teléfono: </b> "+registros[i]["proveedor_telefono"]+"  "+registros[i]["proveedor_telefono2"]+"<br>"; 
                         
-                        if (registros[i]["tipotrans_nombre"]=='CREDITO') {
-                        html += "<span class='badge badge-secondary'>"+registros[i]["tipotrans_nombre"]+"</span></br>";
-                        } else {
-                        html += "<span class='badge badge-primary'>"+registros[i]["tipotrans_nombre"]+"</span></br>";
-                        }
+                        html += "</td><td align='center'><font size='5'><b>"+registros[i]["compra_id"]+"</b></font><br>Usuario: "+registros[i]["usuario_nombre"]+"</td>";                                           
+                        html += "<td align='right' > Sub Total: Bs. "+numberFormat(Number(registros[i]["compra_subtotal"]).toFixed(2))+"<br>Desc: Bs. "+Number(registros[i]["compra_descuento"]).toFixed(2)+"<br> DescGlobal: Bs. "+Number(registros[i]["compra_descglobal"]).toFixed(2)+"<br>";
+                        html += "<b>Total: Bs. "+numberFormat(Number(registros[i]["compra_totalfinal"]).toFixed(2))+"</b></td>";
+                        
+                        html += "<td  align='center' style='background: #"+registros[i]["estado_color"]+"'>";
                         if (caja==1) {  
-                        html += "<span class='btn-warning btn-xs'>Pago con Caja</span>";  } 
+                        html += "<span class='btn-warning btn-xs'>PAGO CON CAJA</span>";  } 
                         if (caja==2) {  
-                        html += "<span class='btn-warning btn-xs'>Orden de pago</span>";  }
+                        html += "<span class='btn-warning btn-xs'>ORDEN DE PAGO</span>";  }
                         if (caja==0) {  
-                        html += "<span class='btn-warning btn-xs'>Otro</span>";  }
-                        html += "</td><td align='center'><b>"+registros[i]["compra_id"]+"</b></td>";                                           
-                        html += "<td align='right' > Subtotal:"+numberFormat(Number(registros[i]["compra_subtotal"]).toFixed(2))+"<br>Desc: "+Number(registros[i]["compra_descuento"]).toFixed(2)+"<br> DescGlobal: "+Number(registros[i]["compra_descglobal"]).toFixed(2)+"<br>";
-                        html += "<b>Total:"+numberFormat(Number(registros[i]["compra_totalfinal"]).toFixed(2))+"</b></td>";
-                        html += "<td  align='center'>"+moment(registros[i]["compra_fecha"]).format('DD/MM/YYYY')+"<br>"+registros[i]['compra_hora']+"</td>" ;
+                        html += "<span class='btn-warning btn-xs'>OTRO</span>";  }    
+                        if (registros[i]["tipotrans_nombre"]=='CREDITO') {
+                        html += "<br><span class='badge badge-secondary'>"+registros[i]["tipotrans_nombre"]+"</span></br>";
+                        } else {
+                        html += "<br><span class='badge badge-primary'>"+registros[i]["tipotrans_nombre"]+"</span></br>";
+                        }
                         
-                        html += "<td  align='center' style='background: #"+registros[i]["estado_color"]+"'>"+registros[i]["estado_descripcion"]+"<br>";
                         /*if (Number(registros[i]["compra_placamovil"])==1) {  
                         html += "<span class='btn-danger btn-xs'>NO FINALIZADO</span>";  }  */
-                        html += "<td>"+registros[i]["usuario_nombre"]+"</td><td class='no-print'>";
+                        html += "<br>"+registros[i]["estado_descripcion"]+"</td>";
+                        html += "<td  align='center'>"+moment(registros[i]["compra_fecha"]).format('DD/MM/YYYY')+"<br>"+registros[i]['compra_hora']+"</td>" ;
+
+                        //html += "<td></td><td class='no-print'>";
                         /*if (Number(registros[i]["compra_placamovil"])==1) {
                         html += "<a href='#' data-toggle='modal' data-target='#cambi"+registros[i]["compra_id"]+"' class='btn btn-info btn-xs' title='Modificar Compra'><i class='fas fa-edit'></i></a>";
                         html += "<div class='modal fade' id='cambi"+registros[i]["compra_id"]+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>";
@@ -153,7 +158,7 @@ function fechadecompra(filtro)
                         } else {
                         
                         }*/
-                        html += "<a href='"+base_url+"compra/nota/"+registros[i]["compra_id"]+"' target='_blank' class='btn btn-success btn-xs' title='Nota de Compra'><span class='fa fa-print'></span></a>";
+                        html += "<td><a href='"+base_url+"compra/nota/"+registros[i]["compra_id"]+"' target='_blank' class='btn btn-success btn-xs' title='Nota de Compra'><span class='fa fa-print'></span></a>";
                         if (Number(registros[i]["elestado"])==1) {
                         html += " <a href='"+base_url+"compra/borrarauxycopiar/"+registros[i]["compra_id"]+"'  class='btn btn-info btn-xs' title='Modificar Compra'><span class='fas fa-edit'></span></a>";
                         html += " <a href='#' data-toggle='modal' data-target='#anularmodal"+registros[i]["compra_id"]+"' class='btn btn-xs btn-danger' title='Anular Compra' ><i class='fa fa-ban'></i></a>";
@@ -196,14 +201,13 @@ function fechadecompra(filtro)
                        
                    }
                         html += "<tr>";
-                        html += "<td></td>";
-                        html += "<td></td>";
-                        html += "<td align='right'><b>TOTAL</b></td>";
-                        html += "<td align='right'><font size='4'><b>"+numberFormat(Number(total).toFixed(2))+"</b></td>";
-                        html += "<td></td>";
-                        html += "<td></td>";
-                        html += "<td></td>";
-                        html += "<td></td>";
+                        html += "<th></th>";
+                        html += "<th></th>";
+                        html += "<th align='right'><b>TOTAL</b></th>";
+                        html += "<th align='right'><font size='4'>Bs. "+numberFormat(Number(total).toFixed(2))+"</th>";
+                        html += "<th></th>";
+                        html += "<th></th>";
+                        html += "<th></th>";
                         html += "</tr>";
                    
                    $("#fechadecompra").html(html);
@@ -269,27 +273,32 @@ function compraproveedor(e)
                       
                         html += "<td>"+(i+1)+"</td>";
                         html += "<td><b>"+registros[i]["proveedor_nombre"]+"</b> ["+registros[i]["proveedor_id"]+"]<br>";
-                        if (registros[i]["tipotrans_nombre"]=='CREDITO') {
-                        html += "<span class='badge badge-secondary'>"+registros[i]["tipotrans_nombre"]+"</span></br>";
-                        } else {
-                        html += "<span class='badge badge-primary'>"+registros[i]["tipotrans_nombre"]+"</span></br>";
-                        }
-                         
-                        if (caja==1) {  
-                        html += "<span class='btn-warning btn-xs'>Pago con Caja</span>";  } 
-                        if (caja==2) {  
-                        html += "<span class='btn-warning btn-xs'>Orden de pago</span>";  }
-                        if (caja==0) {  
-                        html += "<span class='btn-warning btn-xs'>Otro</span>";  }
-                        html += "</td><td align='center'>"+registros[i]["compra_id"]+"</b></td>";                                          
-                        html += "<td align='right'> Subtotal:"+numberFormat(Number(registros[i]["compra_subtotal"]).toFixed(2))+"<br>Desc: "+Number(registros[i]["compra_descuento"]).toFixed(2)+"<br> DescGlobal: "+Number(registros[i]["compra_descglobal"]).toFixed(2)+"<br>";
-                        html += "<b>Total:"+numberFormat(Number(registros[i]["compra_totalfinal"]).toFixed(2))+"</b></td>";
-                        html += "<td  align='center'>"+moment(registros[i]["compra_fecha"]).format('DD/MM/YYYY')+"<br>"+registros[i]['compra_hora']+"</td>" ;
+                        html += "<b>Contacto: </b> "+registros[i]["proveedor_contacto"]+"<br>"; 
+                        html += "<b>Teléfono: </b> "+registros[i]["proveedor_telefono"]+"  "+registros[i]["proveedor_telefono2"]+"<br>"; 
                         
-                        html += "<td  align='center' style='background: #"+registros[i]["estado_color"]+"'>"+registros[i]["estado_descripcion"]+"<br>";
-                       /*if (Number(registros[i]["compra_placamovil"])==1) {  
+                        html += "</td><td align='center'><font size='5'><b>"+registros[i]["compra_id"]+"</b></font><br>Usuario: "+registros[i]["usuario_nombre"]+"</td>";                                           
+                        html += "<td align='right' > Sub Total: Bs. "+numberFormat(Number(registros[i]["compra_subtotal"]).toFixed(2))+"<br>Desc: Bs. "+Number(registros[i]["compra_descuento"]).toFixed(2)+"<br> DescGlobal: Bs. "+Number(registros[i]["compra_descglobal"]).toFixed(2)+"<br>";
+                        html += "<b>Total: Bs. "+numberFormat(Number(registros[i]["compra_totalfinal"]).toFixed(2))+"</b></td>";
+                        
+                        html += "<td  align='center' style='background: #"+registros[i]["estado_color"]+"'>";
+                        if (caja==1) {  
+                        html += "<span class='btn-warning btn-xs'>PAGO CON CAJA</span>";  } 
+                        if (caja==2) {  
+                        html += "<span class='btn-warning btn-xs'>ORDEN DE PAGO</span>";  }
+                        if (caja==0) {  
+                        html += "<span class='btn-warning btn-xs'>OTRO</span>";  }    
+                        if (registros[i]["tipotrans_nombre"]=='CREDITO') {
+                        html += "<br><span class='badge badge-secondary'>"+registros[i]["tipotrans_nombre"]+"</span></br>";
+                        } else {
+                        html += "<br><span class='badge badge-primary'>"+registros[i]["tipotrans_nombre"]+"</span></br>";
+                        }
+                        
+                        /*if (Number(registros[i]["compra_placamovil"])==1) {  
                         html += "<span class='btn-danger btn-xs'>NO FINALIZADO</span>";  }  */
-                        html += "<td>"+registros[i]["usuario_nombre"]+"</td><td class='no-print'>";
+                        html += "<br>"+registros[i]["estado_descripcion"]+"</td>";
+                        html += "<td  align='center'>"+moment(registros[i]["compra_fecha"]).format('DD/MM/YYYY')+"<br>"+registros[i]['compra_hora']+"</td>" ;
+
+                        //html += "<td></td><td class='no-print'>";
                         /*if (Number(registros[i]["compra_placamovil"])==1) {
                         html += "<a href='#' data-toggle='modal' data-target='#cambi"+registros[i]["compra_id"]+"' class='btn btn-info btn-xs' title='Modificar Compra'><i class='fas fa-edit'></i></a>";
                         html += "<div class='modal fade' id='cambi"+registros[i]["compra_id"]+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>";
@@ -305,13 +314,12 @@ function compraproveedor(e)
                         } else {
                         
                         }*/
-                        html += "<a href='"+base_url+"compra/nota/"+registros[i]["compra_id"]+"' target='_blank' class='btn btn-success btn-xs' title='Nota de Compra'><span class='fa fa-print'></span></a>";
-
+                        html += "<td><a href='"+base_url+"compra/nota/"+registros[i]["compra_id"]+"' target='_blank' class='btn btn-success btn-xs' title='Nota de Compra'><span class='fa fa-print'></span></a>";
                         if (Number(registros[i]["elestado"])==1) {
                         html += " <a href='"+base_url+"compra/borrarauxycopiar/"+registros[i]["compra_id"]+"'  class='btn btn-info btn-xs' title='Modificar Compra'><span class='fas fa-edit'></span></a>";
                         html += " <a href='#' data-toggle='modal' data-target='#anularmodal"+registros[i]["compra_id"]+"' class='btn btn-xs btn-danger' title='Anular Compra' ><i class='fa fa-ban'></i></a>";
-                        }
                         /*****modal anula compra ***/
+                        }
                         html += "  <div class='modal fade' id='anularmodal"+registros[i]["compra_id"]+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>";
 
                         html += "          <div class='modal-dialog' role='document'>";
@@ -325,7 +333,7 @@ function compraproveedor(e)
                         html += "              <div class='modal-body' align='center'>";
                                        
                                  
-                        html += "               <h4> Desea anular la compra No.: <b>"+registros[i]["compra_id"]+" </b>?</4><br>";
+                        html += "               <h4> Desea anular la compra No.: <b>"+registros[i]["compra_id"]+"? </b></4><br>";
                         html += "               <h4> Esta compra puede tener una orden de Pago, tomar en cuenta. </4></div>";
                                   
                         html += "              <div class='modal-footer' align='right'>";
@@ -349,14 +357,13 @@ function compraproveedor(e)
                        
                    }
                         html += "<tr>";
-                        html += "<td></td>";
-                        html += "<td></td>";
-                        html += "<td align='right'><b>TOTAL</b></td>";
-                        html += "<td align='right'><font size='4'><b>"+numberFormat(Number(total).toFixed(2))+"</b></td>";
-                        html += "<td></td>";
-                        html += "<td></td>";
-                        html += "<td></td>";
-                        html += "<td></td>";
+                        html += "<th></th>";
+                        html += "<th></th>";
+                        html += "<th align='right'><b>TOTAL</b></th>";
+                        html += "<th align='right'><font size='4'>Bs. "+numberFormat(Number(total).toFixed(2))+"</th>";
+                        html += "<th></th>";
+                        html += "<th></th>";
+                        html += "<th></th>";
                         html += "</tr>";
                    
                    $("#fechadecompra").html(html);

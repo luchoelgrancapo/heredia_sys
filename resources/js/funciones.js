@@ -1952,6 +1952,7 @@ function registrarventa(cliente_id)
     var tipotrans_id = document.getElementById('tipo_transaccion').value; 
     var usuario_id = document.getElementById('usuario_id').value; 
     var pedido_id = document.getElementById('pedido_id').value; 
+    var venta_online = document.getElementById('venta_online').value; 
     var orden_id = document.getElementById('orden_id').value; 
     var usuarioprev_id = document.getElementById('usuarioprev_id').value; 
     var nit = document.getElementById('nit').value;
@@ -2022,7 +2023,7 @@ function registrarventa(cliente_id)
                 facturado:facturado,venta_fecha:venta_fecha, razon:razon, nit:nit,
                 cuotas:cuotas, modalidad:modalidad, dia_pago:dia_pago, fecha_inicio: fecha_inicio,
                 venta_descuento:venta_descuento,usuarioprev_id:usuarioprev_id,orden_id:orden_id,
-                venta_efectivo:venta_efectivo, venta_cambio:venta_cambio},
+                venta_efectivo:venta_efectivo, venta_cambio:venta_cambio,venta_online:venta_online},
             success:function(respuesta){ 
                 eliminardetalleventa();
                 //if (pedido_id>0){ pedidos_pendientes(); }
@@ -2041,7 +2042,7 @@ function registrarventa(cliente_id)
                 venta_total:venta_total, credito_interes:credito_interes, pedido_id:pedido_id,
                 facturado:facturado,venta_fecha:venta_fecha, razon:razon, nit:nit,
                 venta_descuento:venta_descuento,orden_id:orden_id,
-                venta_efectivo:venta_efectivo, venta_cambio:venta_cambio},
+                venta_efectivo:venta_efectivo, venta_cambio:venta_cambio,venta_online:venta_online},
             success:function(respuesta){ 
                 eliminardetalleventa();
                 //if (pedido_id>0){ pedidos_pendientes(); }
@@ -2346,7 +2347,7 @@ function tabla_ventas(filtro)
                     var margenes = " style='padding:0'";
                     
                 for (var i=0; i< v.length; i++){    
-
+                    $("#encontrados").html('Registros Encontrados: '+v.length);
                     cont = cont + 1; 
                     total_final += parseFloat(v[i]['venta_total']);
 
@@ -2369,13 +2370,23 @@ function tabla_ventas(filtro)
                         
                 
                     html += "                       <td style='max-width: 5cm; padding:0;'><b> "+nombre_cliente+"</b> ["+v[i]['cliente_id']+"]";
-                    html += "                           <br>Razón Soc.: "+v[i]['cliente_razon'];
-                    html += "                           <br>NIT: "+v[i]['cliente_nit'];
-                    html += "                           <br>Telefono(s): "+v[i]['cliente_telefono'];
-                    html += "                           <br>Nota: "+v[i]['venta_glosa'];
+                    html += "                           <br><b>Razón Soc.:</b> "+v[i]['cliente_razon'];
+                    html += "                           <br><b>NIT:</b> "+v[i]['cliente_nit'];
+                    html += "                           <br><b>Teléfono:</b> "+v[i]['cliente_telefono'];
+                    html += "                           <br><b>Nota:</b> "+v[i]['venta_glosa'];
                     html += "                       </td>";
 
-                    html += "                       <td style='withe-space:nowrap; padding:0;' align='right'>";
+                    
+                    html += "                       <td align='center' style='padding:0;'><font size='5' ><b>"+v[i]['venta_id']+"</b></font>";
+                    html += "                           <br>Usuario: "+v[i]['usuario_nombre'];
+                   
+                    if (v[i]['prevendedor']!=null){
+                        html += "                           <br>Prev.: "+v[i]['prevendedor'];
+                    }
+                    
+                    html += "                        </td>   ";
+                    
+                    html += "                       <td style='withe-space:nowrap; padding:3;' align='right'>";
                     html += "                           Sub Total "+v[i]['moneda_descripcion']+': '+Number(v[i]['venta_subtotal']).toFixed(2)+"<br>";
                     html += "                           Desc. "+v[i]['moneda_descripcion']+': '+Number(v[i]['venta_descuento']).toFixed(2)+"<br>";
                     html += "                           <!--<span class='btn btn-facebook'>-->";
@@ -2385,18 +2396,13 @@ function tabla_ventas(filtro)
                     html += "                               Cambio "+v[i]['moneda_descripcion']+": "+Number(v[i]['venta_cambio']).toFixed(2);
                     html += "                       </td>";
 
-                    html += "                       <td align='center' style='padding:0;'><b>"+v[i]['venta_id']+"</b>";
-                    html += "                           <br><img src='"+base_url+"resources/images/usuarios/thumb_"+v[i]['usuario_imagen']+"' class='img-circle' width='35' height='35'>";
-                    html += "                           <br>Vend.: "+v[i]['usuario_nombre'];
-                   
-                    if (v[i]['prevendedor']!=null){
-                        html += "                           <br>Prev.: "+v[i]['prevendedor'];
-                    }
-                    
-                    html += "                        </td>   ";
-                    
-                    html += "                       <td align='center'  style='padding:0;' bgcolor='"+v[i]['estado_color']+"'>"+v[i]['forma_nombre'];
-                    html += "                           <br> "+v[i]['tipotrans_nombre'];
+
+                    html += "                       <td align='center'  style='padding:0;' bgcolor='"+v[i]['estado_color']+"'><span class='badge badge-warning'>"+v[i]['forma_nombre']+"</span>";
+                    if (v[i]["tipotrans_nombre"]=='CREDITO') {
+                    html += "<br><span class='badge badge-secondary'>"+v[i]["tipotrans_nombre"]+"</span></br>";
+                        } else {
+                    html += "<br><span class='badge badge-primary'>"+v[i]["tipotrans_nombre"]+"</span></br>";
+                        }
                     html += "                           <br><br>"+v[i]['estado_descripcion']+" ";
                     html += "                       </td>";
 
@@ -2432,7 +2438,7 @@ function tabla_ventas(filtro)
                     html += "<br><br>";
                     
                     if (Number(v[i]['pedido_id'])>0){
-                        html += "                                   <a href='"+base_url+"pedido/nota_pedido/"+v[i]['pedido_id']+"' target='_blank' class='btn btn-warning btn-xs' title='Ver nota de pedido'><span class='fa fa-list'></span></a> ";
+                        html += "                                   <a href='"+base_url+"pedido/nota_pedido/"+v[i]['pedido_id']+"' target='_blank' class='btn bg-navy btn-xs' title='Ver nota de pedido'><span class='fa fa-list'></span></a> ";
                     }
 
                     if (Number(v[i]['orden_id'])>0){
@@ -2507,9 +2513,9 @@ function tabla_ventas(filtro)
                 }
                     html += "                   <tr>";
                     html += "                        <th></th>";
-                    html += "                        <th>Totales</th>";
-                    html += "                        <th><font size='3'> Bs: "+total_final.toFixed(2)+"</font></th>	";
                     html += "                        <th></th>";
+                    html += "                        <th>TOTAL</th>";
+                    html += "                        <th><font size='4'> Bs: "+total_final.toFixed(2)+"</font></th>	";
                     html += "                        <th></th>";
                     html += "                        <th></th>";
                     html += "                        <th></th>";
@@ -2858,6 +2864,32 @@ function ordenaventas(orden_id,usuario_id,cliente_id)
             $("#tipo_transaccion").val(2); // select a credito
                         
             document.getElementById('creditooculto').style.display = 'block';
+            tablaproductos();
+            datoscliente(cliente_id);
+        },
+        error: function(respuesta){
+            tablaproductos();
+            datoscliente(cliente_id);
+        }
+    });
+   
+}
+
+function onlineaventas(venta_o,cliente_id)
+{
+    
+    var base_url = document.getElementById('base_url').value;
+    var controlador = base_url+"venta_online/pasar_aventas/"+venta_o+"/"+cliente_id;
+   
+   
+    $.ajax({url: controlador,
+        type:"POST",
+        data:{},
+        success:function(respuesta){  
+            
+            $("#venta_online").val(venta_o);
+            $("#orden_id").val(0);
+            $("#pedido_id").val(0);
             tablaproductos();
             datoscliente(cliente_id);
         },
@@ -3318,7 +3350,7 @@ function pedidos_pendientes()
 
                         html += "     <td>";
                         //html += "         <a href='<?php echo site_url('pedido/pedidoabierto/'.$p[i]['pedido_id']); ?>' class='btn btn-success btn-sm'><span class='fa fa-cubes' title='Ver detalle del pedido'></span></a>";
-                        html += "         <button  class='btn btn-warning btn-sm' data-dismiss='modal' onclick='pasaraventas("+p[i]['pedido_id']+","+p[i]['usuarioprev_id']+","+p[i]['cliente_id']+")'><span class='fa fa-arrow-down' title='Cargar pedido a ventas'></span> </button>";
+                        html += "         <button  class='btn btn-secondary btn-sm' data-dismiss='modal' onclick='pasaraventas("+p[i]['pedido_id']+","+p[i]['usuarioprev_id']+","+p[i]['cliente_id']+")'><span class='fa fa-arrow-down' title='Cargar pedido a ventas'></span> </button>";
                         html += "     </td>";
                         html += " </tr>";
                     
@@ -3395,6 +3427,73 @@ function ordenes_pendientes()
                     }
                 }
                 $("#ordenes_pendientes").html(html);
+                
+
+        },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
+    });
+    
+}
+
+function pedidos_online()
+{    
+    var base_url = document.getElementById('base_url').value;
+    var controlador = base_url+'/venta_online/ventas_pendientes';
+    var parametro = document.getElementById('filtrar4').value;
+    
+//    if (parametro != null)
+//        filtro = " and c.cliente_nombre like '%"+parametro+"%' and p.estado_id = 11 ";
+//    else
+//        filtro = 0;
+//    
+    filtro = "";
+        
+    $.ajax({
+        url:controlador,
+        type:"POST",
+        data:{filtro:filtro},
+        success:function(respuesta){
+                var p = JSON.parse(respuesta);
+                html = "";
+                //alert("aqui tambien: "+p.length);
+                            
+                //alert("elementos: "+p.length);
+                
+                if (p.length>0){
+                cont = 0;
+                
+                for(var i=0; i<p.length; i++){
+                     cont = cont+1;
+                    
+                    // alert(p[i]['usuario_id']);
+                        html += "<tr>";
+                        html += "     <td>"+cont+"</td>";
+                        html += "     ";
+                        html += "     <td style='white-space: nowrap'><font size='3'><b>"+p[i]['cliente_nombre']+"</b></font>";
+                        
+                        html += "     <br>"+p[i]['cliente_direccion'];
+                        html += "     </td>";
+                        html += "     <td align='center' bgcolor='orange'>";
+                        //html += "         <a href='<?php echo base_url('pedido/pedidoabierto/'.$p[i]['pedido_id']); ?>'>";
+                        html += "         <font size='3'><b> 00"+p[i]['venta_id']+"</b></font> <br>";
+                        html += "         <font size='1'>"+p[i]['tiposerv_descripcion']+"</font><br>";
+                        html += "         </a>";
+                        html += "         "+p[i]['forma_nombre']+" <br>"+moment(p[i]['venta_fecha']).format('DD/MM/YYYY');
+                        html += "     </td>";
+                        html += "      ";
+                        
+                        html += "     <td align='right' style='white-space: nowrap'><font size='3'><b>Total: "+p[i]['venta_total']+"</b></font><br>";
+                        
+                        html += "     </td>";
+
+                        html += "     <td>";
+                        html += "         <button  class='btn bg-orange btn-sm' data-dismiss='modal' onclick='onlineaventas("+p[i]['venta_id']+","+p[i]['cliente_id']+")'><span class='fa fa-arrow-down' title='Cargar Pedido Online a ventas'></span> </button>";
+                        html += "     </td>";
+                        html += " </tr>";
+                    
+                    }
+                }
+                $("#pedidos_online").html(html);
                 
 
         },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

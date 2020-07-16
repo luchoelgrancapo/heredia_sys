@@ -127,8 +127,8 @@ function cerrar_ventana(){
 <!-------------------- inicio collapse ---------------------->
 
 <div class="panel-group"  style="padding:0;" hidden>
-  <div class="panel panel-warning" style="padding:0;">
-    <div class="panel-heading" style="padding:0;">
+  <div class="card card-warning" style="padding:0;">
+    <div class="panel-header" style="padding:0;">
         
         
 <!--------------------- cliente_id --------------------->
@@ -199,7 +199,7 @@ function cerrar_ventana(){
     </div>
     <div id="collapse1" class="panel-collapse collapse">
       <ul class="list-group">
-        <div class="container">
+        <div class="card">
             
             <div class="col-md-3">
             <label for="nombre" class="control-label">CLIENTE</label>
@@ -274,15 +274,15 @@ function cerrar_ventana(){
 <center>
     <font size="3"><b>PEDIDO</b></font>
      <!--<a href="#" data-toggle="modal" data-target="#modalbuscar" class="btn btn-warning btn-xs" style="width: 90px;"><font size="3"><span class="fa fa-search"></span></font><small> Buscar Clie</small></a>-->
-    <button onclick="focus_cliente()" id="boton_bsucar_clie" data-toggle="modal" data-target="#modalbuscar" class="btn btn-warning btn-xs" style="width: 90px;"><font size="3"><span class="fa fa-search"></span></font><small> Buscar Clie</small></button>
+    <button onclick="focus_cliente()" id="boton_bsucar_clie" data-toggle="modal" data-target="#modalbuscar" class="btn bg-primary btn-app" ><span class="fa fa-search"></span> Buscar Clie</button>
     
      <!--<button class="btn btn-facebook btn-xs"><span class="fa fa-users"> </span>Buscar Cliente</button>-->
-     <a href="<?php echo base_url("cliente/clientenuevo/0"); ?>" class="btn btn-info btn-xs" style="width: 90px;"><font size="3"><span class="fa fa-user" ></span></font> Nuevo</a>
-     <button class="btn btn-facebook btn-xs" onclick="mostrar_buscadores()" title="Buscar productos"><font size="3"><span class="fa fa-binoculars" ></span></font></button>
+     <a href="<?php echo base_url("cliente/clientenuevo/0"); ?>" class="btn bg-success btn-app" ><span class="fa fa-user" ></span> Nuevo</a>
+     <!--<button class="btn bg-secondary btn-app" onclick="mostrar_buscadores()" title="Buscar productos"><span class="fa fa-binoculars"></span>Productos</button>-->
 </center>   
 
 <div class="container">
-    <div class="panel panel-primary">
+    <div class="card card-primary">
         
         <table>
             <tr>
@@ -296,7 +296,7 @@ function cerrar_ventana(){
                         <img src="<?php echo base_url("resources/images/clientes/thumb_foto.jpg"); ?>" width="70" height="80">
                     <?php } ?>
                     
-                    <br><button class="btn btn-warning btn-xs" data-toggle="collapse" data-target="#informacioncliente">más inform.</button>
+                    <br><button class="btn btn-secondary btn-xs" data-toggle="collapse" data-target="#informacioncliente">+ INFO.</button>
                 </td>
                 <td style="width: 0.2cm;">
                     
@@ -387,15 +387,15 @@ function cerrar_ventana(){
 
 
 <div class="row">
-    <div class="col-md-6" >
+    <div class="col-md-6" id="buscador1">
         
-        <div class="row" id="buscador1" style="display: none;">
+        <div class="row"  >
             
             <!--------------------- parametro de buscador por codigo --------------------->
 
             <div class="col-md-4">
                   <div class="input-group">
-                      <span class="input-group-addon"> 
+                      <span class="input-group-text"> 
                         <i class="fa fa-barcode"></i>
                       </span>           
                       <input type="text" name="codigo" id="codigo" class="form-control" placeholder="código" onkeyup="validar(event,3)">
@@ -409,7 +409,7 @@ function cerrar_ventana(){
 <!--            ------------------- parametro de buscador --------------------->
                        
                   <div class="input-group">
-                      <span class="input-group-addon" onclick="ocultar_busqueda();"> 
+                      <span class="input-group-text" onclick="ocultar_busqueda();"> 
                         Buscar 
                       </span>           
                       <input id="filtrar" type="text" class="form-control" placeholder="Ingrese el nombre, precio, código" onkeypress="validar(event,4)">
@@ -421,7 +421,7 @@ function cerrar_ventana(){
             
         </div>
 <!-------------------- CATEGORIAS------------------------------------->
-<div class="container" id="categoria" style="padding:0; display: none;">
+<div class="container" id="categoria" style="padding:0; display: block;">
     
     <span class="badge btn-danger" style="width: 170px;">
     
@@ -441,7 +441,7 @@ function cerrar_ventana(){
     </select>
         <span class="badge btn-facebook"><input style="border-width: 0;" id="encontrados" type="text"  size="3" value="0" readonly="true"> </span>
     </span>
-        <button class="btn btn-success btn-xs" onclick="actualizar_inventario()"><span class="fa fa-cubes"></span> Inventario</button>
+        <button class="btn bg-navy btn-xs" onclick="actualizar_inventario()"><span class="fa fa-cubes"></span>Actualizar Inventario</button>
        <?php 
             if ($parametro[0]["parametro_agruparitems"] == 1 )
                     { $agrupar = "checked='true'";}
@@ -573,16 +573,16 @@ function cerrar_ventana(){
         
         <!----------------------------------- BOTONES ---------------------------------->
         <?php 
-        $ancho_boton = 120; 
-        $alto_boton = 120; 
+        $ancho_boton = 90; 
+        $alto_boton = 90; 
         
         ?>
         <div class="col-md-12" style="padding:0;">
 
             <center>
             
-                <a href="#" data-toggle="modal" onclick="focus_efectivo()" data-target="#modalfinalizar" class="btn btn-sq-lg btn-success" style="width: <?php echo $ancho_boton; ?>px !important; height: <?php echo $alto_boton; ?>px !important;">
-                <i class="fa fa-money fa-4x"></i><br><br>Finalizar Pedido<br>
+                <a href="#" data-toggle="modal" onclick="focus_efectivo()" data-target="#modalfinalizar" class="btn btn-app bg-success" style="width: <?php echo $ancho_boton; ?>px !important; height: <?php echo $alto_boton; ?>px !important;">
+                <i class="fas fa-money-bill-alt"></i>Finalizar Pedido
             </a>
             
                 
@@ -592,9 +592,9 @@ function cerrar_ventana(){
             </a>-->
 
             
-                <button  onclick="cerrar_ventana()" class="btn btn-sq-lg btn-danger" style="width: <?php echo $ancho_boton; ?>px !important; height: <?php echo $alto_boton; ?>px !important;">
-                <i class="fa fa-sign-out fa-4x  "></i><br><br>
-               Salir <br>
+                <button  onclick="cerrar_ventana()" class="btn btn-app bg-danger" style="width: <?php echo $ancho_boton; ?>px !important; height: <?php echo $alto_boton; ?>px !important;">
+                <i class="fas fa-sign-out-alt"></i><br>
+               Salir
             </button>    
                 
             </center>
@@ -642,15 +642,13 @@ function cerrar_ventana(){
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-                            
+                  </div>          
                         <div class="container">
                             
-                                <center>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        
                                     
-                                    <div class="col-md-2" style="padding: 0;">
+                                    
+                                    <div class="col-md-4" style="padding: 0;">
 <!--                                        <h4 class="modal-title" id="myModalLabel"><b>FECHA DE ENTREGA</b></h4>
                                         <?php                                                     
                                             $fecha = date('Y-m-d'); 
@@ -681,12 +679,12 @@ function cerrar_ventana(){
                                         <input type="date" id="pedido_fechaentrega" name="pedido_fechaentrega" value="<?php echo $mananaLegible; ?>" class="btn btn-default btn-xs" style="width: 120px;">
                                     </div>
                                         
-                                    <div class="col-md-2" style="padding: 0;">                                      
+                                    <div class="col-md-4" style="padding: 0;">                                      
                                         <h5 class="modal-title" id="myModalLabel"><b>HORA ENTREGA</b></h5>
                                         <input type="time" id="pedido_horaentrega" name="pedido_horaentrega"  value="<?php echo date('H:i:s'); ?>" class="btn btn-default btn-xs" style="width: 120px;">
                                     </div>
                                     
-                                    <div class="col-md-2" style="padding: 0;">
+                                    <div class="col-md-4" style="padding: 0;">
                                         <center>
                                             
                                         <h5 class="modal-title" id="myModalLabel"><b>TIPO TRANS</b></h5>                                        
@@ -697,7 +695,7 @@ function cerrar_ventana(){
                                             <?php } ?>
  
                                          </select>
-                                        </center>
+                                       
                                     </div>
                                     
                                     <?php 
@@ -729,8 +727,7 @@ function cerrar_ventana(){
                                     </div>
                                     
                                     
-                                </div>                                    
-                                                                                             
+                                                                             
 			</div>
 			</div>
                             
@@ -837,10 +834,10 @@ function cerrar_ventana(){
             </div>
 
             <?php if($tipousuario_id == 1) { ?> 
-            
+            <br>
             <div class="col-md-12">
                 Vendedor:                 
-                <select name="usuario_id" id="usuario_id" class="btn btn-default btn-xs" style="width: 120px;" >
+                <select name="usuario_id" id="usuario_id" class="btn btn-secondary btn-sm" style="width: 120px;" >
                     <?php 
                     foreach($usuarios as $us){ 
                         
@@ -856,7 +853,7 @@ function cerrar_ventana(){
                     ?>
                 </select>
             </div>
-            
+            <br>
             <?php } ?> 
            
         </div>
@@ -923,7 +920,7 @@ function cerrar_ventana(){
            </div>
            
            <!--************************************* fin datos credito ************************************************>           
-                 
+                 -->
                 
             <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>-->   
             
@@ -933,16 +930,16 @@ function cerrar_ventana(){
                 </h4>
             </button>
             -->
-            <button class="btn btn-lg btn-facebook btn-sm btn-block" id="boton_finalizar" data-dismiss="modal" onclick="finalizarpedido()" style="display: block;">
-                <h4>
-                <span class="fa fa-save"></span>   Finalizar Pedido
-                </h4>
+            <button class="btn btn-lg btn-success btn-sm btn-block" id="boton_finalizar" data-dismiss="modal" onclick="finalizarpedido()" style="display: block;">
+                
+                <i class="fas fa-money-bill-alt"></i>   Finalizar Pedido
+                
             </button>
 
             <button class="btn btn-lg btn-danger btn-sm btn-block" data-dismiss="modal">
-                <h4>
-                <span class="fa fa-close"></span>   Cancelar  
-                </h4>
+                
+                <i class="fas fa-ban"></i>  Cancelar  
+                
             </button>
     <!--</form>-->
         </div>
@@ -1237,7 +1234,7 @@ function cerrar_ventana(){
 <div class="modal fade" id="modalbuscar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header" style="padding-bottom: 0;">
+			<div class="modal-body">
                             
                                 <div class="row">
 
@@ -1245,7 +1242,7 @@ function cerrar_ventana(){
 
                                            <div class="col-md-8">
                                                  <div class="input-group">
-                                                     <span class="input-group-addon"> 
+                                                     <span class="input-group-text"> 
                                                        <i class="fa fa-binoculars"></i>
                                                      </span>           
                                                      <input type="text" name="filtrar4" id="filtrar4" class="form-control" placeholder="Ingrese el nombre, CI, codigo del cliente " onkeyup="validar(event,8)">
@@ -1259,7 +1256,7 @@ function cerrar_ventana(){
                                <!--            ------------------- parametro de buscador --------------------->
 
                                                  <div class="input-group">
-                                                     <span class="input-group-addon"> 
+                                                     <span class="input-group-text"> 
                                                       <i class="fa fa-user"></i>
                                                      </span>           
                                                      <select id="tipo" class="form-control">

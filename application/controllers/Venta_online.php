@@ -42,6 +42,17 @@ class Venta_online extends CI_Controller{
         
     }
 
+    function ventas_pendientes()
+    {
+        
+        
+        $data = $this->Venta_online_model->ventas_pendientes();
+        
+       
+        echo json_encode($data);
+              
+    }
+
     function buscarventas()
     {
         
@@ -62,15 +73,15 @@ class Venta_online extends CI_Controller{
     }
     
     /* pasar pedido olnline a ventas */
-    function pasar_aventas()
+    function pasar_aventas($venta_id,$cliente_id)
     {
         if ($this->input->is_ajax_request()) {
         $usuario_id = $this->session_data['usuario_id'];
-        $venta_id = $this->input->post('venta_id');
+        
         
         $this->Venta_online_model->eliminar_detalleventaux($usuario_id);
         $cliente = $this->Venta_online_model->get_thiscliente($venta_id);
-        $cliente_id = $cliente['cliente_id'];
+        
         
         $venta = $this->Venta_online_model->get_detalle($venta_id);
         foreach ($venta as $v) {
@@ -139,14 +150,14 @@ class Venta_online extends CI_Controller{
     function para_boton()
     {
         $venta_id = $this->input->post('venta_id');
-        $sql = "UPDATE Venta_online set venta_numeroventa=1 WHERE venta_id=".$venta_id." ";
+        $sql = "UPDATE venta_online set venta_numeroventa=1 WHERE venta_id=".$venta_id." ";
         $this->db->query($sql);
         echo json_encode(true);
     }
     function entregar()
     {
         $venta_id = $this->input->post('venta_id');
-        $sql = "UPDATE Venta_online set venta_numeroventa=0, entrega_id=2 WHERE venta_id=".$venta_id." ";
+        $sql = "UPDATE venta_online set venta_numeroventa=0, entrega_id=2 WHERE venta_id=".$venta_id." ";
         $this->db->query($sql);
         echo json_encode(true);
     }

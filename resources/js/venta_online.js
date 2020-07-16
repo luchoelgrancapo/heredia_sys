@@ -66,7 +66,7 @@ function buscarventas(){
                         html += "<td align='center'>"+registros[i]["entrega_nombre"]+"</br>"; 
                        
                         if (registros[i]["entrega_id"]==1) {
-                        html += "<button class='btn btn-warning btn-xs' onclick='detalleonline("+registros[i]["venta_id"]+")' ><span class='fa fa-exclamation-circle'></span> CONSOLIDAR</button>";
+                        html += "<button class='btn btn-warning btn-xs' onclick='detalleonline("+registros[i]["venta_id"]+","+registros[i]["cliente_id"]+")' ><span class='fa fa-exclamation-circle'></span> CONSOLIDAR</button>";
                         
                         html += "</td>";
                         }else{
@@ -99,7 +99,7 @@ function buscarventas(){
 }
 
 
-function detalleonline(venta){
+function detalleonline(venta,cliente){
     var base_url = document.getElementById('base_url').value;
     var controlador = base_url+'venta_online/detalle/';
     $.ajax({url: controlador,
@@ -177,7 +177,7 @@ function detalleonline(venta){
                        html += "</tr>";
                        $("#detalle").html(html);
                        $("#modalDetalle").modal("show");
-                       html1 = "<button class='btn btn-primary' id='paraconsolidarventa' onclick='pasar_aventas("+venta+")'><fa class='fa fa-cart-plus'></fa> Consolidar Venta</button>";
+                       html1 = "<button class='btn btn-primary' id='paraconsolidarventa' onclick='pasar_aventas("+venta+","+cliente+")'><fa class='fa fa-cart-plus'></fa> Consolidar Venta</button>";
                        $("#paraconsolidarventa").replaceWith(html1);
           }
         },
@@ -188,14 +188,14 @@ function detalleonline(venta){
 }
 
 //function pasar_aventas(pedido_id,usuariopedido_id,cliente_id)
-function pasar_aventas(venta_id)
+function pasar_aventas(venta_id,cliente_id)
 {
     var base_url = document.getElementById('base_url').value;
-    var controlador = base_url+"venta_online/pasar_aventas/";
+    var controlador = base_url+"venta_online/pasar_aventas/"+venta_id+"/"+cliente_id;
    
     $.ajax({url: controlador,
         type:"POST",
-        data:{venta_id:venta_id},
+        data:{},
         success:function(respuesta){
             var registros =  JSON.parse(respuesta);
             if (registros != null){
