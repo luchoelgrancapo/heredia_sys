@@ -2579,14 +2579,18 @@ function buscar_clientes_pedido()
 
             html = "";
             for (var i = 0; i < c.length; i++){
-            
+                if (c[i]["cliente_foto"]=='' || c[i]["cliente_foto"]=='null') {
+                  var cliente_foto= "thumb_default.jpg";
+                }else{
+                  var cliente_foto= "clientes/thumb_"+c[i]["cliente_foto"];
+                }
                 html += "<tr style='border-bottom-style: solid; border-color: black; border-width: 2px'>";
 //                html += "     <form action='"+base_url+"cliente/cambiarcliente/ method='POST' class='form'>";
                 html += "  ";
                 html += "        <td style='padding:0;'>";
                 html += "        <center>"+(i+1)+"<br>";//+"</td>";
 //                html += "        <td>";
-                html += "        <img src='"+base_url+"resources/images/clientes/thumb_"+c[i]["cliente_foto"]+"' class='img-circle' width='50' height='50'>";
+                html += "        <img src='"+base_url+"resources/images/"+cliente_foto+"' class='img-circle' width='50' height='50'>";
                 html += "        <br><a href='"+base_url+"cliente/modificar_cliente/"+c[i]['cliente_id']+"/"+pedido_id+"' class='btn btn-primary btn-xs'><fa class='fa fa-pencil'> </fa> Editar</a>";
                 
                 html += "        <center>";
@@ -2596,7 +2600,7 @@ function buscar_clientes_pedido()
 
 
                 cliente_nombre = "<b>"+c[i]["cliente_nombre"]+"</b>";
-                html += "            <a href='"+base_url+"cliente/cambiarcliente/"+c[i]['cliente_id']+"/"+pedido_id+"' class='btn btn-warning btn-xs'>"+"<fa class='fa fa-user'></fa> "+cliente_nombre+"</a>";
+                html += "            <a href='"+base_url+"cliente/cambiarcliente/"+c[i]['cliente_id']+"/"+pedido_id+"' class='btn btn-success btn-xs'>"+"<fa class='fa fa-user-plus'></fa> "+cliente_nombre+"</a>";
                 
 //                html += "                <b> "+c[i]["cliente_nombre"]+"</b> , COD.: "+c[i]["cliente_codigo"]+" <br>";
                 html += "<br>";
@@ -2608,9 +2612,9 @@ function buscar_clientes_pedido()
                 html += "                <input id='pedido_id'  name='pedido_id' type='text' class='form-control' value='<?php echo $pedido_id; ?>'>";
                 html += "            </div>";       
                 html += "            NIT:";
-                html += "            <input type='text' style='width:100px; padding:0; margin:0;' id='cliente_nit' name='cliente_nit' class='btn btn-default btn-sm' placeholder='N.I.T.' required='true' value='"+c[i]["cliente_nit"]+"'>";
+                html += "            <input type='text' readonly style='width:100px; padding:0; margin:0;' id='cliente_nit' name='cliente_nit' class='btn btn-default btn-sm' placeholder='N.I.T.' required='true' value='"+c[i]["cliente_nit"]+"'>";
                 html += "            <br>RAZON SOCIAL:";
-                html += "            <input type='text' style='width:150px; padding:0; margin:0;' id='cliente_razon' name='cliente_razon' class='btn btn-default btn-sm' placeholder='Razón Social' required='true' value='"+c[i]["cliente_razon"]+"'>";
+                html += "            <input type='text' readonly style='width:150px; padding:0; margin:0;' id='cliente_razon' name='cliente_razon' class='btn btn-default btn-sm' placeholder='Razón Social' required='true' value='"+c[i]["cliente_razon"]+"'>";
                 html += "           ";
 //                html += "            <button type='submit' class='btn btn-success btn-xs btn-block'>";
 //                html += "                <i class='fa fa-check'></i> Seleccionar Cliente";

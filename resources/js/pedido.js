@@ -119,7 +119,11 @@ function tabla_pedidos(filtro)
 
                 html += "    <td align='center' style='background-color: #"+p[i]["estado_color"]+" '> ";
                 html += "         "+p[i]["estado_descripcion"]+" ";
-                html += "        "+'<br><b>'+tipotrans+" </b> ";   
+                if (p[i]["tipotrans_nombre"]=='CREDITO') {
+                    html += "<br><span class='badge badge-secondary'>"+p[i]["tipotrans_nombre"]+"</span></br>";
+                        } else {
+                    html += "<br><span class='badge badge-primary'>"+p[i]["tipotrans_nombre"]+"</span></br>";
+                        }   
                 html += "    </td> ";
 
                 html += "    <td> ";

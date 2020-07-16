@@ -289,10 +289,11 @@ function cerrar_ventana(){
                     
                 </td>
                 <td>
-                    <?php if(isset($cliente[0]['cliente_foto'])){ ?>
-                        <img src="<?php echo base_url("resources/images/clientes/".$cliente[0]['cliente_foto']); ?>" width="70" height="80">
+                    <?php if($cliente[0]['cliente_foto'] =='Null' || $cliente[0]['cliente_foto'] ==''){ ?>
+                        <img src="<?php echo base_url("resources/images/thumb_default.jpg"); ?>" width="70" height="80">
+                        
                     <?php }else{ ?>
-                        <img src="<?php echo base_url("resources/images/clientes/thumb_foto.jpg"); ?>" width="70" height="80">
+                        <img src="<?php echo base_url("resources/images/clientes/".$cliente[0]['cliente_foto']); ?>" width="70" height="80">
                     <?php } ?>
                     
                     <br><button class="btn btn-secondary btn-xs" data-toggle="collapse" data-target="#informacioncliente">+ INFO.</button>
