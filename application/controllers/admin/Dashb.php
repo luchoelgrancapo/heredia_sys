@@ -19,6 +19,7 @@ class Dashb extends CI_Controller
         $this->load->model('Servicio_model');
         $this->load->model('Pedido_diario_model');
         $this->load->model('Proveedor_model');
+        $this->load->model('Venta_online_model');
         $this->session_data = $this->session->userdata('logged_in');
     }
 
@@ -38,6 +39,7 @@ class Dashb extends CI_Controller
                 $data['servicios'] = $this->Servicio_model->get_servicios_hoy();
                 $data['pedidos_diarios'] = $this->Pedido_diario_model->pedidos_diarios();
                 $data['proveedores'] = $this->Proveedor_model->get_all_proveedor();
+                $data['ventas_online'] = $this->Venta_online_model->get_ventas_dia();
                 
                 $data['resumen_usuario'] = $this->Venta_model->get_resumen_usuarios();
                 $data['ventas_semanales'] = $this->Venta_model->get_ventas_semanales();

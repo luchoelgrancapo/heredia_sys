@@ -43,7 +43,7 @@ var options={
             type: 'column'
         },
         title: {
-            text: 'Compras/Ventas del Mes'
+            text: 'Compras y Ventas del Mes'
         },
         subtitle: {
             text: empresa
@@ -51,14 +51,14 @@ var options={
         xAxis: {
             categories: [],
              title: {
-                text: 'dias del mes'
+                text: 'Días del mes'
             },
             crosshair: true
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'REGISTROS AL DIA'
+                text: 'Registros Diarios'
             }
         },
         tooltip: {
@@ -76,12 +76,12 @@ var options={
             }
         },
         series: [{
-            color: 'red',
+            color: '#dc3545',
             name: 'Compras',
             data: []
 
         },{
-           color: 'blue',
+           color: '#007bff',
             name: 'Ventas',
             data: [] 
         }]

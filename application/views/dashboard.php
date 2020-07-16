@@ -79,7 +79,7 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
           
-        <div class="col-lg-4 col-xs-6">
+        <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-blue">
               <div class="inner" >
@@ -96,7 +96,7 @@
         </div>
           
         <!-- ./col -->
-        <div class="col-lg-4 col-xs-6">
+        <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
               <div class="inner" >
@@ -112,8 +112,41 @@
           </div>
         </div>
         
-           <!-- ./col -->
-        <div class="col-lg-4 col-xs-6">
+           
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-gray">
+              <div class="inner" >
+
+                <h3><b><fa class="fa fa-paste"></fa></b></h3>
+                <h5><b><?php echo number_format($pedidos[0]['total_pedidos'],2,'.',',')." Bs"; ?><sup style="font-size: 20px"></sup></b></h5>
+            </div>
+              
+            <div class="icon">
+              <i class="fa fa-paste"></i>              
+            </div>
+                <a href="<?php echo base_url('pedido'); ?>" class="small-box-footer"><?php echo "En ".$pedidos[0]['cantidad_pedidos']." pedidos"; ?> <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+         <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-orange">
+              <div class="inner" >
+
+                <h3><b><fa class="fa fa-globe"></fa></b></h3>
+                <h5><b><?php echo number_format($ventas_online[0]['total_ventas'],2,'.',',')." Bs"; ?><sup style="font-size: 20px"></sup></b></h5>
+            </div>
+              
+            <div class="icon">
+              <i class="fa fa-globe"></i>              
+            </div>
+                <a href="<?php echo base_url('venta_online'); ?>" class="small-box-footer"><?php echo "En ".$pedidos[0]['cantidad_pedidos']." ventas online"; ?> <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-navy">
               <div class="inner" >
@@ -128,9 +161,9 @@
                 <a href="<?php echo base_url('inventario'); ?>" class="small-box-footer"><?php echo "Inventario valorado"; ?> <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        
+        <!-- ./col -->
               <!-- ./col -->
-        <div class="col-lg-4 col-xs-6">
+        <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-green">
               <div class="inner" >
@@ -148,7 +181,7 @@
         
        
          <!-- ./col -->
-        <div class="col-lg-4 col-xs-6">
+        <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-yellow">
               <div class="inner" >
@@ -164,7 +197,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-4 col-xs-6">
+        <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-purple">
               <div class="inner" >

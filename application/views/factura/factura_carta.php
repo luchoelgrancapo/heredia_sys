@@ -68,15 +68,23 @@
 
 <style type="text/css">
     @media print {
-      .bg-danger {
-        background-color: #f2dede !important;
-      }
+      
+      #crema{
+        padding: 0 !important;
+  background-color: #FFF9B2 !important;
+  -webkit-print-color-adjust: exact;
+}
     }
 </style>
 
 
 <style type="text/css">
 
+#crema{
+  padding: 0 !important;
+  background-color: #FFF9B2 !important;
+  -webkit-print-color-adjust: exact;
+}
 
 p {
     font-family: Arial;
@@ -101,13 +109,15 @@ margin : 0 0 0px 0;
 padding : 0 0 0 0;
 border-spacing : 0 0;
 border-collapse : collapse;
-font-family: Arial narrow;
+font-family: Arial;
 font-size: 7pt;  
-
+}
 td {
+  border: none !important;
 border:hidden;
+padding: 5px !important;
 }
-}
+
 
 td#comentario {
 vertical-align : bottom;
@@ -118,9 +128,9 @@ background : #ddd;
 font-size : 7px;
 margin : 0 0 0 0;
 padding : 0 5px 0 5px;
-border-left : 1px solid #aaa;
-border-right : 1px solid #aaa;
-border-bottom : 1px solid #aaa;
+border-left : 1px solid #C8E5FF;
+border-right : 1px solid #C8E5FF;
+border-bottom : 1px solid #C8E5FF;
 }
 </style>
 <!----------------------------- fin script buscador --------------------------------------->
@@ -170,7 +180,7 @@ border-bottom : 1px solid #aaa;
     
 
 
-            <table class="table" style="width: <?php echo $ancho;?>cm; padding: 0;" >
+            <table class="table" style="width: <?php echo $ancho;?>cm; padding: 0; margin: 0" >
                 <tr>
                     <!--<td rowspan="3" style="width: 5cm;"></td>-->
                     
@@ -180,12 +190,12 @@ border-bottom : 1px solid #aaa;
                                 <font size="2" face="Arial black"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
                                 <?php if (isset($empresa[0]['empresa_eslogan'])){ ?>
                                 <small>
-                                        <font size="1" face="Arial narrow"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>                                    
+                                        <font size="1" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>                                    
                                 </small> 
                                 <?php } ?>
                                 
                                 <?php if (isset($empresa[0]['empresa_propietario'])){ ?>
-                                <font size="1" face="Arial narrow"><b><small>
+                                <font size="1" face="Arial"><b><small>
                                     
                                 
                                     <?php  echo "<b> DE: ".$empresa[0]['empresa_propietario'] ; ?>
@@ -195,7 +205,7 @@ border-bottom : 1px solid #aaa;
                                 <?php } ?>
                                     
                                         
-                                <font size="1" face="Arial narrow">
+                                <font size="1" face="Arial">
                                 <small>
                                     <?php echo $factura[0]['factura_sucursal'];?><br>
                                     <?php echo $empresa[0]['empresa_direccion']; ?><br>
@@ -222,8 +232,8 @@ border-bottom : 1px solid #aaa;
                         </center>
                     </td>
                     
-                    <td style="width: <?php echo $ancho / 3;?>cm;  padding: 0; line-height: 10px;">
-                            <table style="width: 6cm; padding:0; border-bottom: #0000eb">
+                    <td style="width: <?php echo $ancho / 3;?>cm;  padding: 0; line-height: 18px;">
+                            <table style="width: 8cm; padding:0;border: 1px solid black !important;" >
 <!--                                <tr>
                                     <td colspan="2">
                                         <center>
@@ -232,26 +242,26 @@ border-bottom : 1px solid #aaa;
                                         
                                     </td>
                                 </tr>-->
-                                <tr>
-                                    <td style="font-family: arial; font-size: 8pt; background-color: #aaa !important; -webkit-print-color-adjust: exact;"  class="autoColor">
+                                <tr >
+                                    <td style="font-family: arial; font-size: 8pt;padding-left: 3px !important" id="crema">
                                         
                                         <b> NIT:      </b><br>
                                         <b> FACTURA No.:  </b><br>
                                         <b> AUTORIZACION: </b>
 
                                     </td>
-                                    <td style="font-family: arial; font-size: 8pt; background-color: #ddd !important; -webkit-print-color-adjust: exact;">
+                                    <td style="font-family: arial; font-size: 8pt;" id="crema">
                                         <?php echo " ".$factura[0]['factura_nitemisor']; ?> <br>
-                                        <?php echo " 00".$factura[0]['factura_numero']; ?> <br>
+                                        <b style="color: #B10C0C; font-size: 10pt"><?php echo " 00".$factura[0]['factura_numero']; ?> </b><br>
                                         <?php echo " ".$factura[0]['factura_autorizacion'] ?>           
                                     </td>
                                 </tr>
                             </table>        
 
-                            <center>
-                            ____________________________________________________
-                            <font size="1px" face="arial narrow">
-                                <small>
+                            <center style="line-height: 10px !important;">
+                           
+                            <font size="1px" face="arial">
+                                <small >
                                         <?php echo $factura[0]['factura_actividad']?>
                                 </small>
                             </font>
@@ -264,27 +274,27 @@ border-bottom : 1px solid #aaa;
                 <?php $fecha = new DateTime($factura[0]['factura_fechaventa']); 
                                     $fecha_d_m_a = $fecha->format('d/m/Y');
                 ?> 
-                
-                <tr style="padding: 0;">
-                    <td colspan="5" style="padding: 0;">
+                <br>
+                <tr  style="padding: 0;border: 1px solid black !important;">
+                    <td colspan="5" style="padding: 0 !important;">
                         
-                        <table style="font-family: Arial; font-size: 10px; width: <?php echo $ancho;?>cm;" id="mitabla" > 
+                        <table style="font-family: Arial; font-size: 10px; width: <?php echo $ancho;?>cm; margin: 0" id="mitabla" > 
                             
                                 
                             <tr>
-                                <td style="width: 2cm;"></td> 
-                                <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap ><b>LUGAR Y FECHA: </b></td><td></td> <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;"><?php echo $empresa[0]['empresa_departamento'].", ".$fecha_d_m_a." ".$factura[0]['factura_hora']; ?></td>
-                                <td style="width: 2cm;"></td> 
+                                <td style="width: 2cm;" id="crema"></td> 
+                                <td style="width: 4cm;text-align: right;" id="crema" nowrap ><b>LUGAR Y FECHA: </b></td><td id="crema"></td> <td style="width: 10cm;" id="crema"><?php echo $empresa[0]['empresa_departamento'].", ".$fecha_d_m_a." ".$factura[0]['factura_hora']; ?></td>
+                                <td style="width: 2cm;" id="crema"></td> 
                             </tr>
                             <tr>
-                                <td style="width: 2cm;"></td>
-                                <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap><b>NIT/CI: </b></td><td ></td> <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;"><?php echo $factura[0]['factura_nit']; ?></td>
-                                <td style="width: 2cm;"></td> 
+                                <td style="width: 2cm;" id="crema"></td>
+                                <td style="width: 4cm; text-align: right;" id="crema" nowrap><b>NIT/CI: </b></td><td id="crema"></td> <td style="width: 10cm; " id="crema"><?php echo $factura[0]['factura_nit']; ?></td>
+                                <td style="width: 2cm;" id="crema"></td> 
                             </tr>
-                            <tr>
-                                <td style="width: 2cm;"></td>
-                                <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap><b>SEÑOR(ES): </b></td><td ></td><td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;"><?php echo $factura[0]['factura_razonsocial'].""; ?></td>
-                                <td style="width: 2cm;"></td>
+                            <tr >
+                                <td style="width: 2cm;" id="crema"> </td>
+                                <td style="width: 4cm;text-align: right;" id="crema"  nowrap><b>SEÑOR(ES): </b></td><td id="crema"></td><td style="width: 10cm;" id="crema"><?php echo $factura[0]['factura_razonsocial'].""; ?></td>
+                                <td style="width: 2cm;" id="crema"></td>
                             </tr>
                            
                         
@@ -296,21 +306,21 @@ border-bottom : 1px solid #aaa;
 
             </table>
 
-            <table class="table table-condensed"  style="width: <?php echo $ancho;?>cm; height: <?php echo $tipo_factura."cm"; ?>; margin: 0; padding: 0;" >
-                <tr style=" border-style: solid;   border-width: medium; border-color: black; border-width: 2px; padding:0; border-left: white; border-right: white;">
-                <td>
+            <table class="table table-condensed"  style="width: <?php echo $ancho;?>cm; height: <?php echo $tipo_factura."cm"; ?>; margin: 0 !important; padding: 0 !important;" >
+                <tr>
+                <td style="margin: 0;padding: 0 !important">
                 
-            <table class="table table-condensed"  style="width: <?php echo $ancho;?>cm; margin: 0;" >
+            <table class="table table-condensed"  style="width: <?php echo $ancho;?>cm; padding:   0 !important;" >
 
 
-                        <tr  style="border-style: solid; border-width: 2px; border-color: black; font-family: Arial; ">
+                        <tr  style=" font-family: Arial;border-top: 1px solid black !important; ">
    
-                            <td align="center" style="background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>CANT</b></td>
-                            <td align="center" colspan="2" style="background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>DESCRIPCIÓN</b></td>
-                            <td align="center" style="background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>P.UNIT</b></td>
-                            <td align="center" style="background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b></b></td>
-                            <td align="center" style="background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>TOTAL</b></td>               
-                            <td align="center" style="background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b></b></td>
+                            <td align="center" style="background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>CANT</b></td>
+                            <td align="center" colspan="2" style="background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>DETALLE</b></td>
+                            <td align="center" style="background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>P.UNIT</b></td>
+                            <td align="center" style="background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b></b></td>
+                            <td align="center" style="background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>TOTAL</b></td>               
+                            
                         
                        </tr>
                        <?php $cont = 0;
@@ -344,7 +354,7 @@ border-bottom : 1px solid #aaa;
                             <td align="right" style="padding: 0;"><font style="size:7px; font-family: arial"> <?php echo number_format($d['detallefact_precio']+$d['detallefact_descuento'],2,'.',','); ?></font></td>
                             <td></td>
                             <td align="right" style="padding: 0;"><font style="size:7px; font-family: arial"> <?php echo number_format($d['detallefact_subtotal'],2,'.',','); ?></font></td>
-                            <td></td>
+                            
                        </tr>
                        <?php }} ?>
                 </table>
@@ -358,12 +368,12 @@ border-bottom : 1px solid #aaa;
                 <table class="table" style="width: <?php echo $ancho;?>cm; margin: 0;">
                 <tr>
                     <td nowrap align="left"  style="width: 3cm;" style="padding: 0;" rowspan="2">
-                         <img src="<?php echo $codigoqr; ?>" width="80" height="80">
+                         <img src="<?php echo $codigoqr; ?>" width="120" height="120">
                     </td>
 
-                    <td  align="left" style="width: 7cm; padding:0; line-height: 10px; background-color: #aaa !important; -webkit-print-color-adjust: exact;">
+                    <td  align="left" style="width: 7cm; padding:0; line-height: 14px;">
                         <br>
-                        <font size="1" face="Arial narrow">
+                        <font size="1" face="Arial">
                             <?php echo "SON: ".num_to_letras($total_final,' Bolivianos'); ?><br>            
                         </font>
                         <font size="2" face="Arial">
@@ -387,7 +397,7 @@ border-bottom : 1px solid #aaa;
 
                     </td>  
                                         
-                    <td align="right" style="width: 8cm; padding:0; line-height: 11px; background-color: #aaa !important; -webkit-print-color-adjust: exact;">
+                    <td align="right" style="width: 8cm; padding:0; line-height: 14px; ">
                         <font size="1" face="Arial">
                             <b><?php echo "SUB TOTAL Bs ".number_format($factura[0]['factura_subtotal'],2,'.',','); ?></b><br>
                         </font>

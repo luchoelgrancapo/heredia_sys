@@ -137,10 +137,10 @@
 
 <!--<div class="box-body table-responsive">-->
     <!--<table class="table table-condensed" id="mitabla" style="font-size:10px" style="width: 17cm;">-->
-<div class="container  table-responsive" style='padding: 0;' >
+<div class="container  table-responsive" style='padding: 0;width: 100%' >
     
 
-    <table class="table table-responsive" id="tabla_detalle">
+    <table class="table " id="tabla_detalle" style='padding: 0;width: 100%' >
         <th rowspan="2">
             FECHA
         </th>

@@ -151,12 +151,12 @@ border-bottom : 1px solid #aaa;
 
        <table class="table table-striped table-condensed"  style="width: <?php echo $ancho;?>cm;" >
            <tr  style="border-top-style: solid; border-bottom-style: solid; border-color: black;">
-                <td align="center" style="padding: 0; background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>CANT</b></td>
-                <td align="center" style="padding: 0; background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>DESCRIPCIÓN</b></td>
-                <td align="center" style="padding: 0; background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>P.UNIT</b></td>
-                <td align="center" style="padding: 0; background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>SUB.TOT</b></td>
-                <td align="center" style="padding: 0; background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>DESC.</b></td>
-                <td align="center" style="padding: 0; background-color: #aaa !important; -webkit-print-color-adjust: exact;"><b>TOTAL</b></td>               
+                <td align="center" style="padding: 0; background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>CANT</b></td>
+                <td align="center" style="padding: 0; background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>DESCRIPCIÓN</b></td>
+                <td align="center" style="padding: 0; background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>P.UNIT</b></td>
+                <td align="center" style="padding: 0; background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>SUB.TOT</b></td>
+                <td align="center" style="padding: 0; background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>DESC.</b></td>
+                <td align="center" style="padding: 0; background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;"><b>TOTAL</b></td>               
            </tr>
            <?php $cont = 0;
                  $cantidad = 0;
@@ -196,9 +196,9 @@ border-bottom : 1px solid #aaa;
        </table>
     
 <table class="table" style="max-width: <?php echo $ancho;?>cm;">
-    <tr style="border-top-style: solid; background-color: #aaa; border-color: black; ">
+    <tr style="border-top-style: solid; background-color: #C8E5FF; border-color: black; ">
         
-        <td align="left" style="background-color: #aaa !important; -webkit-print-color-adjust: exact; line-height: 10px;">
+        <td align="left" style="background-color: #C8E5FF !important; -webkit-print-color-adjust: exact; line-height: 10px;">
                             
                 USUARIO: <b><?php echo $venta[0]['usuario_nombre']; ?></b><br>
                 COD.: <b><?php echo $venta[0]['venta_id']; ?></b><br>
@@ -206,12 +206,12 @@ border-bottom : 1px solid #aaa;
                 CUOTA INIC. Bs: <b><?php echo number_format($venta[0]['credito_cuotainicial'],2,'.',','); ?></b><br>
                 SALDO Bs: <b><?php echo number_format($venta[0]['venta_total']-$venta[0]['credito_cuotainicial'],2,'.',','); ?></b><br>                
         </td>
-        <td align="right" style="background-color: #aaa !important; -webkit-print-color-adjust: exact;">
+        <td align="right" style="background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;">
 
                     <?php echo "GRACIAS POR SU PREFERENCIA...!!!"; ?>  
 
         </td>
-        <td align="right"  style="padding: 0;  line-height: 10px; background-color: #aaa !important; -webkit-print-color-adjust: exact;">
+        <td align="right"  style="padding: 0;  line-height: 10px; background-color: #C8E5FF !important; -webkit-print-color-adjust: exact;">
             
                 
             <font size="1">

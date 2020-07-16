@@ -15,7 +15,14 @@ class Venta_online_model extends CI_Model
      * Get detalle_venta by detalleven_id
      */
 
+function get_ventas_dia()
+    {
+        $sql = "select if(count(*)>0, count(*), 0) as cantidad_ventas, if(sum(venta_total)>0, sum(venta_total), 0) as total_ventas
+                from venta_online where venta_fecha = date(now())";
+        $venta = $this->db->query($sql)->result_array();
 
+        return $venta;
+    }
   function ventas($filtro)
   {
         $detalle_venta = $this->db->query("
