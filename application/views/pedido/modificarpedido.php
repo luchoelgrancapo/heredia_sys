@@ -421,11 +421,11 @@ function cerrar_ventana(){
 <!-------------------- CATEGORIAS------------------------------------->
 <div class="container" id="categoria" style="padding:0; display: block;">
     
-    <span class="badge btn-danger" style="width: 170px;">
+    <span class="badge btn-primary" style="width: 170px;">
     
     
     
-        <select class="bange btn-danger" style="border-width: 0; width:100px;"  onchange="tablaresultados(2)" id="categoria_prod">
+        <select class="bange btn-primary" style="border-width: 0; width:100px;"  onchange="tablaresultados(2)" id="categoria_prod">
                 <option value="0" >Todas las Categorias</option>
         <?php 
             foreach($categoria_producto as $categ){ 
@@ -439,7 +439,7 @@ function cerrar_ventana(){
     </select>
         <span class="badge btn-facebook"><input style="border-width: 0;" id="encontrados" type="text"  size="3" value="0" readonly="true"> </span>
     </span>
-        <button class="btn bg-navy btn-xs" onclick="actualizar_inventario()"><span class="fa fa-cubes"></span>Actualizar Inventario</button>
+        <button class="btn bg-navy btn-xs" onclick="actualizar_inventario()"><span class="fa fa-cubes"></span> ACTUALIZAR INVENTARIO</button>
        <?php 
             if ($parametro[0]["parametro_agruparitems"] == 1 )
                     { $agrupar = "checked='true'";}
@@ -450,7 +450,7 @@ function cerrar_ventana(){
         
         
         
-        <button class="btn btn-primary btn-xs"><input type='checkbox' id='check_agrupar' class="btn btn-success btn-xs"  value='1' <?php echo $agrupar; ?>> Agrupar</button>
+        <button class="btn btn-secondary btn-xs"><input type='checkbox' id='check_agrupar' class="btn btn-success btn-xs"  value='1' <?php echo $agrupar; ?>> AGRUPAR DETALLE</button>
         
         
     <!--</span>-->
@@ -459,7 +459,7 @@ function cerrar_ventana(){
 
                 <!--<span class="badge btn-danger">Encontrados: <span class="badge btn-facebook"><input style="border-width: 0;" id="encontrados" type="text"  size="3" value="0" readonly="true"> </span></span>-->
                 <center>
-                <span class="badge btn-default">
+                <
 
                     <!--------------------- inicio loader ------------------------->
                     <div class="row" id='oculto'  style='display:none;'>
@@ -472,8 +472,7 @@ function cerrar_ventana(){
                         </center>
                     </div> -->
                     <!--------------------- fin inicio loader ------------------------->
-                    
-                </span>
+              
                 </center>
 
                 

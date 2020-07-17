@@ -271,7 +271,7 @@ function tablaproductos()
                        var descgral = 0;
                        var totalfinal = 0;
                         html = "";
-                        html += "<table class='table table-striped table-condensed' id='mitablaventas'>";
+                        html += "<table class='table table-striped table-condensed' id='tabla_detalle'>";
                         html += "                    <tr>";
                         html += "                            <th style='padding:0'>Nº</th>";
                         html += "                            <th style='padding:0'>Descripción</th>";
@@ -1277,19 +1277,19 @@ function tablaresultados(opcion)
                     html = "";
                     
                     if(! esMobil()) { //si no es dispositivo mobil
-                        html += "                <table class='table  table-condensed table-striped' id='mitabla'>";
+                        html += "                <table class='table  table-condensed table-striped' id='tabla_detalle'>";
                     }else{
-                        html += "                <table class='table  table-condensed table-striped' style='max-width: 3cm;' id='mitabla' >";
+                        html += "                <table class='table  table-condensed table-striped' style='max-width: 3cm;' id='tabla_detalle' >";
                     }
                     
-                   html += "                <tr style='background-color: black; '>";
-                   html += "                <th style='padding:0; background: black;'>N</th> ";
-                   html += "                <th style='padding:0; background: black;'>PRODUCTOS</th>";
+                   html += "                <tr>";
+                   html += "                <th>Nº</th> ";
+                   html += "                <th>Producto</th>";
                    
                     if(! esMobil()) { //si no es dispositivo mobil
                         mensajeboton = "";
-                        html += "                <th style='padding:0; background: black;'>Precio</th>";
-                        html += "                <th style='padding:0; background: black;'> </th>";
+                        html += "                <th>Precio</th>";
+                        html += "                <th> </th>";
                     }
                     else{
                         mensajeboton = " Añadir"; //mensaje para el boton del carrito
@@ -1354,7 +1354,7 @@ function tablaresultados(opcion)
                         
                         
                         html += "<center> ";                        
-                        html += "   <select class='btn btn-facebook' style='font-size:10px; face=arial narrow;' id='select_factor"+registros[i]["producto_id"]+"' onchange='mostrar_saldo("+registros[i]["existencia"]+","+registros[i]["producto_id"]+")'>";
+                        html += "   <select class='btn btn-warning btn-xs'  id='select_factor"+registros[i]["producto_id"]+"' onchange='mostrar_saldo("+registros[i]["existencia"]+","+registros[i]["producto_id"]+")'>";
                         html += "       <option value='1'>";
                         precio_unidad = registros[i]["producto_precio"];
                         html += "           "+registros[i]["producto_unidad"]+" Bs : "+precio_unidad.fixed(2)+"";
@@ -1428,7 +1428,7 @@ function tablaresultados(opcion)
                                   html +=     "<button class='btn btn-success btn-xs' onclick='ingresorapidojs(1,"+JSON.stringify(registros[i])+")'><b>- 1 -</b></button>";                                  
                                   html +=     "<button class='btn btn-info btn-xs' onclick='ingresorapidojs(2,"+JSON.stringify(registros[i])+")'><b>- 2 -</b></button>";
                                   html +=     "<button class='btn btn-primary btn-xs' onclick='ingresorapidojs(5,"+JSON.stringify(registros[i])+")'><b>- 5 -</b></button>";
-                                  html +=     "<button class='btn btn-warning btn-xs' onclick='ingresorapidojs(10,"+JSON.stringify(registros[i])+")'><b>- 10 -</b></button> ";
+                                  html +=     "<button class='btn btn-secondary btn-xs' onclick='ingresorapidojs(10,"+JSON.stringify(registros[i])+")'><b>- 10 -</b></button> ";
                                   html += "</div>";   
                             }            
                         }
@@ -1451,7 +1451,7 @@ function tablaresultados(opcion)
                         }     
                         
                         if (parseFloat(registros[i]["existencia"])>0){
-                             html += "<button type='button' class='btn btn-warning btn-sm btn-block' data-toggle='modal' data-target='#myModal"+registros[i]["producto_id"]+"'  title='Añadir al detalle' onclick='focus_cantidad("+registros[i]["producto_id"]+")'><em class='fa fa-cart-arrow-down'></em>"+mensajeboton+"</button>";                             
+                             html += "<button type='button' class='btn bg-indigo btn-sm btn-block' data-toggle='modal' data-target='#myModal"+registros[i]["producto_id"]+"'  title='Añadir al detalle' onclick='focus_cantidad("+registros[i]["producto_id"]+")'><em class='fa fa-cart-arrow-down'></em>"+mensajeboton+"</button>";                             
                         }
                         
                         //html += "<button class='btn btn-success'><i class='fa fa-picture-o'></i></button>";

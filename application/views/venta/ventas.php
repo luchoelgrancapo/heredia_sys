@@ -243,7 +243,7 @@ window.onkeydown = compruebaTecla;
         </div>
         
         <div class="col-md-4"  <?php echo $estilo_div; ?>>
-            <label for="razon social" class="control-label" style="margin-bottom: 0;">RAZON SOCIAL</label>
+            <label for="razon social" class="control-label" style="margin-bottom: 0;">RAZÓN SOCIAL</label>
             <div class="form-group" <?php echo $estilo_div; ?>>
                 
                 <!--<input type="search" name="razon_social" list="listaclientes" class="form-control" id="razon_social" value="<?php echo $cliente[0]['cliente_razon']; ?>" onkeypress="validar(event,2)"  onclick="seleccionar(2)" onKeyUp="this.value = this.value.toUpperCase();"/>-->
@@ -480,7 +480,7 @@ window.onkeydown = compruebaTecla;
     </span>
     </div>
     <div class="col-md-4">
-        <button class="btn bg-navy btn-xs" onclick="actualizar_inventario()"><span class="fa fa-cubes"></span>Actualizar Inventario</button>
+        <button class="btn bg-navy btn-xs" onclick="actualizar_inventario()"><span class="fa fa-cubes"></span> ACTUALIZAR INVENTARIO</button>
        
         
   
@@ -543,14 +543,14 @@ window.onkeydown = compruebaTecla;
             <!--------------- botones ---------------------->
            <?php if($parametro[0]["parametro_modulorestaurante"]==0){ //1 es normal ?>
                 <?php if($rolusuario[13-1]['rolusuario_asignado'] == 1){ ?>
-                    <a href="#" data-toggle="modal" data-target="#modalonline" class="btn bg-orange btn-xs" onclick="pedidos_online()" title="Pedidos Online"><span class="fa fa-globe"></span><b> Online</b></a> 
-            <a href="#" data-toggle="modal" data-target="#modalpedidos" class="btn btn-secondary btn-xs" onclick="pedidos_pendientes()" title="Pedidos Pendientes"><span class="fa fa-cubes"></span><b> Pedidos</b></a> 
+                    <a href="#" data-toggle="modal" data-target="#modalonline" class="btn bg-orange btn-xs" onclick="pedidos_online()" title="Pedidos Online"><span class="fa fa-globe"></span><b> ONLINE</b></a> 
+            <a href="#" data-toggle="modal" data-target="#modalpedidos" class="btn btn-primary btn-xs" onclick="pedidos_pendientes()" title="Pedidos Pendientes"><span class="fa fa-cubes"></span><b> PEDIDOS</b></a> 
             <!--<a href="#" data-toggle="modal" data-target="#modalordenes" class="btn btn-facebook btn-xs" style="background-color: black" onclick="ordenes_pendientes()" title="Ordenes de Trabajo"><span class="fa fa-book"></span><b> OT's</b></a> -->
                 <?php }
                 } ?>
                     
             <?php if($parametro[0]["parametro_modulorestaurante"]==1){ //1 es modo restaurante?>            
-                    <a href="<?php echo base_url('venta/ultimacomanda');?>" data-toggle="modal" target="_blank" class="btn btn-facebook btn-xs" id="imprimir_comanda" title="Comanda"><span class="fa fa-print"></span><b> Comanda</b></a> 
+                    <a href="<?php echo base_url('venta/ultimacomanda');?>" data-toggle="modal" target="_blank" class="btn btn-facebook btn-xs" id="imprimir_comanda" title="Comanda"><span class="fa fa-print"></span><b> COMANDA</b></a> 
             <?php } ?>            
         
              <?php 
@@ -558,33 +558,33 @@ window.onkeydown = compruebaTecla;
             <button onclick='costo_cero()' class='btn btn-danger btn-xs'><span class='fab fa-creative-commons-zero' title="Costo Cero"></span><b> 0.00</b></button> 
             <?php }
             if($rolusuario[16-1]['rolusuario_asignado'] == 1){ ?>
-            <button onclick='precio_costo()' class='btn bg-teal btn-xs'><span class='fas fa-dollar-sign' title="Precio de costo"></span><b> Costo</b></button> 
+            <button onclick='precio_costo()' class='btn bg-teal btn-xs'><span class='fas fa-dollar-sign' title="Precio de costo"></span><b> COSTO</b></button> 
             
             <?php } ?>
             
             <?php            
             if($rolusuario[17-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="<?php echo base_url('venta/ultimorecibo');?>"  target="_blank" class="btn bg-info btn-xs" id="imprimir"><span class="fa fa-print" title="Imprimir nota de entrega"></span><b> Recibo</b></a> 
+            <a href="<?php echo base_url('venta/ultimorecibo');?>"  target="_blank" class="btn bg-info btn-xs" id="imprimir"><span class="fa fa-print" title="Imprimir nota de entrega"></span><b> RECIBO</b></a> 
             
             <?php } 
             ?>
             
             <?php            
             if($rolusuario[17-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="<?php echo base_url('venta/ultimaventa/1');?>" target="_blank" class="btn btn-warning btn-xs" id="imprimir_factura"><span class="fa fa-list-alt" title="Imprimir factura"></span><b> Factura</b></a> 
+            <a href="<?php echo base_url('venta/ultimaventa/1');?>" target="_blank" class="btn btn-warning btn-xs" id="imprimir_factura"><span class="fa fa-list-alt" title="Imprimir factura"></span><b> FACTURA</b></a> 
             
             <?php } 
             ?>
-            <select  id="select_imprimir_factura" style="font-weight: bold" onclick="imprimir_factura()" class='btn btn-warning btn-xs' title="Imprimir factura">
+            <!--<select  id="select_imprimir_factura" style="font-weight: bold" onclick="imprimir_factura()" class='btn btn-warning btn-xs' title="Imprimir factura">
                 <option value="0">Imprimir</option>
                 <option value="1">Factura</option>
                 <option value="2">Copia</option>
             </select>
 
-            
+            -->
             
             <?php if($rolusuario[14-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="#" data-toggle="modal" data-target="#modalfinalizar" class="btn btn-success btn-xs"><span class="fas fa-money-bill-alt"></span><b> Finalizar</b></a> 
+            <a href="#" data-toggle="modal" data-target="#modalfinalizar" class="btn btn-success btn-xs"><span class="fas fa-money-bill-alt"></span><b> FINALIZAR</b></a> 
             <?php } ?>
 
             <?php 
@@ -593,8 +593,7 @@ window.onkeydown = compruebaTecla;
               else {$agrupar = " ";}
             ?>
         
-            <button class="btn btn-primary btn-xs"><input type='checkbox' id='check_agrupar' class="btn btn-success btn-xs"  value='1' <?php echo $agrupar; ?>> Agrupar</button>
-            </center>
+           
             
             <!--<a href="<?php echo base_url('venta/ultimaventa');?>" data-toggle="modal" target="_blank" class="btn btn-primary btn-xs" id="imprimir"><span class="fa fa-print"></span><b> Plan de Pagos</b></a>--> 
             
@@ -603,12 +602,13 @@ window.onkeydown = compruebaTecla;
             <!--------------------- fin parametro de buscador ---------------------> 
         
             </div>
+
             <div class="col-md-3 bg-secondary">
             
-                <b>Total Final Bs</b>
+                <b>TOTAL Bs.</b>
                 
                
-                    <input type="text"  class="form-control btn bg-secondary" id="venta_subtotal" name="venta_subtotal" values="0.00" readonly>                
+                    <input type="text" style="font-size: 22px" class="form-control btn bg-secondary" id="venta_subtotal" name="venta_subtotal" values="0.00" readonly>                
                 
     
               
@@ -616,7 +616,8 @@ window.onkeydown = compruebaTecla;
                 
             </div>
         </div>
-        
+         <button class="btn btn-secondary btn-xs"><input type='checkbox' id='check_agrupar' class="btn btn-success btn-xs"  value='1' <?php echo $agrupar; ?>> AGRUPAR DETALLE</button>
+            </center>
         <div class="box">
            
             

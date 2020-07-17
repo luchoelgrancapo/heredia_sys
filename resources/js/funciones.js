@@ -258,8 +258,8 @@ function tablaproductos()
                         html = "";
                         html += "<table class='table table-striped table-condensed' id='tabla_detalle'>";
                         html += "                    <tr>";
-                        html += "                            <th style='padding:0'>#</th>";
-                        html += "                            <th style='padding:0'>Descripción</th>";
+                        html += "                            <th style='padding:0'>Nº</th>";
+                        html += "                            <th style='padding:0'>Detalle</th>";
                         
                         if(esMobil()){
                             html += "                            <th style='padding:0'>Precio<br>Cant.</th>";                            
@@ -1324,7 +1324,7 @@ function tablaresultados(opcion)
                     
                    html += "                <table class='table  table-condensed table-striped' id='tabla_detalle'>";
                    html += "                <tr>";
-                   html += "                <th>#</th> ";
+                   html += "                <th>Nº</th> ";
                    html += "                <th>Descripción</th>";
                    
                     if(! esMobil()) { //si no es dispositivo mobil
@@ -1495,11 +1495,10 @@ function tablaresultados(opcion)
                         html += "<td style='padding:0;'>";
                         }
                         
-                        //html += "<div id='input_existencia"+registros[i]["producto_id"]+"'> <center><font size='3'><b>"+existencia+"</b></font><br>"+registros[i]["producto_unidad"]+"</center></div>";
+                        html += "<div style='line-height:12px;' id='input_existencia"+registros[i]["producto_id"]+"'> <center><font size='3'><b>"+existencia+"</b></font><br>"+registros[i]["producto_unidad"]+"</center></div>";
                     
                         if (parseFloat(registros[i]["existencia"])>0){
                              html += "<button type='button' class='btn bg-indigo btn-xl btn-block' style='padding:0;' data-toggle='modal' data-target='#myModal"+registros[i]["producto_id"]+"'  title='Añadir al detalle' onclick='focus_cantidad("+registros[i]["producto_id"]+")' >"+mensajeboton+ 
-                                    "<center style='line-height:10px;'><font size='3'><b>"+formato_numerico(existencia)+"</font><br><font size='2'><sub>"+registros[i]["producto_unidad"]+"</sub></font></b></center>"+
                                        "<em style='font-size:12px;' class='fa fa-cart-plus'></em></button>";                             
                         }
                         

@@ -159,7 +159,7 @@ input[type=number] { -moz-appearance:textfield;
         <div class="col-md-4">
         </div> 
         <div class="col-md-2">
-         <label class="btn btn-info btn-xs" > <input  class="btn btn-xs" type="checkbox"  id="agrupar" name="agrupar" value="1" checked> Agrupar Detalle</label>
+         <label class="btn btn-secondary btn-xs" > <input  class="btn btn-xs" type="checkbox"  id="agrupar" name="agrupar" value="1" checked> AGRUPAR DETALLE</label>
          </div>  
                 <?php if($bandera==1) { ?>
                
@@ -178,7 +178,7 @@ input[type=number] { -moz-appearance:textfield;
           <div class="modal-dialog" role="document" >
             <div class="modal-content" >
               <div class="modal-header">
-                 <h4 class="modal-title">Reestablecer Fecha/Hora</h4>
+                 <h4 class="modal-title">REESTABLECER FECHA/HORA</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -221,7 +221,7 @@ input[type=number] { -moz-appearance:textfield;
         <!---------------------------------FIN MODAL DE CAMBIAR FECHA------------------------->
             <div class="col-md-2">
             <a href="#" data-toggle="modal" data-target="#modalcobrar" class="btn btn-xs btn-success" >
-                <i class="fas fa-money-bill-alt"></i> Finalizar Cambios
+                <i class="fas fa-money-bill-alt"></i> FINALIZAR
             </a>
           </div>
         
@@ -235,14 +235,14 @@ input[type=number] { -moz-appearance:textfield;
         <div class="col-md-2">
         <label id="provedorboton"><a class="btn btn-xs btn-success"  onclick="myFunction()" href="#" >
           <i class="fas fa-money-bill-alt"></i>
-               Finalizar compra 
+               FINALIZAR
             </a></label>
         </div>  
   <?php  } else { ?>  
           <div class="col-md-2">        
             <label id="provedorboton"><a class="btn btn-xs btn-success"  href="#"  data-toggle="modal" data-target="#modalcobrar">
               <i class="fas fa-money-bill-alt"></i> 
-               Finalizar compra 
+               FINALIZAR 
             </a></label>
           </div>  
  <?php  }  } ?>
@@ -251,7 +251,7 @@ input[type=number] { -moz-appearance:textfield;
             <div class="col-md-2">
               <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#aviso">
                  <i class="fas fa-sign-out-alt"></i>
-               Salir  
+               SALIR  
               </a>
             </div>  
           <div class="modal fade" id="aviso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -315,7 +315,7 @@ input[type=number] { -moz-appearance:textfield;
                 <table class="table table-striped" id="tabla_detalle">
                     
                      <tr>
-                                                <th>#</th>
+                                                <th>Nº</th>
                                                 <th>Producto</th>
                                                 <th></th>
                     </tr>
@@ -345,7 +345,7 @@ input[type=number] { -moz-appearance:textfield;
                     <th colspan="3"></th>
                   </tr>
                     <tr>
-                            <th>#</th>
+                            <th>Nº</th>
                             <th>Producto/<br>Unidad</th>
                             <th>Código</th>
                             <th>Precio</th>
