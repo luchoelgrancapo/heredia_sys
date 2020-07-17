@@ -179,7 +179,7 @@ function tablaresultadosproducto(limite){
                         }
                         html += cantmin+"</td>";
 
-                        html += "<td>";
+                       /* html += "<td>";
                         var sinconenvase = "";
                         var nombreenvase = "";
                         var costoenvase  = "";
@@ -198,7 +198,7 @@ function tablaresultadosproducto(limite){
                         html += nombreenvase;
                         html += costoenvase;
                         html += precioenvase;
-                        html += "</td>";
+                        html += "</td>";*/
                         var codbarras = "";
                         if((registros[i]["producto_codigobarra"] != registros[i]["producto_codigo"])){
                             codbarras += registros[i]["producto_codigobarra"];
@@ -442,7 +442,6 @@ function cabecera_tabla() {
     chtml += "<th  role='columnheader' >Nº</th>";
     chtml += "<th  role='columnheader' >Nombre</th>";
     chtml += "<th  role='columnheader' >Detalle</th>";
-    chtml += "<th  role='columnheader' >Envase</th>";
     chtml += "<th  role='columnheader' >Código(s)</th>";
     chtml += "<th  role='columnheader' >Precio</th>";
     chtml += "<th  role='columnheader' >Moneda</th>";
@@ -536,7 +535,7 @@ function busqueda_inicial() {
         }
         html += cantmin+"</td>";
 
-        html += "<td>";
+        /*html += "<td>";
         var sinconenvase = "";
         var nombreenvase = "";
         var costoenvase  = "";
@@ -555,7 +554,7 @@ function busqueda_inicial() {
         html += nombreenvase;
         html += costoenvase;
         html += precioenvase;
-        html += "</td>";
+        html += "</td>";*/
         var codbarras = "";
         if((registros[i]["producto_codigobarra"]!=registros[i]["producto_codigo"])){
             codbarras += registros[i]["producto_codigobarra"];
