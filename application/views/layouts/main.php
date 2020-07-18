@@ -68,20 +68,33 @@
                   <span class="badge badge-danger"></span> Salir
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                  <a href="" class="dropdown-item">
+                  <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                      <img height="90" width="90" src="<?php echo site_url('resources/images/usuarios/'.$session_data['usuario_imagen']);?>" class="img-circle" alt="User Avatar">
+                      <img height="90" width="90" src="<?php echo site_url('resources/images/usuarios/'.$session_data['usuario_imagen']);?>" class="img-size-50 mr-3 img-circle">
                       <div class="media-body">
                         <h3 class="dropdown-item-title">
                          <?php echo $session_data['usuario_nombre']; ?>
-                          
+                          <span class="float-right text-sm text-danger"><i class="fas fa-user"></i></span>
                         </h3>
-                        <a href="<?php echo site_url()?>admin/dashb/logout" class="btn btn-danger btn-xs"><i class="fas fa-sign-out-alt"></i> Salir de<br>BUSINESS SYS</a>
                       </div>
                     </div>
                     <!-- Message End -->
-                  </a>                  
+                  </a> 
+                  <div class="dropdown-divider"></div> 
+                  <a href="<?php echo site_url()?>admin/dashb/logout" class="dropdown-item badge-danger">
+                    <!-- Message Start -->
+                    <div class="media">
+                      
+                      <div class="media-body">
+                        <h3 class="dropdown-item-title">
+                        Salir de Business Sys 
+                          <span class="float-right text-sm text-white"><i class="fas fa-sign-out-alt"></i></span>
+                        </h3>
+                      </div>
+                    </div>
+                    <!-- Message End -->
+                  </a>                               
                 </div>
               </li>
               <!-- Notifications Dropdown Menu -->
