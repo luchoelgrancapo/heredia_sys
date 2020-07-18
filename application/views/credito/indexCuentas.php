@@ -38,7 +38,7 @@
                 <input type="hidden" name="esti" id="esti" value="">
                  <input type="hidden" name="vendedor" id="vendedor" value="">
               <?php if($rol[50-1]['rolusuario_asignado'] == 1){ ?>
-               <button class="btn btn-success btn-md" style="float: right;margin-left: 10px"><span class="fa fa-print"></span> Imprimir</button>
+               <button class="btn btn-warning btn-md" style="float: right;margin-left: 10px"><span class="fa fa-print"></span> Imprimir</button>
           
               <?php } ?>
               <label class="btn btn-info btn-md" style="float: right;"> <input  class="btn btn-xs" type="checkbox"  id="agrupar" name="agrupar" value="1" > Agrupar</label>
@@ -95,9 +95,9 @@
     </div>
          <div class="col-md-1" style="padding-top: 8px;">
        <br>
-     <button class="btn btn-primary tn-sm form-control no-print no-print" onclick="buscar_fecha_cuenta()">
+     <button class="btn btn-primary btn-sm form-control no-print no-print" onclick="buscar_fecha_cuenta()">
            
-                <span class="fa fa-search"></span>   Buscar 
+                <span class="fa fa-search"></span> Buscar 
              
           </button>
   
@@ -115,7 +115,7 @@
                 <table class="table table-striped table-condensed" id="mitabla">
                     <thead id="titulos">
                     <tr>
-						<th>#</th>                                             
+						<th>Nº</th>                                             
 						<th>Cliente</th>
                                                 <th>Crédito</th>
                                                 <th>Transac.</th>

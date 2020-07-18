@@ -114,7 +114,7 @@
                 <table class="table table-striped table-condensed" id="mitabla">
                     <thead id="titulos">
                     <tr >
-						<th>#</th>
+						<th>Nº</th>
                                              
 						<th>Proveedor</th>
                         <th>Credito</th>
