@@ -610,7 +610,7 @@ function tablacarrito(){
                         total_detalle = Number(subtotal);
 
                         html += "<tr "+estilo+">";
-                        if (escarrito==2) {
+                        if (escarrito>0) {
                             if(registros[i]["producto_foto"] != null && registros[i]["producto_foto"] !=""){
                             
                             var mimagen = "<img src='"+base_url+"resources/images/productos/thumb_"+registros[i]["producto_foto"]+"' class='img img-circle' width='50' height='50' />";
@@ -645,7 +645,7 @@ function tablacarrito(){
                        
                        }
                        html += "<tr style='color: white; background: #333333; padding: 0;'>";
-                       if (escarrito==2) {
+                       if (escarrito>0) {
                         html += "<td></td>";
                         }
                        html += "<td colspan='2' style='padding:0;'><center><b><font size='3'>TOTAL Bs.</b></font></center></td>";
@@ -1209,3 +1209,199 @@ function enviar_clave(){
 
     }
     
+function registrargmail(id,nombre,email)
+{
+    var base_url = document.getElementById('base_url').value;
+    
+    var controlador = base_url+'website/registrarclienteonline';
+    document.getElementById('loader1').style.display = 'block';
+    var cliente_id = 0; //document.getElementById('cliente_id').value;
+    
+    var nit = 0;  //document.getElementById('nit').value;
+    var razon = 'SIN NOMBRE'; //document.getElementById('razon_social').value;
+    var telefono = 0; //document.getElementById('telefono').value;    
+    var tipocliente_id = 1; //document.getElementById('tipocliente_id').value;
+    
+    
+    var cliente_nombre = nombre;
+    var cliente_ci = 0; // document.getElementById('cliente_ci').value;
+    var cliente_nombrenegocio = '-'; //document.getElementById('cliente_nombrenegocio').value;    
+    var cliente_codigo = id; //document.getElementById('cliente_codigo').value;
+    
+    var cliente_direccion = "llenar campo";
+    var cliente_departamento = '-';//document.getElementById('cliente_departamento').value;
+    var cliente_celular = "";
+    //cliente_celular = document.getElementById('cliente_celular').value;
+    
+    var zona_id = 1; //document.getElementById('zona_id').value;
+    
+    var cliente_email = email;
+   
+    //var cliente_clave = "";
+    var cliente_clave = email;
+    
+    //var cliente_repeticion = "";
+    var cliente_repeticion = email;
+    
+    
+    
+//    alert(nit+","+razon+","+telefono+","+ cliente_nombre+","+ tipocliente_id+","+cliente_nombre+","+ cliente_ci+","+
+//    cliente_nombrenegocio+","+ cliente_codigo+","+cliente_direccion+","+ cliente_departamento+","+ cliente_celular+","+ zona_id+","+cliente_email+","+cliente_clave);
+
+    var error = 0;
+    
+    html = "";        
+    $("#mensaje_lognombre").html(html); 
+    $("#mensaje_logcelular").html(html); 
+    $("#mensaje_logdireccion").html(html); 
+    $("#mensaje_logemail").html(html); 
+    $("#mensaje_logclave").html(html); 
+    $("#mensaje_logrepetir").html(html); 
+    
+    
+    if (cliente_nombre.length >4){
+        
+        if( cliente_clave.length > 5){
+            
+        
+        if( cliente_direccion.length > 5){
+                
+            if(email_valido(cliente_email)){
+                
+            
+                if(email_norepetido(cliente_email)){
+                
+                    
+                    if(cliente_clave.length>4){
+                
+                    if(cliente_clave == cliente_repeticion){
+                            
+                                
+
+                                    $.ajax({url: controlador,
+                                            type:"POST",
+                                            data:{nit:nit,razon:razon,telefono:telefono,cliente_id:cliente_id, cliente_nombre:cliente_nombre, tipocliente_id:tipocliente_id,
+                                                        cliente_nombre:cliente_nombre, cliente_ci:cliente_ci,cliente_nombrenegocio:cliente_nombrenegocio, cliente_codigo:cliente_codigo,
+                                                        cliente_direccion:cliente_direccion, cliente_departamento:cliente_departamento, cliente_celular:cliente_celular, zona_id:zona_id,
+                                                        cliente_email:cliente_email, cliente_clave:cliente_clave},
+                                            success:function(respuesta){  
+                                                    document.getElementById('loader1').style.display = 'none';
+                                                    html = "";
+                                                    html += "<center>";
+                                                    html += "<b>NOTIFICACIÓN</b>";
+                                                    html += "<br>";
+                                                    html += "<br>Tu usuario fue registrado correctamente.";
+                                                    html += "<br>Te recomendamos registrar más infomación en tu perfil.";
+                                                    html += "<br>Dirección y teléfono celular son datos importantes para nosotros.";
+                                                    html += "</br>";
+                                                    html += "<button class='btn btn-success' onclick='sesiongoogle("+email+")' type='button' data-dismiss='modal' style='width: 120px;'><fa class='fa fa-check'></fa> Continuar</button>";
+                                                    html += "</center>";
+
+                                                    $("#registrarcli").html(html);
+                                                    $("#inisesion").html(html);
+
+
+//                                                    alert ("correo electronico enviado");
+//                                                
+//                                                
+//                                                var registro = JSON.parse(respuesta);
+//
+//                                                cliente_id = registro[0]["cliente_id"];
+//
+//                                                alert("jejej: "+cliente_id);
+//                                                //registrarventa(cliente_id);
+
+                                            },
+                                            error: function(respuesta){
+                                //                cliente_id = 0;            
+                                //                alert(cliente_id);
+                                            }
+
+                                    });
+                                
+                            }
+                            else{ 
+                                html = "La clave y su repeticion no coinciden";
+                                $("#mensaje_logclave").html(html);
+                                $("#cliente_clavereg").focus();
+                                
+                            }
+                        
+                    }
+                    else{
+                        html = "La clave es demasiado corta (tener más de 4 caracteres)";
+                        $("#mensaje_logclave").html(html);    
+                        $("#cliente_clavereg").focus();
+                        
+                    }
+                  
+                
+            }
+            else{
+                
+                sesiongoogle(email);
+                
+            }            
+            
+            }
+            else{
+                
+                html = "Debes registrar un correo electrónico válido";
+                $("#mensaje_logemail").html(html);    
+                $("#cliente_email").focus();
+
+                
+            }
+            
+            
+         }
+        else{
+            html = "Debes especificar una dirección válida";
+            $("#mensaje_logdireccion").html(html);    
+            $("#cliente_direccion").focus();
+
+        }   
+            
+            
+        }
+        else{ 
+            html = "Debes tener cuenta goggle";
+
+        }
+                
+    }else{ 
+    
+        html = "Debe registrar tú nombre";
+        $("#mensaje_lognombre").html(html);    
+        $("#cliente_nombre").focus();
+    }
+
+    
+    
+}
+
+
+function sesiongoogle(email){
+
+    
+    var ipe = document.getElementById('miip').value; 
+    var base_url = document.getElementById('base_url').value;
+    var controlador = base_url+'website/sesiongoogle/';
+ 
+      $.ajax({url: controlador,
+           type:"POST",
+           data:{email:email,ipe:ipe},
+           success:function(respuesta){ 
+               signOut();
+               location.reload();
+               
+    },
+        error:function(respuesta){
+          
+       alert("Datos incorrectos, vuelva a intentar");
+   }
+
+});
+
+
+}

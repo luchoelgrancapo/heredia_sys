@@ -964,6 +964,36 @@ class Website extends CI_Controller{
             }       
 
     }
+
+     function sesiongoogle(){
+        
+        $login = $this->input->post('email');
+        //$clave = md5($this->input->post('clave'));
+        $ipe = $this->input->post('ipe');
+
+//        $resultado = "SELECT * from cliente WHERE cliente_codigo='".$login."' AND cliente_codigo = '".$clave."' ";
+        $resultado = "SELECT * from cliente WHERE cliente_email = '".$login."'".
+                    
+                    " ";
+        $result=$this->db->query($resultado)->row_array();
+        
+        if ($result){
+        $clienteid = $result['cliente_id'];
+        $clientenombre = $result['cliente_nombre'];
+        $update="UPDATE carrito
+                  SET cliente_id = '".$clienteid."' 
+                  WHERE cliente_id = '".$ipe."' ";
+        $this->db->query($update);
+
+        setcookie("cliente_id", $clienteid, time() + (3600 * 24), "/");
+        setcookie("cliente_nombre", $clientenombre, time() + (3600 * 24), "/");
+        return true;
+        
+        }else{
+            show_404();
+        }
+    }
+
  
    
 

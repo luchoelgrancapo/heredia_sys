@@ -93,9 +93,7 @@
 <div class="row">
     <div class="col-md-12">
         
-         <div class="row" id='loader'  style='display:none; text-align: center'>
-            <img src="<?php echo base_url("resources/images/loader.gif"); ?>"  >
-        </div>
+         
         <!-- *********** FIN de BUSCADOR select y productos encontrados ****** -->
 
         <div class="box">

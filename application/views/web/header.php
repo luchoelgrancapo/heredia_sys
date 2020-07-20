@@ -1,3 +1,6 @@
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="196459962248-b1j1tu51032l2ke79hsdffluj5crgqp8.apps.googleusercontent.com">
+
     <!-- HEADER -->
     <header>
       <!-- TOP HEADER -->
@@ -59,8 +62,11 @@
                                                    </div>
                                                    <div class="product-widget">
                                                      <a href="<?php echo base_url("website/micarrito/"); ?>" >Mi Carrito</a>
-                                                            <!--<a href="<?php echo base_url("website/miscompras/").$idioma_id; ?>" >Mis Compras</a></li>-->
+                                                      
                                                     </div>
+                                                     <div class="product-widget">
+                                                     <a href="<?php echo base_url("website/miscompras/").$idioma_id; ?>" >Mis Compras</a>
+                                                   </div>
                                                     <div class="product-widget">
                                                       <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()">Cerrar Sesión</a>
                                                             
@@ -91,7 +97,7 @@
                 </div>
                 <?php if(isset($_COOKIE["cliente_id"])) { ?>
                 <div>
-                <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesión"></i><span>Cerrar Sesión</span></a>
+                <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion(),signOut()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesión"></i><span>Cerrar Sesión</span></a>
                         <?php }  ?>
                 </div>
                 <!-- /Wishlist -->
@@ -223,12 +229,58 @@
                     <div class="row" >
                         
                            <div class="col-md-6">                                
-                        <button class="btn btn-primary btn-block form-control" onclick="inisesion()" id="boton_sesion"><fa class="fa fa-key"></fa> Iniciar Sesion</button>
+                        <button class="btn btn-primary btn-block form-control" onclick="inisesion()" id="boton_sesion"><fa class="fa fa-key"></fa> Iniciar Sesion</button><br>
                     </div>
                         <div class="col-md-6">
-                        <button class="btn btn-default btn-block" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrarse</button>
+                        <button class="btn btn-default btn-block" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrarse</button><br>
                     </div>
-                    
+                    <div class="col-md-6">
+                   <div class="col-md-6" id="my-signin2"></div>
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+      //registrarcli();
+       $("#modalCliente").modal("hide");  
+      onSignIn(googleUser);
+    }
+    function onFailure(error) {
+      console.log(error);
+      //registrarcli();
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 260,
+        'height': 30,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+function onSignIn(googleUser) {
+ 
+
+  var profile = googleUser.getBasicProfile();
+  var id =  profile.getId(); // Do not send to your backend! Use an ID token instead.
+  var nombre = profile.getName();
+  //var image = profile.getImageUrl();
+  var email = profile.getEmail(); // This is null if the 'email' scope is not present.
+  //alert(id);
+  
+  registrargmail(id,nombre,email);
+ 
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+     </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
                     </div>
                 </td>    
             </tr>

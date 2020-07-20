@@ -21,6 +21,7 @@
             <tr style="color: white; background: #333333; padding: 0;">
               <!--<th>#</th>-->
               
+              <th style="padding:0; text-align: center;"></th>
               <th style="padding:0; text-align: center;">Producto</th>
               <th style="padding:0; text-align: center;">Precio</th>
               <th style="padding:0; text-align: center;">Cantidad</th>
