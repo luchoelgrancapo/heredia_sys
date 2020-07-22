@@ -1791,6 +1791,7 @@ function registrarcliente()
     var cliente_direccion = document.getElementById('cliente_direccion').value;
     var cliente_departamento = document.getElementById('cliente_departamento').value;
     var cliente_celular = document.getElementById('cliente_celular').value;
+    var categoriaclie_id = document.getElementById('categoriaclie_id').value;
     var zona_id = document.getElementById('zona_id').value;
     
     if (Number.isInteger(zona_id)){
@@ -1840,7 +1841,7 @@ function registrarcliente()
             type:"POST",
             data:{nit:nit,razon:razon,telefono:telefono,cliente_id:cliente_id, cliente_nombre:cliente_nombre, tipocliente_id:tipocliente_id,
                         cliente_nombre:cliente_nombre, cliente_ci:cliente_ci,cliente_nombrenegocio:cliente_nombrenegocio, cliente_codigo:cliente_codigo,
-                        cliente_direccion:cliente_direccion, cliente_departamento:cliente_departamento, cliente_celular:cliente_celular, zona_id:zona_id},
+                        cliente_direccion:cliente_direccion,categoriaclie_id:categoriaclie_id, cliente_departamento:cliente_departamento, cliente_celular:cliente_celular, zona_id:zona_id},
             success:function(respuesta){  
             
                 var registro = JSON.parse(respuesta);

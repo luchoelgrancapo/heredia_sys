@@ -1854,18 +1854,21 @@ function registrarcliente()
             $cliente_departamento =  "'".$this->input->post('cliente_departamento')."'";
             $cliente_celular =  "'".$this->input->post('cliente_celular')."'";
             $zona_id =  $this->input->post('zona_id');
-            
+            $categorias=$this->input->post('categoriaclie_id');
             $cliente_ci = $cliente_nit;
             $cliente_nombre = $cliente_razon;
             $sql = "insert cliente(tipocliente_id,categoriaclie_id,cliente_nombre,cliente_ci,cliente_nit,
                     cliente_razon,cliente_telefono,estado_id,usuario_id,
                     cliente_nombrenegocio, cliente_codigo, cliente_direccion, cliente_departamento,
                     cliente_celular, zona_id
-                    ) value(".$tipocliente_id.",1,".$cliente_nombre.",".$cliente_ci.",".$cliente_nit.",".
+                    ) value(".$tipocliente_id.",".$categorias.",".$cliente_nombre.",".$cliente_ci.",".$cliente_nit.",".
                     $cliente_razon.",".$cliente_telefono.",1,0,".
                    $cliente_nombrenegocio.",".$cliente_codigo.",".$cliente_direccion.",".$cliente_departamento.",".
                    $cliente_celular.",".$zona_id.")";
 //            echo $sql;
+
+                $sql33 = "UPDATE categoria_cliente SET categoriaclie_numero=categoriaclie_numero+1 WHERE categoriaclie_id = ".$categorias." "; 
+                $this->db->query($sql33);
             $datos = $this->Venta_model->registrarcliente($sql);
             echo json_encode($datos);
             

@@ -106,10 +106,14 @@ function codigo(){
                     var sub = nombre.substr(0,3);
                     html += sub+"-"+numero;
                     $("#cliente_codigo").val(html);
+            }else{
+              html = "";
+           $("#cliente_codigo").val(html);
             }
         },
         error:function(respuesta){
            html = "";
+           $("#cliente_codigo").val(html);
         }
         
     });   

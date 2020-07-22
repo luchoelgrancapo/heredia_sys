@@ -238,7 +238,7 @@ window.onkeydown = compruebaTecla;
         <div class="col-md-3" <?php echo $estilo_div; ?>>
             <label for="nit" class="control-label" style="margin-bottom: 0;">NIT</label>
             <div class="form-group"  <?php echo $estilo_div; ?>>
-                <input type="number" name="nit" class="form-control  <?php echo $atributos; ?>" <?php echo $estilos_facturacion; ?> id="nit" value="<?php echo $cliente[0]['cliente_nit']; ?>"  onkeypress="validar(event,1)" onclick="seleccionar(1)" />
+                <input type="number" name="nit" class="form-control  <?php echo $atributos; ?>" <?php echo $estilos_facturacion; ?> id="nit" value="<?php echo $cliente[0]['cliente_nit']; ?>"  onkeypress="validar(event,1)" onclick="seleccionar(1),codigo()" />
             </div>
         </div>
         
@@ -355,7 +355,7 @@ window.onkeydown = compruebaTecla;
             <label for="categoriaclie_id" class="control-label" style="margin-bottom: 0;"><span class="text-danger" style="margin-bottom: 0;">*</span>CATEGORIA</label>
                             <div class="form-group" style="display: flex">
                                     <select name="categoriaclie_id" id="categoriaclie_id" class="form-control" onchange="codigo()" required>
-                                        <option value="">Categoria</option>
+                                        
                                             <?php 
                                             foreach($all_categoria_cliente as $categoria_cliente)
                                             {
