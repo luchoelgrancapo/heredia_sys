@@ -440,14 +440,14 @@ class Website extends CI_Controller{
 
     }
 
-    function ximpleman(){
+  /*function ximpleman(){
 
         header("location: https://www.ximpleman.com");
     }
     function password(){
 
         header("location: https://www.passwordbolivia.com");
-    }
+    }*/
 
     function reestablecer_clave()
     {
@@ -474,7 +474,7 @@ class Website extends CI_Controller{
         }
         else{
 
-            redirect("website/miperfil/1");
+            redirect("website/miperfil");
         }
 
 
@@ -508,7 +508,7 @@ class Website extends CI_Controller{
         }
         else{
 
-            redirect("website/micarrito/1");
+            redirect("website/micarrito");
         }    
 
     //    $data['idioma_id'] = $idioma_id;
@@ -535,7 +535,7 @@ class Website extends CI_Controller{
 
     }
 
-    function miscompras($idioma_id)
+    function miscompras()
     {
         //$idioma_id = 1; //1 - español
         $pagina_web = $this->Pagina_web_model->get_pagina($idioma_id);
@@ -545,7 +545,7 @@ class Website extends CI_Controller{
         }
         else{
 
-            redirect("website/miscompras/1");
+            redirect("website/miscompras");
         }    
 
         //$idioma_id = 1; //1 - español

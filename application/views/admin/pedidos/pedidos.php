@@ -86,7 +86,7 @@
                         $tomorrow = $datetime->format('Y-m-d');
 
                         $attributes = array("name" => "nuevoPedidoForm", "class"=>"form-horizontal","id"=>"nuevoPedidoForm","method"=>"post");
-                        echo form_open("admin/pedidos/create", $attributes);
+                        echo form_open("pedidos/create", $attributes);
                      ?>
                     <fieldset>
                         <div class="form-group">
@@ -259,10 +259,10 @@
                             <span class="fa fa-paperclip"></span>
                         </a>
 
-                        <a href="<?php echo site_url('admin/pedidos/editar/'.$row->pedidos_id)?>"  class="btn btn-info btn-xs" title="Editar">
+                        <a href="<?php echo site_url('pedidos/editar/'.$row->pedidos_id)?>"  class="btn btn-info btn-xs" title="Editar">
                             <span class="fa fa-edit"></span>
                         </a>
-                        <a onclick="return confirm('¿Borrar Pedido?')" class="btn btn-danger btn-xs" href="<?php echo site_url('admin/pedidos/borrar/'.$row->pedidos_id)?>" title="¿Borrar Pedido?">
+                        <a onclick="return confirm('¿Borrar Pedido?')" class="btn btn-danger btn-xs" href="<?php echo site_url('pedidos/borrar/'.$row->pedidos_id)?>" title="¿Borrar Pedido?">
                             <span class="fa fa-trash-o"></span>
                         </a>
 
@@ -288,7 +288,7 @@
     </div>
         <hr>
         <ol class="breadcrumb">
-            <li><i class="fa fa-calendar"></i>&nbsp;<a href="<?php echo site_url('admin/pedidos/info/'. (date("Y")-1) )?>"><?php echo (date("Y")-1); ?></a></li>
+            <li><i class="fa fa-calendar"></i>&nbsp;<a href="<?php echo site_url('pedidos/info/'. (date("Y")-1) )?>"><?php echo (date("Y")-1); ?></a></li>
         </ol>
     </div>
 </div>
@@ -446,7 +446,7 @@
 
         $.ajax({
             data:  parametros,
-            url:   '<?php echo base_url("admin/pedidos/fecha")?>',
+            url:   '<?php echo base_url("pedidos/fecha")?>',
             type:  'post',
             beforeSend: function () {
                 //$('#registrando').html('<h5 id="procesing">Procesando...</h5>');
@@ -500,10 +500,10 @@
                         '<span class="fa fa-paperclip"></span> ' +
                         '</a>'+
 
-                        '<a href="'+document.location.origin+"/admin/pedidos/editar/"+value.pedidos_id+'" class="btn btn-info btn-xs" title="Editar">'+
+                        '<a href="'+document.location.origin+"/pedidos/editar/"+value.pedidos_id+'" class="btn btn-info btn-xs" title="Editar">'+
                         '<span class="fa fa-edit"></span> ' +
                         '</a>'+
-                        '<a onclick="return confirm(\'¿Borrar Pedido?\')" href="'+document.location.origin+"/admin/pedidos/borrar/"+value.pedidos_id+'" class="btn btn-danger btn-xs" title="Borrar Pedido?">'+
+                        '<a onclick="return confirm(\'¿Borrar Pedido?\')" href="'+document.location.origin+"/pedidos/borrar/"+value.pedidos_id+'" class="btn btn-danger btn-xs" title="Borrar Pedido?">'+
                         '<span class="fa fa-trash-o"></span> ' +
                         '</a>'+
                         '</td>';
@@ -543,7 +543,7 @@
 
         $.ajax({
             data:  parametros,
-            url:   '<?php echo base_url("admin/pedidos/fecha")?>',
+            url:   '<?php echo base_url("pedidos/fecha")?>',
             type:  'post',
             beforeSend: function () {
                 //$('#registrando').html('<h5 id="procesing">Procesando...</h5>');
@@ -581,9 +581,9 @@
                         '<span class="fa fa-paperclip"></span> ' +
                         '</a>'+
 
-                        '<a href="'+site+"admin/pedidos/editar/"+value.pedidos_id+'" class="btn btn-info btn-xs" title="Editar">'+
+                        '<a href="'+site+"pedidos/editar/"+value.pedidos_id+'" class="btn btn-info btn-xs" title="Editar">'+
                         '<span class="fa fa-edit"></span></a>'+
-                        '<a onclick="return confirm(\'¿Borrar Pedido?\')" href="'+site+"admin/pedidos/borrar/"+value.pedidos_id+'" class="btn btn-danger btn-xs" title="Borrar Pedido?">'+
+                        '<a onclick="return confirm(\'¿Borrar Pedido?\')" href="'+site+"pedidos/borrar/"+value.pedidos_id+'" class="btn btn-danger btn-xs" title="Borrar Pedido?">'+
                         '<span class="fa fa-trash-o"></span></a>'+
                         '</td>';
 
@@ -615,7 +615,7 @@
         var site = "<?php echo site_url('')?>";
 
         $.ajax({
-            url:   '<?php echo base_url("admin/pedidos/todos")?>',
+            url:   '<?php echo base_url("pedidos/todos")?>',
             type:  'get',
             beforeSend: function () {
                 //$('#registrando').html('<h5 id="procesing">Procesando...</h5>');
@@ -653,9 +653,9 @@
                         '<span class="fa fa-paperclip"></span> ' +
                         '</a>'+
 
-                        '<a href="'+site+"admin/pedidos/editar/"+value.pedidos_id+'" class="btn btn-info btn-xs" title="Editar">'+
+                        '<a href="'+site+"pedidos/editar/"+value.pedidos_id+'" class="btn btn-info btn-xs" title="Editar">'+
                         '<span class="fa fa-edit"></span></a>'+
-                        '<a onclick="return confirm(\'¿Borrar Pedido?\')" href="'+site+"admin/pedidos/borrar/"+value.pedidos_id+'" class="btn btn-danger btn-xs" title="Borrar Pedido?">'+
+                        '<a onclick="return confirm(\'¿Borrar Pedido?\')" href="'+site+"pedidos/borrar/"+value.pedidos_id+'" class="btn btn-danger btn-xs" title="Borrar Pedido?">'+
                         '<span class="fa fa-trash-o"></span></a>'+
                         '</td>';
 
@@ -678,7 +678,7 @@
 
         $.ajax({
             data:  parametros,
-            url:   '<?php echo base_url("admin/pedidos/fecha")?>',
+            url:   '<?php echo base_url("pedidos/fecha")?>',
             type:  'post',
             beforeSend: function () {
                 //$('#registrando').html('<h5 id="procesing">Procesando...</h5>');
@@ -732,10 +732,10 @@
                         '<span class="fa fa-paperclip"></span> ' +
                         '</a>'+
 
-                        '<a href="'+site+"admin/pedidos/editar/"+value.pedidos_id+'" class="btn btn-info btn-xs" title="Editar">'+
+                        '<a href="'+site+"pedidos/editar/"+value.pedidos_id+'" class="btn btn-info btn-xs" title="Editar">'+
                         '<span class="fa fa-edit"></span> ' +
                         '</a>'+
-                        '<a onclick="return confirm(\'¿Borrar Pedido?\')" href="'+site+"admin/pedidos/borrar/"+value.pedidos_id+'" class="btn btn-danger btn-xs" title="Borrar Pedido?">'+
+                        '<a onclick="return confirm(\'¿Borrar Pedido?\')" href="'+site+"pedidos/borrar/"+value.pedidos_id+'" class="btn btn-danger btn-xs" title="Borrar Pedido?">'+
                         '<span class="fa fa-trash-o"></span> ' +
                         '</a>'+
                         '</td>';
@@ -753,7 +753,7 @@
         //console.log('ID:'+id);
 
         $.ajax({
-            url:   '<?php echo site_url()?>admin/pedidos/detalle/'+id,
+            url:   '<?php echo site_url()?>pedidos/detalle/'+id,
             type:  'get',
             beforeSend: function () {
                 //$('#registrando').html('<h5 id="procesing">Procesando...</h5>');

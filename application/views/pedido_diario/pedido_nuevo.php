@@ -64,7 +64,7 @@
 				</div>
 			</div>
           	<div class="box-footer">
-                <a href="<?php echo base_url("admin/dashb"); ?>" type="submit" class="btn btn-danger">
+                <a href="<?php echo base_url("dashb"); ?>" type="submit" class="btn btn-danger">
                     <i class="fa fa-times"></i> Cancelar
             	</a>
             	<button type="submit" class="btn btn-success">

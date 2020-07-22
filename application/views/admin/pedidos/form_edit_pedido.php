@@ -13,8 +13,8 @@
         <small>Plan</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo site_url('admin/dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="<?php echo site_url('admin/pedidos')?>">Pedidos</a></li>
+        <li><a href="<?php echo site_url('dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="<?php echo site_url('pedidos')?>">Pedidos</a></li>
         <li class="active">Editar Pedido</li>
     </ol>
 </section>
@@ -30,7 +30,7 @@
     $tomorrow = $datetime->format('Y-m-d');
 
     $attributes = array("name" => "nuevoPedidoForm", "class"=>"form-horizontal","id"=>"nuevoPedidoForm","method"=>"post");
-    echo form_open("admin/pedidos/set", $attributes);
+    echo form_open("pedidos/set", $attributes);
     ?>
     <div class="box-body">
     <fieldset>

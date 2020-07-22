@@ -219,7 +219,7 @@
             //alert('num:'+usernumero+',iddes:'+useriddes);
             $.ajax({
                 data:  parametros,
-                url:   '<?php echo base_url('admin/dashb/haylogin1')?>',
+                url:   '<?php echo base_url('dashb/haylogin1')?>',
                 type:  'post',
 //                    dataType: "json",
                 beforeSend: function () {

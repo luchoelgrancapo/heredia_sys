@@ -75,10 +75,10 @@
                             <button type="submit" class="btn btn-success">
 					<i class="fa fa-floppy-o"></i> Guardar
                             </button>
-                            <a href="<?php echo base_url("admin/dash"); ?>" type="submit" class="btn btn-danger">
+                            <a href="<?php echo base_url("dash"); ?>" type="submit" class="btn btn-danger">
                                 <i class="fa fa-times"></i> Cancelar
                             </a>    
-<!--                            <a href="<?php echo base_url("admin/dashb"); ?>" type="submit" class="btn btn-danger">
+<!--                            <a href="<?php echo base_url("dashb"); ?>" type="submit" class="btn btn-danger">
                                 <i class="fa fa-times"></i> Cancelar
                             </a>    -->
 	        </div>				

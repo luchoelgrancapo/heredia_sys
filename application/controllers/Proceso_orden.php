@@ -171,91 +171,17 @@ class Proceso_orden extends CI_Controller{
     /*
      * Adding a new proceso_orden
      */
-    function add()
-    {
-        if($this->acceso(155)){
-            $data['page_title'] = "Boton Articulo";
-            if(isset($_POST) && count($_POST) > 0)     
-            {   
-                $params = array(
-                                    'articulo_id' => $this->input->post('articulo_id'),
-                                    'boton_id' => $this->input->post('boton_id'),
-                );
-
-                $proceso_orden_id = $this->proceso_orden_model->add_proceso_orden($params);
-                redirect('proceso_orden/index');
-            }
-            else
-            {
-                            $this->load->model('Articulo_model');
-                            $data['all_articulo'] = $this->Articulo_model->get_all_articulo();
-
-                            $this->load->model('Boton_model');
-                            $data['all_boton'] = $this->Boton_model->get_all_boton();
-
-                $data['_view'] = 'proceso_orden/add';
-                $this->load->view('layouts/main',$data);
-            }
-        }
-    }  
+   
 
     /*
      * Editing a proceso_orden
      */
-    function edit($botonartic_id)
-    {
-        if($this->acceso(155)){
-            $data['page_title'] = "Boton Articulo";
-            // check if the proceso_orden exists before trying to edit it
-            $data['proceso_orden'] = $this->proceso_orden_model->get_proceso_orden($botonartic_id);
-
-            if(isset($data['proceso_orden']['botonartic_id']))
-            {
-                if(isset($_POST) && count($_POST) > 0)     
-                {   
-                    $params = array(
-                                            'articulo_id' => $this->input->post('articulo_id'),
-                                            'boton_id' => $this->input->post('boton_id'),
-                    );
-
-                    $this->proceso_orden_model->update_proceso_orden($botonartic_id,$params);            
-                    redirect('proceso_orden/index');
-                }
-                else
-                {
-                                    $this->load->model('Articulo_model');
-                                    $data['all_articulo'] = $this->Articulo_model->get_all_articulo();
-
-                                    $this->load->model('Boton_model');
-                                    $data['all_boton'] = $this->Boton_model->get_all_boton();
-
-                    $data['_view'] = 'proceso_orden/edit';
-                    $this->load->view('layouts/main',$data);
-                }
-            }
-            else
-                show_error('The proceso_orden you are trying to edit does not exist.');
-        }
-    } 
+   
 
     /*
      * Deleting proceso_orden
      */
-    function remove($botonartic_id)
-    {
-        if($this->acceso(155)){
-            $proceso_orden = $this->proceso_orden_model->get_proceso_orden($botonartic_id);
-
-            // check if the proceso_orden exists before trying to delete it
-            if(isset($proceso_orden['botonartic_id']))
-            {
-                $this->proceso_orden_model->delete_proceso_orden($botonartic_id);
-                redirect('proceso_orden/index');
-            }
-            else
-                show_error('The proceso_orden you are trying to delete does not exist.');
-        }
-    }
+   
 
     function elestado()
     {

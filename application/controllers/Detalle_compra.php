@@ -162,20 +162,7 @@ function quitar($detallecomp_id,$compra_id)
         else
             show_error('El item que quiere eliminar no existe..!!');
     }
-function sacar($detallecomp_id,$cambio_producto_id)
-    {
-         
-        $detalle_compra = $this->Detalle_compra_model->get_detalle_compra($detallecomp_id);
 
-        // check if the detalle_compra exists before trying to delete it
-        if(isset($detalle_compra['detallecomp_id']))
-        {
-            $this->Detalle_compra_model->delete_detalle_compra($detallecomp_id);
-            redirect('cambio_producto/add/'.$cambio_producto_id);
-        }
-        else
-            show_error('El item que quiere eliminar no existe..!!');
-    }
    /* function descontar($detalle_compra,$compra_id)
     {
         $detalle_compra = $this->Detalle_compra_model->get_detalle_compra($detallecomp_id);

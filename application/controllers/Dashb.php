@@ -216,13 +216,13 @@ class Dashb extends CI_Controller
                         redirect('venta/ventas');
                     }
 
-                    redirect('admin/dashb');
+                    redirect('dashb');
                 }
 
             } else {
                 // error
                 $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Oops! Error.  Intente mas tarde!!!</div>');
-                redirect('admin/dashb');
+                redirect('dashb');
             }
         }
 

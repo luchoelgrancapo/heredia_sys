@@ -101,7 +101,7 @@
         <!--este es INICIO del BREADCRUMB buscador-->
 <!--        <div class="row">
             <ol class="breadcrumb">
-                <li><a href="<?php echo site_url('admin/dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
+                <li><a href="<?php echo site_url('dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
                 <li><a href="<?php echo site_url('cliente')?>">Clientes</a></li>
                 <li class="active"><b>Clientes: </b></li>
                 <input style="border-width: 0; background-color: #DEDEDE" id="encontrados" type="text"  size="5" value="0" readonly="true">

@@ -11,7 +11,7 @@
             </div>
 
             <?php $attributes = array("name" => "cuentaForm", "id"=>"cuentaForm");
-            echo form_open_multipart("admin/dashb/setu", $attributes);?>
+            echo form_open_multipart("dashb/setu", $attributes);?>
 
             <div class="box-body">
                 <div class="row clearfix">
@@ -82,7 +82,7 @@
                 <button type="submit" class="btn btn-success" id="boton">
                     <i class="fa fa-check"></i> Guardar
                 </button>
-                <a href="<?php echo site_url('admin/dashb'); ?>" class="btn btn-danger">
+                <a href="<?php echo site_url('dashb'); ?>" class="btn btn-danger">
                     <i class="fa fa-times"></i> Cancelar</a>
             </div>
             <?php echo form_close(); ?>
@@ -211,7 +211,7 @@
                     //alert('num:'+usernumero+',iddes:'+useriddes);
                     $.ajax({
                         data:  parametros,
-                        url:   '<?php echo base_url('admin/dashb/haylogin')?>',
+                        url:   '<?php echo base_url('dashb/haylogin')?>',
                         type:  'post',
 //                    dataType: "json",
                         beforeSend: function () {

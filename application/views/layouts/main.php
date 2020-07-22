@@ -82,7 +82,7 @@
                     <!-- Message End -->
                   </a> 
                   <div class="dropdown-divider"></div> 
-                  <a href="<?php echo site_url()?>admin/dashb/logout" class="dropdown-item badge-danger">
+                  <a href="<?php echo site_url()?>dashb/logout" class="dropdown-item badge-danger">
                     <!-- Message Start -->
                     <div class="media">
                       
@@ -130,7 +130,7 @@
                     <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="<?php echo site_url('admin/dashb');?>" class="nav-link">
+                            <a href="<?php echo site_url('dashb');?>" class="nav-link">
                                 <i class="nav-icon fas fa-home fa-fw"></i> <p>Inicio</p>
                             </a>
                         </li>

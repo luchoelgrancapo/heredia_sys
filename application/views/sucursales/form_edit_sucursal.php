@@ -16,7 +16,7 @@
             </div>
 
             <ol class="breadcrumb">
-                <li><a href="<?php echo site_url('admin/dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
+                <li><a href="<?php echo site_url('dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
                 <li><a href="<?php echo site_url('sucursal')?>">Sucursales</a></li>
                 <li class="active">Editar Sucursal</li>
             </ol>

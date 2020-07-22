@@ -105,7 +105,7 @@ class Pedido_diario extends CI_Controller{
             );
             
             $pedido_diario_id = $this->Pedido_diario_model->add_pedido_diario($params);
-            redirect('admin/dashb');
+            redirect('dashb');
         }
         else
         {
@@ -195,7 +195,7 @@ class Pedido_diario extends CI_Controller{
                 );
 
                 $this->Pedido_diario_model->update_pedido_diario($pedido_id,$params);            
-                redirect('admin/dashb');
+                redirect('dashb');
             }
             else
             {

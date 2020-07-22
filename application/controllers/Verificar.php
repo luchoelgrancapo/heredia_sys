@@ -61,7 +61,7 @@ class Verificar extends CI_Controller
                     if ($dosificacion['dias']<=10 && $dosificacion['dias']!=null) {
                        redirect('alerta/dosificacion');
                     }
-                    redirect('admin/dashb');
+                    redirect('dashb');
                 }
                 if($session_data['tipousuario_id'] == 5) {
                     if ($dosificacion['dias']<=10 && $dosificacion['dias']!=null) {
@@ -189,7 +189,7 @@ class Verificar extends CI_Controller
                     $session_data = $this->session->userdata('logged_in');
 
                     if ($session_data['tipousuario_id'] == 1) { // admin page
-                        redirect('admin/dashb');
+                        redirect('dashb');
                     } elseif($session_data['tipousuario_id'] == 5) {
                         $this->load->model('Cliente_model');
                         $cliente_id = $this->cliente_model->get_cliente_from_ci($session_data['usuario_login']);

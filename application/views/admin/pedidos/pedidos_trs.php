@@ -40,13 +40,13 @@ foreach ($pedidos as $row){
     </td>
     <td data-title="Estado"><h6><span class="label label-<?php echo $label?>"><?php echo $row->pedidos_estado ?></span></h6></td>
     <td data-title="Opciones">
-        <a href="<?php echo site_url('admin/pedidos/detalle/'.$row->pedidos_id)?>" title="Detalle">
+        <a href="<?php echo site_url('pedidos/detalle/'.$row->pedidos_id)?>" title="Detalle">
             <i class="fa fa-paperclip"></i>
         </a>/
-        <a href="<?php echo site_url('admin/pedidos/editar/'.$row->pedidos_id)?>" title="Editar">
+        <a href="<?php echo site_url('pedidos/editar/'.$row->pedidos_id)?>" title="Editar">
             <i class="fa fa-edit"></i>
         </a>/
-        <a href="<?php echo site_url('admin/pedidos/borrar/'.$row->pedidos_id)?>" title="Borrar">
+        <a href="<?php echo site_url('pedidos/borrar/'.$row->pedidos_id)?>" title="Borrar">
             <i class="fa fa-trash-o" style="color: #0000eb;"></i>
         </a>
     </td>

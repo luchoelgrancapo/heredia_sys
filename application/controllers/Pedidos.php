@@ -37,7 +37,7 @@ class Pedidos extends CI_Controller
                                         <a class="close" title="close" aria-label="close" data-dismiss="alert" href="#">×</a>
                                         Usted <strong>NO</strong> esta autorizado para ver esta pagina 
                                     </div>');
-                redirect('admin/dashb');
+                redirect('dashb');
             }
         } else {
             redirect('', 'refresh');
@@ -122,12 +122,12 @@ class Pedidos extends CI_Controller
                                         <a class="close" title="close" aria-label="close" data-dismiss="alert" href="#">×</a>
                                         Plan de Pedido creado con <strong>Exito!</strong>
                                     </div>');
-                            redirect('admin/pedidos');
+                            redirect('pedidos');
 
                     } else {
                         // error
                         $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Oops! Error.  Intente mas tarde!!!</div>');
-                        redirect('admin/pedidos');
+                        redirect('pedidos');
                     }
                 }
             } else{
@@ -307,7 +307,7 @@ class Pedidos extends CI_Controller
                                     <a class="close" title="close" aria-label="close" data-dismiss="alert" href="#">×</a>
                                     Pedido Actualizado con <strong>Exito!</strong>
                               </div>');
-                    redirect('admin/pedidos');
+                    redirect('pedidos');
 
                 }
 
@@ -365,10 +365,10 @@ class Pedidos extends CI_Controller
                                 <a class="close" title="close" aria-label="close" data-dismiss="alert" href="#">×</a>
                                 Pedido Borrado con <strong>Exito!</strong>
                           </div>');
-                 redirect('admin/pedidos');
+                 redirect('pedidos');
              } else {
                  $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Error.  No es posible borrar pedidos de hoy y mañana</div>');
-                 redirect('admin/pedidos');
+                 redirect('pedidos');
              }
 
             }

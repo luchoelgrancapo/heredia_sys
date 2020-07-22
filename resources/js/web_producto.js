@@ -1228,7 +1228,7 @@ function registrargmail(id,nombre,email)
     var cliente_nombrenegocio = '-'; //document.getElementById('cliente_nombrenegocio').value;    
     var cliente_codigo = id; //document.getElementById('cliente_codigo').value;
     
-    var cliente_direccion = "llenar campo";
+    var cliente_direccion = "-";
     var cliente_departamento = '-';//document.getElementById('cliente_departamento').value;
     var cliente_celular = "";
     //cliente_celular = document.getElementById('cliente_celular').value;
@@ -1264,7 +1264,7 @@ function registrargmail(id,nombre,email)
         if( cliente_clave.length > 5){
             
         
-        if( cliente_direccion.length > 5){
+        if( cliente_direccion.length > 0){
                 
             if(email_valido(cliente_email)){
                 
@@ -1392,6 +1392,7 @@ function sesiongoogle(email){
            type:"POST",
            data:{email:email,ipe:ipe},
            success:function(respuesta){ 
+               salirfb();
                signOut();
                location.reload();
                

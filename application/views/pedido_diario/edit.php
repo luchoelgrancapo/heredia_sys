@@ -78,7 +78,7 @@
                             <a href="<?php echo base_url("pedido_diario/index"); ?>" type="submit" class="btn btn-danger">
                                 <i class="fa fa-times"></i> Cancelar
                             </a>    
-<!--                            <a href="<?php echo base_url("admin/dashb"); ?>" type="submit" class="btn btn-danger">
+<!--                            <a href="<?php echo base_url("dashb"); ?>" type="submit" class="btn btn-danger">
                                 <i class="fa fa-times"></i> Cancelar
                             </a>    -->
 	        </div>				

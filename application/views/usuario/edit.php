@@ -8,7 +8,7 @@
             </div>
 
 <!--            <ol class="breadcrumb">
-                <li><a href="<?php //echo site_url('admin/dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
+                <li><a href="<?php //echo site_url('dashb')?>"><i class="fa fa-dashboard"></i> Inicio</a></li>
                 <li><a href="<?php //echo site_url('usuario')?>">Usuarios</a></li>
                 <li class="active">Editar Usuario</li>
             </ol>-->
@@ -210,7 +210,7 @@
 
             $.ajax({
                 data:  parametros,
-                url:   '<?php echo base_url('admin/dashb/haylogin2')?>',
+                url:   '<?php echo base_url('dashb/haylogin2')?>',
                 type:  'post',
 //                    dataType: "json",
                 beforeSend: function () {

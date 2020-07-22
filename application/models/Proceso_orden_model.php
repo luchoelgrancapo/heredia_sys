@@ -11,24 +11,7 @@ class Proceso_orden_model extends CI_Model
         parent::__construct();
     }
     
-    /*
-     * Get proceso_orden by botonartic_id
-     */
-    function get_proceso_orden($botonartic_id)
-    {
-        $proceso_orden = $this->db->query("
-            SELECT
-                *
 
-            FROM
-                `proceso_orden`
-
-            WHERE
-                `botonartic_id` = ?
-        ",array($botonartic_id))->row_array();
-
-        return $proceso_orden;
-    }
     
     /*
      * Get all proceso_orden count
@@ -124,31 +107,7 @@ GROUP BY p.proceso_id
     /*
      * Get all proceso_orden
      */
-    function get_all_proceso_orden($params = array())
-    {
-        $limit_condition = "";
-        if(isset($params) && !empty($params))
-            $limit_condition = " LIMIT " . $params['offset'] . "," . $params['limit'];
-        
-        $proceso_orden = $this->db->query("
-            SELECT
-                *
-
-            FROM
-                proceso_orden ba, articulo a, boton b
-
-            WHERE
-                ba.articulo_id = a.articulo_id
-                and ba.boton_id = b.boton_id
-
-            ORDER BY `botonartic_id` DESC
-
-            " . $limit_condition . "
-        ")->result_array();
-
-        return $proceso_orden;
-    }
-        
+    
     /*
      * function to add new proceso_orden
      */
@@ -161,19 +120,10 @@ GROUP BY p.proceso_id
     /*
      * function to update proceso_orden
      */
-    function update_proceso_orden($botonartic_id,$params)
-    {
-        $this->db->where('botonartic_id',$botonartic_id);
-        return $this->db->update('proceso_orden',$params);
-    }
-    
+   
     /*
      * function to delete proceso_orden
-     */
-    function delete_proceso_orden($botonartic_id)
-    {
-        return $this->db->delete('proceso_orden',array('botonartic_id'=>$botonartic_id));
-    }
+  
     
     /*
      * Seguimiento de procesos

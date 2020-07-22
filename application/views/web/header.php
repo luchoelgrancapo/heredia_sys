@@ -54,7 +54,7 @@
                                                 $nombre_cliente = substr($nombre_cliente, 0, 11)."..";
                                         }
                         ?>
-                <div class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-user"></i><span><?php echo $nombre_cliente; ?></span></a>  
+                <div class="dropdown"><a href="#" class="dropdown-toggle"  aria-expanded="true"><i class="fa fa-user"></i><span><?php echo $nombre_cliente; ?></span></a>  
                    <div class="cart-dropdown">
                                                 <div class="cart-list">
                                                     <div class="product-widget">
@@ -65,10 +65,10 @@
                                                       
                                                     </div>
                                                      <div class="product-widget">
-                                                     <a href="<?php echo base_url("website/miscompras/").$idioma_id; ?>" >Mis Compras</a>
+                                                     <a href="<?php echo base_url("website/compras/") ?>" >Mis Compras</a>
                                                    </div>
                                                     <div class="product-widget">
-                                                      <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()">Cerrar Sesión</a>
+                                                      <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion(),signOut()">Cerrar Sesión</a>
                                                             
                                                     </div>
                                                     
@@ -97,7 +97,7 @@
                 </div>
                 <?php if(isset($_COOKIE["cliente_id"])) { ?>
                 <div>
-                <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion(),signOut()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesión"></i><span>Cerrar Sesión</span></a>
+                <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion(),signOut(),salirfb()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesión"></i><span>Cerrar Sesión</span></a>
                         <?php }  ?>
                 </div>
                 <!-- /Wishlist -->
@@ -234,8 +234,14 @@
                         <div class="col-md-6">
                         <button class="btn btn-default btn-block" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrarse</button><br>
                     </div>
-                    <div class="col-md-6">
-                   <div class="col-md-6" id="my-signin2"></div>
+                   
+                   <center><div class="col-md-6" id="my-signin2"></div></center><br>
+                   <div class="col-md-6"><center><fb:login-button  class="fb-login-button" data-size="medium" data-button-type="continue_with" scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button></center>
+
+<div id="status">
+</div></div>
+</div>
   <script>
     function onSuccess(googleUser) {
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
@@ -250,8 +256,8 @@
     function renderButton() {
       gapi.signin2.render('my-signin2', {
         'scope': 'profile email',
-        'width': 260,
-        'height': 30,
+        'width': 195.2,
+        'height': 25,
         'longtitle': true,
         'theme': 'dark',
         'onsuccess': onSuccess,
@@ -278,9 +284,64 @@ function signOut() {
       console.log('User signed out.');
     });
   }
+function salirfb(){
+    FB.logout(function(response) {
+   // Person is now logged out
+});
+}
+    
      </script>
 
   <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+
+
+ <script>
+
+  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    console.log('statusChangeCallback');
+    console.log(response);                   // The current login status of the person.
+    if (response.status === 'connected') {
+    //alert(response);      // Logged into your webpage and Facebook.
+      testAPI();  
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+      document.getElementById('status').innerHTML = '';
+    }
+  }
+
+
+  function checkLoginState() {               // Called when a person is finished with the Login Button.
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
+      statusChangeCallback(response);
+    });
+  }
+
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '592816701596834',
+      cookie     : true,                     // Enable cookies to allow the server to access the session.
+      xfbml      : true,                     // Parse social plugins on this webpage.
+      version    : 'v7.0'           // Use this Graph API version for this call.
+    });
+
+
+    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+      statusChangeCallback(response);        // Returns the login status.
+    });
+  };
+ 
+
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me','GET',
+  {"fields":"id,name,email"}, function(response) {
+      registrargmail(response.id,response.name,response.email);
+    });
+  }
+
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
                     </div>
                 </td>    
             </tr>

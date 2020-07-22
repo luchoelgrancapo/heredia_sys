@@ -72,10 +72,10 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="<?php echo site_url()?>admin/dashb/cuenta" class="btn btn-default btn-flat">Mi Cuenta</a>
+                                    <a href="<?php echo site_url()?>dashb/cuenta" class="btn btn-default btn-flat">Mi Cuenta</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="<?php echo site_url()?>admin/dashb/logout" class="btn btn-default btn-flat">Salir</a>
+                                    <a href="<?php echo site_url()?>dashb/logout" class="btn btn-default btn-flat">Salir</a>
                                 </div>
                             </li>
                         </ul>
