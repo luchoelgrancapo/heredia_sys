@@ -257,7 +257,7 @@
                                     <input type="number" step="any" min="0" name="producto_tipocambio" value="1" class="form-control" id="producto_tipocambio" />
                             </div>
                     </div>
-                    <div class="col-md-12" hidden>
+                    <div class="col-md-12" >
                         <a href="#info1" class="btn btn-facebook btn-sm inf" title="Los factores se utilizan para describir productos con diferentes presentaciones."><fa class="fa fa-sitemap"></fa> Configurar Factores</a>
                         <div id="info1" class="oculto">
                         <div class="col-md-3">

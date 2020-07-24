@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>"></script>
         <link rel="stylesheet" href="<?php echo base_url('resources/css/bootstrap.min.css'); ?>">
-        <script src="<?php echo base_url('resources/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo base_url('resources/js/bootstrap.js'); ?>"></script>
         <!--<link href='http://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>-->
         <link rel="shortcut icon" href="<?php echo site_url('resources/images/icono.png');?>" />
         <script src="<?php echo base_url('resources/js/verventa_proceso.js'); ?>"></script>
@@ -17,13 +17,12 @@
 <div class="box-header">
     <center>
         <!--<h3 class="box-title">PEDIDO</h3>-->        
-        <img src="<?php echo base_url("resources/images/logomrwings.png"); ?>" width="260" height="130">
+        <img src="<?php echo base_url("resources/images/logo2.png"); ?>" >
         <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
     </center>
 </div>
     
 <div class="row">
-    <div class="col-md-12">
         <div class="col-md-4">
             <div class="box">
                 <div class="box-body table-responsive">
@@ -102,7 +101,7 @@
                                         foreach($productos as $producto){
                                             if($band == true){
                                         ?>
-                                                <div class="item active">
+                                                <div class="carousel-item active">
                                                     <?php
                                                     $producto_imagen = $producto['producto_foto'];
                                                     if($producto['producto_foto'] == "null" || $producto['producto_foto'] == "")
@@ -120,7 +119,7 @@
                                                 $band = false;
                                             }else{
                                             ?>
-                                                <div class="item">
+                                                <div class="carousel-item">
                                                     <?php
                                                     $producto_imagen = $producto['producto_foto'];
                                                     if($producto['producto_foto'] == "null" || $producto['producto_foto'] == "")
@@ -165,11 +164,11 @@
             </div>
             <div class="col-md-12" id="estotal" style="text-align: left">
             </div>
-        </div>
+        
     </div>
 </div>
     </body>
     <footer style="color: white">
-        <marquee>Desarrollado por <b>PASSWORD SRL</b> Ingenieria Hardware & Software. Contactos: <b>4511518</b> - <b>77417605</b></marquee>
+        <marquee>Desarrollado por <b>HV Sistemas & Soluciones</b> Contactos: <b>76959520</b> - <b>76959520</b></marquee>
     </footer>
 </html>

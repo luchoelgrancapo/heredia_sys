@@ -656,16 +656,17 @@ window.onkeydown = compruebaTecla;
                 <i class="fa fa-money-bill-alt"></i><br>Finalizar Venta <br>
             </a>
             <?php } ?>
-
+            <?php if($rolusuario[30-1]['rolusuario_asignado'] == 1){ ?>
             <!--<a href="#" data-toggle="modal" data-target="#modalinventario" class="btn btn-sq-lg btn-primary" style="width: <?php echo $ancho_boton; ?>px !important; height: <?php echo $alto_boton; ?>px !important;">
                 <i class="fa fa-truck fa-4x"></i><br><br>
                Asignar <br>
             </a>-->
+            <?php } ?>    
 
             <?php if($rolusuario[18-1]['rolusuario_asignado'] == 1){ ?>
             <a  href="<?php echo site_url('venta'); ?>" class="btn btn-app bg-danger" style='width: 90px !important; height: 90px !important;'>
                 <i class="fa fa-sign-out-alt"></i><br>
-               Salir <br>
+               Ventas <br>
             </a>    
             <?php } ?>    
             </center>

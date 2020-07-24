@@ -354,6 +354,12 @@
                   <p>Mensajes</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="javascript:window.open('<?php echo site_url('detalle_venta/venta_proceso');?>','','toolbar=yes');" class="nav-link">
+                  <i class="fa fa-desktop nav-icon"></i> 
+                  <p>Monitor de Venta</p>
+                </a>
+              </li>
             </ul>
           </li>      
                     </ul>
