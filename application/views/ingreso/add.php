@@ -68,17 +68,17 @@ function facturar(mensualidad){
 </script>
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="card card-secondary">
+            <div class="card-header">
                 <h4>REGISTRAR INGRESO</h4>
                 <?php echo form_open('ingreso/add/'); ?>
                 <?php if(count($dosificacion) >0){ ?>
-                <button class="btn btn-info btn-xs" type="button">
+                <button class="btn btn-warning btn-xs" type="button">
               <input type="checkbox" name="factura" id="factura"  onclick="facturar()" />
               <label for="factura"> Generar Factura</label></button>
               <?php  }else{ echo "<span class='text-bold text-red'>Dosificación no activa</span>"; } ?>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
 
 				<div class="box-body">
           		

@@ -101,8 +101,8 @@ function mostrarAlert(){
 
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Modificar Producto <b><?php echo $detalle_serv['detalleserv_codigo']; ?></b></h3>
             </div>
 			<?php echo form_open('detalle_serv/modificardetalle/'.$servicio['servicio_id'].'/'.$detalle_serv['detalleserv_id']); ?>

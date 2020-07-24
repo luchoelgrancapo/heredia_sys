@@ -301,7 +301,7 @@
             </div>
             <div class="modal-body">
                 <div class="box box-primary">
-                    <div class="box-header with-border">
+                    <div class="card-header with-border">
                         <h3 class="box-title">Plan de Pedidos (<span id="pfech"></span> )</h3>
                     </div>
                     <!-- /.box-header -->

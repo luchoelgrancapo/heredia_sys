@@ -23,8 +23,8 @@ input[type=number] { -moz-appearance:textfield; }
 <!--'#calcular','#cuota_moradias','#cuota_multa','#cuota_descuento'-->
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Editar Cuota</h3>
             </div>
 			<?php echo form_open('cuotum/editar/'.$cuotum['cuota_id']); ?>

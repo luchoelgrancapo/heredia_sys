@@ -64,7 +64,7 @@
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 
-<div class="box-header with-border">
+<div class="card-header with-border">
     <input type="hidden" value="<?php echo $servicio['servicio_id']; ?>" id="esteservicio_id">
     <input type="hidden" value="<?php echo $all_parametro[0]['parametro_tipoimpresora']; ?>" id="tipoimpresora">
     <span hidden="true"><a id="printdetalleserv" target='_blank' ></a></span>

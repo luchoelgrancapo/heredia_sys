@@ -1,9 +1,9 @@
-<div class="box-header with-border">
+<div class="card-header with-border">
     <h3 class="box-title"  style="font-family: Arial;"><b>Nuevo Pedido Diario</b></h3>
 </div>
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
+      	<div class="card card-secondary">
             <?php echo form_open('pedido_diario/pedido_nuevo'); ?>
           	<div class="box-body">
           		<div class="row clearfix">

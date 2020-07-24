@@ -6,8 +6,8 @@
 <div class="row">
     <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Editar Promoción</h3>
             </div>
                 <?php echo form_open('promocion/edit/'.$promocion['promocion_id']); ?>

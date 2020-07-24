@@ -23,8 +23,8 @@
 </script>
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Editar Responsable</h3>
             </div>
                         <?php echo form_open_multipart('responsable/edit/'.$responsable['responsable_id']); ?>

@@ -55,7 +55,7 @@
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 
-<div class="box-header with-border">
+<div class="card-header with-border">
     <h3 class="box-title"><b>Detalle del Servicio N°: <?php echo $servicio['servicio_id'] ?></b></h3>
     <div class="container">
         <div class="panel panel-primary col-md-5">

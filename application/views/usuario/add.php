@@ -1,8 +1,8 @@
 <link href="<?php echo site_url('resources/css/formValidation.css')?>" rel="stylesheet">
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Añadir Usuario</h3>
             </div>
             

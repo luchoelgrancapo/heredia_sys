@@ -412,7 +412,7 @@
     
  
  <section class="col-lg-12 connectedSortable">
-          <div class="box box-info">
+          <div class="card card-secondary">
             <div class="box-header">
               <i class="fa fa-money"></i>
 
@@ -440,7 +440,7 @@
           <!-- /.box -->
 
           <!-- quick email widget -->
-          <div class="box box-info">
+          <div class="card card-secondary">
             <div class="box-header">
               <i class="fa fa-cubes"></i>
 
@@ -569,7 +569,7 @@
           <!-- /.box -->
 
           <!-- quick email widget -->
-          <div class="box box-info">
+          <div class="card card-secondary">
             <div class="box-header">
               <i class="fa fa-cart-plus"></i>
 
@@ -651,7 +651,7 @@
           <!-- /.box -->
 
           <!-- quick email widget -->
-          <div class="box box-info">
+          <div class="card card-secondary">
             <div class="box-header">
               <i class="fa fa-bar-chart"></i>
 

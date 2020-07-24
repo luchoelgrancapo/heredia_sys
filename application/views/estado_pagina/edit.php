@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Editar Estado Página</h3>
             </div>
 			<?php echo form_open('estado_pagina/edit/'.$estado_pagina['estadopag_id']); ?>

@@ -92,8 +92,8 @@ input[type=number] { -moz-appearance:textfield; }
 
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info" >
-            <div class="box-header with-border">
+      	<div class="card card-secondary" >
+            <div class="card-header with-border">
               	<h3 class="box-title">Cotizacion</h3>
             </div>
             <form action="<?php echo base_url('cotizacion/finalizar/'.$cotizacion_id); ?>" id="fincotiza" name="fincotiza" method="POST" class="form">

@@ -104,7 +104,7 @@ function mostrar() {
 	<div class="checkout" style="padding-top: 0px;">
 		<div class="container">
 
-                    <div class="box-header with-border">
+                    <div class="card-header with-border">
                         <h3 class="box-title">
 
                             <fa class="fa fa-cart-arrow-down"></fa>    Mi Carrito</h3>

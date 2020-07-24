@@ -152,7 +152,7 @@
           <!-- /.box -->
 
           <!-- quick email widget -->
-          <div class="box box-info">
+          <div class="card card-secondary">
             <div class="box-header">
               <i class="fa fa-envelope"></i>
 
@@ -192,7 +192,7 @@
           <!-- /.box -->
 
           <!-- quick email widget -->
-          <div class="box box-info">
+          <div class="card card-secondary">
             <div class="box-header">
               <i class="fa fa-bar-chart"></i>
 

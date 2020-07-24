@@ -177,7 +177,7 @@ $(document).ready(function(){
 	    });
 </script>
 
-<div class="box-header with-border">
+<div class="card-header with-border">
     <input type="hidden" value="<?php echo $servicio['servicio_id']; ?>" id="esteservicio_id">
     <input type="hidden" value="<?php echo $parametro['parametro_diagnostico']; ?>" id="parametro_diagnostico">
     <input type="hidden" value="<?php echo $parametro['parametro_solucion']; ?>" id="parametro_solucion">

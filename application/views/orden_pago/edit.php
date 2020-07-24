@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Orden Pago Edit</h3>
             </div>
 			<?php echo form_open('orden_pago/edit/'.$orden_pago['orden_id']); ?>

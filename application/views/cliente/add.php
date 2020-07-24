@@ -67,8 +67,8 @@ function toggle(source) {
 
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">REGISTAR CLIENTE</h3>&nbsp;&nbsp;
                 <!--<button type="button" class="btn btn-secondary btn-sm" onclick="cambiarcod(this);" title="Generar otro Código Cliente">
 			<i class="fa fa-barcode"></i> Generar Código

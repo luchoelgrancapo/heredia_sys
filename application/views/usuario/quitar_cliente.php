@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title"><?php echo $usuario['usuario_nombre'] ?></h3>
             </div>
             <script src='<?php echo base_url() ?>resources/js/jquery-2.1.1.min.js'></script>

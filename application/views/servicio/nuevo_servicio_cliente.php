@@ -48,8 +48,8 @@ $(document).ready(function(){
 
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Nuevo Servicio para: <label class="control-label"><?php echo $cliente['cliente_nombre']; ?></label></h3>
             </div>
             <?php echo form_open('servicio/nuevo_servicio_cliente/'.$cliente['cliente_id']); ?>

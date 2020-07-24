@@ -39,10 +39,10 @@
 
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Editar Producto</h3>&nbsp;&nbsp;
-                <button type="button" class="btn btn-success btn-sm" onclick="cambiarcodproducto();">
+                <button type="button" class="btn btn-warning btn-sm" onclick="cambiarcodproducto();">
 			<i class="fa fa-edit"></i> Cambiar Codigo barra y Codigo
 		</button>
             </div>

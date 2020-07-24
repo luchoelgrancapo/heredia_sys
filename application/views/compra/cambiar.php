@@ -269,7 +269,7 @@
 
             DATOS DESPEGABLES DE CHOFER COMPRA 
 <div class="box collapsed-box">
-            <div class="box-header with-border">
+            <div class="card-header with-border">
               <h3 class="box-title">Mas</h3>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-plus"></i></button>
@@ -361,8 +361,8 @@
                 </button>
                 <div class="row">
     <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="card card-secondary">
+            <div class="card-header with-border">
                 <h3 class="box-title">Añadir Producto</h3>
             </div>
      <form action="<?php echo base_url('producto/rapido/'); ?>"  method="POST" class="form">
@@ -433,7 +433,7 @@
                     </div>
 </div>
 <div class="box collapsed-box">
-            <div class="box-header with-border">
+            <div class="card-header with-border">
               <h3 class="box-title">Mas</h3>
               <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-plus"></i></button>
                 
@@ -498,8 +498,8 @@
                 </button>
                 <div class="row">
     <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="card card-secondary">
+            <div class="card-header with-border">
                 <h3 class="box-title">Añadir Proveedor</h3>
             </div>
 
@@ -537,7 +537,7 @@
                     </div>
                 </div>
            <div class="box collapsed-box">
-            <div class="box-header with-border">
+            <div class="card-header with-border">
               <h3 class="box-title">Mas</h3>
               <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-plus"></i></button>
               </div>
@@ -653,7 +653,7 @@
                                         </button>
 
         <div class="box collapsed-box">
-            <div class="box-header with-border">
+            <div class="card-header with-border">
               <h3 class="box-title">Mas</h3>
               <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-plus"></i></button>
                 

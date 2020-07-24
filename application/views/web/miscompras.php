@@ -145,8 +145,8 @@ function toggle(source) {
     <div class="col-md-2"></div>
     
     <div class="col-md-8">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="card card-secondary">
+            <div class="card-header with-border">
                 <h3 class="box-title">
                 <img src="<?php echo base_url("resources/images/clientes/".$cliente['cliente_foto']); ?>" width="50" height="50" class="img img-circle">
                     

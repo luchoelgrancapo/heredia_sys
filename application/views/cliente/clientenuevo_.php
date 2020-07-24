@@ -42,8 +42,8 @@ function mostrar(a) {
 
     <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Añadir Cliente</h3>
             </div>
             <?php echo form_open('cliente/clientenuevo/'.$pedido_id); ?>

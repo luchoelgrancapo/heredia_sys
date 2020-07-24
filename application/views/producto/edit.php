@@ -101,10 +101,10 @@
 </script>
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">EDITAR PRODUCTO</h3>&nbsp;&nbsp;
-                <button type="button" class="btn btn-secondary btn-sm" onclick="cambiarcodproducto();" title="Volver a generar Código y Código de barras">
+                <button type="button" class="btn btn-warning btn-sm" onclick="cambiarcodproducto();" title="Volver a generar Código y Código de barras">
 			<i class="fa fa-barcode"></i> Generar Códigos
 		</button>
             </div>

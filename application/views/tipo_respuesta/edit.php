@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
+      	<div class="card card-secondary">
+            <div class="card-header with-border">
               	<h3 class="box-title">Editar Tipo Respuesta</h3>
             </div>
 			<?php echo form_open('tipo_respuesta/edit/'.$tipo_respuesta['tiporespuesta_id']); ?>
