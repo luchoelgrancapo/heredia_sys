@@ -120,7 +120,7 @@ class Detalle_pedido extends CI_Controller{
         if(isset($detalle_pedido['detalleped_id']))
         {
             $this->Detalle_pedido_model->delete_detalle_pedido($detalleped_id);
-            redirect('pedido/pedidoabierto/'.$pedido_id);
+            redirect('pedido/registrar/'.$pedido_id);
         }
         else
             show_error('El item que quiere eliminar no existe..!!');

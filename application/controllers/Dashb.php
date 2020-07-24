@@ -213,7 +213,7 @@ class Dashb extends CI_Controller
                             </div>');
 
                     if($this->session_data['tipousuario_id']==2){
-                        redirect('venta/ventas');
+                        redirect('venta/registrar');
                     }
 
                     redirect('dashb');

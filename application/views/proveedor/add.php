@@ -13,7 +13,7 @@
     <div class="col-md-12">
       	<div class="card card-secondary">
             <div class="card-header with-border">
-              	<h3 class="box-title">REGISTAR PROVEEDOR</h3>
+              	<h3 class="box-title">registrar PROVEEDOR</h3>
             </div>
              <!-- **** INICIO de BUSCADOR select y productos encontrados *** -->
          <div class="row" id='loader'  style='display:none; text-align: center'>

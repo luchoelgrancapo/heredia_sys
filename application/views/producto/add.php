@@ -111,7 +111,7 @@
     <div class="col-md-12">
       	<div class="card card-secondary">
             <div class="card-header with-border">
-              	<h3 class="box-title">REGISTAR PRODUCTO</h3>&nbsp;&nbsp;
+              	<h3 class="box-title">registrar PRODUCTO</h3>&nbsp;&nbsp;
                 <button type="button" class="btn btn-warning btn-sm" onclick="cambiarcodproducto();" title="genera codigo de barra y codigo">
                     <i class="fa fa-barcode"></i> Generar Códigos
 		</button>

@@ -67,7 +67,7 @@
         <!---------------- BOTONES --------->
     <div class="col-md-6">
             	<div class="box-tools">                    
-                     <a href="<?php echo site_url('venta/ventas'); ?>" class="btn bg-success btn-app"><i class="fa fa-cart-arrow-down"></i>Venta</a>
+                     <a href="<?php echo site_url('venta/registrar'); ?>" class="btn bg-success btn-app"><i class="fa fa-cart-arrow-down"></i>Venta</a>
                     <button class="btn bg-pink btn-app" onclick="verificar_ventas()"><i class="fa fa-binoculars"></i> Verificar </button>
                    
                 </div>

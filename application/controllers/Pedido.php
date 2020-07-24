@@ -209,7 +209,7 @@ class Pedido extends CI_Controller{
         
         //Registrar Pedido
         $pedido_id = $this->Pedido_model->crear_pedido($usuario_id);        
-        redirect('pedido/pedidoabierto/'.$pedido_id);
+        redirect('pedido/registrar/'.$pedido_id);
     		
         //**************** fin contenido ***************
         			}
@@ -281,7 +281,7 @@ class Pedido extends CI_Controller{
         			}		     
     }
     
-    function pedidoabierto($cliente_id)
+    function registrar($cliente_id)
     {    
         
         if($this->acceso(31)){
@@ -769,7 +769,7 @@ function registrarpedido()
                 from producto where producto_id = ".$producto_id."
                 )";
         $this->Pedido_model->ejecutar($sql);
-        redirect('pedido/pedidoabierto/'.$pedido_id);
+        redirect('pedido/registrar/'.$pedido_id);
         		
         //**************** fin contenido ***************
         }

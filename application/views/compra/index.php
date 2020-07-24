@@ -101,7 +101,7 @@
         
     <div class="box-tools">
         <?php if (sizeof($comprasn)>0){ ?>
-            <a href="<?php echo site_url('compra/edit/'.$comprasn[0]['compra_id'].'/0'); ?>" class="btn bg-info btn-app" title="Continuar con la Compra">
+            <a href="<?php echo site_url('compra/registrar/'.$comprasn[0]['compra_id'].'/0'); ?>" class="btn bg-info btn-app" title="Continuar con la Compra">
               <i class="fa fa-cart-plus"></i>Continuar Compra</a>
             
         <?php }else{ ?>    

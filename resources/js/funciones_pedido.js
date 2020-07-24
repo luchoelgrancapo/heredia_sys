@@ -1971,7 +1971,7 @@ function registrarpedido(cliente_id)
                 var opcion = confirm("¿Desea realizar un nuevo pedido?");
                 
                 if (opcion == true) {
-                    window.open(base_url+"pedido/pedidoabierto/0","_self");
+                    window.open(base_url+"pedido/registrar/0","_self");
                
                 } else {
                     eliminardetalleventa();

@@ -558,7 +558,7 @@ class Cliente extends CI_Controller{
                     
                     //$this->load->model('Pedido_model');
                     //$this->Pedido_model->cambiar_cliente($pedido_id,$cliente_id);
-                    redirect('pedido/pedidoabierto/'.$cliente_id);
+                    redirect('pedido/registrar/'.$cliente_id);
                 }
                 else
                 {
@@ -937,7 +937,7 @@ class Cliente extends CI_Controller{
                     //$this->load->model('Pedido_model');
                     //$this->Pedido_model->cambiar_cliente($pedido_id,$cliente_id);            
                     //redirect('pedido/pedidoabierto/'.$pedido_id);            
-                    redirect('pedido/pedidoabierto/'.$cliente_id);            
+                    redirect('pedido/registrar/'.$cliente_id);            
 
                 }
             }
@@ -987,7 +987,7 @@ class Cliente extends CI_Controller{
         if ($pedido_id>0) {
              redirect('pedido/modificarpedido/'.$pedido_id);
         }else{
-            redirect('pedido/pedidoabierto/'.$cliente_id);
+            redirect('pedido/registrar/'.$cliente_id);
         }
         
         
@@ -1005,7 +1005,7 @@ class Cliente extends CI_Controller{
             $cliente = $this->Cliente_model->get_cliente($cliente_id);
 
             $this->cambiarcliente($cliente_id, $pedido_id, $cliente['cliente_nit'], $cliente['cliente_razon']);
-            redirect('pedido/pedidoabierto/'.$pedido_id);
+            redirect('pedido/registrar/'.$pedido_id);
         }         
     }
     

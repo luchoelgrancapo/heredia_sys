@@ -24,7 +24,7 @@
 <div class="box-header">
                 <h3 class="box-title">Ventas</h3>
             	<div class="box-tools">
-                    <a href="<?php echo site_url('venta/ventas'); ?>" class="btn btn-success btn-sm">Registrar Ventas</a> 
+                    <a href="<?php echo site_url('venta/registrar'); ?>" class="btn btn-success btn-sm">Registrar Ventas</a> 
                 </div>
 </div>
 <div class="row">

@@ -104,7 +104,7 @@
             <div class="icon">
               <i class="ion ion-bag"></i>              
             </div>
-            <a href="<?php echo base_url('venta/ventas'); ?>" class="small-box-footer">Realizar Ventas <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('venta/registrar'); ?>" class="small-box-footer">Realizar Ventas <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
           
@@ -251,7 +251,7 @@
             <div class="icon">
               <i class="fa fa-cart-plus"></i>              
             </div>
-            <a href="<?php echo base_url('venta/ventas'); ?>" class="small-box-footer"><?php echo "En ".$ventas[0]['cantidad_ventas']." ventas"; ?> <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('venta/registrar'); ?>" class="small-box-footer"><?php echo "En ".$ventas[0]['cantidad_ventas']." ventas"; ?> <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
           

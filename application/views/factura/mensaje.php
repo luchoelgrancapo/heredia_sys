@@ -39,7 +39,7 @@
             <div class="col-md-3">
                 <!--<label for="factura_fecha" class="control-label">Fecha</label>-->
                 <div class="form-group">
-                    <a href="<?php echo base_url('venta/ventas'); ?>" class="btn btn-warning form-control">
+                    <a href="<?php echo base_url('venta/registrar'); ?>" class="btn btn-warning form-control">
                         <i class="fa fa-cart-arrow-down"></i>
                         Ventas
                     </a>                                 

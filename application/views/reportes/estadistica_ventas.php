@@ -57,7 +57,7 @@
                     </select>
                     <?php } ?>
                     <button class="btn btn-warning btn-sm" onclick="verificar_ventas()"><span class="fa fa-binoculars"></span> Verificar </button>
-                    <a href="<?php echo site_url('venta/ventas'); ?>" class="btn btn-success btn-sm"><span class="fa fa-cart-arrow-down"></span> Ventas</a>
+                    <a href="<?php echo site_url('venta/registrar'); ?>" class="btn btn-success btn-sm"><span class="fa fa-cart-arrow-down"></span> Ventas</a>
                 </div>
 </div>
 <!---------------------------------- panel oculto para busqueda--------------------------------------------------------->

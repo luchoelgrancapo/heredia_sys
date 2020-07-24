@@ -49,7 +49,7 @@
                <div class="box-tools">
             
                 <!--<a href="<?php echo site_url('pedido/misclientes'); ?>" class="btn bg-secondary btn-app" target="_blank"><i class="fa fa-users"></i> Clientes</a>-->
-                <a href="<?php echo site_url('pedido/pedidoabierto/0'); ?>" class="btn bg-success btn-app" target="_blank"><i class="fa fa-cart-arrow-down"></i>Pedido</a>
+                <a href="<?php echo site_url('pedido/registrar/0'); ?>" class="btn bg-success btn-app" target="_blank"><i class="fa fa-cart-arrow-down"></i>Pedido</a>
                 <a href="<?php echo site_url('recorrido'); ?>" class="btn bg-info btn-app" ><i class="fas fa-chart-pie"></i> Estadistica</a>
                 <a href="<?php echo site_url('pedido/mapa_entregas'); ?>" target="_blank" class="btn bg-danger btn-app"><i class="fa fa-map"></i> Mapa</a>                
           

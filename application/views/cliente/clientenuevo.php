@@ -69,7 +69,7 @@ function toggle(source) {
     <div class="col-md-12">
         <div class="card card-secondary">
             <div class="card-header with-border">
-                <h3 class="box-title">REGISTAR CLIENTE</h3>&nbsp;&nbsp;
+                <h3 class="box-title">registrar CLIENTE</h3>&nbsp;&nbsp;
                 <!--<button type="button" class="btn btn-secondary btn-sm" onclick="cambiarcod(this);" title="Generar otro Código Cliente">
             <i class="fa fa-barcode"></i> Generar Código
         </button>-->
@@ -351,7 +351,7 @@ function toggle(source) {
                 <button type="submit" class="btn btn-success">
                     <i class="fa fa-check"></i> Guardar
                 </button>
-                <a href="<?php echo site_url('pedido/pedidoabierto/0'); ?>" class="btn btn-danger">
+                <a href="<?php echo site_url('pedido/registrar/0'); ?>" class="btn btn-danger">
                     <i class="fa fa-times"></i> Cancelar</a>
             </div>
             <?php echo form_close(); ?>

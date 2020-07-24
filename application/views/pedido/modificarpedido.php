@@ -1003,7 +1003,7 @@ function cerrar_ventana(){
                         
                         </td>
                         <td align="center" bgcolor="<?php echo $p['estado_color']; ?>">
-                            <a href="<?php echo base_url('pedido/pedidoabierto/'.$p['pedido_id']); ?>">
+                            <a href="<?php echo base_url('pedido/registrar/'.$p['pedido_id']); ?>">
                             <font size="3"><b><?php echo "00".$p['pedido_id']; ?></b></font> <br>
                             <font size="1"><?php echo $p['estado_descripcion']; ?></font>
                             </a>
@@ -1019,7 +1019,7 @@ function cerrar_ventana(){
                             <?php echo "<b>".$p['pedido_fechaentrega']."</b> <br>".$p['pedido_horaentrega']; ?></td>-->
 
                         <td>
-                            <a href="<?php echo site_url('pedido/pedidoabierto/'.$p['pedido_id']); ?>" class="btn btn-success btn-sm"><span class="fa fa-cubes" title="Ver detalle del pedido"></span></a>
+                            <a href="<?php echo site_url('pedido/registrar/'.$p['pedido_id']); ?>" class="btn btn-success btn-sm"><span class="fa fa-cubes" title="Ver detalle del pedido"></span></a>
                             <!--<a href="<?php echo site_url('pedido/pasaraventas/'.$p['pedido_id']); ?>" class="btn btn-warning btn-sm"><span class="fa fa-arrow-down" title="Añadir pedido a ventas"></span></a>-->
                             <button  class="btn btn-warning btn-sm" data-dismiss="modal" onclick="pasaraventas(<?php echo $p['pedido_id']; ?>,<?php echo $p['usuario_id']; ?>,<?php echo $p['cliente_id']; ?>)"><span class="fa fa-arrow-down" title="Cargar pedido a ventas"></span> </button>
                         </td>

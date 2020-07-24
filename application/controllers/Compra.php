@@ -61,7 +61,7 @@ class Compra extends CI_Controller{
             $data['comprasn'] = $this->Compra_model->get_compra_sin_nombre($usuario_id);
             $data['tipo_transaccion'] = $this->Tipo_transaccion_model->get_all_tipo_transaccion();
             $data['estado'] = $this->Estado_model->get_tipo_estado(1);
-            $data['_view'] = 'compra/index1';
+            $data['_view'] = 'compra/index';
             $this->load->view('layouts/main',$data);
         }
     }
@@ -284,7 +284,7 @@ class Compra extends CI_Controller{
             $bandera = 0;
                     //Registrar Compra
             $compra_id = $this->Compra_model->crear_compra($usuario_id);        
-            redirect('compra/edit/'.$compra_id.'/'.$bandera);
+            redirect('compra/registrar/'.$compra_id.'/'.$bandera);
         }
     }
 
@@ -390,7 +390,7 @@ class Compra extends CI_Controller{
             //$tiene_aux = "SELECT detallecomp_id FROM detalle_compra_aux WHERE detalle_compra_aux.compra_id=".$compra_id." ";
             //$detalleaux = $this->db->query($eliminar_aux);
             //if ($detalleaux!=NULL) {
-       redirect('compra/edit/'.$compra_id.'/'.$bandera);
+       redirect('compra/registrar/'.$compra_id.'/'.$bandera);
            // }
 
    }
@@ -443,14 +443,14 @@ class Compra extends CI_Controller{
     detalle_compra.compra_id = ".$compra_id.")"; 
     $this->db->query($cargar_aux);
 
-    redirect('compra/edit/'.$compra_id.'/'.$bandera);
+    redirect('compra/registrar/'.$compra_id.'/'.$bandera);
     
 
 }
 
 
 
-    function edit($compra_id,$bandera)
+    function registrar($compra_id,$bandera)
     {
         if($this->acceso(1)){
             $data['page_title'] = "Compra";
@@ -1410,7 +1410,7 @@ function quitar($detallecomp_id)
             );
 
             $this->Compra_model->update_compra($compra_id,$params);            
-            redirect('compra/edit/'.$compra_id);
+            redirect('compra/registrar/'.$compra_id);
         }
         else
         {

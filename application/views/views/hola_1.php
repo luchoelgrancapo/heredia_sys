@@ -31,7 +31,7 @@
                     
                 </div>
                   <!--<button type="button" class="btn btn-facebook btn-xs btn-block"><b>Ventas</b></button>-->
-                 <a href="<?php echo base_url('venta/ventas');?>" class="btn btn-facebook btn-xs btn-block"> <b>Ventas</b></a>
+                 <a href="<?php echo base_url('venta/registrar');?>" class="btn btn-facebook btn-xs btn-block"> <b>Ventas</b></a>
             </div>
         </div>
 

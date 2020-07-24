@@ -72,7 +72,7 @@ class Venta extends CI_Controller{
         
     }
 
-    function ventas()
+    function registrar()
     {    
         
         if($this->acceso(12)){
