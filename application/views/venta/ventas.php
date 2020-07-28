@@ -550,7 +550,7 @@ window.onkeydown = compruebaTecla;
                 } ?>
                     
             <?php if($parametro[0]["parametro_modulorestaurante"]==1){ //1 es modo restaurante?>            
-                    <a href="<?php echo base_url('venta/ultimacomanda');?>" data-toggle="modal" target="_blank" class="btn btn-facebook btn-xs" id="imprimir_comanda" title="Comanda"><span class="fa fa-print"></span><b> COMANDA</b></a> 
+                    <a href="<?php echo base_url('venta/ultimacomanda') ?>" target="_blank" class="btn btn-primary btn-xs" id="imprimir_comanda" title="Comanda"><span class="fa fa-print"></span><b> COMANDA</b></a> 
             <?php } ?>            
         
              <?php 
@@ -772,7 +772,7 @@ window.onkeydown = compruebaTecla;
                                             $ocultar = "block";
                                             
                                     } ?>   
-                                    <div class="col-md-2" style="padding: 0; display: <?php echo $ocultar; ?>">
+                                    <div class="col-md-6" style="padding: 0; display: <?php echo $ocultar; ?>">
                                         <h5 class="modal-title" id="myModalLabel"><b>SERVICIO</b></h5>                                        
                                         <select id="tiposerv_id" name="tiposerv_id" class="btn btn-default btn-xs"  style="width: 100px;">
                                                 

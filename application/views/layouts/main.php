@@ -184,6 +184,11 @@
                                 <i class="nav-icon fas fa-money-check-alt fa-fw"></i> <p>Cotizaciones</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('cotizacion');?>" class="nav-link">
+                                <i class="nav-icon fas fa-cogs fa-fw"></i> <p>Configuraciónn</p>
+                            </a>
+                        </li>
                         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-edit"></i>
