@@ -60,18 +60,18 @@ input[type=number] { -moz-appearance:textfield; }
  <input type="hidden" name="orden_id" id="orden_id" value="<?php echo $orden_trabajo['orden_id']; ?>">
  <input type="hidden" name="tipo_orden" id="tipo_orden" value='<?php echo json_encode($tipo_orden); ?>' />
 
-<div class="row">
-    <div class="col-md-12">
+
+    
       	<div class="card card-secondary" >
             <div class="card-header with-border">
-              	<h3 class="box-title">Orden de Trabajo</h3>
+              	<h3 class="card-title">Modificar Orden de Trabajo</h3>
             </div>
             
           
 
-      		<div class="box-body">
-          		<div class="row clearfix">
-                <div class="col-md-12">
+      		<div class="card-body">
+          		<div class="row">
+               
             <div class="col-md-3">
             <label for="nit" class="control-label">NIT</label>
             <div class="form-group">
@@ -111,8 +111,8 @@ input[type=number] { -moz-appearance:textfield; }
             <button type="button" class="btn btn-success" onclick="myFunction()">
                 <i class="fa fa-check"></i> Finalizar OT
               </button>
-              <a href="javascript:history.back()"><button type="button" class="btn btn-danger">
-                <i class="fa fa-times"></i> Cancelar
+              <a href="<?php echo site_url('orden_trabajo'); ?>"><button type="button" class="btn btn-danger">
+                <i class="fa fa-times"></i> Salir
               </button></a>
             </div>
           	
@@ -122,10 +122,10 @@ input[type=number] { -moz-appearance:textfield; }
     
 </div>
 <!---------------------------------------TABLA DE DETALLE orden_trabajo------------------------------------>
-<div class="col-md-12">
+<div class="row">
    <div class="col-md-4" style="padding-left:0px;">
                         
-      <div class="input-group"> <span class="input-group-addon">Buscar</span>
+      <div class="input-group-prepend"> <span class="input-group-text"><i class="fas fa-search"></i></span>
         <input id="cotizar" type="text" class="form-control" autocomplete="off" placeholder="Ingresa el nombre de producto, código o descripción"  onkeypress="cotivalidar(event,4)">
       </div>
       <!-------------------- CATEGORIAS------------------------------------->
@@ -142,10 +142,10 @@ input[type=number] { -moz-appearance:textfield; }
                                 
             
           
-                <table class="table table-striped" id="mitabla">
+                <table class="table table-striped" id="tabla_detalle">
                     
                      <tr>
-                                                <th>#</th>
+                                                <th>Nº</th>
                                                 <th>Producto</th>
                     </tr>
                     <tbody class="buscar3" id="tablaresultados">
@@ -164,9 +164,9 @@ input[type=number] { -moz-appearance:textfield; }
 <div class="box">
              <h4 class="modal-title" id="myModalLabel">Detalle OT</h4>
             <div class="box-body table-responsive">
-                <table class="table table-striped table-condensed" id="mitabla">
+                <table class="table table-striped table-condensed" id="tabla_detalle">
                     <tr>
-                            <th>#</th>
+                            <th>Nº</th>
                             <th>C</th>
                             <th>Producto</th>
                             <th>Cant.</th>
@@ -224,8 +224,9 @@ input[type=number] { -moz-appearance:textfield; }
         </button>
       </div>
       <div class="modal-body">
-        <div class="row clearfix">
+        
         <?php echo form_open('orden_trabajo/edit/'.$orden_trabajo['orden_id']) ?>
+        <div class="row">
         <div class="col-md-4">
             <label for="total" class="control-label">Total</label>
             <div class="form-group">

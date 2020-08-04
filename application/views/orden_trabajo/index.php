@@ -37,7 +37,7 @@
                     <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
                     <!--<font size="2" face="Arial"><b><?php echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
                     <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
-                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
+                      <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];?><br>-->
                     <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
                     <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
                     <!--<font size="1" face="Arial"><?php echo $empresa[0]['empresa_ubicacion']; ?></font>-->
@@ -72,37 +72,45 @@
 </table>       
         
 </div>
-<div class="row">
-    <div class="col-md-12">
-<div class="row">
-  <div class="col-md-6">
 
-
-        <!--este es INICIO del BREADCRUMB buscador-->
-        <div class="box-header">
-                <font size='4' face='Arial'><b>Orden Trabajo</b></font>
-                <br><font size='2' face='Arial' id="pillados">Registros Encontrados: 
-        </div>
-        <!--este es FIN del BREADCRUMB buscador-->
- 
-        <!--este es INICIO de input buscador-->
-        <div class="col-md-8 no-print">
-            <div class="input-group">
-                      <span class="input-group-addon"> 
-                        Buscar 
-                      </span>           
-                <input id="orden_cli" type="text" class="form-control" placeholder="Ingresa el nombre de cliente" onkeypress="buscar_porcliente(event)" >
-            </div></div>
-            <div class="col-md-4 no-print">
-                
-                <select  class="btn btn-primary btn-sm"  id="select_fecha" onchange="busqueda_ot()">
+<br>
+<div class="row">
+    
+    <div class="col-md-6">
+<h4 class="box-title"><b>Orden Trabajo</b> <small class="badge badge-secondary" id="pillados">Registros Encontrados:  </small></h4>
+</div>
+        <!---------------- BOTONES --------->
+    <div class="col-md-6">
+                <div class="box-tools">                    
+                     <a href="<?php echo site_url('orden_trabajo/nuevo'); ?>" class="btn bg-success btn-app"><i class="fa fa-cart-plus"></i>Registrar OT</a>
+                     <a href="#" onclick="fechaorden('and 1')" class="btn bg-primary btn-app"><i class="fa fa-search"></i>Ver Todos</a>
+                     <a href="#" onclick="imprimir()" class="btn bg-warning btn-app"><i class="fa fa-print"></i>Imprimir</a>
+                   
+                   
+                   
+                </div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+            <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                   <input id="orden_cli" type="text" autocomplete="off" onkeypress="buscar_porcliente(event)" class="form-control" placeholder="Ingresa el nombre de cliente">
+            </div>
+</div>
+<div class="col-md-6">
+    
+                    <select  class="btn btn-secondary" id="select_fecha" onchange="busqueda_ot()">
+<!--                        <option value="1">-- SELECCIONE UNA OPCION --</option>-->
                     <option value="1">O.T. de Hoy</option>
                     <option value="2">O.T. de Ayer</option>
                     <option value="3">O.T. de la semana</option>
                     <option value="5">O.T. por fecha</option>
-                </select>
-                
-            </div>
+                    </select>
+           
+</div>
+</div>
+
             
         <!--este es FIN de input buscador-->
 
@@ -111,41 +119,26 @@
             <img src="<?php echo base_url("resources/images/loader.gif"); ?>"  >
         </div>
         <!-- **** FIN de BUSCADOR select y productos encontrados *** -->
-      </div>
-     <div class="col-md-6 no-print">
-        
-    <div class="box-tools">
-        <center>    
-            <a href="<?php echo site_url('orden_trabajo/nuevo'); ?>" class="btn btn-success btn-foursquarexs"><font size="5"><span class="fa fa-cart-plus"></span></font><br><small>Registrar OT</small></a>
-            
-            <button data-toggle="modal" data-target="#modalbuscar" class="btn btn-warning btn-foursquarexs" onclick="fechaorden('and 1')" ><font size="5"><span class="fa fa-search"></span></font><br><small>Ver Todos</small></button>
-            
-            <a href="#" onclick="imprimir()" class="btn btn-info btn-foursquarexs"><font size="5"><span class="fa fa-print"></span></font><br><small>Imprimir</small></a>
-             
-        </center>            
-    </div>
-    </div>   
-        
-    </div>
+    
     <div class="panel panel-primary col-md-12 no-print" id='buscador_oculto' style='font-family: Arial; display:none; padding-bottom: 10px;'>
                 <br>
-                <center>            
+                <div class="row">   
                     <div class="col-md-4">
-                        Desde: <input type="date" class="btn btn-primary btn-sm form-control" style=" width: 80%;"  id="fecha_desde" name="fecha_desde" value="<?php echo date('Y-m-d') ?>" required="true">
+                        Desde: <input type="date" class="btn btn-secondary btn-sm form-control" style=" width: 80%;"  id="fecha_desde" name="fecha_desde" value="<?php echo date('Y-m-d') ?>" required="true">
                     </div>
                     <div class="col-md-4">
-                        Hasta: <input type="date" class="btn btn-primary btn-sm form-control" style=" width: 80%; "  id="fecha_hasta" name="fecha_hasta" value="<?php echo date('Y-m-d') ?>" required="true">
+                        Hasta: <input type="date" class="btn btn-secondary btn-sm form-control" style=" width: 80%; "  id="fecha_hasta" name="fecha_hasta" value="<?php echo date('Y-m-d') ?>" required="true">
                     </div>
 
                    
                     <div class="col-md-4">
-                        <button class="btn btn-primary btn-sm form-control" face='Arial' tyle='font-family: Arial;' onclick="buscar_por_fecha()"><span class="fa fa-search"></span> Buscar</button>
+                        <button class="btn btn-secondary btn-sm form-control" face='Arial' tyle='font-family: Arial;' onclick="buscar_por_fecha()"><span class="fa fa-search"></span> Buscar</button>
                         
                     </div>
                     <br>
 
 
-                </center>    
+                </div>    
                 <br>    
             </div>
             <div class="col-md-12">

@@ -296,14 +296,15 @@ function mostrar_tabla_resultados(respuesta,pag){
                 html += "<div class='product-img'>";
                 html += mimagen;
                 html += "</div>";
-                html += "<a href='"+base_url+"website/single/"+registros[i]["producto_id"]+"'><div class='product-body'>";
+                html += "<div class='product-body'>";
                 html += "<p class='product-category'></p><h3  class='product-name' title='"+cadena+"'>"+nombre+"</h3>";
                 html += "<h4 class='product-price'>Bs. "+Number(registros[i]["producto_precio"]).toFixed(2)+"</h4>";
                 html += "<div class='product-rating'>";
                 html += "</div>";
-                html += "<div class='product-btns'>";
-                html += "</div>";
+                html += "<a href='"+base_url+"website/single/"+registros[i]["producto_id"]+"'><div class='product-btns'>";
+                html += "<button class='quick-view' tabindex='0'><i class='fa fa-eye'></i><span class='tooltipp'> Ver más</span></button>";
                 html += "</div></a>";
+                html += "</div>";
                 html += "<div class='add-to-cart'>";
                 
                 html += "<input type='hidden' name='cmd' value='_cart'>";
@@ -644,7 +645,7 @@ function tablacarrito(){
                         html += "</tr>";
                        
                        }
-                       html += "<tr style='color: white; background: #333333; padding: 0;'>";
+                       html += "<tr style='color: white; background: #1E1F29; padding: 0;'>";
                        if (escarrito>0) {
                         html += "<td></td>";
                         }

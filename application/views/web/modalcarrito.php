@@ -6,9 +6,9 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header" style="color: white; background: #333333;padding:3px;">
+      <div class="modal-header" style="color: white; background: #1E1F29;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span  aria-hidden="true" class="fa fa-times"></span>
+          <span  style="color: white;"  aria-hidden="true" class="fa fa-times"></span>
         </button>
         <h4 style="color: white;" class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Lista de Compra</h4>
       </div>
@@ -16,18 +16,18 @@
       <div class="modal-body" style="overflow-x: auto;">
         
         <div class="col-md-12"></div>
-        <table class="table table-hover" style="font-size: 12px;">
+        <table class="table table-hover">
           <thead>
-            <tr style="color: white; background: #333333; padding: 0;">
+            <tr style="color: white; background: #1E1F29;">
               <!--<th>#</th>-->
               
-              <th style="padding:0; text-align: center;"></th>
-              <th style="padding:0; text-align: center;">Producto</th>
-              <th style="padding:0; text-align: center;">Precio</th>
-              <th style="padding:0; text-align: center;">Cantidad</th>
+              <th style="padding-left: 0;padding-right: 0"></th>
+              <th style="padding-left: 0;padding-right: 0">Producto</th>
+              <th style="padding-left: 0;padding-right: 0">Precio</th>
+              <th style="padding-left: 0;padding-right: 0">Cantidad</th>
               <!--<th style="padding:0;">Desc.</th>-->
-              <th style="padding:0; text-align: center;">Bs.</th>
-              <th style="padding:0;"></th>
+              <th style="padding-left: 0;padding-right: 0">Bs.</th>
+              <th style="padding-left: 0;padding-right: 0"></th>
             </tr>
           </thead>
           <tbody id="carritos">
@@ -38,11 +38,14 @@
       <!--Footer-->
       <div class="modal-footer">
           
-          <center>
-            <button class="btn btn-success" data-dismiss="modal" onclick="realizarcompra()" ><i class="fa fa-money"></i> Finalizar Compra</button>     
-            <button class="btn btn-primary" data-dismiss="modal" ><i class="fa fa-cart-arrow-down"></i> Continuar</button>
-                     
-          </center>
+          <div class="row">
+          <div class="col-md-6">
+            <button class="btn btn-success btn-block" data-dismiss="modal" onclick="realizarcompra()" ><i class="fa fa-money"></i> Finalizar Compra</button> <br>
+            </div>    
+            <div class="col-md-6">
+            <button class="btn btn-danger btn-block" data-dismiss="modal" ><i class="fa fa-cart-arrow-down"></i> Continuar Comprando</button>
+            </div>         
+          </div>
           
       </div>
     </div>

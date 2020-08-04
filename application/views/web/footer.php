@@ -16,7 +16,7 @@
                         <div class="col-md-2 col-xs-6">
                             <div class="footer text-center">
                                 <br><br>
-                           <p>Un producto de:</p>
+                           <p>Una aplicación de:</p>
                             </div>
                         </div>
                         
@@ -51,7 +51,7 @@
                             </ul>
                             <span class="copyright">
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Business Sys by <a href="https://colorlib.com" target="_blank">HV Soluciones</a>
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Business Sys by <a href="https://hvsistemasysoluciones.com" target="_blank">HV Soluciones</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </span>
                         </div>

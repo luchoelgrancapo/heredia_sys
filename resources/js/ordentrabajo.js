@@ -907,30 +907,30 @@ function tablaresultados(opcion)
                         }
 
                        
-                        html += "   </select><br>";
+                        html += "   </select><br> <div class='row'  >";
 
                         html += "<div class='col-md-2'  >";
 
-                        html += "Precio <input class='input-sm' id='producto_precio"+registros[i]["producto_id"]+"'  name='producto_precio' type='number' class='form-control' value='"+registros[i]["producto_precio"]+"' ></div>";
+                        html += "Precio <input class='input-sm' style='max-width: 120%' id='producto_precio"+registros[i]["producto_id"]+"'  name='producto_precio' type='number' class='form-control' value='"+registros[i]["producto_precio"]+"' ></div>";
 
                         html += "<div class='col-md-2'  >";
 
-                        html += "Ancho(mm) <input class='input-sm' id='ancho"+registros[i]["producto_id"]+"'  name='ancho' min='0' type='number' onkeyup='totalar("+registros[i]["producto_id"]+")' class='form-control' value='' step='any' > </div>";
+                        html += "Ancho(mm) <input class='input-sm' style='max-width: 120%' id='ancho"+registros[i]["producto_id"]+"'  name='ancho' min='0' type='number' onkeyup='totalar("+registros[i]["producto_id"]+")' class='form-control' value='' step='any' > </div>";
 
                         html += "<div class='col-md-2'  >";
 
-                        html += "Largo(mm) <input class='input-sm' id='largo"+registros[i]["producto_id"]+"'  name='largo' min='0' type='number' onkeyup='totalar("+registros[i]["producto_id"]+")' class='form-control' value='' step='any'  ></div>";
+                        html += "Largo(mm) <input class='input-sm' style='max-width: 120%' id='largo"+registros[i]["producto_id"]+"'  name='largo' min='0' type='number' onkeyup='totalar("+registros[i]["producto_id"]+")' class='form-control' value='' step='any'  ></div>";
 
                         html += "<div class='col-md-2'  >";
 
-                        html += "Total(M2) <input class='input-sm' id='total"+registros[i]["producto_id"]+"' name='total' type='text' readonly='readonly' class='form-control'  value=''  > </div>";
+                        html += "Total(M2) <input class='input-sm' style='max-width: 120%' id='total"+registros[i]["producto_id"]+"' name='total' type='text' readonly='readonly' class='form-control'  value=''  > </div>";
                         html += "<div class='col-md-2'  >";
 
-                        html += "Cant. <input class='input-sm'  id='cantidad"+registros[i]["producto_id"]+"' name='cantidad' type='number' class='form-control'  value='1'> </div>";
+                        html += "Cant. <input class='input-sm' style='max-width: 120%' id='cantidad"+registros[i]["producto_id"]+"' name='cantidad' type='number' class='form-control'  value='1'> </div>";
 
                         html += "<div class='col-md-2'  >";
 
-                        html += "Anadir";
+                        html += "Añadir";
 
 
 
@@ -940,6 +940,7 @@ function tablaresultados(opcion)
 
                         
 
+                        html += "</div>";
                         html += "</div>";
 
                         html += "</div>";
@@ -1139,15 +1140,17 @@ function fechaorden(parametro){
                         html += "<td align='right'>"+Number(registros[i]["orden_total"]).toFixed(2)+"</td>";
                         html += "<td align='right'>"+Number(registros[i]["orden_acuenta"]).toFixed(2)+"</td>";
                         html += "<td align='right'>"+Number(registros[i]["orden_saldo"]).toFixed(2)+"</td>";
-                        html += "<td>"+registros[i]["usuario_nombre"]+"</td>";
+                        html += "<td>"+registros[i]["usuario_nombre"]+"</td><td>";
                         if (registros[i]["venta_id"]>0) {
-                        html += "<td><a href='"+base_url+"seguimiento/seguimiento/"+registros[i]["orden_id"]+"/"+registros[i]["venta_id"]+"' target='_blank' title='Proceso OT' class='btn btn-warning btn-xs'><span class='fa fa-spinner'></span> ";  
-                        html += "OT: "+registros[i]['orden_id']+" Cod.: "+registros[i]['venta_id']+"</a></td>";
+                        html += "<a href='"+base_url+"seguimiento/seguimiento/"+registros[i]["orden_id"]+"/"+registros[i]["venta_id"]+"' target='_blank' title='Proceso OT' class='btn btn-warning btn-xs'><span class='fa fa-spinner'></span> ";  
+                        html += "OT: "+registros[i]['orden_id']+" Cod.: "+registros[i]['venta_id']+"</a>";
                         }
-                        html += "<td class='no-print'>";
-                        
-                        html += " <a href='"+base_url+"orden_trabajo/editar/"+registros[i]["orden_id"]+"' target='_blank' title='Editar OT' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span></a>";
-                        html += " <a href='"+base_url+"orden_trabajo/ordendoc/"+registros[i]["orden_id"]+"' target='_blank' title='Imp. OT' class='btn btn-facebook btn-xs'><span class='fa fa-print'></span></a>";
+                        html += "</td><td class='no-print'>";
+                        if (registros[i]["venta_id"]>0) {
+                        }else{
+                        html += " <a href='"+base_url+"orden_trabajo/editar/"+registros[i]["orden_id"]+"' target='_blank' title='Editar OT' class='btn btn-info btn-xs'><span class='fa fa-edit'></span></a>";
+                        }
+                        html += " <a href='"+base_url+"orden_trabajo/ordendoc/"+registros[i]["orden_id"]+"' target='_blank' title='Imp. OT' class='btn btn-warning btn-xs'><span class='fa fa-print'></span></a>";
                         html += " <a href='"+base_url+"orden_trabajo/ordenrecibo/"+registros[i]["orden_id"]+"' target='_blank' title='Nota OT' class='btn btn-success btn-xs'><span class='fa fa-print'></span></a>";
                         
                         html += " <a href='#' data-toggle='modal'  data-target='#modalanular"+registros[i]["orden_id"]+"' title='Anular OT' class='btn btn-xs btn-danger' style=''><i class='fa fa-ban'></i></a>";
@@ -1156,15 +1159,18 @@ function fechaorden(parametro){
                         html += " <div class='modal-dialog' role='document'>";
                         html += "  <br><br>";
                         html += " <div class='modal-content'>";
-                        html += " <div class='modal-header'>";
-                        html += " <h1 class='modal-title' id='myModalLabel'>ADVERTENCIA</h1>";
+                        html += " <div class='modal-header btn-danger'>";
+                        html += " <h3 class='modal-title' id='myModalLabel'>ADVERTENCIA</h3>";
+                        html += "              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>";
+                        html += "                    <span aria-hidden='true'>x</span>";
+                        html += "                </button>";
                         html += " </div>";
                         html += " <div class='modal-body'>";
                         html += " <div class='panel panel-primary'>";
                         html += " ";
                         html += " <center>";
                         html += " <!------------------------------------------------------------------->";
-                        html += " <h1 style='font-size: 80px'> <b> <em class='fa fa-trash'></em></b></h1> ";
+                        html += " <h3 style='font-size: 80px'> <b> <em class='fa fa-trash'></em></b></h3> ";
                         html += " <h4>";
                         html += " ";
                         html += " ¿Desea anular la OT? <b> <br>";
@@ -1178,9 +1184,9 @@ function fechaorden(parametro){
                         html += "   </div>";
                         html += "    <div class='modal-footer aligncenter'>";
                         html += "   <center>";                                        
-                        html += "  <a href='"+base_url+"orden_trabajo/anular/"+registros[i]['orden_id']+"' class='btn btn-danger  btn-sm'><em class='fa fa-pencil'></em> Si </a>";
+                        html += "  <a href='"+base_url+"orden_trabajo/anular/"+registros[i]['orden_id']+"' class='btn btn-danger  btn-sm'><em class='fa fa-check'></em> Anular </a>";
 
-                        html += "  <a href='#' class='btn btn-success btn-sm' data-dismiss='modal'><em class='fa fa-times'></em> No </a>";
+                        html += "  <a href='#' class='btn btn-success btn-sm' data-dismiss='modal'><em class='fa fa-times'></em> Cancelar </a>";
                         html += "  </center>";
 
                         html += "   </div>";

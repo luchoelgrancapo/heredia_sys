@@ -51,7 +51,7 @@
     
     
 </table>       
-<div class="hidden">
+<div class="hidden" hidden>
 <center><h1>ORDEN DE TRABAJO</h1></center>
 
 <table>

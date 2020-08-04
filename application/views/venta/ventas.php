@@ -545,7 +545,7 @@ window.onkeydown = compruebaTecla;
                 <?php if($rolusuario[13-1]['rolusuario_asignado'] == 1){ ?>
                     <a href="#" data-toggle="modal" data-target="#modalonline" class="btn bg-orange btn-xs" onclick="pedidos_online()" title="Pedidos Online"><span class="fa fa-globe"></span><b> ONLINE</b></a> 
             <a href="#" data-toggle="modal" data-target="#modalpedidos" class="btn btn-primary btn-xs" onclick="pedidos_pendientes()" title="Pedidos Pendientes"><span class="fa fa-cubes"></span><b> PEDIDOS</b></a> 
-            <!--<a href="#" data-toggle="modal" data-target="#modalordenes" class="btn btn-facebook btn-xs" style="background-color: black" onclick="ordenes_pendientes()" title="Ordenes de Trabajo"><span class="fa fa-book"></span><b> OT's</b></a> -->
+            <a href="#" data-toggle="modal" data-target="#modalordenes" class="btn bg-black btn-xs" onclick="ordenes_pendientes()" title="Ordenes de Trabajo"><span class="fa fa-book"></span><b> OT's</b></a>
                 <?php }
                 } ?>
                     
@@ -569,8 +569,8 @@ window.onkeydown = compruebaTecla;
             <?php } 
             ?>
             
-            <?php            
-            if($rolusuario[17-1]['rolusuario_asignado'] == 1){ ?>
+            <?php           
+            if($rolusuario[17-1]['rolusuario_asignado'] == 1 && sizeof($dosificacion)>0){ ?>
             <a href="<?php echo base_url('venta/ultimaventa/1');?>" target="_blank" class="btn btn-warning btn-xs" id="imprimir_factura"><span class="fa fa-list-alt" title="Imprimir factura"></span><b> FACTURA</b></a> 
             
             <?php } 
@@ -666,7 +666,7 @@ window.onkeydown = compruebaTecla;
             <?php if($rolusuario[18-1]['rolusuario_asignado'] == 1){ ?>
             <a  href="<?php echo site_url('venta'); ?>" class="btn btn-app bg-danger" style='width: 90px !important; height: 90px !important;'>
                 <i class="fa fa-sign-out-alt"></i><br>
-               Ventas <br>
+               Salir <br>
             </a>    
             <?php } ?>    
             </center>
@@ -1080,17 +1080,18 @@ window.onkeydown = compruebaTecla;
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-                            
+                   <h4 class="modal-title" id="myModalLabel"><b>ORDENES DE TRABAJO</b></h4>         
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-                            <h4 class="modal-title" id="myModalLabel"><b>ORDENES DE TRABAJO</b></h4>
+                           
                                 
-                            <div class="input-group"> <span class="input-group-addon">Buscar</span>
-                              <input id="filtrar4" type="text" class="form-control" placeholder="Ingresa el nombre del cliente/ Numero de orden">
-                            </div>
+                           
                                 
 			</div>
+             <div class="input-group-prepend"> <span class="input-group-text">Buscar</span>
+                              <input id="filtrar4" type="text" class="form-control" placeholder="Ingresa el nombre del cliente/ Numero de orden">
+                            </div>
 			<div class="modal-body table-responsive">
                         <!--------------------- TABLA---------------------------------------------------->
                         <div class="box-body table-responsive">

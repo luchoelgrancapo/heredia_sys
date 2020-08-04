@@ -149,7 +149,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header" style="color: white; background: #333333;">
+      <div class="modal-header" style="color: white; background: #1E1F29;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -210,12 +210,12 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <!--Header-->
-      <div class="modal-header" style="background-color: #333333;">
+      <div class="modal-header" style="background-color: #1E1F29;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span style="color: white" aria-hidden="true" class="fa fa-times"></span>
         </button>
         
-          <img src="<?php echo base_url("resources/web/images/logo2.png") ?>" width="25%" height="25%">
+          <img src="<?php echo base_url("resources/web/images/logo2.png") ?>" width="20%" height="20%">
           
       </div>
       <!--Body-->
@@ -224,12 +224,12 @@
         <table class="table table-hover">
             
             
-            <tr>
+            <tr style="background-color: transparent !important;">
                 <td>    
                     <div class="row" >
                         
                            <div class="col-md-6">                                
-                        <button class="btn btn-primary btn-block form-control" onclick="inisesion()" id="boton_sesion"><fa class="fa fa-key"></fa> Iniciar Sesion</button><br>
+                        <button class="btn btn-primary btn-block" onclick="inisesion()" id="boton_sesion"><fa class="fa fa-sign-in"></fa> Iniciar Sesión</button><br>
                     </div>
                         <div class="col-md-6">
                         <button class="btn btn-default btn-block" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrarse</button><br>
@@ -345,7 +345,7 @@ function salirfb(){
                     </div>
                 </td>    
             </tr>
-            <tr>
+            <tr style="background-color: transparent !important;">
                 <td>    
             
         <!--         <div class="col-md-2">
@@ -361,7 +361,7 @@ function salirfb(){
                         <div>
 
                             <div class="col-md-6">
-                                <b><fa class="fa fa-user"></fa> Usuario/Emai: </b><input type="text" class="form-control" value="" id="cliente_login" name="cliente_login" required="true" onkeyup="saltar_input(event,1)">
+                                <b><fa class="fa fa-user"></fa> Emai: </b><input type="text" class="form-control" value="" id="cliente_login" name="cliente_login" required="true" onkeyup="saltar_input(event,1)">
                            </div>
                            <div class="col-md-6">
                                <b><fa class="fa fa-lock"></fa> Contraseña: </b><input type="password" class="form-control" value="" id="cliente_clave" name="cliente_clave" required="true" onkeyup="saltar_input(event,2)">
@@ -396,30 +396,30 @@ function salirfb(){
                     <div style="display:none" id="registrarcli">
                         
                      <div class="col-md-6">
-                         <b><fa class="fa fa-list-ul"></fa> Nombre (*): <small style="color:red;"><span id="mensaje_lognombre"> </span></small></b><input type="text" class="form-control" value="" id="cliente_nombre" name="cliente_nombre" required="true" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end); enfocar(event,1)">
+                         <b><fa class="fa fa-pencil-square-o"></fa> Nombre: <small style="color:red;"><span id="mensaje_lognombre"> </span></small></b><input type="text" class="form-control" value="" id="cliente_nombre" name="cliente_nombre" required="true" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end); enfocar(event,1)">
                     </div>
                         
                         
                      <div class="col-md-6">
-                         <b><fa class="fa fa-mobile-phone"></fa> Celular (*): <small style="color:red;"><span id="mensaje_logcelular"> </span></small></b><input type="number" class="form-control" value="" id="cliente_celular" name="cliente_celular" required="true" onkeyup="enfocar(event,2)">
+                         <b><fa class="fa fa-mobile-phone"></fa> Celular: <small style="color:red;"><span id="mensaje_logcelular"> </span></small></b><input type="number" class="form-control" value="" id="cliente_celular" name="cliente_celular" required="true" onkeyup="enfocar(event,2)">
                     </div>
                         
                     <div class="col-md-6">
-                        <b><fa class="fa fa-map-marker"></fa> Dirección (*): <small style="color:red;"><span id="mensaje_logdireccion"> </span></small></b><input type="text" class="form-control" value="" id="cliente_direccion" name="cliente_direccion" required="true" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end); enfocar(event,3)">
+                        <b><fa class="fa fa-map-marker"></fa> Dirección: <small style="color:red;"><span id="mensaje_logdireccion"> </span></small></b><input type="text" class="form-control" value="" id="cliente_direccion" name="cliente_direccion" required="true" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end); enfocar(event,3)">
                     </div>                       
                         
                         
                     <div class="col-md-6">
-                        <b><fa class="fa fa-envelope"></fa> Usuario/Email (*): <small style="color:red;"><span id="mensaje_logemail"> </span></small></b><input type="text" class="form-control" value="" id="cliente_email" name="cliente_email" required="true" onkeyup="enfocar(event,4);">
+                        <b><fa class="fa fa-envelope"></fa> Email: <small style="color:red;"><span id="mensaje_logemail"> </span></small></b><input type="text" class="form-control" value="" id="cliente_email" name="cliente_email" required="true" onkeyup="enfocar(event,4);">
                     </div>                       
                         
                     <div class="col-md-6">
-                        <b><fa class="fa fa-key"></fa> Contraseña (*): <small style="color:red;"><span id="mensaje_logclave"> </span></small></b><input type="password" class="form-control" value="" id="cliente_clavereg" name="cliente_clavereg" required="true" onkeyup="enfocar(event,5);" autocomplete="off">
+                        <b><fa class="fa fa-lock"></fa> Contraseña: <small style="color:red;"><span id="mensaje_logclave"> </span></small></b><input type="password" class="form-control" value="" id="cliente_clavereg" name="cliente_clavereg" required="true" onkeyup="enfocar(event,5);" autocomplete="off">
                     </div>
                         
                         
                     <div class="col-md-6">
-                        <b><fa class="fa fa-key"></fa> Repetir contraseña (*): <small style="color:red;"><span id="mensaje_logrepetir"> </span></small></b><input type="password" class="form-control" value="" id="cliente_repeticion" name="cliente_repeticion" required="true" onkeyup="enfocar(event,6);" autocomplete="off">
+                        <b><fa class="fa fa-lock"></fa> Repetir contraseña: <small style="color:red;"><span id="mensaje_logrepetir"> </span></small></b><input type="password" class="form-control" value="" id="cliente_repeticion" name="cliente_repeticion" required="true" onkeyup="enfocar(event,6);" autocomplete="off">
                         
                     </div>
                         

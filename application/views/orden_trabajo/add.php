@@ -1,7 +1,6 @@
 <!----------------------------- script buscador --------------------------------------->
 <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('resources/js/ordentrabajo.js'); ?>" type="text/javascript"></script>
-
 <script type="text/javascript">
         $(document).ready(function () {
             (function ($) {
@@ -72,12 +71,12 @@ input[type=number] { -moz-appearance:textfield; }
  <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
  <input type="hidden" name="usuario_id" id="usuario_id" value="<?php echo $usuario_id; ?>">
  <input type="hidden" name="tipo_orden" id="tipo_orden" value='<?php echo json_encode($tipo_orden); ?>' />
- <div class="row" style="padding-left: 10px;margin-top: -20px;margin-bottom: -7px;">
+ <div class="row" style="padding-left: 10px;margin-top: 0px;margin-bottom: -7px;">
                 <h4 class="box-title">Orden de Trabajo</h4>
  </div>     
 
      
-    <div class="panel panel-default" style="padding:0;">        
+    <div class="row" style="padding:0;">        
             <div class="col-md-3">
             <label for="nit" class="control-label">NIT</label>
             <div class="form-group">
@@ -108,25 +107,25 @@ input[type=number] { -moz-appearance:textfield; }
             </div>
 </div>
  
-<div class="col-md-3"></div>
-<div class="col-md-3"></div>
+<div class="row">
         
                   
          
-              <div class="col-md-3">
+              <div class="col-md-12" style="text-align:  right;">
            
             <button type="button" class="btn btn-success btn-xs" onclick="myFunction()">
                 <i class="fa fa-check"></i> Finalizar OT
               </button>
-              <a href="javascript:history.back()"><button type="button" class="btn btn-danger btn-xs">
-                <i class="fa fa-times"></i> Cancelar
+              <a href="<?php echo site_url('orden_trabajo'); ?>"><button type="button" class="btn btn-danger btn-xs">
+                <i class="fa fa-times"></i> Salir
               </button></a>
             </div>
+            </div>
 <!---------------------------------------TABLA DE DETALLE orden_trabajo------------------------------------>
-<div class="col-md-12">
+<div class="row">
    <div class="col-md-4" style="padding-left:0px;">
                         
-      <div class="input-group"> <span class="input-group-addon">Buscar</span>
+      <div class="input-group-prepend"> <span class="input-group-text"><i class="fas fa-search"></i></span>
         <input id="cotizar" type="text" class="form-control" autocomplete="off" placeholder="Ingresa el nombre de producto, código o descripción"  onkeypress="cotivalidar(event,4)">
       </div>
       <!-------------------- CATEGORIAS------------------------------------->
@@ -136,17 +135,17 @@ input[type=number] { -moz-appearance:textfield; }
                 <!--------------------- indicador de resultados --------------------->
     <!--<button type="button" class="btn btn-primary"><span class="badge">7</span>Productos encontrados</button>-->
 
-                <span class="badge btn-primary">Productos encontrados: <span class="badge btn-facebook"><input style="border-width: 0;" id="encontrados" type="text" value="0" readonly="true"> </span></span>
+                <span class="badge btn-primary">Productos encontrados: <span class="badge btn-primary"><input style="border-width: 0;" id="encontrados" type="text" value="0" readonly="true"> </span></span>
 
 </div>
 <!-------------------- FIN CATEGORIAS--------------------------------->
                                 
             
           
-                <table class="table table-striped" id="mitabla">
+                <table class="table table-striped" id="tabla_detalle">
                     
                      <tr>
-                                                <th>#</th>
+                                                <th>Nº</th>
                                                 <th>Producto</th>
                     </tr>
                     <tbody class="buscar" id="tablaresultados">
@@ -165,9 +164,9 @@ input[type=number] { -moz-appearance:textfield; }
 <div class="box">
              <h4 class="modal-title" id="myModalLabel">Detalle OT</h4>
             <div class="box-body table-responsive">
-                <table class="table table-striped table-condensed" id="mitabla">
+                <table class="table table-striped table-condensed" id="tabla_detalle" >
                     <tr>
-                            <th>#</th>
+                            <th>Nº</th>
                             <th>C</th>
                             <th>Producto</th>
                             <th>Cant.</th>
@@ -206,16 +205,16 @@ input[type=number] { -moz-appearance:textfield; }
     </div>
 </div>
 <div class="col-md-8" align="right">
-    <a type="button" onclick="myFunction()" class="btn btn-sq-lg btn-success" style="width: 120px !important; height: 120px !important;">
-                <i class="fa fa-money fa-4x"></i><br>
+    <a type="button" onclick="myFunction()" class="btn btn-app bg-success" style="width: 90px !important; height: 90px !important;">
+                <i class="fa fa-money-bill-alt"></i><br>
                Finalizar<br>OT<br>
             </a>
 
-            
-            <a  href="<?php echo site_url('orden_trabajo/index'); ?>" class="btn btn-sq-lg btn-danger" style="width: 120px !important; height: 120px !important;">
-                <i class="fa fa-sign-out fa-4x"></i><br><br>
-               Cancelar<br>
+            <a  href="<?php echo site_url('orden_trabajo/index'); ?>" class="btn btn-app bg-danger" style='width: 90px !important; height: 90px !important;'>
+                <i class="fa fa-sign-out-alt"></i><br>
+               Salir <br>
             </a>    
+            
 </div>
 <!---------------------------------------FIN TABLA DE DETALLE VENTAAA------------------------------------>
 </div>
@@ -238,8 +237,9 @@ input[type=number] { -moz-appearance:textfield; }
         </button>
       </div>
       <div class="modal-body">
-        <div class="row clearfix">
+       
         <?php echo form_open('orden_trabajo/add'); ?>
+         <div class="row">
         <div class="col-md-4">
             <label for="total" class="control-label">Total</label>
             <div class="form-group">

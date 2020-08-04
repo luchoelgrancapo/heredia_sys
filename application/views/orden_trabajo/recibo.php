@@ -71,7 +71,7 @@
     
     
 </table>       
-<div class="hidden">
+<div class="hidden" hidden>
 <center><h1>ORDEN DE TRABAJO</h1></center>
 
 <table>
@@ -113,7 +113,7 @@
 	</tr>
 </table>
 </div>
-<div class="box-body table-responsive" style="padding-left: 10%">
+<div class="box-body table-responsive" >
 <table class="table table-striped table-condensed" id="mitabla">
 <tr>
 	<th colspan="3">DETALLE DE PEDIDO</th>

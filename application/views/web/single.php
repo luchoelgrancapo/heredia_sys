@@ -259,15 +259,16 @@ function mostrar() {
                                    
                                 </div>
                             </div>
-                            <a href="<?php echo base_url("website/single/".$os['producto_id']); ?>"><div class="product-body">
+                            <div class="product-body">
                                 <p class="product-category"></p>
                                 <h3 class="product-name"><?php echo $os['producto_nombre'];?></h3>
                                 <h4 class="product-price"><?php echo number_format($os['producto_precio'], 2, '.', ','); ?></h4>
                                 <div class="product-rating">
                                 </div>
-                                <div class="product-btns">
-                                </div>
-                            </div></a>
+                                <a href="<?php echo base_url("website/single/".$os['producto_id']); ?>"><div class="product-btns">
+                                    <button class="quick-view" tabindex="0"><i class="fa fa-eye"></i><span class="tooltipp">Ver más</span></button>
+                                </div></a>
+                            </div>
                             <div class="add-to-cart">
                                 <input type="hidden" name="cmd" value="_cart" />
                                                                     <input type="hidden" name="add" id="cantidad<?php echo $os['producto_id'];?>" value="1" />

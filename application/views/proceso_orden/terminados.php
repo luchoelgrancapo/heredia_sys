@@ -19,7 +19,7 @@
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <div class="box-header">
-                <h3 class="box-title">ORDENES DE TRABAJO QUE TERMINARON EL PROCESO DE: <B><span id="elestado1"></span></B> LISTAS PARA SER RECEPCIONADAS EN: <B><span id="elestado"></span></B></h3>
+                <h4 class="box-title">ORDENES DE TRABAJO QUE TERMINARON EL PROCESO DE: <B><span id="elestado1"></span></B> LISTAS PARA SER RECEPCIONADAS EN: <B><span id="elestado"></span></B></h4>
             	<div class="box-tools">
                     
                 </div>
@@ -28,7 +28,7 @@
   <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
   <input type="hidden" name="estado" id="estado" value="">
 
-    <div class="col-md-12">
+  
                        
                         <?php 
                         foreach($estados as $estado)
@@ -45,7 +45,7 @@
 <div class="row">
     <div class="col-md-12">
         <!--------------------- parametro de buscador --------------------->
-                  <div class="input-group"> <span class="input-group-addon">Buscar</span>
+                  <div class="input-group-prepend"> <span class="input-group-text">Buscar</span>
                     <input id="filtrar" type="text" class="form-control" placeholder="Ingrese descripción">
                   </div>
             <!--------------------- fin parametro de buscador --------------------->
@@ -54,9 +54,15 @@
             <div class="box-body table-responsive">
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
-						<th>#</th>
+						<th>Nº</th>
 						<th>OT</th>
 						<th>Cliente</th>
+                        <th>Producto</th>
+                        <th>Tipo</th>
+                        <th>Cant.</th>
+                        <th>Ancho M2</th>
+                        <th>Alto M2</th>
+                        <th>Total M2</th>
                         <th>Fecha Inicio</th>
 						<th>Fecha Terminado</th>
             

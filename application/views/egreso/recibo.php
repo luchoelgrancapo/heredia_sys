@@ -61,24 +61,24 @@ border-spacing : 0 0;
 border-collapse : collapse;
 font-family: Arial;
 font-size: 7pt;  
-
+}
 td {
-border:hidden;
+border-top:none !important;
 }
-}
+
 
 td#comentario {
 vertical-align : bottom;
 border-spacing : 0;
 }
 div#content {
-background : #ddd;
+background : #eee;
 font-size : 7px;
 margin : 0 0 0 0;
 padding : 0 5px 0 5px;
-border-left : 1px solid #aaa;
-border-right : 1px solid #aaa;
-border-bottom : 1px solid #aaa;
+border-left : 1px solid #eee;
+border-right : 1px solid #eee;
+border-bottom : 1px solid #eee;
 }
 </style>
 <!----------------------------- fin script buscador --------------------------------------->
@@ -180,13 +180,13 @@ border-bottom : 1px solid #aaa;
                                 
                             <tr>
                                 <td style="width: 2cm;"></td> 
-                                <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap ><b>EN FECHA: </b></td><td></td> <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;"><?php echo $fecha_d_m_a; ?></td>
+                                <td style="width: 4cm; text-align: right; background-color: #eee !important; -webkit-print-color-adjust: exact;" nowrap ><b>EN FECHA: </b></td><td></td> <td style="width: 10cm; background-color: #eee !important; -webkit-print-color-adjust: exact;"><?php echo $fecha_d_m_a; ?></td>
                                 <td style="width: 2cm;"></td> 
                             </tr>
 
                             <tr>
                                 <td style="width: 2cm;"></td>
-                                <td style="width: 5cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap><b>ENTREGUE A: </b></td><td ></td><td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;"><?php echo $egresos[0]['egreso_nombre'].""; ?></td>
+                                <td style="width: 5cm; text-align: right; background-color: #eee !important; -webkit-print-color-adjust: exact;" nowrap><b>ENTREGUE A: </b></td><td ></td><td style="width: 10cm; background-color: #eee !important; -webkit-print-color-adjust: exact;"><?php echo $egresos[0]['egreso_nombre'].""; ?></td>
                                 <td style="width: 2cm;"></td>
                             </tr>
                            
@@ -209,9 +209,9 @@ border-bottom : 1px solid #aaa;
                       
                        <tr>
                                 <td style="width: 2cm;"></td> 
-                                <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap >
+                                <td style="width: 4cm; text-align: right; background-color: #eee !important; -webkit-print-color-adjust: exact;" nowrap >
                                     <b>POR CONCEPTO: </b></td><td></td> 
-                                <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;">
+                                <td style="width: 10cm; background-color: #eee !important; -webkit-print-color-adjust: exact;">
                                      <?php echo$egresos[0]['egreso_categoria'];?> (<?php echo$egresos[0]['egreso_concepto'];?>)
                                 </td>
                                 <td style="width: 2cm;"></td> 
@@ -223,9 +223,9 @@ border-bottom : 1px solid #aaa;
                        
                        <tr>
                                 <td style="width: 2cm;"></td> 
-                                <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap >
+                                <td style="width: 4cm; text-align: right; background-color: #eee !important; -webkit-print-color-adjust: exact;" nowrap >
                                     <b>LA SUMA DE: </b></td><td></td> 
-                                <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;">
+                                <td style="width: 10cm; background-color: #eee !important; -webkit-print-color-adjust: exact;">
                                         <?php echo number_format($egresos[0]['egreso_monto'],'2','.',',');?> <?php echo$egresos[0]['egreso_moneda'];?>
                                 </td>
                                 <td style="width: 2cm;"></td> 
@@ -237,9 +237,9 @@ border-bottom : 1px solid #aaa;
                        
                        <tr>
                                 <td style="width: 2cm;"></td> 
-                                <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap >
+                                <td style="width: 4cm; text-align: right; background-color: #eee !important; -webkit-print-color-adjust: exact;" nowrap >
                                     <b>LITERAL: </b></td><td></td> 
-                                <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;">
+                                <td style="width: 10cm; background-color: #eee !important; -webkit-print-color-adjust: exact;">
                                     <?php echo num_to_letras($egresos[0]['egreso_monto']);?> 
                                 </td>
                                 <td style="width: 2cm;"></td> 
