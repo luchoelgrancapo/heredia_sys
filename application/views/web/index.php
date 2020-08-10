@@ -225,7 +225,7 @@ function mostrar() {
                                  // //Se crea una nueva instancia del objeto mapa
                                   var map = new google.maps.Map(document.getElementById('map'),
                                   {
-                                    zoom: 19,
+                                    zoom: 17,
                                     center:new google.maps.LatLng(coords_lat.lat,coords_lng.lng),
 
                                   });

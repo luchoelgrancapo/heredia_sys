@@ -28,10 +28,10 @@
 
             </center>
         </td>
-        <td style="width: 25%; padding: 0; line-height:10px;" >
+        <td style="width: 25%; padding: 0; line-height:15px;" >
                 
                          <br><br>
-                              <br><font size="1" face="Arial"><b>CLIENTE: </b><?php echo $Orden_trabajo['cliente_nombre'];?><br>
+                              <br><font size="3" face="Arial"><b>CLIENTE: </b><?php echo $Orden_trabajo['cliente_nombre'];?><br>
                           <b>TELEFONOS: </b><?php echo $Orden_trabajo['cliente_telefono'];?><br>
                           <b>NOTA: </b><?php echo $Orden_trabajo['orden_observacion'];?><br>
                           <b>FECHA PEDIDO: </b><?php echo date('d/m/Y',strtotime($Orden_trabajo['orden_fecha'])) ; ?><br>

@@ -285,8 +285,8 @@ function tablacuentas(filtro) //Cuentas por cobrar
                         html += "<td>"+registros[i]['kay']+"</td>";
                         html += "<td style='text-align: center'>00"+registros[i]['credito_id']+"</td>";
                         html += "<td style='text-align: center'>Venta: 00"+registros[i]['ventita'];
-                        if (registros[i]['orden_id']>0) {
-                        html += " OT:"+registros[i]['orden_id'];  
+                        if (registros[i]['orde']>0) {
+                        html += " OT:"+registros[i]['orden_numero'];  
                         html += "</td>";  
                         }
                         
@@ -312,7 +312,9 @@ function tablacuentas(filtro) //Cuentas por cobrar
                         html += "<td><a href='"+base_url+"cuotum/cuentas/"+registros[i]['credito_id']+"'  target='_blank' title='Cobrar cuotas' class='btn btn-success btn-xs'><span class='fas fa-money-bill-alt'></span></a>";
                         html += " <a href='"+base_url+"cuotum/planCuenta/"+registros[i]['credito_id']+"' target='_blank' title='Plan de pago' class='btn btn-warning btn-xs'><span class='fa fa-print'></span></a>";
                         html += " <a href='"+base_url+"factura/imprimir_recibo/"+registros[i]['venta_id']+"' target='_blank' class='btn btn-primary btn-xs' title='VER DETALLE VENTA'><span class='fa fa-file'></span></a>";
-                        
+                        if (registros[i]['orde']>0) {
+                       html += " <a href='"+base_url+"orden_trabajo/ordendoc/"+registros[i]['orde']+"' target='_blank' class='btn btn-secondary btn-xs' title='VER OT'><span class='fa fa-paste'></span></a>";
+                        }
                         if (registros[i]['factura_id']>0) {
                         html += " <a href='"+base_url+"factura/imprimir_factura_id/"+registros[i]['factura_id']+"/2' target='_blank' class='btn btn-warning btn-xs' title='IMPRIMIR FACTURA'><span class='fa fa-list'></span></a>";
                       }else{

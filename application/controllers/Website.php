@@ -440,14 +440,7 @@ class Website extends CI_Controller{
 
     }
 
-  /*function ximpleman(){
 
-        header("location: https://www.ximpleman.com");
-    }
-    function password(){
-
-        header("location: https://www.passwordbolivia.com");
-    }*/
 
     function reestablecer_clave()
     {

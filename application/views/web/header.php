@@ -88,7 +88,12 @@
                  <input type="hidden" name="cmd" value="_cart">
                  <input type="hidden" name="display" value="1">
                         
-                        
+                <div>
+                  <a href="" data-toggle="modal" data-target="#seguimientoOT">
+                    <i class="fa fa-paste"></i>
+                    <span>OT's</span>
+                  </a>
+                </div>        
                 <div>
                   <a href="#" onclick="tablacarrito()">
                     <i class="fa fa-shopping-cart"></i>
@@ -476,5 +481,43 @@ function salirfb(){
   </div>
 </div>
 <!-- Modal: registro -->
-
+<!-- --------------- INICIO Modal para ver el avance de OT --------------- -->
+                    <div class="modal fade" id="seguimientoOT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                            <br><br>
+                            <div class="modal-content text-left">
+                          <div class="modal-header">
+                              <label>Seguimiento:</label> Ordenes de trabajo
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                          </div>
+                           
+                          <div class="modal-body">
+                           <!-- --------------------------------------------------------------- -->
+                           <div class="row">
+                            <div class="col-md-6">
+                                <label for="orden" class="control-label">Orden (OT)</label>
+                                <div class="form-group">
+                                    <input type="text" name="orden" id="orden" class="form-control" required  autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="transaccion" class="control-label">Código</label>
+                                <div class="form-group">
+                                    <input type="text" name="transaccion" id="transaccion" class="form-control" required autocomplete="off" />
+                                </div>
+                            </div>
+                            </div>
+                            
+                           <!------------------------------------------------------------------->
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" onclick="buscarseguimiento()" class="btn btn-success">
+                                    <i class="fa fa-check "></i> Consultar
+                            </button>
+                          </div>
+                            
+                        </div>
+                      </div>
+                    </div>
+                    <!-- --------------- F I N Modal para ver el avance de OT --------------- -->
 <!--  FIN MODALES  -->

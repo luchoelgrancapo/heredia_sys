@@ -323,7 +323,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>  
 <body>
 
-    <?php if($diaslic['dias'] < 0){ ?>
+    <?php if($diaslic < 0){ ?>
 <div class="login-error">
                 
                   <br>
@@ -345,7 +345,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                   <br>
                   <br>
                   <br>
-                  <span class="alert-text">LA LICENCIA VENCERA EN: <font size="5"><b><?php echo $diaslic['dias']; ?></b></font> DIAS</span>
+                  <span class="alert-text">LA LICENCIA VENCERA EN: <font size="5"><b><?php echo $diaslic; ?></b></font> DIAS</span>
                 
                  <br>
                   <span class="alert-text">
@@ -360,7 +360,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  
           echo $this->session->flashdata('msg'); ?>
 
-              <?php if($diaslic['dias'] < 0){ ?>
+              <?php if($diaslic < 0){ ?>
                <div class="login-error">
                 
                   <br>

@@ -45,7 +45,7 @@ Class Seguimiento extends CI_Controller
     {
         $orden_id = $this->input->post('orden');
         $venta_id = $this->input->post('venta');
-        $hay = $this->Proceso_orden_model->get_seguimiento($orden_id,$venta_id);
+        $hay = $this->Proceso_orden_model->get_seguimiento($venta_id);
 
         if($hay[0]['orden_id']>0){
             
