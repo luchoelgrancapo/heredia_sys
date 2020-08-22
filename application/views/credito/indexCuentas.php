@@ -19,6 +19,7 @@
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
+<input type="hidden" name="base_url" id="bandera" value="1">
 <br>
 <div class="row">
 <div class="col-md-6">
@@ -115,20 +116,7 @@
                 <table class="table table-striped table-condensed" id="mitabla">
                     <thead id="titulos">
                     <tr>
-						<th>Nº</th>                                             
-						<th>Cliente</th>
-                                                <th>Crédito</th>
-                                                <th>Transac.</th>
-						<th>Estado</th>
-						<th>Monto</th>
-						<th>Cuota<br>Inicial</th>
-                                                <th>Interes<br>(%)</th>
-						<th># Pagos</th>
-						<th>Fecha</th>
-						<th>Hora</th>
-						<th>Usuario</th>
-						<th></th>
-                                                
+						     
                                                 
                                                 
                                                 

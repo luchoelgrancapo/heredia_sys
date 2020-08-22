@@ -156,12 +156,14 @@ function inicio(){
                         <tr>
                         <th>Num.</th>                                             
                         <th>CLIENTE</th>
-                        <th>VENTA</th>
-                        <th>CREDITO</th>                        
+                        <th>CREDITO</th> 
+                        <th>TRANS.</th>
                         <th>FECHA</th>                        
-                        <th>TOTAL<br>CRED.</th>
-                        <th>CANCELADO<br>a CTTA</th>
-                        <th>SALDO<br>TOTAL</th>
+                        <th>TOTAL<br>VENTA</th>
+                        <th>CUOTA<br>INICIAL</th>
+                        <th>TOTAL<br>DEUDA</th>
+                        <th>TOTAL<br>PAGADO</th>
+                        <th>TOTAL<br>ADEUDADO</th>
                         <th>TELEFONO(s)</th>
                         <th>USUARIO</th>
                         
@@ -181,9 +183,15 @@ function inicio(){
                     <tr>
 						<td style="text-align: center;"><?php echo $cont ?></td>                                                
 						<td ><?php echo $c['cliente_nombre']; ?></td>
-                        <td style="text-align: center;"><?php echo $c['venta_id']; ?><?php echo $c['servicio_id']; ?></td>
-                        <td style="text-align: center;"><?php echo $c['credito_id']; ?></td>				    
+                        <td style="text-align: center;"><?php echo $c['credito_id']; ?></td>
+                        <td style="text-align: center;"><?php echo $c['venta_id']; ?><?php echo $c['servicio_id']; ?>
+                        <?php if ($c['orde']>0) {
+                            echo "<b>OT:</b>". $c['orden_numero'];
+                        }				    ?>
+                        </td>
                         <td style="text-align: center;"><?php echo date('d/m/Y',strtotime($c['credito_fecha'])) ; ?> <?php echo $c['credito_hora']; ?></td>                   
+                        <td style="text-align: right;"><?php echo number_format($c['venta_total'], 2, ".", ","); ?></td>
+                        <td style="text-align: right;"><?php echo number_format($c['credito_cuotainicial'], 2, ".", ","); ?></td>
                         <td style="text-align: right;"><?php echo number_format($c['credito_monto'], 2, ".", ","); ?></td>
                         <td style="text-align: right;"><?php $cancelado=0; foreach($cuota as $k){ if($c['credito_id']==$k['credito_id']){ 
                         $cancelado+=$k['cuota_cancelado'];  }  } echo  number_format($cancelado, 2, ".", ",");  $totalCancelados+=$cancelado; ?></td>
@@ -200,8 +208,11 @@ function inicio(){
                         <td></td>
                         <td></td>
                         <td style="text-align: right; font-size: 12px;"><b><?php echo number_format($totalCreditos, 2, ".", ","); ?></td>
+                            <td></td>
+                            <td></td>
                         <td style="text-align: right; font-size: 12px;"><b><?php echo number_format($totalCancelados, 2, ".", ","); ?></td>
                         <td style="text-align: right; font-size: 12px;"><b><?php echo number_format($totalSaldos, 2, ".", ","); ?></td>
+                        <td></td>
                         <td></td>
                     </tr>
                 <?php }  ?>

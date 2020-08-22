@@ -19,6 +19,7 @@
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-------------------------------------------------------->
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
+<input type="hidden" name="base_url" id="bandera" value="0">
 <br>
 <div class="row">
 <div class="col-md-6">

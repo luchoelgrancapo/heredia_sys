@@ -385,7 +385,7 @@ function salirfb(){
                             </div>    
                             <div class="col-md-6">
                                  <button class="btn btn-success btn-block" type="button" onclick="sesion()" id="boton_login"><fa class="fa fa-sign-in"></fa> Ingresar</button>
-                            </div>
+                            </div><br>
                             <div class="col-md-6">     
                                  <button class="btn btn-danger btn-block" type="button" data-dismiss="modal"><fa class="fa fa-times"></fa> Cerrar</button>                
                                              

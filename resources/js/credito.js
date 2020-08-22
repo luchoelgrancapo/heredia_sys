@@ -1,8 +1,14 @@
  $(document).on("ready",inicio);
 function inicio(){
-     filtro = " and date(credito_fecha) = date(now())";           
-        tablacuentas(filtro);
-        tabladeudas(filtro);
+  var bandera    = document.getElementById('bandera').value;
+  var   filtro = " and date(credito_fecha) = date(now())"; 
+  if (bandera==1) {
+    tablacuentas(filtro);
+  }       else{
+     tabladeudas(filtro);
+  }   
+        
+       
         
 } 
 
@@ -112,8 +118,11 @@ function tabladeudas(filtro) //Deudas por pagar
                     html2 += "<th>Crédito</th>";  
                     html2 += "<th>Compra</th>";  
                     html2 += "<th>Estado</th>";  
-                    html2 += "<th>Monto<br>Crédito</th>";  
+                    html2 += "<th>Total<br>Compra</th>"; 
                     html2 += "<th>Cuota<br>Inicial</th>";  
+                    html2 += "<th>Total<br>Deuda</th>";  
+                    html2 += "<th>Total<br>Pagado</th>";  
+                    html2 += "<th>Total<br>Adeudado</th>";  
                     html2 += "<th>Interes<br>(%)</th>";  
                     html2 += "<th># Pagos</th>";  
                     html2 += "<th>Fecha</th>";  
@@ -126,6 +135,8 @@ function tabladeudas(filtro) //Deudas por pagar
                     $("#titulos").html(html2); 
                         total = 0;
                         iniciales = 0;
+                        compras = 0;
+                        cuotas_pagadas = 0;
                     for (var i = 0; i < n ; i++){
                     
                         color = "";
@@ -138,6 +149,8 @@ function tabladeudas(filtro) //Deudas por pagar
                         //descuento += Number(registros[i]["detallecomp_descuento"]);
                         total += Number(registros[i]["credito_monto"]);
                         iniciales += Number(registros[i]["credito_cuotainicial"]);
+                        compras += Number(registros[i]["compra_totalfinal"]);
+                        cuotas_pagadas += Number(registros[i]["total"]);
                         //total_detalle = Number(subtotal-descuento); 
                         html += "<tr style='"+color+"'>"; 
                         html += "<td style'"+color+"'>"+(i+1)+"</td>";
@@ -145,8 +158,14 @@ function tabladeudas(filtro) //Deudas por pagar
                         html += "<td style='text-align: center'>"+registros[i]['credito_id']+"</td>";
                         html += "<td style='text-align: center'>00"+registros[i]['compra_id']+"</td>";
                         html += "<td style='text-align: center'>"+registros[i]['estado_descripcion']+"</td>";
-                        html += "<td style='text-align: right; background:silver'><b>"+Number(registros[i]['credito_monto']).toFixed(2)+"</b></td>";
+                        html += "<td style='text-align: right'><b>"+Number(registros[i]['compra_totalfinal']).toFixed(2)+"</b></td>";
                         html += "<td style='text-align: right'>"+Number(registros[i]['credito_cuotainicial']).toFixed(2)+"</td>";
+                        html += "<td style='text-align: right'><b>"+Number(registros[i]['credito_monto']).toFixed(2)+"</b></td>";
+                        
+                        html += "<td style='text-align: right;'>"+Number(registros[i]['credito_monto']-registros[i]['total']).toFixed(2)+"</td>";
+
+                        html += "<td style='text-align: right; background: #F35959'>"+Number(registros[i]['total']).toFixed(2)+"</td>";
+
                         html += "<td style='text-align: right'>"+Number(registros[i]['credito_interesmonto']).toFixed(2)+"("+registros[i]['credito_interesproc']+")</td>";
                         html += "<td style='text-align: center'>"+registros[i]['credito_numpagos']+"</td>";
                         html += "<td style='text-align: center'>"+moment(registros[i]['credito_fecha']).format('DD/MM/YYYY')+"</td>";
@@ -155,8 +174,12 @@ function tabladeudas(filtro) //Deudas por pagar
                         html += "<td><a href='"+base_url+"cuotum/deudas/"+registros[i]['credito_id']+"' target='_blank' title='Pagar cuotas' class='btn btn-success btn-xs'><span class='fas fa-money-bill-alt'></span></a>";
                         html += " <a href='"+base_url+"cuotum/planDeuda/"+registros[i]['credito_id']+"' target='_blank' title='Plan de pago' class='btn btn-warning btn-xs'><span class='fa fa-print'></span></a></td>";
 }
-                   html += "<tr><td colspan=3 align=right><font size='2' face='Arial'><b>TOTAL</b></font></td>"; 
-                   html += "<td colspan=3 align=right><font size='2' face='Arial'><b>"+Number(total).toFixed(2)+"</b></font></td>"; 
+                   html += "<tr><td colspan=4 align=right><font size='2' face='Arial'><b>TOTAL</b></font></td>"; 
+                   html += "<td colspan=2 align=right><font size='2' face='Arial'><b>"+Number(compras).toFixed(2)+"</b></font></td>"; 
+                   html += "<td colspan=1 align=right><font size='2' face='Arial'><b>"+Number(iniciales).toFixed(2)+"</b></font></td>"; 
+                   html += "<td colspan=1 align=right><font size='2' face='Arial'><b>"+Number(total).toFixed(2)+"</b></font></td>"; 
+                   html += "<td colspan=1 align=right><font size='2' face='Arial'><b>"+Number(total-cuotas_pagadas).toFixed(2)+"</b></font></td>"; 
+                   html += "<td colspan=1 align=right><font size='2' face='Arial'><b>"+Number(cuotas_pagadas).toFixed(2)+"</b></font></td>"; 
                    html += "<td colspan=7 align=right></td><tr>"; 
                    $("#tabladeudas").html(html);
                    //tablatotales(total_detalle,descuento,subtotal);
@@ -251,8 +274,11 @@ function tablacuentas(filtro) //Cuentas por cobrar
                     html2 += "<th>Crédito</th>";  
                     html2 += "<th>Transacción</th>";  
                     html2 += "<th>Estado</th>";  
-                    html2 += "<th>Monto<br>Crédito</th>";  
+                    html2 += "<th>Total<br>Venta</th>"; 
                     html2 += "<th>Cuota<br>Inicial</th>";  
+                    html2 += "<th>Total<br>Deuda</th>";  
+                    html2 += "<th>Total<br>Pagado</th>";
+                    html2 += "<th>Total<br>Adeudado</th>";  
                     html2 += "<th>Interes<br>(%)</th>";  
                     html2 += "<th># Pagos</th>";  
                     html2 += "<th>Fecha</th>";  
@@ -263,7 +289,9 @@ function tablacuentas(filtro) //Cuentas por cobrar
                     $("#titulos").html(html2); 
                     
                     total=0;
-                    inciales=0;
+                    iniciales=0;
+                    ventas=0;
+                    cuotas_pagadas=0;
                     for (var i = 0; i < n ; i++){
                        // var suma = Number(registros[i]["detallecomp_total"]);
                         //descuento += Number(registros[i]["detallecomp_descuento"]);
@@ -271,13 +299,16 @@ function tablacuentas(filtro) //Cuentas por cobrar
                         color = "";
                        if (registros[i]["estado_id"]==9){ 
                            color = "background:#"+registros[i]["estado_color"];
+
                         //alert(color);
                        }
                         
                         
                         
                          total += Number(registros[i]["credito_monto"]);
-                         inciales += Number(registros[i]["credito_cuotainicial"]);
+                         iniciales += Number(registros[i]["credito_cuotainicial"]);
+                         ventas += Number(registros[i]["venta_total"]);
+                         cuotas_pagadas += Number(registros[i]["total"]);
                         //total_detalle = Number(subtotal-descuento); 
                         html += "<tr>";
                         html += "<td>"+(i+1)+"</td>";
@@ -295,10 +326,16 @@ function tablacuentas(filtro) //Cuentas por cobrar
                         html += "<td style='text-align: center; "+color+"'>"+registros[i]['credito_id']+"</td>";
                         html += "<td style='text-align: center'>Servicio: "+registros[i]['servicio_id']+"</td>";
                         }
-                        color = "background: red";
+                        
                         html += "<td style='text-align: center'>"+registros[i]['estado_descripcion']+"</td>";
-                        html += "<td style='text-align: right; background:silver'><b>"+Number(registros[i]['credito_monto']).toFixed(2)+"</b></td>";
-                        html += "<td style='text-align: right; "+color+"'>"+Number(registros[i]['credito_cuotainicial']).toFixed(2)+"</td>";
+                        html += "<td style='text-align: right;'><b>"+Number(registros[i]['venta_total']).toFixed(2)+"</b></td>";
+                        html += "<td style='text-align: right;'>"+Number(registros[i]['credito_cuotainicial']).toFixed(2)+"</td>";
+
+                        html += "<td style='text-align: right;'><b>"+Number(registros[i]['credito_monto']).toFixed(2)+"</b></td>";
+                        
+                        html += "<td style='text-align: right;'>"+Number(registros[i]['credito_monto']-registros[i]['total']).toFixed(2)+"</td>";
+                        html += "<td style='text-align: right; background: #F35959'>"+Number(registros[i]['total']).toFixed(2)+"</td>";
+                        
                         html += "<td style='text-align: right'>"+Number(registros[i]['credito_interesmonto']).toFixed(2)+"("+registros[i]['credito_interesproc']+")</td>";
                         html += "<td style='text-align: center'>"+registros[i]['credito_numpagos']+"</td>";
                         html += "<td style='text-align: center'>"+moment(registros[i]['credito_fecha']).format('DD/MM/YYYY')+"</td>";
@@ -330,8 +367,12 @@ function tablacuentas(filtro) //Cuentas por cobrar
                         }
                         
                 }
-                   html += "<tr><td colspan=3 align=right><font size='2' face='Arial'><b>TOTAL</b></font></td>"; 
-                   html += "<td colspan=3 align=right><font size='2' face='Arial'><b>"+Number(total).toFixed(2)+"</b></font></td>"; 
+                   html += "<tr><td colspan=4 align=right><font size='2' face='Arial'><b>TOTAL</b></font></td>"; 
+                   html += "<td colspan=2 align=right><font size='2' face='Arial'><b>"+Number(ventas).toFixed(2)+"</b></font></td>"; 
+                   html += "<td colspan=1 align=right><font size='2' face='Arial'><b>"+Number(iniciales).toFixed(2)+"</b></font></td>"; 
+                   html += "<td colspan=1 align=right><font size='2' face='Arial'><b>"+Number(total).toFixed(2)+"</b></font></td>"; 
+                   html += "<td colspan=1 align=right><font size='2' face='Arial'><b>"+Number(total-cuotas_pagadas).toFixed(2)+"</b></font></td>"; 
+                   html += "<td colspan=1 align=right><font size='2' face='Arial'><b>"+Number(cuotas_pagadas).toFixed(2)+"</b></font></td>"; 
                    html += "<td colspan=7 align=right></td><tr>"; 
                    $("#tablacuentas").html(html);
                    //tablatotales(total_detalle,descuento,subtotal);
