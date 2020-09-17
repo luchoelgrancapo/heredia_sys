@@ -52,6 +52,7 @@
                         <select  name="parametro_margenfactura" class="form-control" id="parametro_margenfactura" >
                             <option value="1">1</option>
                             <option value="2" <?php if($parametro['parametro_permisocredito']=='2'){ ?> selected <?php } ?> >2</option>
+                            <option value="3" <?php if($parametro['parametro_permisocredito']=='3'){ ?> selected <?php } ?> >3</option>
                         </select>
                     </div>
                 </div>

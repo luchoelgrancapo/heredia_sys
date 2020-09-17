@@ -76,7 +76,7 @@ class Verificar extends CI_Controller
                     if ($dosificacion['dias']<=10 && $dosificacion['dias']!=null) {
                        redirect('alerta/dosificacion');
                     }
-                    redirect('venta/registrar');
+                    redirect('orden_trabajo');
                 }
 
                 if($session_data['tipousuario_id'] == 4){

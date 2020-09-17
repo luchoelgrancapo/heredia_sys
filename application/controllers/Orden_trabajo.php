@@ -449,7 +449,7 @@ class Orden_trabajo extends CI_Controller{
         $ancho = $this->input->post('ancho');
         $largo = $this->input->post('largo');
         $total = $ancho*$largo/1000000;
-        $totalme = $cantidad*$ancho*$largo/1000000;
+        $totalme = round($cantidad*$ancho*$largo/1000000, 2);
         
        
        
@@ -461,7 +461,7 @@ class Orden_trabajo extends CI_Controller{
                 detalleorden_ancho = ".$ancho.",
                 detalleorden_largo = ".$largo.",
                 detalleorden_total = ".$totalme.",
-                detalleorden_preciototal = (".$cantidad." * ".$producto_precio.") * ".$total."
+                detalleorden_preciototal = (".$totalme." * ".$producto_precio.")
                         
                 WHERE detalleorden_id = ".$detalleorden_id."
             ";
@@ -485,7 +485,7 @@ class Orden_trabajo extends CI_Controller{
         $ancho = $this->input->post('ancho');
         $largo = $this->input->post('largo');
         $total = $ancho*$largo/1000000;
-        $totalme = $cantidad*$ancho*$largo/1000000;
+        $totalme = round($cantidad*$ancho*$largo/1000000, 2);
        
        
        $cot = "UPDATE detalle_orden
@@ -496,7 +496,7 @@ class Orden_trabajo extends CI_Controller{
                 detalleorden_ancho = ".$ancho.",
                 detalleorden_largo = ".$largo.",
                 detalleorden_total = ".$totalme.",
-                detalleorden_preciototal = (".$cantidad." * ".$producto_precio.") * ".$total."
+                detalleorden_preciototal = (".$totalme." * ".$producto_precio.")
                         
                 WHERE detalleorden_id = ".$detalleorden_id."
             ";
