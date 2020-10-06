@@ -305,7 +305,7 @@ function tablaproductos()
 
 //html += "  <button class='btn btn-primary btn-xs' title='Registrar/modificar preferencias y características' type='button' data-toggle='collapse' data-target='#caracteristicas"+registros[i]["detalleven_id"]+"' aria-expanded='false' aria-controls='caracteristicas"+registros[i]["detalleven_id"]+"'><i class='fa fa-edit'></i></button>";
 
-//html += "  <a href='#' data-toggle='modal' onclick='iniciar_preferencia("+registros[i]["detalleven_id"]+")' data-target='#modalpreferencia' class='btn btn-xs btn-success' style=''><i class='fa fa-tasks'></i></a>";
+html += "  <a href='#' data-toggle='modal' onclick='iniciar_preferencia("+registros[i]["detalleven_id"]+")' data-target='#modalpreferencia' class='btn btn-xs btn-success' style=''><i class='fa fa-tasks'></i></a>";
 
 
 html += "<div class='row'>";
@@ -1965,6 +1965,7 @@ function registrarventa(cliente_id)
     var usuarioprev_id = document.getElementById('usuarioprev_id').value; 
     var nit = document.getElementById('nit').value;
     var razon = document.getElementById('razon_social').value;
+    var venta_horaentrega = document.getElementById('venta_horaentrega').value;
     
     var moneda_id = 1; 
     var estado_id = 1; 
@@ -2015,7 +2016,8 @@ function registrarventa(cliente_id)
                 +","+moneda_id+","+estado_id+",'"+venta_fecha+"','"+venta_hora+"',"+venta_subtotal
                 +","+venta_descuento+","+venta_total+","+venta_efectivo+","+venta_cambio+","+venta_glosa
                 +","+venta_comision+","+venta_tipocambio+","+detalleserv_id+","+venta_tipodoc+","+tiposerv_id
-                +","+entrega_id+",'"+venta_numeromesa+"',"+venta_numeroventa+","+usuarioprev_id+","+pedido_id+","+orden_id+","+entregaestado_id;
+                +","+entrega_id+",'"+venta_numeromesa+"',"+venta_numeroventa+","+usuarioprev_id+","+pedido_id
+                +","+orden_id+",'"+venta_horaentrega+"',"+entregaestado_id;
         
      //alert(sql); 
     if (tipo_transaccion==2){
@@ -2031,7 +2033,7 @@ function registrarventa(cliente_id)
                 facturado:facturado,venta_fecha:venta_fecha, razon:razon, nit:nit,
                 cuotas:cuotas, modalidad:modalidad, dia_pago:dia_pago, fecha_inicio: fecha_inicio,
                 venta_descuento:venta_descuento,usuarioprev_id:usuarioprev_id,orden_id:orden_id,
-                venta_efectivo:venta_efectivo, venta_cambio:venta_cambio,venta_online:venta_online},
+                venta_efectivo:venta_efectivo, venta_cambio:venta_cambio,venta_online:venta_online,venta_horaentrega:venta_horaentrega},
             success:function(respuesta){ 
                 eliminardetalleventa();
                 //if (pedido_id>0){ pedidos_pendientes(); }
@@ -2050,7 +2052,7 @@ function registrarventa(cliente_id)
                 venta_total:venta_total, credito_interes:credito_interes, pedido_id:pedido_id,
                 facturado:facturado,venta_fecha:venta_fecha, razon:razon, nit:nit,
                 venta_descuento:venta_descuento,orden_id:orden_id,
-                venta_efectivo:venta_efectivo, venta_cambio:venta_cambio,venta_online:venta_online},
+                venta_efectivo:venta_efectivo, venta_cambio:venta_cambio,venta_online:venta_online,venta_horaentrega:venta_horaentrega},
             success:function(respuesta){ 
                 eliminardetalleventa();
                 //if (pedido_id>0){ pedidos_pendientes(); }
@@ -2889,13 +2891,14 @@ function onlineaventas(venta_o,cliente_id)
     var base_url = document.getElementById('base_url').value;
     var controlador = base_url+"venta_online/pasar_aventas/"+venta_o+"/"+cliente_id;
    
-   
+    
     $.ajax({url: controlador,
         type:"POST",
         data:{},
         success:function(respuesta){  
-            
+            resultado = JSON.parse(respuesta);
             $("#venta_online").val(venta_o);
+            $("#venta_glosa").val(resultado['venta_glosa']);      
             $("#orden_id").val(0);
             $("#pedido_id").val(0);
             tablaproductos();
@@ -3042,6 +3045,7 @@ function modificar_venta(cliente_id)
     var tipo_transaccion = document.getElementById('tipo_transaccion').value;
     var forma_pago = document.getElementById('forma_pago').value;
     var facturado = document.getElementById('facturado').value;
+    var venta_horaentrega = document.getElementById('venta_horaentrega').value;
     
 
         $.ajax({url: controlador,
@@ -3052,7 +3056,7 @@ function modificar_venta(cliente_id)
             tipo_transaccion:tipo_transaccion, cuotas:cuotas, cuota_inicial:cuota_inicial, 
             venta_total:venta_total, credito_interes:credito_interes,
             facturado:facturado,venta_fecha:venta_fecha, tipo_transaccion:tipo_transaccion, forma_pago:forma_pago,
-            modalidad:modalidad, dia_pago:dia_pago, fecha_inicio: fecha_inicio},
+            modalidad:modalidad, dia_pago:dia_pago, fecha_inicio: fecha_inicio, venta_horaentrega:venta_horaentrega},
             success:function(respuesta){
                 //window.opener.location.reload();
                 window.close();

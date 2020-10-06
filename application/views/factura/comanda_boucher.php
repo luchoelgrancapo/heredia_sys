@@ -67,13 +67,7 @@ function autosize(){
 
 <style type="text/css">
 
-p {
-    font-family: Arial;
-    font-size: 7pt;
-    line-height: 120%;   /*esta es la propiedad para el interlineado*/
-    color: #000;
-    padding: 10px;
-}
+
 
 div {
 margin-top: 0px;
@@ -90,12 +84,12 @@ margin : 0 0 0px 0;
 padding : 0 0 0 0;
 border-spacing : 0 0;
 border-collapse : collapse;
-font-family: Arial narrow;
-font-size: 7pt;  
-
+font-family: Arial;
+font-size: 14px;  
+}
 td {
 border:hidden;
-}
+
 }
 
 td#comentario {
@@ -104,7 +98,7 @@ border-spacing : 0;
 }
 div#content {
 background : #ddd;
-font-size : 7px;
+font-size : 11px;
 margin : 0 0 0 0;
 padding : 0 5px 0 5px;
 border-left : 1px solid #aaa;
@@ -136,9 +130,17 @@ border-bottom : 1px solid #aaa;
 
                 <font size="3" face="arial"><b>PEDIDO Nº 00<?php echo $venta[0]['venta_numeroventa']; ?></b></font>
                 
-                <?php if($venta[0]['tiposerv_id']>0){ ?>
+                <?php if($venta[0]['tiposerv_id']==1){ ?>
                 <br>
-                <font size="1" face="arial"><b><?php echo $venta[0]["tiposerv_descripcion"]; ?></b></font>
+                
+                Mesa: <b><?php echo $venta[0]["venta_numeromesa"]; ?></b>
+                <br>
+                <?php } ?>
+
+                <?php if($venta[0]['tiposerv_id']==2){ ?>
+                <br>
+                
+                <b>Para llevar</b>
                 <br>
                 <?php } ?>
                 _______________________________________________                
@@ -147,8 +149,9 @@ border-bottom : 1px solid #aaa;
                 <?php $fecha = new DateTime($venta[0]['venta_fecha']); 
                         $fecha_d_m_a = $fecha->format('d/m/Y');
                   ?>    
-                    <b>LUGAR Y FECHA: </b><?php echo $empresa[0]['empresa_departamento'].", ".$fecha_d_m_a; ?> <br>
-                    <b>SEÑOR(ES): </b><?php echo $venta[0]['cliente_razon'].""; ?>
+                    <b>LUGAR Y FECHA: </b><?php echo $empresa[0]['empresa_departamento'].", ".$fecha_d_m_a." ".$venta[0]['venta_hora'] ?> <br>
+                    <b>SEÑOR(ES): </b><?php echo $venta[0]['cliente_razon'].""; ?><br>
+                    <b>ENTREGA: </b><?php echo $venta[0]['venta_horaentrega'].""; ?>
                
             </center>                      
         </td>
@@ -176,16 +179,17 @@ border-bottom : 1px solid #aaa;
                         ?>
            <tr style="padding: 0">
                 <td align="center" style="padding: 0"><?php echo $d['detalleven_cantidad']; ?></td>
-                <td style="padding: 0"><font style="size:5px; font-family: arial narrow;"> <?php echo $d['producto_nombre'];?>
+                <td style="padding: 0"><font style="size:11px; font-family: Arial;"> <?php echo $d['producto_nombre'];?>
                         <?php
                         $preferencia = $d['detalleven_preferencia'];
                         $caracteristicas = $d['detalleven_caracteristicas'];
-                        
+                        if ($d['categoria_id'] == 2)
+                            echo  " /".$d['producto_unidad'];
                         if ($preferencia !='null' && $preferencia!='-')
                             echo  " /".$preferencia;
                         
-                        if ($caracteristicas!='null' && $caracteristicas!='-')
-                            echo  "<br>".$caracteristicas;
+                       /* if ($caracteristicas!='null' && $caracteristicas!='-')
+                            echo  "<br>".$caracteristicas;*/
                         
                         ?>
                     <!--<textarea onload="autosize()"></textarea>-->
@@ -197,8 +201,8 @@ border-bottom : 1px solid #aaa;
 
     <tr style="border-top-style: solid">
           <td  colspan="4">
-               CAJERO: <b><?php echo $venta[0]['usuario_nombre']; ?></b>
-<!--               / TRANS: <b><?php echo $venta[0]['venta_id']; ?></b>-->
+               CAJERO: <b><?php echo $venta[0]['usuario_nombre']; ?></b><br>
+               NOTA: <b><?php echo $venta[0]['venta_glosa']; ?></b>
             <center>
             <font size="2">
                    

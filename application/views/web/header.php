@@ -1,6 +1,6 @@
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="196459962248-b1j1tu51032l2ke79hsdffluj5crgqp8.apps.googleusercontent.com">
-
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="196459962248-b1j1tu51032l2ke79hsdffluj5crgqp8.apps.googleusercontent.com">-->
+  
     <!-- HEADER -->
     <header>
       <!-- TOP HEADER -->
@@ -68,7 +68,7 @@
                                                      <a href="<?php echo base_url("website/compras/") ?>" >Mis Compras</a>
                                                    </div>
                                                     <div class="product-widget">
-                                                      <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion(),signOut()">Cerrar Sesión</a>
+                                                      <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()">Cerrar Sesión</a>
                                                             
                                                     </div>
                                                     
@@ -102,7 +102,7 @@
                 </div>
                 <?php if(isset($_COOKIE["cliente_id"])) { ?>
                 <div>
-                <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion(),signOut(),salirfb()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesión"></i><span>Cerrar Sesión</span></a>
+                <a href="#" onclick="javascript:$.fn.CookieCompliance.disconsent(),cerrarsesion()"><i class="fa fa-sign-out" aria-hidden="true" title="Cerrar Sesión"></i><span>Cerrar Sesión</span></a>
                         <?php }  ?>
                 </div>
                 <!-- /Wishlist -->
@@ -122,7 +122,94 @@
       <!-- /MAIN HEADER -->
     </header>
     <!-- /HEADER -->
+<script type="text/javascript">
+                            var marker;          //variable del marcador
+                            var coords_lat = {};    //coordenadas obtenidas con la geolocalización
+                            var coords_lng = {};    //coordenadas obtenidas con la geolocalización
 
+
+                            //Funcion principal
+                            initotroMap = function () 
+                            {
+                                //usamos la API para geolocalizar el usuario
+
+                                //milat = document.getElementById('cliente_latitud').value;
+                                milat = $('#venta_latitud').val();
+                                //milng = document.getElementById('cliente_longitud').value;
+                                milng = $('#venta_longitud').val();
+
+                                    navigator.geolocation.getCurrentPosition(
+                                    function (position){
+                                        if(milat == 'undefined' || milat == null || milat ==""){
+                                            coords_lat =  {
+                                            lat: position.coords.latitude,
+                                            };
+                                            //milat = position.coords.latitude;
+                                        }else{
+                                            coords_lat =  {
+                                            lat: milat,
+                                            };
+                                        }
+                                        if(milng == 'undefined' || milng == null || milng ==""){
+                                            coords_lng =  {
+                                              lng: position.coords.longitude,
+                                            };
+                                            //lng = position.coords.longitude;
+                                        }else{
+                                            coords_lng =  {
+                                              lng: milng,
+                                            };
+                                        } 
+                                        /*coords_lat =  {
+                                            lat: milat,
+                                            };
+
+                                        coords_lng =  {
+                                              lng: milng,
+                                            };*/
+                                        setOtromapa(coords_lat, coords_lng);  //pasamos las coordenadas al metodo para crear el mapa
+
+
+                                      },function(error){console.log(error);});
+                            }
+
+                            function setOtromapa (coords_lat, coords_lng)
+                            {
+                                //document.getElementById("cliente_latitud").value = coords_lat.lat;
+                               // document.getElementById("cliente_longitud").value = coords_lng.lng;
+                                  //Se crea una nueva instancia del objeto mapa
+                                  var map = new google.maps.Map(document.getElementById('map1'),
+                                  {
+                                    zoom: 17,
+                                    center:new google.maps.LatLng(coords_lat.lat,coords_lng.lng),
+
+                                  });
+
+                                  //Creamos el marcador en el mapa con sus propiedades
+                                  //para nuestro obetivo tenemos que poner el atributo draggable en true
+                                  //position pondremos las mismas coordenas que obtuvimos en la geolocalización
+                                  marker = new google.maps.Marker({
+                                    map: map,
+                                    draggable: true,
+                                    animation: google.maps.Animation.DROP,
+                                    position: new google.maps.LatLng(coords_lat.lat,coords_lng.lng),
+
+                                  });
+                                  //agregamos un evento al marcador junto con la funcion callback al igual que el evento dragend que indica 
+                                  //cuando el usuario a soltado el marcador
+                                  //marker.addListener('click', toggleBounce);
+
+                                  marker.addListener( 'dragend', function (event)
+                                  {
+                                    //escribimos las coordenadas de la posicion actual del marcador dentro del input #coords
+                                    document.getElementById("venta_latitud").value = this.getPosition().lat();
+                                    document.getElementById("venta_longitud").value = this.getPosition().lng();
+                                  });
+                            }
+                            initotroMap();
+                        </script>
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $parametro[0]['parametro_apikey'];?>&callback=initotroMap"></script>
+                        </div>    
 <!--  DATOS IMPORTANTES DE CABECERA -->       
         <div class="w3l_search" hidden>
             <center>
@@ -156,9 +243,9 @@
       <!--Header-->
       <div class="modal-header" style="color: white; background: #1E1F29;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
+          <span  style="color: white;"  aria-hidden="true" class="fa fa-times"></span>
         </button>
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Finalizar Compra</h4>
+        <h4 style="color: white;" class="modal-title" id="myModalLabel"><i class="fa fa-cart-arrow-down"></i> Finalizar Compra</h4>
         
       </div>
       <!--Body-->
@@ -179,24 +266,31 @@
                 <option value="2">Sucursal</option>
             </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" hidden>
             <b>NIT:</b> <input type="text" onclick="(this.select())" class="form-control" value="" id="venta_nit" name="venta_nit" required="true">
         </div>
         <div class="col-md-6">
             <b>Razón Social:</b> <input type="text" onclick="(this.select())" class="form-control" value="" id="venta_razon" name="venta_razon" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end)" required="true">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" hidden>
             <b>Celular:</b> <input type="text" class="form-control" value="" id="venta_celular" name="venta_celular" required="true">
         </div>
         <div class="col-md-6">
             <b>Teléfono:</b> <input type="text" class="form-control" value="" id="venta_telefono" name="venta_telefono" required="true">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" hidden>
             <b>Dirección:</b> <input type="text" class="form-control" value="" id="venta_direccion" name="venta_direccion" required="true"> <input type="hidden" class="form-control" value="" id="venta_subtotal" name="venta_subtotal" required="true">
             <input type="hidden" class="form-control" value="" id="venta_descuento" name="venta_descuento" required="true">
             <input type="hidden" class="form-control" value="" id="venta_total" name="venta_total" required="true">
         </div>
-        
+        <div class="col-md-12"><b>Ubicación:</b>
+          <input type="hidden" class="form-control" value="" id="venta_latitud" name="venta_latitud" required="true">
+          <input type="hidden" class="form-control" value="" id="venta_longitud" name="venta_latitud" required="true">
+        <div id="map1" style="width:100%; height:350px;"></div>
+      </div>
+      <div class="col-md-12"><b>Nota:</b>
+          <input type="text" class="form-control" value="" id="venta_glosa" name="venta_glosa" required="true">
+      </div>
         </table>
 
       </div>
@@ -240,7 +334,7 @@
                         <button class="btn btn-default btn-block" onclick="registrarcli()" id="boton_registro"><fa class="fa fa-user-plus"></fa> Registrarse</button><br>
                     </div>
                    
-                   <center><div class="col-md-6" id="my-signin2"></div></center><br>
+                 <!--  <center><div class="col-md-6" id="my-signin2"></div></center><br>
                    <div class="col-md-6"><center><fb:login-button  class="fb-login-button" data-size="medium" data-button-type="continue_with" scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button></center>
 
@@ -346,7 +440,7 @@ function salirfb(){
   }
 
 </script>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>-->
                     </div>
                 </td>    
             </tr>

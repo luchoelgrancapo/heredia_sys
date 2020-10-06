@@ -213,6 +213,7 @@ function mostrar() {
                                               lng: milng,
                                             };*/
                                         setMapa(coords_lat, coords_lng);  //pasamos las coordenadas al metodo para crear el mapa
+                                          //pasamos las coordenadas al metodo para crear el mapa
 
 
                                       },function(error){console.log(error);});
@@ -251,6 +252,7 @@ function mostrar() {
                                     document.getElementById("empresa_longitud").value = this.getPosition().lng();
                                   });
                             }
+                            
                             initMap();
                         </script>
                         <script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $parametro[0]['parametro_apikey'];?>&callback=initMap"></script>

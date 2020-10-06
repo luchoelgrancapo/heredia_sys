@@ -100,7 +100,7 @@ function get_ventaso_dia()
     function get_thiscliente($venta_id)
     {
         $sql = "SELECT
-                        v.cliente_id
+                        v.cliente_id, v.venta_glosa
                 FROM
                         venta_online v
                 WHERE

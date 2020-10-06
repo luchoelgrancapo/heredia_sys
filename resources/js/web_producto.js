@@ -500,6 +500,9 @@ function insertar(producto_id){
         var base_url = document.getElementById('base_url').value;
     
         var controlador = base_url+'website/insertarproducto/';
+        var dia= new Date().getDay();
+        //alert(dia);
+  if (dia!=1) {
         if(cliente_id==0){
             var cliente = document.getElementById('miip').value;
         }else{
@@ -514,6 +517,10 @@ function insertar(producto_id){
               tablacarrito(); 
          }
     });
+
+}else{
+    alert('Disculpe las molestias, hoy no tenemos atención.')
+}
 
 }
 
@@ -655,7 +662,7 @@ function tablacarrito(){
                        html += "<td style='padding:0;'></td>";
                        html += "</tr>";
                        $("#carritos").html(html);
-                       $("#modalCart").modal("show");
+                       $("#modalCart").modal();
                        $("#venta_subtotal").val(subtotal);
                        $("#venta_descuento").val(subtotal-suma);
                        $("#venta_total").val(suma);
@@ -679,7 +686,7 @@ function realizarcompra(){
     
     
             if (cliente==0) {
-                $("#modalCliente").modal("show");  
+                $("#modalCliente").modal();  
             }else{
 
                 var base_url = document.getElementById('base_url').value;
@@ -698,10 +705,12 @@ function realizarcompra(){
                                 $("#venta_telefono").val(registros["cliente_telefono"]);
                                 $("#venta_direccion").val(registros["cliente_direccion"]);
                                 $("#venta_celular").val(registros["cliente_celular"]);
+                                $("#venta_latitud").val(registros["cliente_latitud"]);
+                                $("#venta_longitud").val(registros["cliente_longitud"]);
 
 
-                             $("#modalFinalizar").modal("show");  
-                         
+                             $("#modalFinalizar").modal();  
+                             initotroMap();
                          
                          }   
                     },
@@ -766,6 +775,9 @@ function venta_online(){
         var subtotal = document.getElementById('venta_subtotal').value; 
         var descuento = document.getElementById('venta_descuento').value;  
         var total = document.getElementById('venta_total').value; 
+        var latitud = document.getElementById('venta_latitud').value; 
+        var longitud = document.getElementById('venta_longitud').value; 
+        var glosa = document.getElementById('venta_glosa').value; 
 
         var base_url = document.getElementById('base_url').value;
         var controlador = base_url+'website/venta_online/';
@@ -773,9 +785,9 @@ function venta_online(){
       $.ajax({url: controlador,
            type:"POST",
            data:{cliente:cliente,nit:nit,razon:razon,telefono:telefono,direccion:direccion,forma:forma,tipo_servicio:tipo_servicio,
-               subtotal:subtotal,descuento:descuento,total:total},
+               subtotal:subtotal,descuento:descuento,total:total,longitud:longitud,latitud:latitud,glosa:glosa},
            success:function(respuesta){
-           alert("Compra realizada con exito");
+           alert("Su compra fue realizada con éxito");
            location.reload();
          
     },

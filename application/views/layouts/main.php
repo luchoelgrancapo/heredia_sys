@@ -189,7 +189,7 @@
                                 <i class="nav-icon fas fa-cogs fa-fw"></i> <p>Configuraciónn</p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <!--<li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-network-wired"></i>
               <p>
@@ -214,7 +214,7 @@
                             </a>
                         </li>
                          </ul>
-          </li>
+          </li>-->
                         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-edit"></i>

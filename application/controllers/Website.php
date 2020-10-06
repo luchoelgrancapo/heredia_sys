@@ -347,11 +347,14 @@ class Website extends CI_Controller{
         $descuento = $this->input->post('descuento');
         $total = $this->input->post('total');
         $tipo_servicio = $this->input->post('tipo_servicio');
+        $longitud = $this->input->post('longitud');
+        $latitud = $this->input->post('latitud');
+        $glosa = $this->input->post('glosa');
 
         $fecha = "now()";
         $hora = "'".date('H:i:s')."'";
 
-        $updatecli = "UPDATE cliente SET cliente_nit='".$nit."', cliente_razon='".$razon."', cliente_telefono='".$telefono."',cliente_direccion='".$direccion."' WHERE cliente_id=".$cliente." ";
+        $updatecli = "UPDATE cliente SET cliente_nit='".$nit."', cliente_razon='".$razon."', cliente_telefono='".$telefono."',cliente_direccion='".$direccion."', cliente_latitud='".$latitud."', cliente_longitud='".$longitud."' WHERE cliente_id=".$cliente." ";
         $this->db->query($updatecli);
         $venta = "INSERT INTO venta_online
             (forma_id,
@@ -366,7 +369,8 @@ class Website extends CI_Controller{
               venta_total,
               venta_tipodoc,
               tiposerv_id,
-              entrega_id
+              entrega_id,
+              venta_glosa
             )
             VALUES
             (".$forma.",          
@@ -381,7 +385,8 @@ class Website extends CI_Controller{
               ".$total.",
               1,
               ".$tipo_servicio.",
-              1          
+              1,
+              '".$glosa."'          
               )"
             ;
 
@@ -437,7 +442,16 @@ class Website extends CI_Controller{
 
             $borrar_carrito = "DELETE FROM carrito WHERE cliente_id='".$cliente."' ";
             $this->db->query($borrar_carrito);
-
+            //alerta email de venta online pedido caeterrazas
+            $to = "caeterrazas@gmail.com";
+            $from = "info@criolloygrillladoce.com";
+            $subject = "PEDIDO NUEVO";
+            $message = "Tienes un nuevo pedido revisa la aplicacion Business Sys.";
+            $headers = "From: ".$from."";
+             
+            mail($to, $subject, $message, $headers);
+                
+            redirect('website/index/1');
     }
 
 

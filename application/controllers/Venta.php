@@ -265,7 +265,7 @@ class Venta extends CI_Controller{
         $sql = "insert into venta(forma_id,tipotrans_id,usuario_id,cliente_id,moneda_id,".
                "estado_id,venta_fecha,venta_hora,venta_subtotal,venta_descuento,venta_total,".
                "venta_efectivo,venta_cambio,venta_glosa,venta_comision,venta_tipocambio,detalleserv_id,".
-               "venta_tipodoc, tiposerv_id, entrega_id,venta_numeromesa, venta_numeroventa,usuarioprev_id,pedido_id, orden_id, entrega_estadoid".
+               "venta_tipodoc, tiposerv_id, entrega_id,venta_numeromesa, venta_numeroventa,usuarioprev_id,pedido_id, orden_id, venta_horaentrega, entrega_estadoid".
                ") value(".$cad.")";
         
         $tipo_transaccion = $this->input->post('tipo_transaccion'); // recuperamos la consulta sql enviada mediante JS
@@ -283,6 +283,7 @@ class Venta extends CI_Controller{
         $venta_online = $this->input->post('venta_online'); // Orden de trabajo        
         $venta_efectivo = $this->input->post('venta_efectivo'); // efectivo cancelado
         $venta_cambio = $this->input->post('venta_cambio'); // Cambio devuelto  
+        $venta_horaentrega = $this->input->post('venta_horaentrega'); // horaaa de entrefa 
         
         $facturado = $this->input->post('facturado'); // si la venta es facturada
         
@@ -1309,6 +1310,7 @@ function edit($venta_id)
                 ",venta_cambio = ".$venta_cambio.                
                 ",tipotrans_id = ".$tipotrans_id.                
                 ",forma_id = ".$forma_id.                
+                ",venta_horaentrega = '".$venta_horaentrega."'".                
                 " where venta_id = ".$venta_id;       
         $this->Venta_model->ejecutar($sql);        
         

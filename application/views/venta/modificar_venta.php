@@ -228,7 +228,7 @@ window.onkeydown = compruebaTecla;
 </div>
 
 <!--------------------- fin cliente_id --------------------->
-        
+<div class="row">      
         <div class="col-md-3" <?php echo $estilo_div; ?>>
             <label for="nit" class="control-label" style="margin-bottom: 0;">NIT</label>
             <div class="form-group"  <?php echo $estilo_div; ?>>
@@ -281,7 +281,7 @@ window.onkeydown = compruebaTecla;
               
             </div>
         </div>
-        
+ </div>         
 <!---------------------- collapse ----------------------------->
  
         <h4 class="panel-title">
@@ -305,7 +305,7 @@ window.onkeydown = compruebaTecla;
           
       
             
-            
+      <div class="row">      
 
             <div class="col-md-3" <?php echo $estilo_div; ?>>
             <label for="nombre" class="control-label" style="margin-bottom: 0;">CLIENTE</label>
@@ -381,7 +381,7 @@ window.onkeydown = compruebaTecla;
             </div>
             </div>
             
-            <div class="col-md-14" >
+            <div class="col-md-12" >
                 <br>
                 <small>
                     <b>
@@ -543,23 +543,30 @@ window.onkeydown = compruebaTecla;
                 } ?>
                     
             <?php if($parametro[0]["parametro_modulorestaurante"]==1){ //1 es modo restaurante?>            
-                    <a href="#" data-toggle="modal" target="_blank" class="btn btn-facebook btn-xs" id="imprimir_comanda" title="Comanda"  disabled="true"><span class="fa fa-print"></span><b> Comanda</b></a> 
+                    <a href="#" data-toggle="modal" target="_blank" class="btn btn-primary btn-xs" id="imprimir_comanda" title="Comanda"  disabled="true"><span class="fa fa-print"></span><b> COMANDA</b></a> 
             <?php } ?>            
            
 <!--            <button onclick='quitartodo()' class='btn btn-danger btn-xs'><span class='fa fa-trash'></span><b> Vaciar</b></button> -->
             
-      
+                       <?php 
+            if($rolusuario[15-1]['rolusuario_asignado'] == 1){ ?>
+            <button onclick='costo_cero()' class='btn btn-danger btn-xs'><span class='fab fa-creative-commons-zero' title="Costo Cero"></span><b> 0.00</b></button> 
+            <?php }
+            if($rolusuario[16-1]['rolusuario_asignado'] == 1){ ?>
+            <button onclick='precio_costo()' class='btn bg-teal btn-xs'><span class='fas fa-dollar-sign' title="Precio de costo"></span><b> COSTO</b></button> 
+            
+            <?php } ?>
             
             
             <?php            
             if($rolusuario[17-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="#" data-toggle="modal" target="_blank" class="btn btn-facebook btn-xs"  style="background-color: #761c19" id="imprimir"  disabled="true"><span class="fa fa-print" title="Imprimir nota de entrega"></span><b> Recibo</b></a> 
+            <a href="#" data-toggle="modal" target="_blank" class="btn btn-info btn-xs" id="imprimir"  disabled="true"><span class="fa fa-print" title="Imprimir nota de entrega"></span><b> RECIBO</b></a> 
             
             <?php } 
             ?>
             
             <?php            
-            if($rolusuario[17-1]['rolusuario_asignado'] == 1){ ?>
+            if($rolusuario[17-1]['rolusuario_asignado'] == 1 && sizeof($dosificacion)>0){ ?>
             <a href="#" data-toggle="modal" target="_blank" class="btn btn-warning btn-xs" id="imprimir_factura" disabled="true"><span class="fa fa-list-alt" title="Imprimir factura"></span><b> Factura</b></a> 
             
             <?php } 
@@ -569,7 +576,7 @@ window.onkeydown = compruebaTecla;
             
             
             <?php if($rolusuario[14-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="#" data-toggle="modal" data-target="#modalfinalizar" class="btn btn-success btn-xs"><span class="fa fa-cubes"></span><b> Finalizar</b></a> 
+            <a href="#" data-toggle="modal" data-target="#modalfinalizar" class="btn btn-success btn-xs"><span class="fas fa-money-bill-alt"></span><b> FINALIZAR</b></a> 
             <?php } ?>
 
             </center>
@@ -605,29 +612,22 @@ window.onkeydown = compruebaTecla;
                     
                 </div>
           
-                        <?php 
-            if($rolusuario[15-1]['rolusuario_asignado'] == 1){ ?>
-            <button onclick='costo_cero()' class='btn btn-danger btn-xs'><span class='fa fa-battery-0' title="Costo Cero"></span><b> - 0 -</b></button> 
-            <?php }
-            if($rolusuario[16-1]['rolusuario_asignado'] == 1){ ?>
-            <button onclick='precio_costo()' class='btn btn-warning btn-xs'><span class='fa fa-money' title="Precio de costo"></span><b> Costo</b></button> 
-            
-            <?php } ?>
-            
+             
+            <!--
             <?php
             if($rolusuario[17-1]['rolusuario_asignado'] == 1){ ?>
             
             <a href="#" data-toggle="modal" target="_blank" class="btn btn-facebook btn-xs"  style="background-color: purple"  id="garantias" disabled="true"><span class="fa fa-lock" title="Imprimir garantias"></span><b> Garantias</b></a>
             
             <?php } ?>      
-            
+            -->
             <!--<a href="<?php echo base_url('venta/ultimagarantia');?>" data-toggle="modal" target="_blank" class="btn btn-facebook btn-xs"  style="background-color: purple"  id="garantias"><span class="fa fa-lock" title="Imprimir garantias"></span><b> Garantias</b></a>-->
-            <select  id="select_imprimir_factura" style="font-weight: bold" class='btn btn-warning btn-xs' title="Imprimir factura" disabled="true">
+            <!--<select  id="select_imprimir_factura" style="font-weight: bold" class='btn btn-warning btn-xs' title="Imprimir factura" disabled="true">
                 <option value="0">Imprimir</option>
                 <option value="1">Factura</option>
                 <option value="2">Copia</option>
             </select>
-            
+            -->
             </div>
         </div>
         
@@ -641,8 +641,8 @@ window.onkeydown = compruebaTecla;
 
             <center>
             <?php if($rolusuario[14-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="#" data-toggle="modal" onclick="focus_efectivo()" data-target="#modalfinalizar" class="btn btn-sq-lg btn-success" style="width: <?php echo $ancho_boton; ?>px !important; height: <?php echo $alto_boton; ?>px !important;">
-                <i class="fa fa-money fa-4x"></i><br><br>Finalizar <br>
+            <a href="#" data-toggle="modal" onclick="focus_efectivo()" data-target="#modalfinalizar" class="btn btn-app bg-success" style='width: 90px !important; height: 90px !important;'>
+               <i class="fa fa-money-bill-alt"></i><br>Finalizar Venta <br>
             </a>
             <?php } ?>
 
@@ -656,8 +656,8 @@ window.onkeydown = compruebaTecla;
                 <i class="fa fa-sign-out fa-4x"></i><br><br>
                Salir <br>
             </a>    -->
-                <button  onclick="cerrar_ventas()" class="btn btn-sq-lg btn-danger" style="width: <?php echo $ancho_boton; ?>px !important; height: <?php echo $alto_boton; ?>px !important;">
-                <i class="fa fa-sign-out fa-4x"></i><br><br>
+                <button  onclick="cerrar_ventas()" class="btn btn-app bg-danger" style='width: 90px !important; height: 90px !important;'>
+                <i class="fa fa-sign-out-alt"></i><br>
                Salir <br>
             </button>    
             <?php } ?>    
@@ -665,21 +665,7 @@ window.onkeydown = compruebaTecla;
             <br>
         </div>    
         <!----------------------------------- fin Botones ---------------------------------->
-        <font face="Arial" size="1">
-        <b>
-            
-        TECLAS DE ACCESO DIRECTO <br>
-        </b>
-        <p>
-            
-        [F2] Busqueda por código de barras <br>
-        [F4] Busqueda por parámetros<br>
-        [F5] Actualizar página<br>        
-        [F7] Registrar NIT<br>
-        [F8] Finalizar venta<br>
         
-        </p>
-        </font>
     </div>
 </div>
 
@@ -715,19 +701,16 @@ window.onkeydown = compruebaTecla;
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-                            
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+              </div>
                             
                         <div class="container">
                             
-                                <center>
+                               
                                 <div class="row">
-                                    <div class="col-md-12">
+                                   
                                         
                                     
-                                    <div class="col-md-2" style="padding: 0;">
+                                    <div class="col-md-6" style="padding: 0;">
 <!--                                        <h4 class="modal-title" id="myModalLabel"><b>FECHA DE ENTREGA</b></h4>
                                         <?php                                                     
                                             $fecha = date('Y-m-d'); 
@@ -736,7 +719,7 @@ window.onkeydown = compruebaTecla;
                                         
                                         <input type="datetime-local" id="fechahora_entrega" name="fechahora_entrega" value="<?php echo $fecha."T".$hora;?>" required>-->
                                         <h5 class="modal-title" id="myModalLabel"><b>FORMA DE PAGO</b></h5>                                        
-                                        <select id="forma_pago"  name="forma_pago" class="btn btn-default btn-xs" style="width: 120px;">
+                                        <select id="forma_pago"  name="forma_pago"  class="form-control" >
                                             <?php
                                                 foreach($forma_pago as $forma){
                                                     
@@ -749,11 +732,11 @@ window.onkeydown = compruebaTecla;
                                          </select>
                                     </div>
                                     
-                                    <div class="col-md-2" style="padding: 0;">
+                                    <div class="col-md-6" style="padding: 0;">
                                         <center>
                                             
                                         <h5 class="modal-title" id="myModalLabel"><b>TIPO TRANS</b></h5>                                        
-                                        <select id="tipo_transaccion" name="tipo_transaccion" class="btn btn-default btn-xs"  onchange="mostrar_ocultar()"  style="width: 120px;">
+                                        <select id="tipo_transaccion" name="tipo_transaccion"  class="form-control"  onchange="mostrar_ocultar()" >
                                             <?php
                                                 foreach($tipo_transaccion as $tipo){ 
                                                     $selected = ($tipo['tipotrans_id'] == $venta[0]['tipotrans_id']) ? ' selected' : ""; ?>
@@ -771,9 +754,9 @@ window.onkeydown = compruebaTecla;
                                             $ocultar = "block";
                                             
                                     } ?>   
-                                    <div class="col-md-2" style="padding: 0; display: <?php echo $ocultar; ?>">
+                                    <div class="col-md-6" style="padding: 0; display: <?php echo $ocultar; ?>">
                                         <h5 class="modal-title" id="myModalLabel"><b>SERVICIO</b></h5>                                        
-                                        <select id="tiposerv_id" name="tiposerv_id" class="btn btn-default btn-xs"  style="width: 100px;">
+                                        <select id="tiposerv_id" name="tiposerv_id"  class="form-control">
                                                 
                                             <?php
                                                 foreach($tipo_servicio as $ts){ ?>
@@ -781,7 +764,10 @@ window.onkeydown = compruebaTecla;
                                             <?php } ?>
  
                                          </select>
-                                        <select id="venta_numeromesa" name="venta_numeromesa" class="btn btn-default btn-xs">
+                                         </div>     
+                                    <div class="col-md-3" style="padding: 0; display: <?php echo $ocultar; ?>">
+                                        <h5 class="modal-title" id="myModalLabel"><b>MESA</b></h5>
+                                        <select id="venta_numeromesa" name="venta_numeromesa" class="form-control" >
                                                 
                                                     <option value="0">MESA</option>
                                             <?php $mesas = 30;
@@ -792,9 +778,17 @@ window.onkeydown = compruebaTecla;
                                          </select>
                                         
                                     </div>
+                                    <div class="col-md-3" style="padding: 0; display: <?php echo $ocultar; ?>">
+                                        <h5 class="modal-title" id="myModalLabel"><b>ENTREGA HR:</b></h5>
+
+                                        <input type="time" id="venta_horaentrega" name="venta_horaentrega"  class="form-control" value="<?php $date = new DateTime();
+$date->modify('+30 minute');
+echo $date->format('H:i');  ?>">
+                                        
+                                    </div>
                                     
                                     
-                                </div>                                    
+                                                                   
                                                                                              
 			</div>
 			</div>
@@ -810,7 +804,7 @@ window.onkeydown = compruebaTecla;
     $subtotal = $total_detalle - $total_descuento; 
     $efectivo = $subtotal;
     $cambio = 0.00;
-    $ancho_boton = 10;
+    $ancho_boton = 8;
     ?>
 
             <div hidden="true">
@@ -821,10 +815,8 @@ window.onkeydown = compruebaTecla;
                  
         <div class="row">
             
-            
             <div class="col-md-12">
-            <!--<form action="<?php echo base_url('hotel/checkout/'.$pedido_id."/".$habitacion_id); ?>"  method="POST" class="form">-->
-                <div class="box">
+            <div class="box">
 
             <div class="box-body table-responsive table-condensed">
             <!--<form method="post" name="descuento">-->                
@@ -917,7 +909,7 @@ window.onkeydown = compruebaTecla;
 
            <div class="row" id='creditooculto'  style='display: <?php echo $visibilidad; ?>'>
                                     
-               
+               <div class="row">
                 <div class="col-md-12">
                     <input type="checkbox" checked="true" value="1" id="modificar_credito" hidden="true"> Modificar credito
                 </div>
@@ -996,8 +988,9 @@ window.onkeydown = compruebaTecla;
                 </div>
                 
            </div>
-           
-           <!--************************************* fin datos credito ************************************************>           
+           </div>
+           <br>
+           <!--************************************* fin datos credito ************************************************-->           
                  
                 
             <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>-->   
@@ -1008,7 +1001,7 @@ window.onkeydown = compruebaTecla;
                 </h4>
             </button>
             -->
-            <button class="btn btn-lg btn-facebook btn-sm btn-block" id="boton_finalizar" data-dismiss="modal" onclick="finalizarcambios()" style="display: block;">
+            <button class="btn btn-lg btn-success btn-sm btn-block" id="boton_finalizar" data-dismiss="modal" onclick="finalizarcambios()" style="display: block;">
                 <h4>
                 <span class="fa fa-save"></span>   Finalizar Cambios  
                 </h4>

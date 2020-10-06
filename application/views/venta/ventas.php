@@ -543,12 +543,12 @@ window.onkeydown = compruebaTecla;
             <!--------------- botones ---------------------->
            <?php if($parametro[0]["parametro_modulorestaurante"]==0){ //1 es normal ?>
                 <?php if($rolusuario[13-1]['rolusuario_asignado'] == 1){ ?>
-                    <a href="#" data-toggle="modal" data-target="#modalonline" class="btn bg-orange btn-xs" onclick="pedidos_online()" title="Pedidos Online"><span class="fa fa-globe"></span><b> ONLINE</b></a> 
-            <a href="#" data-toggle="modal" data-target="#modalpedidos" class="btn btn-primary btn-xs" onclick="pedidos_pendientes()" title="Pedidos Pendientes"><span class="fa fa-cubes"></span><b> PEDIDOS</b></a> 
+                    
             <a href="#" data-toggle="modal" data-target="#modalordenes" class="btn bg-black btn-xs" onclick="ordenes_pendientes()" title="Ordenes de Trabajo"><span class="fa fa-book"></span><b> OT's</b></a>
                 <?php }
                 } ?>
-                    
+            <a href="#" data-toggle="modal" data-target="#modalonline" class="btn bg-orange btn-xs" onclick="pedidos_online()" title="Pedidos Online"><span class="fa fa-globe"></span><b> ONLINE</b></a> 
+            <a href="#" data-toggle="modal" data-target="#modalpedidos" class="btn btn-primary btn-xs" onclick="pedidos_pendientes()" title="Pedidos Pendientes"><span class="fa fa-cubes"></span><b> PEDIDOS</b></a>         
             <?php if($parametro[0]["parametro_modulorestaurante"]==1){ //1 es modo restaurante?>            
                     <a href="<?php echo base_url('venta/ultimacomanda') ?>" target="_blank" class="btn btn-primary btn-xs" id="imprimir_comanda" title="Comanda"><span class="fa fa-print"></span><b> COMANDA</b></a> 
             <?php } ?>            
@@ -741,7 +741,7 @@ window.onkeydown = compruebaTecla;
                                         <input type="datetime-local" id="fechahora_entrega" name="fechahora_entrega" value="<?php echo $fecha."T".$hora;?>" required>-->
                                         <label for="forma_pago" class="control-label" >Forma Pago</label> 
                                         <div class="form-group">                                      
-                                        <select id="forma_pago"  name="forma_pago"class="form-control" >
+                                        <select id="forma_pago"  name="forma_pago" class="form-control" >
                                             <?php
                                                 foreach($forma_pago as $forma){ ?>
                                                     <option value="<?php echo $forma['forma_id']; ?>"><?php echo $forma['forma_nombre']; ?></option>                                                   
@@ -774,7 +774,7 @@ window.onkeydown = compruebaTecla;
                                     } ?>   
                                     <div class="col-md-6" style="padding: 0; display: <?php echo $ocultar; ?>">
                                         <h5 class="modal-title" id="myModalLabel"><b>SERVICIO</b></h5>                                        
-                                        <select id="tiposerv_id" name="tiposerv_id" class="btn btn-default btn-xs"  style="width: 100px;">
+                                        <select id="tiposerv_id" name="tiposerv_id"  class="form-control" >
                                                 
                                             <?php
                                                 foreach($tipo_servicio as $ts){ ?>
@@ -782,7 +782,10 @@ window.onkeydown = compruebaTecla;
                                             <?php } ?>
  
                                          </select>
-                                        <select id="venta_numeromesa" name="venta_numeromesa" class="btn btn-default btn-xs">
+                                    </div>     
+                                    <div class="col-md-3" style="padding: 0; display: <?php echo $ocultar; ?>">
+                                        <h5 class="modal-title" id="myModalLabel"><b>MESA</b></h5>
+                                        <select id="venta_numeromesa" name="venta_numeromesa"  class="form-control" >
                                                 
                                                     <option value="0">MESA</option>
                                             <?php $mesas = 30;
@@ -794,7 +797,14 @@ window.onkeydown = compruebaTecla;
                                         
                                     </div>
                                     
-                                    
+                                    <div class="col-md-3" style="padding: 0; display: <?php echo $ocultar; ?>">
+                                        <h5 class="modal-title" id="myModalLabel"><b>ENTREGA HR:</b></h5>
+
+                                        <input type="time" id="venta_horaentrega" name="venta_horaentrega"  class="form-control" value="<?php $date = new DateTime();
+$date->modify('+30 minute');
+echo $date->format('H:i');  ?>">
+                                        
+                                    </div>
                                                                   
                                                                                              
 			</div>
@@ -992,7 +1002,7 @@ window.onkeydown = compruebaTecla;
         <div class="col-md-6">  
             <button class="btn btn-lg btn-danger btn-sm btn-block" data-dismiss="modal">
                 
-                <span class="fa fa-ban"></span>   Cancelar  
+                <span class="fa fa-close"></span>   Cancelar  
                 
             </button>
         </div>
@@ -1305,7 +1315,7 @@ window.onkeydown = compruebaTecla;
                                                 <?php 
                                                 foreach($preferencia as $p)
                                                 {?>
-                                                    <button class="btn btn-xs btn-facebook" id="pref<?php echo $p["preferencia_id"]; ?>" name="<?php echo $p["preferencia_descripcion"]; ?>" style="background-color: #db0ead" onclick="agregar_preferencia(<?php echo $p["preferencia_id"]; ?>)"><i class="fa fa-cube"></i><?php echo $p["preferencia_descripcion"]; ?></button>
+                                                    <button class="btn btn-xs bg-navy" id="pref<?php echo $p["preferencia_id"]; ?>" name="<?php echo $p["preferencia_descripcion"]; ?>" onclick="agregar_preferencia(<?php echo $p["preferencia_id"]; ?>)"><i class="fa fa-cube"></i><?php echo $p["preferencia_descripcion"]; ?></button>
                                                     <br>
                                                 <?php } 
                                                 ?>
@@ -1316,7 +1326,7 @@ window.onkeydown = compruebaTecla;
 						<label for="opciones" class="control-label">Opciones</label>
 						<div class="form-group">
                                                         
-                                                    <button class="btn btn-facebook" id="boton_asignar" onclick="guardar_preferencia()" data-dismiss="modal" >
+                                                    <button class="btn btn-success" id="boton_asignar" onclick="guardar_preferencia()" data-dismiss="modal" >
                                                             <span class="fa fa-floppy-o"></span> Guadar
                                                     </button>
                                                     
