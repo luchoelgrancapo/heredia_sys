@@ -48,12 +48,12 @@ padding : 0 0 0 0;
 border-spacing : 0 0;
 border-collapse : collapse;
 font-family: Arial;
-font-size: 8pt;  
+font-size: 10px;  
 
-td {
+} td {
 border:hidden;
 }
-}
+
 
 td#comentario {
 vertical-align : bottom;

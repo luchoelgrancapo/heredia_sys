@@ -24,14 +24,6 @@
 
 <style type="text/css">
 
-p {
-    font-family: Arial;
-    font-size: 7pt;
-    line-height: 120%;   /*esta es la propiedad para el interlineado*/
-    color: #000;
-    padding: 10px;
-}
-
 div {
 margin-top: 0px;
 margin-right: 0px;
@@ -48,9 +40,9 @@ padding : 0 0 0 0;
 border-spacing : 0 0;
 border-collapse : collapse;
 font-family: Arial;
-font-size: 8pt;  
+font-size: 10px;  
 }
-td {
+} td {
 border:hidden;
 
 }

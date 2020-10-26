@@ -170,6 +170,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?php echo site_url('inscripcion');?>" class="nav-link">
+                                <i class="nav-icon fas fa-user-clock fa-fw"></i> <p>Inscripciones</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?php echo site_url('credito/indexCuenta');?>" class="nav-link">
                                 <i class="nav-icon fas fa-search-dollar fa-fw"></i> <p>Deudas por cobrar</p>
                             </a>
@@ -232,6 +237,11 @@
                         <li class="nav-item">
                             <a href="<?php echo site_url('cliente');?>" class="nav-link">
                                 <i class="nav-icon fas fa-users fa-fw"></i> <p>Clientes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('servicio_temporal');?>" class="nav-link">
+                                <i class="nav-icon fas fa-running fa-fw"></i> <p>Servicios</p>
                             </a>
                         </li>
                         <li class="nav-item">

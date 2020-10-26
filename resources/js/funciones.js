@@ -2393,6 +2393,9 @@ function tabla_ventas(filtro)
                     if (v[i]['prevendedor']!=null){
                         html += "                           <br>Prev.: "+v[i]['prevendedor'];
                     }
+                    if (v[i]['venta_numeromesa']!=null && v[i]['venta_numeromesa']!=0){
+                        html += "                           <br>Mesa: "+v[i]['venta_numeromesa'];
+                    }
                     
                     html += "                        </td>   ";
                     

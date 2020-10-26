@@ -104,9 +104,9 @@ padding : 0 0 0 0;
 border-spacing : 0 0;
 border-collapse : collapse;
 font-family: Arial;
-font-size: 8pt;  
+font-size: 10px;  
 }
-td {
+ td {
   border: none !important;
 border:hidden;
 padding: 5px !important;
@@ -119,7 +119,7 @@ border-spacing : 0;
 }
 div#content {
 background : #ddd;
-font-size :   7px;
+font-size :   10px;
 margin : 0 0 0 0;
 padding : 0 5px 0 5px;
 border-left : 1px solid #0CB7F2;

@@ -87,7 +87,7 @@ border-collapse : collapse;
 font-family: Arial;
 font-size: 14px;  
 }
-td {
+} td {
 border:hidden;
 
 }
@@ -183,8 +183,7 @@ border-bottom : 1px solid #aaa;
                         <?php
                         $preferencia = $d['detalleven_preferencia'];
                         $caracteristicas = $d['detalleven_caracteristicas'];
-                        if ($d['categoria_id'] == 2)
-                            echo  " /".$d['producto_unidad'];
+                        
                         if ($preferencia !='null' && $preferencia!='-')
                             echo  " /".$preferencia;
                         

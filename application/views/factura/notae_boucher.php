@@ -62,13 +62,6 @@ function autosize(){
 
 <style type="text/css">
 
-p {
-    font-family: Arial;
-    font-size: 7pt;
-    line-height: 120%;   /*esta es la propiedad para el interlineado*/
-    color: #000;
-    padding: 10px;
-}
 
 div {
 margin-top: 0px;
@@ -88,7 +81,7 @@ border-collapse : collapse;
 font-family: Arial narrow;
 font-size: 7pt;  
 
-td {
+} td {
 border:hidden;
 }
 }

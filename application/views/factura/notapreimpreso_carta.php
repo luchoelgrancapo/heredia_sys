@@ -20,7 +20,7 @@
 
 }
 
-#mitabla td {
+#mitabla } td {
     border: 1px solid rgba(0,0,0,0);
     padding-top: 0px;
     padding-bottom: 0px;
@@ -39,7 +39,7 @@
 
 }
 
-#mitabladet td {
+#mitabladet } td {
     border: 1px solid rgba(0,0,0,0);
     border-bottom: 1px solid #62DF23;
     padding-top: 0px;

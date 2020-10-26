@@ -46,7 +46,7 @@ border-collapse : collapse;
 font-family: Arial narrow;
 font-size: 7pt;  
 
-td {
+} td {
 border:hidden;
 }
 }
