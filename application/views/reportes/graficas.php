@@ -18,6 +18,8 @@
                     <option value="2019" >2019</option>
                     <option value="2020" >2020</option>
                     <option value="2021" >2021</option>
+                    <option value="2022" >2022</option>
+                    <option value="2023" >2023</option>
                   </select>
 
 </div>
@@ -46,43 +48,44 @@
 </div>
 
 <div  class="row" >
-<br/>
-	<div class="box box-primary">
-		<div class="box-header">
+<div class="col-md-12">
+	<div class="card card-primary">
+		<div class="card-header">
 		</div>
 
-		<div class="box-body" id="div_grafica_barras">
+		<div class="card-body" id="div_grafica_barras">
 		</div>
 
-                <div class="box-footer">
+                <div class="card-footer">
                 </div>
 	</div>
+  </div>
+<div class="col-md-12">
+<div class="card card-primary">
+    <div class="card-header">
+    </div>
 
-        <br/>
-	<div class="box box-primary">
-		<div class="box-header">
-		</div>
+    <div class="card-body" id="div_grafica_lineas">
+    </div>
 
-		<div class="box-body" id="div_grafica_lineas">
-		</div>
-
-                <div class="box-footer">
+                <div class="card-footer">
                 </div>
-	</div>
+  </div>
+  </div>
+<div class="col-md-12">
+  <div class="card card-primary">
+    <div class="card-header">
+    </div>
 
+    <div class="card-body" id="div_grafica_pie">
+    </div>
 
-	<br/>
-        
-	<div class="box box-primary">
-		<div class="box-header">
-		</div>
-
-		<div class="box-body" id="div_grafica_pie">
-		</div>
-
-                <div class="box-footer">
+                <div class="card-footer">
                 </div>
-	</div>
+  </div>
+  </div>
+
+
 
 
 </div>

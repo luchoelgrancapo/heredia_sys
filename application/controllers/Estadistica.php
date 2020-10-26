@@ -11,6 +11,7 @@ class Estadistica extends CI_Controller{
         $this->load->model('Venta_model');
         $this->load->model('Parametro_model');
         $this->load->model('Estado_model');
+        $this->load->model('Empresa_model');
         
         if ($this->session->userdata('logged_in')) {
             $this->session_data = $this->session->userdata('logged_in');
@@ -68,6 +69,7 @@ class Estadistica extends CI_Controller{
         $data['parametro'] = $this->Parametro_model->get_parametros();
         $data['estado'] = $this->Estado_model->get_tipo_estado(1);
         $data['usuario'] = $this->Venta_model->get_usuarios();        
+        $data['empresa'] = $this->Empresa_model->get_this_empresa(1);       
 
         $data['_view'] = 'reportes/estadistica_ventas';
         $this->load->view('layouts/main',$data);
@@ -75,7 +77,7 @@ class Estadistica extends CI_Controller{
         //**************** fin contenido ***************
 		}
         
-    }
+    } 
 
     public function getUltimoDiaMes($elAnio,$elMes) {
         

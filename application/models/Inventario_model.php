@@ -465,7 +465,7 @@ class Inventario_model extends CI_Model
     }
     
     function get_inventario_total(){
-        $sql = "select count(*) as cantidad, (i.producto_costo * i.existencia) as total_inventario from inventario i";
+        $sql = "select count(*) as cantidad, SUM(i.producto_costo * i.existencia) as total_inventario from inventario i";
         $resultado = $this->db->query($sql)->row_array();
         return $resultado;
 
