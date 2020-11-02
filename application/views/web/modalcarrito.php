@@ -40,7 +40,11 @@
           
           <div class="row">
           <div class="col-md-6">
-            <button class="btn btn-success btn-block" data-dismiss="modal" onclick="realizarcompra()" ><i class="fa fa-money"></i> Finalizar Compra</button> <br>
+            <?php if ($parametro[0]["parametro_modulorestaurante"]==1) { ?>
+            <button class="btn btn-success btn-block"   onclick="comprobar()"> <i class="fa fa-money"></i> Finalizar Compra</button> <br>
+             <?php } else { ?> 
+              <button class="btn btn-success btn-block" data-dismiss="modal"  onclick="realizarcompra()"> <i class="fa fa-money"></i> Finalizar Compra</button> <br>
+            <?php } ?> 
             </div>    
             <div class="col-md-6">
             <button class="btn btn-danger btn-block" data-dismiss="modal" ><i class="fa fa-cart-arrow-down"></i> Continuar Comprando</button>

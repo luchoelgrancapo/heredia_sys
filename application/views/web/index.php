@@ -72,6 +72,7 @@ function mostrar() {
 <link href="<?php echo $raiz;?>css/bootstrap-select.min.css" rel="stylesheet"> -->
 <link rel="shortcut icon" href="<?php echo site_url('resources/images/icono.png');?>" />
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
+<input type="hidden" name="restaurante" id="restaurante" value="<?php echo $parametro[0]["parametro_modulorestaurante"]; ?>" />
 <!-- start-smoth-scrolling -->
 </head>
     

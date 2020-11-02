@@ -182,13 +182,13 @@ border-bottom : 1px solid #aaa;
                 <td style="padding: 0"><font style="size:11px; font-family: Arial;"> <?php echo $d['producto_nombre'];?>
                         <?php
                         $preferencia = $d['detalleven_preferencia'];
-                        $caracteristicas = $d['detalleven_caracteristicas'];
+                        $caracteristicas = $d['detalleven_nombreenvase'];
                         
                         if ($preferencia !='null' && $preferencia!='-')
                             echo  " /".$preferencia;
                         
-                       /* if ($caracteristicas!='null' && $caracteristicas!='-')
-                            echo  "<br>".$caracteristicas;*/
+                        if ($caracteristicas!='null' && $caracteristicas!='-')
+                            echo  "<br>".$caracteristicas;
                         
                         ?>
                     <!--<textarea onload="autosize()"></textarea>-->

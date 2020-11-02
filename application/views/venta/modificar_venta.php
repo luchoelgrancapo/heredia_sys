@@ -576,7 +576,7 @@ window.onkeydown = compruebaTecla;
             
             
             <?php if($rolusuario[14-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="#" data-toggle="modal" data-target="#modalfinalizar" class="btn btn-success btn-xs"><span class="fas fa-money-bill-alt"></span><b> FINALIZAR</b></a> 
+            <a href="#"  onclick="comprobar()"  class="btn btn-success btn-xs"><span class="fas fa-money-bill-alt"></span><b> FINALIZAR</b></a>  
             <?php } ?>
 
             </center>
@@ -641,8 +641,8 @@ window.onkeydown = compruebaTecla;
 
             <center>
             <?php if($rolusuario[14-1]['rolusuario_asignado'] == 1){ ?>
-            <a href="#" data-toggle="modal" onclick="focus_efectivo()" data-target="#modalfinalizar" class="btn btn-app bg-success" style='width: 90px !important; height: 90px !important;'>
-               <i class="fa fa-money-bill-alt"></i><br>Finalizar Venta <br>
+            <a href="#"  onclick="comprobar()"  class="btn btn-app bg-success" style='width: 90px !important; height: 90px !important;'>
+                <i class="fa fa-money-bill-alt"></i><br>Finalizar Venta <br>
             </a>
             <?php } ?>
 
@@ -891,8 +891,8 @@ echo $date->format('H:i');  ?>">
             
 
           
-            <div class="col-md-8">
-                <b>GLOSA </b><input type="text" style="padding: 0;" id="venta_glosa" name="venta_glosa" value="" class="form-control  input-sm">           
+            <div class="col-md-12">
+                <b>GLOSA </b><input type="text" style="padding: 0;" id="venta_glosa" name="venta_glosa" value="<?php echo $venta[0]['venta_glosa']; ?>" class="form-control  input-sm">           
             </div>
             <div class="col-md-4">
                 <b>FECHA VENTA </b><input type="date" style="padding: 0;" id="venta_fecha" name="venta_fecha" value="<?php echo $venta[0]['venta_fecha']; ?>" class="form-control  input-sm">
@@ -1244,71 +1244,72 @@ echo $date->format('H:i');  ?>">
 <!----------------- modal preferencias ---------------------------------------------->
 
 <div class="modal fade" id="modalpreferencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-                            
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                             <h4 class="modal-title" id="myModalLabel"><b>PREFRENCIAS</b></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                             </button>
-                            <center>
-                                <h4 class="modal-title" id="myModalLabel"><b>PREFERENCIAS</b></h4>
+                            
+                               
                                 <!--<b>ADVERTENCIA: Seleccione la </b>-->                                
-                            </center>
+                            
 
                             <input id="detalleven_id" value="0" hidden>
                             
                     </div>
+                     <form name=preferencias>
                     <div class="modal-body">
                         <!--------------------- TABLA---------------------------------------------------->
                         
 
                         
-                        
-                        <div class="box-body table-responsive">
-                                        <div class="col-md-6">
-                                            <label for="usuario_idx" class="control-label">Preferencia de producto</label>
-                                            <div class="form-group">
-							
-                                                <?php 
-                                                foreach($preferencia as $p)
-                                                {?>
-                                                    <button class="btn btn-xs btn-facebook" id="pref<?php echo $p["preferencia_id"]; ?>" name="<?php echo $p["preferencia_descripcion"]; ?>" style="background-color: #db0ead" onclick="agregar_preferencia(<?php echo $p["preferencia_id"]; ?>)"><i class="fa fa-cube"></i><?php echo $p["preferencia_descripcion"]; ?></button>
-                                                    <br>
-                                                <?php } 
-                                                ?>
-                                            </div>
-                                            <input type="text" id="inputcaract" value="" class="form-control btn btn-xs btn-warning">
-					</div>
-                                        <div class="col-md-6" id='botones'  style='display:block;'>
-						<label for="opciones" class="control-label">Opciones</label>
-						<div class="form-group">
-                                                        
-                                                    <button class="btn btn-facebook" id="boton_asignar" onclick="guardar_preferencia()" data-dismiss="modal" >
-                                                            <span class="fa fa-floppy-o"></span> Guadar
-                                                    </button>
-                                                    
-                                                    <button class="btn btn-danger" id="cancelar_preferencia" onclick="cancelar_preferencia()" data-dismiss="modal" >
-                                                        <span class="fa fa-close"></span>   Cancelar                                                          
-                                                    </button>
-						</div>
-					</div>
-                            
-                                        <!--------------------- inicio loader ------------------------->
-                                        <div class="col-md-6" id='loaderinventario'  style='display:none;'>
-                                            <center>
-                                                <img src="<?php echo base_url("resources/images/loader.gif"); ?>" >        
-                                            </center>
-                                        </div> 
-                                        <!--------------------- fin inicio loader ------------------------->
-                            
-             
-                        </div>
-
-                        <!----------------------FIN TABLA--------------------------------------------------->
+                <div class="row">
+                   
+                <div class="col-md-6">
+                    <label for="detalleven_preferencia" class="control-label">Guarnición</label>
+                    <div class="form-group">
+    
+                        <?php 
+                        foreach($preferencia as $p)
+                        {?>
+                             <label><input type="radio"  name="detalleven_preferencia" id="<?php echo $p["preferencia_descripcion"]; ?>" value="<?php echo $p["preferencia_descripcion"]; ?>"> <?php echo $p["preferencia_descripcion"]; ?></label><br>
+                        <?php } 
+                        ?>
                     </div>
-		</div>
-	</div>
+                                            
+                </div>
+                <div class="col-md-6">
+                    <label for="detalleven_nombreenvase" class="control-label">Cocción de Carne</label>
+                    <div class="form-group">
+                            
+                    <label><input type="radio"  name="detalleven_nombreenvase" value="Termino Bien Cocido"> Termino Bien Cocido </label><br>
+                    <label><input type="radio"  name="detalleven_nombreenvase"  value="Termino 3 / 4"> Termino 3 / 4 </label><br>
+                    <label><input type="radio"  name="detalleven_nombreenvase"  value="Termino Medio"> Termino Medio </label><br>
+                                                
+                    </div>
+                </div>
+                                    
+                            
+                                       
+                     
+
+                        <!----------------------FIN TABLA   cancelar_preferencia()--------------------------------------------------->
+                    </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" id="boton_asignar" onclick="guardar_preferencia()" data-dismiss="modal" >
+                <span class="fa fa-floppy-o"></span> Guadar
+            </button>
+                                                    
+            <button class="btn btn-danger" id="cancelar_preferencia"  data-dismiss="modal" >
+                <span class="fa fa-close"></span>   Cancelar                                                          
+            </button>
+        </div>
+        </form>  
+    </div>
+</div>
 </div>
 <!----------------- fin modal preferencias ---------------------------------------------->
 <div hidden>

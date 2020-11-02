@@ -241,7 +241,7 @@ function tablaproductos()
     var controlador = base_url+'venta/detalleventa';
     var parametro_diasvenc = document.getElementById('parametro_diasvenc').value;
     var venta_descuento = Number(document.getElementById('venta_descuento').value);
-    
+    var parametro_modulorestaurante = document.getElementById('parametro_modulorestaurante').value;
     $.ajax({url: controlador,
            type:"POST",
            data:{datos:1},
@@ -299,8 +299,11 @@ function tablaproductos()
                         html += "                    <tr>";
                         html += "			<td "+color+">"+cont+"</td>";
                         html += "                       <td "+color+"><b><font size='"+fuente+"'>"+registros[i]["producto_nombre"]+"</font></b>";
-                        html += "                           <small><br>"+categoria+registros[i]["producto_unidad"]+" | "+registros[i]["producto_marca"]+" | "+registros[i]["producto_codigobarra"]+"</small>";
-
+                        if (parametro_modulorestaurante==1){
+                        html += "<small><br><span  id='alerta"+registros[i]["detalleven_id"]+"'></span>"+registros[i]["detalleven_preferencia"]+" - "+registros[i]["detalleven_nombreenvase"]+"";
+                        }else{
+                        html += "<small><br>"+categoria+registros[i]["producto_unidad"]+" | "+registros[i]["producto_marca"]+" | "+registros[i]["producto_codigobarra"]+"</small>";
+                        }
 //************************ INICIO CARACTERISTICAS ***************************
 
 //html += "  <button class='btn btn-primary btn-xs' title='Registrar/modificar preferencias y características' type='button' data-toggle='collapse' data-target='#caracteristicas"+registros[i]["detalleven_id"]+"' aria-expanded='false' aria-controls='caracteristicas"+registros[i]["detalleven_id"]+"'><i class='fa fa-edit'></i></button>";
@@ -3049,7 +3052,8 @@ function modificar_venta(cliente_id)
     var forma_pago = document.getElementById('forma_pago').value;
     var facturado = document.getElementById('facturado').value;
     var venta_horaentrega = document.getElementById('venta_horaentrega').value;
-    
+    var venta_glosa = document.getElementById('venta_glosa').value;
+    //alert(venta_glosa);
 
         $.ajax({url: controlador,
             type:"POST",
@@ -3059,7 +3063,7 @@ function modificar_venta(cliente_id)
             tipo_transaccion:tipo_transaccion, cuotas:cuotas, cuota_inicial:cuota_inicial, 
             venta_total:venta_total, credito_interes:credito_interes,
             facturado:facturado,venta_fecha:venta_fecha, tipo_transaccion:tipo_transaccion, forma_pago:forma_pago,
-            modalidad:modalidad, dia_pago:dia_pago, fecha_inicio: fecha_inicio, venta_horaentrega:venta_horaentrega},
+            modalidad:modalidad, dia_pago:dia_pago, fecha_inicio: fecha_inicio, venta_horaentrega:venta_horaentrega, venta_glosa:venta_glosa},
             success:function(respuesta){
                 //window.opener.location.reload();
                 window.close();
@@ -3245,7 +3249,7 @@ function iniciar_preferencia(detalleven_id)
 }
 
 
-function agregar_preferencia(preferencia_id)
+/*function agregar_preferencia(preferencia_id)
 {
     
     var preferencia = document.getElementById('pref'+preferencia_id).name;
@@ -3255,32 +3259,91 @@ function agregar_preferencia(preferencia_id)
     $("#inputcaract").val(cadena);
     //alert(preferencia);
     
-}
+}*/
 
-function cancelar_preferencia()
+/*function cancelar_preferencia()
 {    
     $("#inputcaract").val("");
-}
+}*/
 
 function guardar_preferencia()
 {    
     var base_url = document.getElementById('base_url').value;
     var controlador = base_url+'/venta/guardar_preferencia';
 
-    var preferencia = document.getElementById('inputcaract').value;
+     for (var i=0;i<document.preferencias.detalleven_preferencia.length;i++){ 
+        if (document.preferencias.detalleven_preferencia[i].checked) 
+           break; 
+     } 
+     var preferencia = document.preferencias.detalleven_preferencia[i].value; 
+     
+     for (var j=0;j<document.preferencias.detalleven_nombreenvase.length;j++){ 
+        if (document.preferencias.detalleven_nombreenvase[j].checked) 
+           break; 
+     } 
+     var envase = document.preferencias.detalleven_nombreenvase[j].value 
+     
     var detalleven_id = document.getElementById('detalleven_id').value;
-    
+    //alert(preferencia);
+    //alert(envase);
     $.ajax({
         url:controlador,
         type:"POST",
-        data:{preferencia:preferencia,detalleven_id:detalleven_id},
+        data:{preferencia:preferencia,detalleven_id:detalleven_id,envase:envase},
         success:function(respuesta){
             tablaproductos();
         },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
     });
     
-    $("#inputcaract").val("");   
+    //$("#inputcaract").val("");   
+    
+}
+
+function comprobar()
+{    
+    var modulo_restaurante = document.getElementById("parametro_modulorestaurante").value;
+    if (modulo_restaurante==1)
+    {
+    var categoria = 2;//document.getElementById('venta_totalfinal').value;
+    
+    var base_url = document.getElementById('base_url').value;
+    var controlador = base_url+'/venta/verificardetalle';
+    $.ajax({
+        url:controlador,
+        type:"POST",
+        data:{categoria:categoria},
+        success:function(respuesta){ 
+                    var datos = JSON.parse(respuesta);
+
+                   
+
+                    if(datos!=null){
+                      //var  detalle = datos["detalleven_id"];
+                        $('#alerta'+datos["detalleven_id"]).html('SELECCIONA AQUI >>>>');
+                        alert('Plato(s) GRILL que no tiene preferencias');                          
+                    }
+                    else{
+                      $('#modalfinalizar').modal('show');
+                                                   
+                    }
+                },
+                error: function(respuesta){
+                    $('#modalfinalizar').modal('show');            
+                }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+    });
+    
+       
+
+          
+        }
+        else
+        {
+$('#modalfinalizar').modal('show');
+
+        }
+    
     
 }
 

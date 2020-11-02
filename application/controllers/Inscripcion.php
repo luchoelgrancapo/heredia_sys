@@ -10,6 +10,7 @@ class Inscripcion extends CI_Controller{
         parent::__construct();
         $this->load->model('Inscripcion_model');
         $this->load->model('Servicio_temporal_model');
+        $this->load->model('Forma_pago_model');
         if ($this->session->userdata('logged_in')) {
             $this->session_data = $this->session->userdata('logged_in');
         }else {
@@ -51,15 +52,16 @@ class Inscripcion extends CI_Controller{
 				'inscripcion_fechaini' => $this->input->post('inscripcion_fechaini'),
 				'inscripcion_fechafin' => $this->input->post('inscripcion_fechafin'),
 				'inscripcion_monto' => $this->input->post('inscripcion_monto'),
+                'forma_id' => $this->input->post('forma_id'),
                 'usuario_id' => $usuario_id,
             );
             
             $inscripcion_id = $this->Inscripcion_model->add_inscripcion($params);
-            redirect('inscripcion/index');
+            redirect('inscripcion');
         }
         else
         {   
-            
+            $data['forma_pago'] = $this->Forma_pago_model->get_all_forma();
             $data['all_servicio'] = $this->Servicio_temporal_model->get_all_servicio_temporal();         
             $data['_view'] = 'inscripcion/add';
             $this->load->view('layouts/main',$data);
@@ -88,7 +90,7 @@ class Inscripcion extends CI_Controller{
                 );
 
                 $this->Inscripcion_model->update_inscripcion($inscripcion_id,$params);            
-                redirect('inscripcion/index');
+                redirect('inscripcion');
             }
             else
             {
@@ -147,7 +149,7 @@ class Inscripcion extends CI_Controller{
     function reinscripcion($inscripcion_id)
     {
         if ($this->input->is_ajax_request()) {
-                    
+            $result['formas'] = $this->Forma_pago_model->get_all_forma();            
             $result['inscripcion'] = $this->Inscripcion_model->get_inscripcion($inscripcion_id);          
             $result['servicios'] = $this->Servicio_temporal_model->get_all_servicio_temporal();
            echo json_encode($result);

@@ -1001,6 +1001,33 @@ class Website extends CI_Controller{
         }
     }
 
+    function envase($carrito_id){
+
+        $envase = $this->input->post('envase');
+        $update = "UPDATE carrito SET carrito_nombreenvase='".$envase."' WHERE carrito_id=".$carrito_id." ";
+        $this->db->query($update);
+            echo json_encode(true);
+         
+    }
+
+    function preferir($carrito_id){
+
+        $preferencia = $this->input->post('preferencia');
+        $update = "UPDATE carrito SET carrito_preferencia='".$preferencia."' WHERE carrito_id=".$carrito_id." ";
+        $this->db->query($update);
+            echo json_encode(true);
+         
+    }
+
+    function verificarcarrito(){
+      $categoria = $this->input->post('categoria');
+      $cliente_id = $this->input->post('cliente');
+        //$cliente_id = $this->session_data['cliente'];
+        $sql = "SELECT c.carrito_id, p.categoria_id FROM carrito c, producto p WHERE c.producto_id=p.producto_id and (carrito_nombreenvase='' or carrito_nombreenvase is Null or carrito_nombreenvase='null') and p.categoria_id=2 and cliente_id=".$cliente_id." ";
+        $alerta = $this->db->query($sql)->row_array();
+        echo json_encode($alerta);
+    }
+
  
    
 

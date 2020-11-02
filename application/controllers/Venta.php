@@ -1168,6 +1168,7 @@ function edit($venta_id)
         $cuota_inicial = $this->input->post('cuota_inicial');
         $credito_interes = $this->input->post('credito_interes');
         $venta_interes = $this->input->post('venta_interes');
+        $venta_glosa = $this->input->post('venta_glosa');
         $cuotas = $this->input->post('cuotas');
         
         $modificar_credito = $this->input->post('modificar_credito');
@@ -1311,6 +1312,7 @@ function edit($venta_id)
                 ",tipotrans_id = ".$tipotrans_id.                
                 ",forma_id = ".$forma_id.                
                 ",venta_horaentrega = '".$venta_horaentrega."'".                
+                ",venta_glosa = '".$venta_glosa."'".                
                 " where venta_id = ".$venta_id;       
         $this->Venta_model->ejecutar($sql);        
         
@@ -2619,10 +2621,11 @@ function anular_venta($venta_id){
        //if($this->acceso(12)){
                //**************** inicio contenido ***************       
             $preferencia = $this->input->post('preferencia');
+            $envase = $this->input->post('envase');
             $detalleven_id = $this->input->post('detalleven_id');
                
             $sql = "update detalle_venta_aux set detalleven_preferencia = '".$preferencia."'".
-              " where detalleven_id = ".$detalleven_id;           
+              ", detalleven_nombreenvase ='".$envase."' where detalleven_id = ".$detalleven_id;           
            //echo $sql;                  
             
            $resultado = $this->Venta_model->ejecutar($sql);
@@ -3069,5 +3072,14 @@ function anular_venta($venta_id){
       
         //**************** fin contenido ***************
         }
+    }
+
+    function verificardetalle()
+    {
+        $categoria = $this->input->post('categoria');
+        $usuario_id = $this->session_data['usuario_id'];
+        $sql = "SELECT detalleven_id FROM detalle_venta_aux WHERE (detalleven_nombreenvase='' or detalleven_nombreenvase is Null or detalleven_nombreenvase='null') and categoria_id=".$categoria." and usuario_id=".$usuario_id." ";
+        $alerta = $this->db->query($sql)->row_array();
+        echo json_encode($alerta);
     }
 }

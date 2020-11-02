@@ -29,6 +29,7 @@
 							<input type="text" name="cliente_celular" value="<?php echo $this->input->post('cliente_celular'); ?>" class="form-control" id="cliente_celular" />
 						</div>
 					</div>
+					
 					</div>
 					<?php echo form_open('inscripcion/add'); ?>
 					<div class="row clearfix">
@@ -47,20 +48,20 @@
                             </select>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<label for="inscripcion_fechaini" class="control-label">Fecha Inicio</label>
 						<div class="form-group">
 							<input onchange="calcularfin()" type="date" name="inscripcion_fechaini" value="<?php echo date("Y-m-d"); ?>" class="has-datepicker form-control" id="inscripcion_fechaini" required/>
 							<input type="hidden" name="cliente_id" value="<?php echo $this->input->post('cliente_id'); ?>" class="form-control" id="cliente_id" />
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<label for="inscripcion_fechafin" class="control-label">Fecha Fin</label>
 						<div class="form-group">
 							<input type="date" name="inscripcion_fechafin" value="<?php echo $this->input->post('inscripcion_fechafin'); ?>" class="has-datepicker form-control" id="inscripcion_fechafin" required readonly/>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<label for="inscripcion_monto" class="control-label">Monto</label>
 						<div class="form-group">
 							<input type="number" step="any" min="0" name="inscripcion_monto" value="<?php echo $this->input->post('inscripcion_monto'); ?>" class="form-control" id="inscripcion_monto" required/>
@@ -70,6 +71,17 @@
 							<input type="text" step="any" min="0" name="periodo" value="" class="form-control" id="periodo" required/>
 						</div>
 					</div>
+					<div class="col-md-3" >
+                        <label for="forma_id" class="control-label" >Forma Pago</label> 
+                        <div class="form-group">                                      
+                        <select id="forma_id"  name="forma_id" class="form-control" >
+                            <?php
+                                foreach($forma_pago as $forma){ ?>
+                                    <option value="<?php echo $forma['forma_id']; ?>"><?php echo $forma['forma_nombre']; ?></option>                                                   
+                            <?php } ?>
+                                                                                    
+                         </select>
+                    </div>
 				</div>
 			</div>
           	<div class="box-footer">

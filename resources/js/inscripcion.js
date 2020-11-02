@@ -1,9 +1,6 @@
     $(document).on("ready",inicio);
 function inicio(){
-      filtro = " ";   
-        
-        fechadeinscripcion(filtro); 
-     
+     buscar_inscripciones();
         
 } 
 
@@ -16,7 +13,7 @@ function buscar_inscripciones()
 
     if (opcion == 1)
     {
-        filtro = " and date(inscripcion_fechaini) = date(now())";
+        filtro = " and date(inscripcion_fecha) = date(now())";
         mostrar_ocultar_buscador("ocultar");
         fechadeinscripcion(filtro);
 
@@ -26,7 +23,7 @@ function buscar_inscripciones()
     if (opcion == 2)
     {
        
-        filtro = " and date(inscripcion_fechaini) = date_add(date(now()), INTERVAL -1 DAY)";
+        filtro = " and date(inscripcion_fecha) = date_add(date(now()), INTERVAL -1 DAY)";
         mostrar_ocultar_buscador("ocultar");
         fechadeinscripcion(filtro);
     }//compras de ayer
@@ -34,7 +31,7 @@ function buscar_inscripciones()
     if (opcion == 3) 
     {
     
-        filtro = " and date(inscripcion_fechaini) >= date_add(date(now()), INTERVAL -1 WEEK)";//compras de la semana
+        filtro = " and date(inscripcion_fecha) >= date_add(date(now()), INTERVAL -1 WEEK)";//compras de la semana
         mostrar_ocultar_buscador("ocultar");
         fechadeinscripcion(filtro);
             }
@@ -61,7 +58,7 @@ function buscar_por_fechas()
     var fecha_desde = document.getElementById('fecha_desde').value;
     var fecha_hasta = document.getElementById('fecha_hasta').value;
    
-    filtro = " and date(inscripcion_fechaini) >= '"+fecha_desde+"'  and  date(inscripcion_fechaini) <='"+fecha_hasta+"' ";
+    filtro = " and date(inscripcion_fecha) >= '"+fecha_desde+"'  and  date(inscripcion_fecha) <='"+fecha_hasta+"' ";
     
     fechadeinscripcion(filtro);
     
@@ -118,13 +115,14 @@ function fechadeinscripcion(filtro)
                       
                         html += "<td>"+(i+1)+"</td>";
                         html += "<td><b>"+registros[i]["cliente_nombre"]+"</b><br>";
-                        html += registros[i]["cliente_celular"]+"</td>";
+                        html += "<a href='https://api.whatsapp.com/send?phone=591"+registros[i]["cliente_celular"]+"&text=hola%20como%20es' target='_blank'><i class='fab fa-whatsapp'></i> "+registros[i]["cliente_celular"]+"</a></td>";
                         html += "<td>"+registros[i]["serviciote_nombre"]+"<br>Meses: "+ registros[i]["serviciote_duracion"]+"</td>"; 
                         html += "<td align='center'>"+moment(registros[i]["inscripcion_fechaini"]).format('DD/MM/YYYY')+"</td>"; 
                         html += "<td align='center'>"+moment(registros[i]["inscripcion_fechafin"]).format('DD/MM/YYYY')+"</td>"; 
-                        html += "<td align='right'>"+Number(registros[i]["inscripcion_monto"]).toFixed(2)+"</td>"; 
+                        html += "<td align='right'>"+Number(registros[i]["inscripcion_monto"]).toFixed(2)+""; 
+                        html += "<br><span class='badge badge-warning'>"+registros[i]['forma_nombre']+"</span></td>"; 
                          
-                        html += "<td>"+registros[i]["usuario_nombre"]+"</td>"; 
+                        html += "<td>"+registros[i]["usuario_nombre"]+"<br>"+moment(registros[i]["inscripcion_fecha"]).format('DD/MM/YYYY H:m:s')+"</td>"; 
                         html += "<td  class='no-print'><a  onclick='reinscribir("+registros[i]["inscripcion_id"]+")' title='Reinscribir' data-toggle='modal' data-target='#reincribir"+registros[i]['inscripcion_id']+"' class='btn bg-primary btn-xs'><span class='fas fa-file-prescription'></a>";
                        // html += " <a href='"+base_url+"inscripcion/imprimir/"+registros[i]["inscripcion_id"]+"' title='Carta' target='_blank' class='btn btn-success btn-xs'><span class='fa fa-print'></a>";
                         //html += " <a href='"+base_url+"inscripcion/imprimir/"+registros[i]["inscripcion_id"]+"' title='Carta' target='_blank' class='btn btn-danger btn-xs'><span class='fa fa-ban'></a>";
@@ -280,14 +278,16 @@ function reinscribir(inscripcion)
                var resultados =  JSON.parse(resul);
                var registros = resultados.inscripcion;
                var servicio = resultados.servicios;
+               var forma_pago = resultados.formas;
                var n = servicio.length; //tama単o del arreglo de la consulta
+               var m = forma_pago.length; //tama単o del arreglo de la consulta
                //var fechaini = registros["inscripcion_fechaini"];
                var fecha_fin = registros["inscripcion_fechafin"]; 
                var periodo = registros["serviciote_duracion"]; 
                var inicio = new Date(fecha_fin);//moment
                var hoy = new Date();
-               alert(hoy);
-               alert(inicio);
+               //alert(forma_pago[0]['forma_nombre']);
+               //alert(inicio);
                if (hoy.getMonth() + 1 <= inicio) {
                 var fecha_ini = moment(inicio.setDate(inicio.getDate() + 2 )).format('YYYY-MM-DD'); 
               }else{
@@ -316,9 +316,23 @@ function reinscribir(inscripcion)
                         } 
                         html += ">"+servicio[i]['serviciote_nombre']+" Meses: "+servicio[i]['serviciote_duracion']+"</option>"
                         }
+                        html += "</select></div></div>";
+                        html += "<div class='col-md-6'>";
+                        html += "<label for='forma_id' class='control-label'>Forma Pago</label>";
+                        html += "<div class='form-group'>";
+                        html += "<select name='forma_id' class='form-control' id='forma_id'> ";
+                        for (var j = 0; j < m ; j++){
+                        html += "<option value='"+forma_pago[j]['forma_id']+"' ";
+                        if(forma_pago[j]['forma_id']==registros['forma_id'])  {
+                        html += "selected";
+                        } 
+                        html += ">"+forma_pago[j]['forma_nombre']+"</option>"
+                        }
+                        html += "</select></div></div>";
+
                         html += "<input type='hidden' value='"+periodo+"' class='form-control' id='periodo' />";
                         html += "<input type='hidden' name='cliente_id' value='"+registros['cliente_id']+"' class='form-control' id='cliente_id' />";
-                        html += "</div></div>";
+                         
                         html += "<div class='col-md-6'>";
                         html += "<label for='inscripcion_monto' class='control-label'>Monto</label>";
                         html += "<div class='form-group'>";

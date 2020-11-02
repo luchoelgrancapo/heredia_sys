@@ -73,12 +73,13 @@ class Inscripcion_model extends CI_Model
 
        $inscripcion = $this->db->query("
         SELECT
-               i.*, u.usuario_nombre, c.cliente_nombre, c.cliente_celular, s.serviciote_nombre, s.serviciote_duracion
+               i.*, u.usuario_nombre, c.cliente_nombre, c.cliente_celular, s.serviciote_nombre, s.serviciote_duracion, f.forma_nombre
             FROM
                 inscripcion i
             LEFT JOIN usuario u on i.usuario_id=u.usuario_id
             LEFT JOIN  cliente c on i.cliente_id=c.cliente_id
             LEFT JOIN  servicio_temporal s on i.serviciote_id=s.serviciote_id
+            LEFT JOIN  forma_pago f on i.forma_id=f.forma_id
             WHERE
                 1=1
                

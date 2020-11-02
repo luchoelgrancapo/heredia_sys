@@ -578,6 +578,7 @@ function tablacarrito(){
     
     
     
+    var modulorestaurante = document.getElementById('restaurante').value;
     var cliente_id = document.getElementById('cliente').value;
     if(cliente_id==0){
         var cliente = document.getElementById('miip').value;
@@ -632,14 +633,68 @@ function tablacarrito(){
                         }
 //                        html += "<td "+estilo+"><center>"+(i+1)+"</center></td>";
                         html += "<td "+estilo+">"+registros[i]["producto_nombre"];
+                        if (registros[i]["categoria_id"]==2 && modulorestaurante==1) {
+
+                         var selec=''; var selec1=''; var selec2=''; var selec3=''; 
+                         var selected=''; var selected1=''; var selected2=''; var selec3='';  
+                         html += "<br> <div class='col-md-6' style='font-size:9pt'>";  
+                         html += "<label id='carrito_preferencias'>Guarnición</label>";  
+                         html += "<select id='carrito_preferencia"+registros[i]['carrito_id']+"' onchange='preferir("+registros[i]['carrito_id']+")'>";
+                         html += "<option value=''>Seleccionar</option> ";
+                         html += "<option value='Papa Frita' ";
+                         if(registros[i]['carrito_preferencia']=='Papa Frita'){   selec='selected'; } 
+                         html += " "+selec+">Papa Frita</option>";
+                        html += "<option  value='Yuca Frita'";
+                         if(registros[i]['carrito_preferencia']=='Yuca Frita'){   selec1='selected'; } 
+                        html += " "+selec1+" >Yuca Frita</option>";
+                        html += "<option  value='Arroz con Queso' ";
+                        if(registros[i]['carrito_preferencia']=='Arroz con Queso'){   selec2='selected'; } 
+                        html += " "+selec2+" >Arroz con Queso</option>";
+                        html += "<option  value='Ensalada'";
+                        if(registros[i]['carrito_preferencia']=='Ensalada'){   selec3='selected'; } 
+                        html += " "+selec3+" >Ensalada</option>";   
+                        html += "</select>";   
+                        html += "</div></div>";   
+                        html += "<div class='col-md-6' style='font-size:9pt'>";   
+                        html += "<label id='carrito_nombreenvases"+registros[i]['carrito_id']+"'>Cocción de Carne</label>";   
+                         html += "<select id='carrito_nombreenvase"+registros[i]['carrito_id']+"' onchange='envase("+registros[i]['carrito_id']+")'>";
+                         html += "<option value=''>Seleccionar</option> ";
+                         html += "<option value='Termino Bien Cocido' ";
+                         if(registros[i]['carrito_nombreenvase']=='Termino Bien Cocido'){   selected='selected'; } 
+                         html += " "+selected+">Termino Bien Cocido</option>";
+                        html += "<option  value='Termino 3 / 4' ";
+                        if(registros[i]['carrito_nombreenvase']=='Termino 3 / 4'){  selected1='selected'; }
+                        html += " "+selected1+">Termino 3 / 4</option>";
+                        html += "<option  value='Termino Medio' ";
+                        if(registros[i]['carrito_nombreenvase']=='Termino Medio'){  selected2='selected'; }
+                        html += " "+selected2+">Termino Medio</option>"; 
+                        html += "</select>";   
+                        html += "</div></div>";   
+                        /*html += "<br> <div class='col-md-6' style='font-size:7pt'> ";
+                    html += "<label for='detalleven_preferencia' class='control-label'><u>Guarnición</u></label>";
+                    html += "<div class='form-group'>";
+                    html += "<label><input type='radio'  name='detalleven_preferencia' value='Papa Frita'>Papa Frita</label><br>";
+                    html += "<label><input type='radio'  name='detalleven_preferencia'  value='Yuca Frita'>Yuca Frita</label><br>";
+                    html += "<label><input type='radio'  name='detalleven_preferencia'  value='Arroz cn Queso'>Arroz con Queso</label><br>";
+                    html += "<label><input type='radio'  name='detalleven_preferencia'  value='Ensalada'>Ensalada</label><br>";
+                                                
+                    html += "</div></div><div class='col-md-6' style='font-size:7pt'> ";
+                    html += "<label for='detalleven_nombreenvase' class='control-label'><u>Cocción de Carne</u></label>";
+                    html += "<div class='form-group'>";
+                    html += "<label><input type='radio'  name='detalleven_nombreenvase' value='Termino Bien Cocido'>Termino Bien Cocido</label><br>";
+                    html += "<label><input type='radio'  name='detalleven_nombreenvase'  value='Termino 3 / 4'>Termino 3/4</label><br>";
+                    html += "<label><input type='radio'  name='detalleven_nombreenvase'  value='Termino Medio'>Termino Medio</label><br>";
+                                                
+                    html += "</div></div>"; */  
+                        }
                         html += " <input id='producto_id'  name='producto_id' type='hidden' class='form-control' value='"+registros[i]["producto_id"]+"'></td>";
                         html += "<td align='right' style='padding-top:0; padding-bottom:0;'>"+Number(registros[i]["carrito_precio"]).toFixed(2)+"<input type='hidden' id='carrito_precio"+registros[i]["producto_id"]+"' name='producto_precio' type='text' size='3' class='form-control'  value='"+registros[i]["carrito_precio"]+"' ></td> ";
                         
 
                         step = "step = '"+registros[i]["producto_unidadentera"]+"'";
-                        //alert(step);
+                        //alert "+step+" (step);
 
-                        html += "<td align='center' "+estilo+"><input  type='number' "+step+" min='"+registros[i]["producto_unidadentera"]+"' onkeypress='cantimas(event,"+registros[i]["producto_id"]+")' onchange='cantidar("+registros[i]["producto_id"]+")' id='carrito_cantidad"+registros[i]["producto_id"]+"' autocomplete='off' name='cantidad' class='btn btn-primary' value='"+registros[i]["carrito_cantidad"]+"' style='padding:0; width:60px;' required>";
+                        html += "<td align='center' "+estilo+"><input  type='number'  min='"+registros[i]["producto_unidadentera"]+"' onkeypress='cantimas(event,"+registros[i]["producto_id"]+")' onchange='cantidar("+registros[i]["producto_id"]+")' id='carrito_cantidad"+registros[i]["producto_id"]+"' autocomplete='off' name='cantidad' class='btn btn-primary' value='"+registros[i]["carrito_cantidad"]+"' style='padding:0; width:60px;' required>";
                        
                         html += "<input id='carrito_id'  name='carrito_id' type='hidden' class='form-control' value='"+registros[i]["carrito_id"]+"'></td>";
 //                        html += "<td align='right' "+estilo+">"+Number(registros[i]["carrito_descuento"]).toFixed(2)+" <input type='hidden' id='carrito_descuento"+registros[i]["producto_id"]+"' name='descuento' size='3' type='text' class='form-control' value='"+registros[i]["carrito_descuento"]+"' ></td>";
@@ -1394,6 +1449,8 @@ function registrargmail(id,nombre,email)
 }
 
 
+
+
 function sesiongoogle(email){
 
     
@@ -1418,4 +1475,92 @@ function sesiongoogle(email){
 });
 
 
+}
+
+function envase(carrito_id)
+{
+    var base_url = document.getElementById('base_url').value;
+    var envase = document.getElementById('carrito_nombreenvase'+carrito_id).value;
+    var controlador = base_url+'website/envase/'+carrito_id;
+    
+    $.ajax({url: controlador,
+           type:"POST",
+           data:{envase:envase},
+           success:function(respuesta){ 
+              //alert('ta chala');
+               
+    },
+        error:function(respuesta){
+          
+       alert("Debe Seleccionar una opcion");
+   }
+});
+}
+
+function preferir(carrito_id)
+{
+    var base_url = document.getElementById('base_url').value;
+    var preferencia = document.getElementById('carrito_preferencia'+carrito_id).value;
+    var controlador = base_url+'website/preferir/'+carrito_id;
+    
+    $.ajax({url: controlador,
+           type:"POST",
+           data:{preferencia:preferencia},
+           success:function(respuesta){ 
+              //alert('ta chala');
+               
+    },
+        error:function(respuesta){
+          
+       alert("Debe Seleccionar una opcion");
+   }
+});
+}
+
+function comprobar()
+{    
+    //var modulo_restaurante = document.getElementById("parametro_modulorestaurante").value;
+     var cliente_id = document.getElementById('cliente').value;
+    if(cliente_id==0){
+        var cliente = document.getElementById('miip').value;
+    }else{
+        var cliente = document.getElementById('cliente').value;
+    }
+    var categoria = 2;//document.getElementById('venta_totalfinal').value;
+    
+    var base_url = document.getElementById('base_url').value;
+    var controlador = base_url+'/website/verificarcarrito';
+    $.ajax({
+        url:controlador,
+        type:"POST",
+        data:{categoria:categoria,cliente:cliente},
+        success:function(respuesta){ 
+                    var datos = JSON.parse(respuesta);
+
+                   
+
+                    if(datos!=null){
+                        var registros = datos["carrito_id"];
+                      //var  detalle = datos["detalleven_id"];
+                        //document.getElementById("carrito_nombreenvase").focus();
+                        
+                        alert('Debe sleccionar una opción');     
+                        $("#carrito_nombreenvases"+registros).css("color", "red");                     
+                        $("#carrito_nombreenvase"+registros).focus();                     
+                    }
+                    else{
+                      $("#modalCart").modal('hide');
+                      realizarcompra();
+                                                   
+                    }
+                },
+                error: function(respuesta){
+                    $("#modalCart").modal('hide');
+                    realizarcompra();         
+                }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+    });
+    
+ 
+    
 }
