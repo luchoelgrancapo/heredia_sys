@@ -50,15 +50,23 @@ function buscar_fecha_ven()
     var fecha_desde = document.getElementById('fecha_desde').value;
     var fecha_hasta = document.getElementById('fecha_hasta').value;
     var usuario_id = document.getElementById('usuario_id').value;
+    if (usuario_id==0||usuario_id=='') {
+      usu = '';
+    }
+    else{
+      usu = "and v.usuario_id = "+usuario_id;
+    }
    // alert(usuario_id[0]['value']);
    // alert(usuario_id[1]['value']);
    // alert(usuario_id[2]['value']);
     
         filtro = " and date(venta_fecha) >= '"+fecha_desde+"'  and  date(venta_fecha) <='"+fecha_hasta+
-            "' and v.usuario_id = "+usuario_id;
+            "' "+usu;
       
     
-    
+    $("#fecha_inicio").html(moment(fecha_desde).format('DD/MM/YYYY'));
+    $("#fecha_fin").html(moment(fecha_hasta).format('DD/MM/YYYY'));
+    //$("#fecha_fin").html(fecha_hasta);
     ventacombi(filtro);
     
 }
@@ -68,7 +76,7 @@ function ventacombi(filtro)
    
     var base_url    = document.getElementById('base_url').value;
     var controlador = base_url+"venta/buscarporvendedores";
-    var limite = 500;
+    var limite = 15000;
     
     $.ajax({url: controlador,
            type:"POST",
@@ -114,8 +122,8 @@ function ventacombi(filtro)
                         html += "<td align='right' >"+Number(total/canti).toFixed(2)+"<br></td>";                                          
                         html += "<td align='right' >"+Number(registros[i]["cantidades"]).toFixed(2)+"<br></td>";
                         html += "<td align='right'> <b>"+Number(registros[i]["totales"]).toFixed(2)+"</b> </td>";
-                        html += "<td align='right'> <b>"+Number(registros[i]["producto_comision"]).toFixed(2)+"</b> </td>";
-                        html += "<td align='right'> <b>"+Number(comision).toFixed(2)+"</b> </td>";
+                       // html += "<td align='right'> <b>"+Number(registros[i]["producto_comision"]).toFixed(2)+"</b> </td>";
+                       // html += "<td align='right'> <b>"+Number(comision).toFixed(2)+"</b> </td>";
                      // html += "<td>"+convertDateFormat(registros[i]["compra_fecha"])+"<br>"+registros[i]['compra_hora']+"</td>" ;
                                                
             
@@ -126,16 +134,17 @@ function ventacombi(filtro)
                    }
                         html += "<tr>";
                         html += "<td></td>";
-                        html += "<td style= 'font-size:12px;' ><b>TOTAL</b></td>";
+                        html += "<td style= 'font-size:14px;' ><b>TOTAL</b></td>";
                         html += "<td></td>";
                         html += "<td></td>";
-                        html += "<td style= 'font-size:12px;' align='right'><b> "+Number(totalCan).toFixed(2)+"</td>";
-                        html += "<td style= 'font-size:12px;' align='right'><b> "+Number(totalTo).toFixed(2)+"</td>";
-                        html += "<td></td>";
-                        html += "<td style= 'font-size:12px;' align='right'><b>"+Number(totalCo).toFixed(2)+"</b></td> ";
+                        html += "<td style= 'font-size:14px;' align='right'><b> "+Number(totalCan).toFixed(2)+"</td>";
+                        html += "<td style= 'font-size:14px;' align='right'><b> "+Number(totalTo).toFixed(2)+"</td>";
+                        //html += "<td></td>";
+                        //html += "<td style= 'font-size:12px;' align='right'><b>"+Number(totalCo).toFixed(2)+"</b></td> ";
                         html += "</tr>";
                    
                    $("#ventacombi").html(html);
+
                    $("#usuario1").html(perra);
                    document.getElementById('loader').style.display = 'none';
             }

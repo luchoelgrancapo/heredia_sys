@@ -3,7 +3,22 @@
   <link rel="stylesheet" href="<?php echo base_url('resources/plugins/fullcalendar-timegrid/main.min.css'); ?>" >
   <link rel="stylesheet" href="<?php echo base_url('resources/plugins/fullcalendar-bootstrap/main.min.css'); ?>" >
           <!-- Main content -->
-
+<div class="row">
+<div class="col-md-6">
+  <div class="box-header">
+               <h4><b>RESERVAS COLISEO</b></h4>
+  </div>
+</div>   
+<div class="col-md-6">   
+    <div class="box-tools no-print">
+        <a href="<?php echo site_url('reserva/add'); ?>" class="btn bg-success btn-app"><fa class='far fa-save'></fa> Registrar</a>
+        <a href="<?php echo site_url('reserva/lista'); ?>" class="btn bg-warning btn-app"><fa class='fas fa-list'></fa> Ver Lista</a>
+        <a href="#" class="btn btn-app" style="background: #A1887F;color: white"><fa class='fas fa-futbol'></fa> Futsal</a> 
+        <a href="#" class="btn btn-app" style="background: #E67E22;color: white"><fa class='fas fa-basketball-ball'></fa> Basquet</a> 
+        <a href="#" class="btn btn-app" style="background: #283593;color: white"><fa class='fas fa-volleyball-ball'></fa> Volley</a> 
+         
+    </div>
+</div>
 <input type="hidden" name="reservas" id="reservas" value='<?php echo json_encode($reserva);  ?>' >
     <section class="content">
       <div class="container-fluid">
@@ -134,7 +149,7 @@ borderColor    : '#f56954',
     var colore='#283593';
   }
 var evento =   {  
-title : all_reservas[i]['reserva_tipo'],
+title : all_reservas[i]['cliente_nombre'],
 start : reserva_fechaingreso+" "+reserva_horaingreso,
 end : reserva_fechasalida+" "+reserva_horasalida,
 backgroundColor : colore,

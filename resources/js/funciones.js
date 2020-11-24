@@ -300,7 +300,7 @@ function tablaproductos()
                         html += "			<td "+color+">"+cont+"</td>";
                         html += "                       <td "+color+"><b><font size='"+fuente+"'>"+registros[i]["producto_nombre"]+"</font></b>";
                         if (parametro_modulorestaurante==1){
-                        html += "<small><br><span  id='alerta"+registros[i]["detalleven_id"]+"'></span>"+registros[i]["detalleven_preferencia"]+" - "+registros[i]["detalleven_nombreenvase"]+"";
+                        html += "<small><br><span  id='alerta"+registros[i]["detalleven_id"]+"'></span>"+registros[i]["detalleven_preferencia"]+" - "+registros[i]["detalleven_nombreenvase"]+" - "+registros[i]["detalleven_nota"]+"";
                         }else{
                         html += "<small><br>"+categoria+registros[i]["producto_unidad"]+" | "+registros[i]["producto_marca"]+" | "+registros[i]["producto_codigobarra"]+"</small>";
                         }
@@ -308,7 +308,7 @@ function tablaproductos()
 
 //html += "  <button class='btn btn-primary btn-xs' title='Registrar/modificar preferencias y características' type='button' data-toggle='collapse' data-target='#caracteristicas"+registros[i]["detalleven_id"]+"' aria-expanded='false' aria-controls='caracteristicas"+registros[i]["detalleven_id"]+"'><i class='fa fa-edit'></i></button>";
 
-html += "  <a href='#' data-toggle='modal' onclick='iniciar_preferencia("+registros[i]["detalleven_id"]+")' data-target='#modalpreferencia' class='btn btn-xs btn-success' style=''><i class='fa fa-tasks'></i></a>";
+html += "  <a href='#' data-toggle='modal' onclick='iniciar_preferencia("+registros[i]["detalleven_id"]+","+registros[i]["categoria_id"]+","+registros[i]["detalleven_envase"]+")' data-target='#modalpreferencia' class='btn btn-xs btn-success' title='Elegir preferencias'><i class='fa fa-tasks'></i></a>";
 
 
 html += "<div class='row'>";
@@ -2399,6 +2399,12 @@ function tabla_ventas(filtro)
                     if (v[i]['venta_numeromesa']!=null && v[i]['venta_numeromesa']!=0){
                         html += "                           <br>Mesa: "+v[i]['venta_numeromesa'];
                     }
+                    if (v[i]['detalleserv_id']== 0 && parametro_modulorestaurante==1){
+                        html += "<br><button class='btn btn-danger btn-xs' onclick='cobrar("+v[i]['venta_id']+")'> Por Cobrar </button>";
+                    }
+                    else{
+                         html += "<br><button class='btn btn-success btn-xs'> Cobrado </button>";
+                    }
                     
                     html += "                        </td>   ";
                     
@@ -2438,7 +2444,7 @@ function tabla_ventas(filtro)
 //                    html += "                           <a href='"+base_url+"venta/edit/"+v[i]['venta_id']+"' class='btn btn-info btn-xs no-print' target='_blank' title='Modifica los datos generales de la venta'><span class='fa fa-pencil'></span></a>";
 //                    html += "                           <a href='"+base_url+"venta/nota_venta/"+v[i]['venta_id']+"' class='btn btn-success btn-xs'><span class='fa fa-print'></span></a> ";
                     html += "                           <a href='"+base_url+"factura/imprimir_recibo/"+v[i]['venta_id']+"' class='btn btn-success btn-xs' target='_blank' title='Imprimir nota de venta'><span class='fa fa-print'></span></a> ";
-                    html += "                           <a href='"+base_url+"venta/modificar_venta/"+v[i]['venta_id']+"' class='btn btn-info btn-xs no-print' target='_blank' title='Modificar el detalle/cliente de la venta'><span class='fa fa-edit'></span></a>";
+                    html += "                           <a href='"+base_url+"venta/modificar_venta/"+v[i]['venta_id']+"' class='btn btn-info btn-xs no-print' title='Modificar el detalle/cliente de la venta'><span class='fa fa-edit'></span></a>";
                     //html += "                           <a href='"+base_url+"factura/certificado_garantia/"+v[i]['venta_id']+"' class='btn btn-success btn-xs' target='_blank' title='Imprimir certificado de garantia' style='background-color: purple'> <span class='fa fa-lock'></span> </a> ";
                     
                     if (parametro_modulorestaurante==1){
@@ -3066,7 +3072,9 @@ function modificar_venta(cliente_id)
             modalidad:modalidad, dia_pago:dia_pago, fecha_inicio: fecha_inicio, venta_horaentrega:venta_horaentrega, venta_glosa:venta_glosa},
             success:function(respuesta){
                 //window.opener.location.reload();
-                window.close();
+                window.open(base_url+'factura/comanda_boucher/'+venta_id, '_blank');
+                window.location.href= base_url+'venta';
+
                 //alert("Cambios Guardados...!");
             },
             error: function(respuesta){
@@ -3242,10 +3250,25 @@ function asignar_inventario(){
 }
 
 
-function iniciar_preferencia(detalleven_id)
+function iniciar_preferencia(detalleven_id,categoria_id,detalleven_envase)
 {
-    //var detalleven_id = document.getElementById("detalleven_id").value;
+    //document.getElementByName('detalleven_nombreenvase').removeAttr("checked");
     $("#detalleven_id").val(detalleven_id);
+    $("#categoria_id").val(categoria_id);
+    $("#detalleven_envase").val(detalleven_envase);
+     
+    if (categoria_id!=2) {
+      document.getElementById('guarniciones').style.display = "none";
+      document.getElementById('cocciones').style.display = "none";
+    }
+    if (categoria_id==2 && detalleven_envase==0) {
+      document.getElementById('guarniciones').style.display = "none";
+      document.getElementById('cocciones').style.display = "block";
+    }
+    if (categoria_id==2 && detalleven_envase==1) {
+      document.getElementById('guarniciones').style.display = "block";
+      document.getElementById('cocciones').style.display = "block";
+    }
 }
 
 
@@ -3269,28 +3292,44 @@ function iniciar_preferencia(detalleven_id)
 function guardar_preferencia()
 {    
     var base_url = document.getElementById('base_url').value;
+    var categoria_id = document.getElementById('categoria_id').value;
+    var detalleven_envase = document.getElementById('detalleven_envase').value;
     var controlador = base_url+'/venta/guardar_preferencia';
-
+    if (categoria_id==2) {
+      if(detalleven_envase==1){
      for (var i=0;i<document.preferencias.detalleven_preferencia.length;i++){ 
         if (document.preferencias.detalleven_preferencia[i].checked) 
            break; 
+
      } 
+
      var preferencia = document.preferencias.detalleven_preferencia[i].value; 
-     
+     }else{
+       var preferencia = ''; 
+     }
      for (var j=0;j<document.preferencias.detalleven_nombreenvase.length;j++){ 
         if (document.preferencias.detalleven_nombreenvase[j].checked) 
            break; 
      } 
      var envase = document.preferencias.detalleven_nombreenvase[j].value 
-     
+     }
+     else{
+       var preferencia = '';
+       var envase = '';
+     }
+    var nota = document.getElementById('detalleven_nota').value;
     var detalleven_id = document.getElementById('detalleven_id').value;
     //alert(preferencia);
     //alert(envase);
     $.ajax({
         url:controlador,
         type:"POST",
-        data:{preferencia:preferencia,detalleven_id:detalleven_id,envase:envase},
+        data:{preferencia:preferencia,detalleven_id:detalleven_id,envase:envase,nota:nota},
         success:function(respuesta){
+          document.getElementById("preferencias").reset();
+          
+
+
             tablaproductos();
         },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
@@ -3750,5 +3789,24 @@ function imprimir_factura(){
     }
     
     $("#select_imprimir_factura").val(0); 
+    
+}
+
+function cobrar(venta_id){
+  var base_url = document.getElementById("base_url").value;
+  var controlador = base_url+"venta/cobrar";
+    //$("#modalfactura").modal('hide');
+    $.ajax({url: controlador,
+            type: "POST",
+            data:{venta_id:venta_id}, 
+            success:function(resultado){
+              buscar_ventas();
+            },
+            error:function(resultado){
+                alert("Ocurrio un problema");
+            },
+        
+        
+    })
     
 }

@@ -1299,17 +1299,21 @@ echo $date->format('H:i');  ?>">
                             
 
                             <input id="detalleven_id" value="0" hidden>
+                            <input id="categoria_id" value="0" hidden>
+                            <input id="detalleven_envase" value="0" hidden>
                             
                     </div>
-                     <form name=preferencias>
+                     <form name="preferencias" id="preferencias">
                     <div class="modal-body">
                         <!--------------------- TABLA---------------------------------------------------->
                         
 
                         
                 <div class="row">
+                <?php //if () {
                    
-                <div class="col-md-6">
+                //}  ?>   
+                <div class="col-md-6" id="guarniciones">
                     <label for="detalleven_preferencia" class="control-label">Guarnición</label>
                     <div class="form-group">
 	
@@ -1322,7 +1326,7 @@ echo $date->format('H:i');  ?>">
                     </div>
                                             
 				</div>
-                <div class="col-md-6">
+                <div class="col-md-6" id="cocciones">
                     <label for="detalleven_nombreenvase" class="control-label">Cocción de Carne</label>
                     <div class="form-group">
                             
@@ -1332,7 +1336,10 @@ echo $date->format('H:i');  ?>">
                                                 
                     </div>
                 </div>
-                                    
+                <div class="col-md-12">
+                    <label for="detalleven_nota" class="control-label">Nota</label>
+                    <input type="text" name="detalleven_nota" id="detalleven_nota" class="form-control">
+                </div>                    
                             
                                        
                      

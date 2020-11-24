@@ -1,6 +1,7 @@
     $(document).on("ready",inicio);
 function inicio(){
-     buscar_inscripciones();
+  var filtro = '';
+     fechadeinscripcion(filtro);
         
 } 
 
@@ -38,8 +39,9 @@ function buscar_inscripciones()
 
     
     if (opcion == 4) 
-    {   filtro = " ";//todos los compras
+    {   filtro = "";//todos los compras
         mostrar_ocultar_buscador("ocultar");
+        fechadeinscripcion(filtro);
 
     }
     
@@ -397,6 +399,7 @@ function buscarcliente(){
                     
                     $("#cliente_nombre").val(registros[0]["cliente_nombre"]);
                     $("#cliente_celular").val(registros[0]["cliente_celular"]);
+                    $("#cliente_codigo").val(registros[0]["cliente_codigo"]);                  
                     $("#cliente_id").val(registros[0]["cliente_id"]);                  
 
                 }

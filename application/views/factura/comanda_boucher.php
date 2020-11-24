@@ -36,7 +36,10 @@ function autosize(){
 </script>
     -->
     
-    
+<?php //$tipo_factura = $parametro[0]["parametro_altofactura"]; //15 tamaño carta 
+      $ancho = $parametro[0]["parametro_anchofactura"]."cm";
+      $margen_izquierdo = $parametro[0]["parametro_margenfactura"]."cm";
+?>    
 <script type="text/javascript">
     $(document).ready(function()
     {
@@ -79,13 +82,13 @@ margin: 0px;
 
 
 table{
-width : 7cm;
+width : 8cm;
 margin : 0 0 0px 0;
 padding : 0 0 0 0;
 border-spacing : 0 0;
 border-collapse : collapse;
 font-family: Arial;
-font-size: 14px;  
+font-size: 16px;  
 }
 } td {
 border:hidden;
@@ -98,7 +101,7 @@ border-spacing : 0;
 }
 div#content {
 background : #ddd;
-font-size : 11px;
+font-size : 12px;
 margin : 0 0 0 0;
 padding : 0 5px 0 5px;
 border-left : 1px solid #aaa;
@@ -112,7 +115,7 @@ border-bottom : 1px solid #aaa;
 
 <!-------------------------------------------------------->
 
-<table class="table" style="width: 7cm;" >
+<table class="table" style="width: <?php echo $ancho; ?>;" >
     <tr>
         <td colspan="4">
                 
@@ -134,18 +137,18 @@ border-bottom : 1px solid #aaa;
                 <br>
                 
                 Mesa: <b><?php echo $venta[0]["venta_numeromesa"]; ?></b>
-                <br>
+                
                 <?php } ?>
 
                 <?php if($venta[0]['tiposerv_id']==2){ ?>
                 <br>
                 
                 <b>Para llevar</b>
-                <br>
+                
                 <?php } ?>
-                _______________________________________________                
+                <hr>         
                    
-                <br> 
+                
                 <?php $fecha = new DateTime($venta[0]['venta_fecha']); 
                         $fecha_d_m_a = $fecha->format('d/m/Y');
                   ?>    
@@ -183,12 +186,16 @@ border-bottom : 1px solid #aaa;
                         <?php
                         $preferencia = $d['detalleven_preferencia'];
                         $caracteristicas = $d['detalleven_nombreenvase'];
+                        $nota = $d['detalleven_nota'];
                         
                         if ($preferencia !='null' && $preferencia!='-')
                             echo  " /".$preferencia;
                         
                         if ($caracteristicas!='null' && $caracteristicas!='-')
                             echo  "<br>".$caracteristicas;
+
+                        if ($nota!='null' && $nota!='-' && $nota!='')
+                            echo  " /".$nota;
                         
                         ?>
                     <!--<textarea onload="autosize()"></textarea>-->

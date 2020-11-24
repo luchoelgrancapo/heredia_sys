@@ -11,6 +11,7 @@ class Inscripcion extends CI_Controller{
         $this->load->model('Inscripcion_model');
         $this->load->model('Servicio_temporal_model');
         $this->load->model('Forma_pago_model');
+        $this->load->model('Reserva_model');
         if ($this->session->userdata('logged_in')) {
             $this->session_data = $this->session->userdata('logged_in');
         }else {
@@ -31,8 +32,8 @@ class Inscripcion extends CI_Controller{
 
     function coliseo()
     {
-        //$data['inscripcion'] = $this->Inscripcion_model->get_all_inscripcion();
-        
+        $data['reserva'] = $this->Reserva_model->get_all_reserva();
+        //echo json_encode($result);
         $data['_view'] = 'inscripcion/coliseo';
         $this->load->view('layouts/main',$data);
     }

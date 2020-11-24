@@ -29,6 +29,12 @@
 							<input type="text" name="cliente_celular" value="<?php echo $this->input->post('cliente_celular'); ?>" class="form-control" id="cliente_celular" />
 						</div>
 					</div>
+					<div class="col-md-3">
+						<label for="cliente_codigo" class="control-label">Codigo</label>
+						<div class="form-group">
+							<input type="text" name="cliente_codigo" value="<?php echo $this->input->post('cliente_codigo'); ?>" class="form-control" id="cliente_codigo" />
+						</div>
+					</div>
 					
 					</div>
 					<?php echo form_open('inscripcion/add'); ?>
@@ -82,7 +88,7 @@
                                                                                     
                          </select>
                     </div>
-				</div>
+					</div>
 			</div>
           	<div class="box-footer">
             	<button type="submit" class="btn btn-success">

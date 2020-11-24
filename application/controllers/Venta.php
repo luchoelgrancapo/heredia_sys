@@ -323,7 +323,8 @@ class Venta extends CI_Controller{
           detalleven_prestamoenvase,
           detalleven_fechavenc,
           usuario_id,
-          factura_id
+          factura_id,
+          detalleven_nota
         )
 
         (SELECT 
@@ -355,7 +356,8 @@ class Venta extends CI_Controller{
             detalleven_prestamoenvase,
             detalleven_fechavenc,
             usuario_id,
-            0 as factura_id
+            0 as factura_id,
+            detalleven_nota
           
         FROM
           detalle_venta_aux
@@ -1257,7 +1259,8 @@ function edit($venta_id)
           detalleven_prestamoenvase,
           detalleven_fechavenc,
           usuario_id,
-          factura_id
+          factura_id,
+          detalleven_nota
         )
 
         (SELECT 
@@ -1289,7 +1292,8 @@ function edit($venta_id)
             detalleven_prestamoenvase,
             detalleven_fechavenc,
             usuario_id,
-            0 as factura_id
+            0 as factura_id,
+            detalleven_nota
           
         FROM
           detalle_venta_aux
@@ -2622,10 +2626,11 @@ function anular_venta($venta_id){
                //**************** inicio contenido ***************       
             $preferencia = $this->input->post('preferencia');
             $envase = $this->input->post('envase');
+            $nota = $this->input->post('nota');
             $detalleven_id = $this->input->post('detalleven_id');
                
             $sql = "update detalle_venta_aux set detalleven_preferencia = '".$preferencia."'".
-              ", detalleven_nombreenvase ='".$envase."' where detalleven_id = ".$detalleven_id;           
+              ", detalleven_nombreenvase ='".$envase."', detalleven_nota='".$nota."' where detalleven_id = ".$detalleven_id;           
            //echo $sql;                  
             
            $resultado = $this->Venta_model->ejecutar($sql);
@@ -3081,5 +3086,12 @@ function anular_venta($venta_id){
         $sql = "SELECT detalleven_id FROM detalle_venta_aux WHERE (detalleven_nombreenvase='' or detalleven_nombreenvase is Null or detalleven_nombreenvase='null') and categoria_id=".$categoria." and usuario_id=".$usuario_id." ";
         $alerta = $this->db->query($sql)->row_array();
         echo json_encode($alerta);
+    }
+    function cobrar()
+    {
+                $venta_id = $this->input->post('venta_id');
+                $sql = "update venta set detalleserv_id = 1 where venta_id = ".$venta_id;
+                $this->Venta_model->ejecutar($sql);
+                echo json_encode(true);
     }
 }
