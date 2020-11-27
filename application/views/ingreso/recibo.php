@@ -60,12 +60,13 @@ padding : 0 0 0 0;
 border-spacing : 0 0;
 border-collapse : collapse;
 font-family: Arial;
-font-size: 7pt;  
-
+font-size: 10px;  
+border:0 !important;
+}
 td {
-border:hidden;
+border:0 !important;
 }
-}
+
 
 td#comentario {
 vertical-align : bottom;
@@ -180,13 +181,13 @@ border-bottom : 1px solid #aaa;
                                 
                             <tr>
                                 <td style="width: 2cm;"></td> 
-                                <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap ><b>EN FECHA: </b></td><td></td> <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;"><?php echo $fecha_d_m_a; ?></td>
+                                <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap ><b>EN FECHA: </b></td><td style="background-color: #ddd !important; -webkit-print-color-adjust: exact;"></td> <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;"><?php echo $fecha_d_m_a; ?></td>
                                 <td style="width: 2cm;"></td> 
                             </tr>
 
                             <tr>
                                 <td style="width: 2cm;"></td>
-                                <td style="width: 5cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap><b>RECIBI DE: </b></td><td ></td><td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;"><?php echo $ingresos[0]['ingreso_nombre'].""; ?></td>
+                                <td style="width: 5cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap><b>RECIBI DE: </b></td><td style="background-color: #ddd !important; -webkit-print-color-adjust: exact;"></td><td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;"><?php echo $ingresos[0]['ingreso_nombre'].""; ?></td>
                                 <td style="width: 2cm;"></td>
                             </tr>
                            
@@ -210,7 +211,7 @@ border-bottom : 1px solid #aaa;
                        <tr>
                                 <td style="width: 2cm;"></td> 
                                 <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap >
-                                    <b>POR CONCEPTO: </b></td><td></td> 
+                                    <b>POR CONCEPTO: </b></td><td style="background-color: #ddd !important; -webkit-print-color-adjust: exact;"></td> 
                                 <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;">
                                      <?php echo$ingresos[0]['ingreso_categoria'];?> (<?php echo$ingresos[0]['ingreso_concepto'];?>)
                                 </td>
@@ -224,7 +225,7 @@ border-bottom : 1px solid #aaa;
                        <tr>
                                 <td style="width: 2cm;"></td> 
                                 <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap >
-                                    <b>LA SUMA DE: </b></td><td></td> 
+                                    <b>LA SUMA DE: </b></td><td style="background-color: #ddd !important; -webkit-print-color-adjust: exact;"></td> 
                                 <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;">
                                         <?php echo number_format($ingresos[0]['ingreso_monto'],'2','.',',');?> <?php echo$ingresos[0]['ingreso_moneda'];?>
                                 </td>
@@ -238,7 +239,7 @@ border-bottom : 1px solid #aaa;
                        <tr>
                                 <td style="width: 2cm;"></td> 
                                 <td style="width: 4cm; text-align: right; background-color: #aaa !important; -webkit-print-color-adjust: exact;" nowrap >
-                                    <b>LITERAL: </b></td><td></td> 
+                                    <b>LITERAL: </b></td><td style="background-color: #ddd !important; -webkit-print-color-adjust: exact;"></td> 
                                 <td style="width: 10cm; background-color: #ddd !important; -webkit-print-color-adjust: exact;">
                                     <?php echo num_to_letras($ingresos[0]['ingreso_monto']);?> 
                                 </td>

@@ -242,6 +242,13 @@ function tablaproductos()
     var parametro_diasvenc = document.getElementById('parametro_diasvenc').value;
     var venta_descuento = Number(document.getElementById('venta_descuento').value);
     var parametro_modulorestaurante = document.getElementById('parametro_modulorestaurante').value;
+    var tipousuario_id = document.getElementById('tipousuario_id').value;
+    
+    if (tipousuario_id==1) {
+      var readonly = "";
+    }else{
+      var readonly = "readonly";
+    }
     $.ajax({url: controlador,
            type:"POST",
            data:{datos:1},
@@ -414,7 +421,7 @@ html += "  </div>";
                         html += "                       <button onclick='ingresorapidojs(1,"+JSON.stringify(registros[i])+")' class='btn btn-facebook btn-xs'><span class='fa fa-plus'></span></a></button>";
                         html += "                    </div>";
 
-                        html += "<input size='5' name='precio' id='precio"+registros[i]["detalleven_id"]+"' value='"+parseFloat(registros[i]["detalleven_precio"]).toFixed(2)+"' onKeyUp ='actualizarprecios(event,"+registros[i]["detalleven_id"]+")'>";
+                        html += "<input "+readonly+" size='5' name='precio' id='precio"+registros[i]["detalleven_id"]+"' value='"+parseFloat(registros[i]["detalleven_precio"]).toFixed(2)+"' onKeyUp ='actualizarprecios(event,"+registros[i]["detalleven_id"]+")'>";
                         html += "<br><font size='3' ><b>"+parseFloat(registros[i]["detalleven_total"]).toFixed(2)+"</b></font>";
                         html += "</td>";
                         html += "			<td "+color+">";
@@ -438,7 +445,7 @@ html += "  </div>";
                     
 
                         html += "</td>";
-                        html += "<td align='right' "+color+"><input size='8' name='precio' id='precio"+registros[i]["detalleven_id"]+"' value='"+parseFloat(registros[i]["detalleven_precio"]).toFixed(2)+"' onKeyUp ='actualizarprecios(event,"+registros[i]["detalleven_id"]+")'></td>";
+                        html += "<td align='right' "+color+"><input "+readonly+" size='8' name='precio' id='precio"+registros[i]["detalleven_id"]+"' value='"+parseFloat(registros[i]["detalleven_precio"]).toFixed(2)+"' onKeyUp ='actualizarprecios(event,"+registros[i]["detalleven_id"]+")'></td>";
                         
                         html += "                       <td align='right' "+color+"><font size='3' ><b>"+parseFloat(registros[i]["detalleven_total"]).toFixed(2)+"</b></font></td>";
 
