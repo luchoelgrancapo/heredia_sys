@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$config['base_url'] = 'http://localhost/heredia_sys';
+$config['base_url'] = 'http://localhost/business_sys';
 
 
 /*

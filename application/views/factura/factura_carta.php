@@ -1,3 +1,4 @@
+<script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <!--<link href="<?php echo base_url('resources/css/factura_boucher.css'); ?>" rel="stylesheet">
 <!DOCTYPE html> 
  
@@ -258,7 +259,8 @@ border-bottom : 1px solid #AED6F1;
                            <br>
                             <font style="font-family: Arial; font-size: 8pt">
                                 <small >
-                                        <?php echo $factura[0]['factura_actividad']?>
+                                        <?php echo $factura[0]['factura_actividad']?><br>
+                                        <?php echo $dosif['dosificasion_actividadsec']?>
                                 </small>
                             </font>
                     

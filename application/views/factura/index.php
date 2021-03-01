@@ -81,7 +81,16 @@
                            <div class="form-group">
               
                                 <button onclick="generarexcel()" type="button" class="btn btn-success btn-block" ><span class="far fa-file-excel"> </span> Exportar a Excel</button>
+                                
                                 <!--<button  type="submit" class="btn btn-facebook btn-xs form-control" ><span class="fa fa-file-excel-o"> </span> Exportar a Excel</button>-->
+      
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                           <label for="desde" class="control-label"> Exportar: </label>
+                           <div class="form-group">
+              
+                              <button onclick="generartxt()" type="button" class="btn bg-navy btn-block" ><span class="far fa-file-code"> </span> Generar TXT</button>
       
                             </div>
                         </div>

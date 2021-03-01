@@ -82,7 +82,7 @@ function fechadeinscripcion(filtro)
    var controlador = base_url+"inscripcion/buscarfecha";
    var estado_id = document.getElementById('estado_id').value;
    if (estado_id==1) {
-       var estado = " and date(inscripcion_fechaini) <= date(now()) and date(inscripcion_fechafin) >= date(now())";
+       var estado = " and date(inscripcion_fechafin) >= date(now())";
    }else{
        var estado = " and date(inscripcion_fechafin) <= date(now()) ";
    }
@@ -102,7 +102,7 @@ function fechadeinscripcion(filtro)
                    
                     var cont = 0;
                     var total = Number(0);
-                    
+                    var hoy =new Date();
                     var n = registros.length; //tama単o del arreglo de la consulta
                     $("#pillados").html("Registros Encontrados: "+n+"");
                    
@@ -116,14 +116,16 @@ function fechadeinscripcion(filtro)
                         html += "<tr>";
                       
                         html += "<td>"+(i+1)+"</td>";
-                        html += "<td><b>"+registros[i]["cliente_nombre"]+"</b><br>";
+                        html += "<td><b>"+registros[i]["cliente_nombre"]+"</b> "+registros[i]["cliente_ci"]+"<br>";
                         html += "<a href='https://api.whatsapp.com/send?phone=591"+registros[i]["cliente_celular"]+"&text=hola%20como%20es' target='_blank'><i class='fab fa-whatsapp'></i> "+registros[i]["cliente_celular"]+"</a></td>";
                         html += "<td>"+registros[i]["serviciote_nombre"]+"<br>Meses: "+ registros[i]["serviciote_duracion"]+"</td>"; 
                         html += "<td align='center'>"+moment(registros[i]["inscripcion_fechaini"]).format('DD/MM/YYYY')+"</td>"; 
-                        html += "<td align='center'>"+moment(registros[i]["inscripcion_fechafin"]).format('DD/MM/YYYY')+"</td>"; 
+                        html += "<td align='center'>"+moment(registros[i]["inscripcion_fechafin"]).format('DD/MM/YYYY')+"</td>";
+                        var dias = moment(registros[i]["inscripcion_fechafin"]).diff(hoy, 'days');
+                        html += "<td>"+dias+"</td>";
                         html += "<td align='right'>"+Number(registros[i]["inscripcion_monto"]).toFixed(2)+""; 
                         html += "<br><span class='badge badge-warning'>"+registros[i]['forma_nombre']+"</span></td>"; 
-                         
+                                               
                         html += "<td>"+registros[i]["usuario_nombre"]+"<br>"+moment(registros[i]["inscripcion_fecha"]).format('DD/MM/YYYY H:m:s')+"</td>"; 
                         html += "<td  class='no-print'><a  onclick='reinscribir("+registros[i]["inscripcion_id"]+")' title='Reinscribir' data-toggle='modal' data-target='#reincribir"+registros[i]['inscripcion_id']+"' class='btn bg-primary btn-xs'><span class='fas fa-file-prescription'></a>";
                        // html += " <a href='"+base_url+"inscripcion/imprimir/"+registros[i]["inscripcion_id"]+"' title='Carta' target='_blank' class='btn btn-success btn-xs'><span class='fa fa-print'></a>";
@@ -133,7 +135,7 @@ function fechadeinscripcion(filtro)
                         if (registros[i]["factura_id"]>0) {
                         html += "<a href='"+base_url+"factura/imprimir_factura_id/"+registros[i]["factura_id"]+"/2' title='Factura' target='_blank' class='btn btn-warning btn-xs'><span class='fa fa-list'></a>";
                         }*/
-                        //html += " <a href='"+base_url+"inscripcion/edit/"+registros[i]["inscripcion_id"]+"'  class='btn btn-info btn-xs'><span class='fas fa-edit'></a>";
+                        html += " <a href='"+base_url+"inscripcion/edit/"+registros[i]["inscripcion_id"]+"' title='Editar' class='btn btn-info btn-xs'><span class='fas fa-edit'></a>";
                         html += " <a class='btn bg-danger btn-xs' data-toggle='modal' data-target='#myModal"+registros[i]['inscripcion_id']+"' title='Eliminar'><span class='fas fa-ban'></span></a>";
                         html += "<!------------------------ INICIO modal para confirmar eliminación ------------------->";
                         html += "<div class='modal fade' id='myModal"+registros[i]['inscripcion_id']+"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel"+registros[i]['inscripcion_id']+"'>";
@@ -235,8 +237,11 @@ function calcular_fecha()
                   var meses = Number(registros['serviciote_duracion']);
                   $("#periodo").val(meses); 
                   $("#inscripcion_monto").val(registros['serviciote_precio']); 
-                  var fecha_fin = moment(inicio.setMonth(inicio.getMonth() + meses)).format('YYYY-MM-DD');
-                  $("#inscripcion_fechafin").val(fecha_fin); 
+                  var fecha_tin = inicio.setMonth(inicio.getMonth() + meses);
+                  var fecha_fin = new Date(fecha_tin);
+                  var fecha_fin1 = moment(fecha_fin.setDate(fecha_fin.getDate() + 1)).format('YYYY-MM-DD');
+                  //fecha.setDate(fecha.getDate() + dias);
+                  $("#inscripcion_fechafin").val(fecha_fin1); 
                    
                               
                    
@@ -253,14 +258,16 @@ function calcular_fecha()
 
 function calcularfin()
 {
-   var periodo = document.getElementById('periodo').value;
+   var periodo = Number(document.getElementById('periodo').value);
    if (periodo=='') {
        alert('Primero debe seleccionar un servicio');
    } else {
    var fecha_inicio = document.getElementById('inscripcion_fechaini').value;
    var inicio = new Date(fecha_inicio);//moment
-   var fecha_fin = moment(inicio.setMonth(inicio.getMonth() + Number(periodo))).format('YYYY-MM-DD');
-   $("#inscripcion_fechafin").val(fecha_fin);     
+   var fecha_tin = inicio.setMonth(inicio.getMonth() + periodo);
+   var fecha_fin = new Date(fecha_tin);
+   var fecha_fin1 = moment(fecha_fin.setDate(fecha_fin.getDate() + 1)).format('YYYY-MM-DD');
+   $("#inscripcion_fechafin").val(fecha_fin1);     
    }
    
 }

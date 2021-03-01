@@ -24,7 +24,7 @@ class ControlCode{
         //validación de datos
         if( empty($authorizationNumber) || empty($invoiceNumber) || empty($dateOfTransaction) || 
                 empty($transactionAmount) || empty($dosageKey) || (!strlen($nitci)>0 )  ){            
-            throw new InvalidArgumentException('<b>Todos los campos son obligatorios</b>');
+            throw new InvalidArgumentException('<b>'.$authorizationNumber.' -  '.$invoiceNumber.' - '.$dateOfTransaction.'</b>');
         }else{
             $this->validateNumber($authorizationNumber);
             $this->validateNumber($invoiceNumber);

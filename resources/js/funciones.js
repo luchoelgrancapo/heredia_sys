@@ -2299,8 +2299,8 @@ function registrar_factura(venta_id){
             success:function(respuesta){
                 resultado = JSON.parse(respuesta);
                 var factura_id = resultado;
-                alert(factura_id);
-                alert(base_url+"factura/imprimir_factura_id/"+factura_id+"/1");
+                //alert(factura_id);
+                //alert(base_url+"factura/imprimir_factura_id/"+factura_id+"/1");
                 window.open(base_url+"factura/imprimir_factura_id/"+factura_id+"/1", '_blank');
                 ventas_por_fecha(); //funcion para volver a mostrar la lista de ventas 
                                     /// puede ser remplazada por otra funcion que se aplique a su modulo o eliminada
@@ -3722,7 +3722,7 @@ function cargar_factura2(venta_id){
                         $("#botonaniadir").html("<a onclick='aniadirdetalleaux("+venta_id+")' class='btn btn-xs btn-success' class='form-control'><span class='fa fa-plus'></span></a>");
                     }
                     
-                    $("#registrar_factura").html("<button class='btn btn-facebook btn-block' id='boton_asignar' onclick='registrar_factura("+venta_id+")' data-dismiss='modal' ><span class='fa fa-floppy-o'></span> Generar Factura</button>");
+                    $("#registrar_factura").html("<button class='btn bg-navy btn-block' id='boton_asignar' onclick='registrar_factura("+venta_id+")' data-dismiss='modal' ><span class='fa fa-floppy-o'></span> Generar Factura</button>");
                     
                     /*if(click_show == 1){
                         $("#boton_modal_factura").click();

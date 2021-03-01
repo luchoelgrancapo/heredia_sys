@@ -80,7 +80,8 @@
 					<div class="col-md-2">
 						<label for="reserva_periodo" class="control-label">Tiempo</label>
 						<div class="form-group">
-							<select class="form-control" name="reserva_periodo" onchange="tiempo()" id="reserva_periodo">
+							<select class="form-control" name="reserva_periodo" onchange="tiempo()" id="reserva_periodo" required>
+								<option value=""> - TIEMPO - </option>
 								<option value="1"> 1 HORA</option>
 								<option value="1.5"> 1 HORA Y MEDIA</option>
 								<option value="2"> 2 HORAS</option>
@@ -100,7 +101,7 @@
 					<div class="col-md-2">
 						<label for="reserva_monto" class="control-label">Monto</label>
 						<div class="form-group">
-							<input type="text" name="reserva_monto" value="<?php echo $this->input->post('reserva_monto'); ?>" class="form-control" id="reserva_monto" />
+							<input type="text" name="reserva_monto" value="<?php echo $this->input->post('reserva_monto'); ?>" class="form-control" id="reserva_monto" required/>
 						</div>
 					</div>
 					<div class="col-md-3" >

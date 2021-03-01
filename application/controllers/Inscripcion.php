@@ -12,6 +12,7 @@ class Inscripcion extends CI_Controller{
         $this->load->model('Servicio_temporal_model');
         $this->load->model('Forma_pago_model');
         $this->load->model('Reserva_model');
+        $this->load->model('Cliente_model');
         if ($this->session->userdata('logged_in')) {
             $this->session_data = $this->session->userdata('logged_in');
         }else {
@@ -88,6 +89,7 @@ class Inscripcion extends CI_Controller{
 					'inscripcion_fechaini' => $this->input->post('inscripcion_fechaini'),
 					'inscripcion_fechafin' => $this->input->post('inscripcion_fechafin'),
 					'inscripcion_monto' => $this->input->post('inscripcion_monto'),
+                    'forma_id' => $this->input->post('forma_id'),
                 );
 
                 $this->Inscripcion_model->update_inscripcion($inscripcion_id,$params);            
@@ -95,6 +97,10 @@ class Inscripcion extends CI_Controller{
             }
             else
             {
+                $data['cliente'] = $this->Cliente_model->get_cliente($data['inscripcion']['cliente_id']);
+                $data['servi'] = $this->Servicio_temporal_model->get_servicio_temporal($data['inscripcion']['serviciote_id']);
+                $data['forma_pago'] = $this->Forma_pago_model->get_all_forma();
+                $data['all_servicio'] = $this->Servicio_temporal_model->get_all_servicio_temporal();
                 $data['_view'] = 'inscripcion/edit';
                 $this->load->view('layouts/main',$data);
             }

@@ -41,7 +41,7 @@
 						<th>Cliente</th>
 						<th>Usuario</th>
 						<th>Glosa</th>
-						<th>Monto</th>
+						<th colspan="2">Monto</th>
 						<th>Fechaingreso</th>
 						<th>Hora Ingreso</th>
 						<th>Hora Salida</th>
@@ -49,24 +49,35 @@
 						<th></th>
                     </tr>
                     <tbody class="buscar" id="ingresos">
-                    <?php foreach($reserva as $r){ ?>
+                    <?php $total=0; foreach($reserva as $r){ 
+                    $total +=  $r['reserva_monto'];  ?>
                     <tr>
 						<td><?php echo $r['reserva_id']; ?></td>
 						<td><?php echo $r['reserva_tipo']; ?></td>
 						<td><?php echo $r['cliente_nombre']; ?></td>
 						<td><?php echo $r['usuario_nombre']; ?></td>
 						<td><?php echo $r['reserva_glosa']; ?></td>
-						<td><?php echo $r['reserva_monto']; ?></td>
-						<td><?php echo $r['reserva_fechaingreso']; ?></td>
+						<td align="right"><?php echo $r['reserva_monto']; ?></td>
+                        <td><?php echo $r['forma_nombre']; ?></td>
+						<td><?php echo date('d/m/Y',strtotime($r['reserva_fechaingreso'])) ; ?></td>
 						<td><?php echo $r['reserva_horaingreso']; ?></td>
 						<td><?php echo $r['reserva_horasalida']; ?></td>
-						<td><?php echo $r['reserva_fecha']; ?></td>
+						<td><?php echo date('d/m/Y H:i:s',strtotime($r['reserva_fecha'])) ; ?></td>
+                        <?php if($r['reserva_fechaingreso'] >= date('Y-m-d')){ ?>
 						<td>
-                            <!--<a href="<?php echo site_url('reserva/edit/'.$r['reserva_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> </a> -->
+                            <a href="<?php echo site_url('reserva/edit/'.$r['reserva_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-edit"></span> </a> 
                             <a href="<?php echo site_url('reserva/remove/'.$r['reserva_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> </a>
                         </td>
+                        <?php }else{ ?>
+                        <td></td>
+                        <?php } ?>
                     </tr>
                     <?php } ?>
+                    <tr>
+                        <td colspan="5">TOTAL</td>
+                        <td align="right"><?php echo number_format($total); ?></td>
+                        <td colspan="6"></td>
+                    </tr>
                 </tbody>
                 </table>
                                 

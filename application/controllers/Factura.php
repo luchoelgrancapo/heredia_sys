@@ -109,7 +109,7 @@ class Factura extends CI_Controller{
         if($this->acceso(17)){
         //**************** inicio contenido ***************   
         $usuario_id = $this->session_data['usuario_id'];
-        
+        $data['dosif'] = $this->Dosificacion_model->get_dosificacion(1);
         $data['tipousuario_id'] = $this->session_data['tipousuario_id'];
         $data['venta'] = $this->Detalle_venta_model->get_venta($venta_id);
         $data['detalle_factura'] = $this->Detalle_venta_model->get_detalle_factura($venta_id);        
@@ -175,6 +175,7 @@ class Factura extends CI_Controller{
         $data['tipousuario_id'] = $this->session_data['tipousuario_id'];
         //$data['venta'] = $this->Detalle_venta_model->get_venta($venta_id);
        // $data['venta'] = $this->Detalle_venta_model->get_venta_id($venta_id);
+        $data['dosif'] = $this->Dosificacion_model->get_dosificacion(1);
         $data['detalle_factura'] = $this->Detalle_venta_model->get_detalle_factura($venta_id);        
         $data['empresa'] = $this->Empresa_model->get_empresa(1);        
         $data['page_title'] = "Factura";

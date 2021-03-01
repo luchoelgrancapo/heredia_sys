@@ -10,6 +10,7 @@ class Reserva extends CI_Controller{
         parent::__construct();
         $this->load->model('Reserva_model');
         $this->load->model('Forma_pago_model');
+        $this->load->model('Cliente_model');
         if ($this->session->userdata('logged_in')) {
             $this->session_data = $this->session->userdata('logged_in');
         }else {
@@ -30,7 +31,7 @@ class Reserva extends CI_Controller{
 
     function lista()
     {
-        $data['reserva'] = $this->Reserva_model->get_all_reserva();
+        $data['reserva'] = $this->Reserva_model->get_all_reservames();
         
         $data['_view'] = 'reserva/indexlista';
         $this->load->view('layouts/main',$data);
@@ -71,7 +72,7 @@ class Reserva extends CI_Controller{
 				'reserva_fechasalida' => $this->input->post('reserva_fechaingreso'),//misma
 				'reserva_horaingreso' => $this->input->post('reserva_horaingreso'),
 				'reserva_horasalida' => $this->input->post('reserva_horasalida'),
-				'reserva_fecha' => $this->input->post('reserva_fecha'),
+				//'reserva_fecha' => $this->input->post('reserva_fecha'),
                 'forma_id' => $this->input->post('forma_id'),
             );
             
@@ -95,7 +96,7 @@ class Reserva extends CI_Controller{
     {   
         // check if the reserva exists before trying to edit it
         $data['reserva'] = $this->Reserva_model->get_reserva($reserva_id);
-        
+        $usuario_id = $this->session_data['usuario_id'];
         if(isset($data['reserva']['reserva_id']))
         {
             if(isset($_POST) && count($_POST) > 0)     
@@ -103,15 +104,16 @@ class Reserva extends CI_Controller{
                 $params = array(
 					'reserva_tipo' => $this->input->post('reserva_tipo'),
 					'cliente_id' => $this->input->post('cliente_id'),
-					'usuario_id' => $this->input->post('usuario_id'),
+					'usuario_id' => $usuario_id,
 					'reserva_glosa' => $this->input->post('reserva_glosa'),
 					'reserva_monto' => $this->input->post('reserva_monto'),
 					'reserva_periodo' => $this->input->post('reserva_periodo'),
 					'reserva_fechaingreso' => $this->input->post('reserva_fechaingreso'),
-					'reserva_fechasalida' => $this->input->post('reserva_fechasalida'),
+					'reserva_fechasalida' => $this->input->post('reserva_fechaingreso'),//misma
 					'reserva_horaingreso' => $this->input->post('reserva_horaingreso'),
 					'reserva_horasalida' => $this->input->post('reserva_horasalida'),
-					'reserva_fecha' => $this->input->post('reserva_fecha'),
+					//'reserva_fecha' => $this->input->post('reserva_fecha'),
+                    'forma_id' => $this->input->post('forma_id'),
                 );
 
                 $this->Reserva_model->update_reserva($reserva_id,$params);            
@@ -119,6 +121,7 @@ class Reserva extends CI_Controller{
             }
             else
             {
+                $data['cliente'] = $this->Cliente_model->get_cliente($data['reserva']['cliente_id']);
                 $data['_view'] = 'reserva/edit';
                 $this->load->view('layouts/main',$data);
             }

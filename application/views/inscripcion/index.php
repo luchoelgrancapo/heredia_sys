@@ -50,7 +50,7 @@
     </select>
 </div>
 <div class="col-md-3">   
-  <select class="btn form-control btn-secondary" id="estado_id">
+  <select class="btn form-control btn-secondary" id="estado_id" onchange="buscar_inscripciones()">
       <option value="1">Vigentes</option>
       <option value="2">Vencidas</option>
   </select>
@@ -94,6 +94,7 @@
 						<th>Servicio</th>
 						<th>Fecha Inicio</th>
 						<th>Fecha Fin</th>
+                        <th>Dias</th>
 						<th>Monto</th>
                         <th>Usuario</th>
 						<th></th>

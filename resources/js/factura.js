@@ -60,21 +60,21 @@ function mostrar_facturas() {
                 if (opcion==1){
                     
                     html += "<table class='table table-striped' id='mitabla' nowrap >";
-                    html += "<th>ESPEC.</th>";
+                    html += "<th>ESPECIFICACION</th>";
                     html += "<th>N°</th>";
                     html += "<th>FECHA DE LA FACTURA</th>";
-                    html += "<th>N° DE FACT.</th>";
+                    html += "<th>N° DE FACTURA</th>";
                     html += "<th>N° DE AUTORIZACION</th>";
                     html += "<th>ESTADO</th>";
                     html += "<th>NIT/CI CLIENTE</th>";
                     html += "<th>NOMBRE O RAZON SOCIAL</th>";
                     html += "<th>IMPORTE TOTAL DE LA VENTA</th>";
-                    html += "<th>IMPORTE ICE</th>";
-                    html += "<th>/IEHD/TASAS	EXPORTACIONES Y OPERACIONES EXENTAS</th>";	
+                    html += "<th>IMPORTE ICE/IEHD/IPJ/TASAS/OTROS NO SUJETOS AL IVA</th>";
+                    html += "<th>EXPORTACIONES Y OPERACIONES EXENTAS</th>";	
                     html += "<th>VENTAS GRAVADAS A TASA CERO</th>";	
                     html += "<th>SUBTOTAL</th>";	
-                    html += "<th>DESC.</th>"; 
-                    html += "<th>BONIF. Y REBAJAS OTORGADAS</th>";	
+                    html += "<th>DESCUENTOS, BONIFICACIONES Y REBAJAS SUJETAS AL IVA</th>"; 
+                    //html += "<th>BONIF. Y REBAJAS OTORGADAS</th>";	
                     html += "<th>IMPORTE BASE PARA DEBITO FISCAL</th>";	
                     html += "<th>DEBITO FISCAL</th>";	
                     html += "<th>CODIGO DE CONTROL</th>";	
@@ -92,7 +92,7 @@ function mostrar_facturas() {
                             color = "";
                         
                         html += "<tr  "+color+">";
-                        html += "   <td>0</td>";
+                        html += "   <td>3</td>";
                         html += "   <td>1</td>";
                         html += "   <td>"+formato_fecha(factura[i]["factura_fecha"])+"</td>";
                         html += "   <td>"+factura[i]["factura_numero"]+"</td>";
@@ -112,7 +112,7 @@ function mostrar_facturas() {
                         html += "   <td>0</td>";
                         html += "   <td>"+Number(factura[i]["factura_subtotal"]).toFixed(2)+"</td>";
                         html += "   <td>"+Number(factura[i]["factura_descuento"]).toFixed(2)+"</td>";
-                        html += "   <td>0</td>";
+                        //html += "   <td>0</td>";
                         html += "   <td>"+Number(factura[i]["factura_total"]).toFixed(2)+"</td>";
                         html += "   <td>"+Number(factura[i]["factura_total"]*0.13).toFixed(2)+"</td>";
                         html += "   <td>"+factura[i]["factura_codigocontrol"]+"</td>";
@@ -197,25 +197,25 @@ function generarexcel(){
                         
 
                             //Now convert each value to string and comma-seprated
-                            row += 'ESPEC.' + ',';
+                            row += 'ESPECIFICACION' + ',';
                             row += 'N°' + ',';
                             row += 'FECHA DE LA FACTURA' + ',';
-                            row += 'N° DE FACT.' + ',';
+                            row += 'N° DE FACTURA' + ',';
                             row += 'N° DE AUTORIZACION' + ',';
                             row += 'ESTADO' + ',';
                             row += 'NIT/CI CLIENTE' + ',';
                             row += 'NOMBRE O RAZON SOCIAL' + ',';
                             row += 'IMPORTE TOTAL DE LA VENTA' + ',';
-                            row += 'IMPORTE ICE' + ',';
-                            row += '/IEHD/TASAS    EXPORTACIONES Y OPERACIONES EXENTAS' + ',';
+                            row += 'IMPORTE ICE/IEHD/IPJ/TASAS/OTROS NO SUJETOS AL IVA' + ',';
+                            row += 'EXPORTACIONES Y OPERACIONES EXENTAS' + ',';
                             row += 'VENTAS GRAVADAS A TASA CERO' + ',';
                             row += 'SUBTOTAL' + ',';
-                            row += 'DESC.' + ',';
-                            row += 'BONIF. Y REBAJAS OTORGADAS' + ',';
+                            row += 'DESCUENTOS, BONIFICACIONES Y REBAJAS SUJETAS AL IVA' + ',';
+                           // row += 'BONIF. Y REBAJAS OTORGADAS' + ',';
                             row += 'IMPORTE BASE PARA DEBITO FISCAL' + ',';
                             row += 'DEBITO FISCAL' + ',';
                             row += 'CODIGO DE CONTROL' + ',';
-                            row += 'TRANS' + ',';
+                            //row += 'TRANS' + ',';
        
                         row = row.slice(0, -1);
 
@@ -228,7 +228,7 @@ function generarexcel(){
                         var row = "";
                         //2nd loop will extract each column and convert it in string comma-seprated
                         
-                            row += '0,';
+                            row += '3,';
                             row += '1,';
                             row += '"' +formato_fecha(factura[i]["factura_fecha"])+ '",';
                             row += '"' +factura[i]["factura_numero"]+ '",';
@@ -247,11 +247,11 @@ function generarexcel(){
                             row += '0,';
                             row += '"' +Number(factura[i]["factura_total"]).toFixed(2)+ '",';
                             row += '"' +Number(factura[i]["factura_descuento"]).toFixed(2)+ '",';
-                            row += '0,';
+                            //row += '0,';
                             row += '"' +Number(factura[i]["factura_total"]).toFixed(2)+ '",';
                             row += '"' +Number(factura[i]["factura_total"]*0.13).toFixed(2)+ '",';
                             row += '"' +factura[i]["factura_codigocontrol"]+ '",';
-                            row += '"' +factura[i]["venta_id"]+ '",';
+                            //row += '"' +factura[i]["venta_id"]+ '",';
                             
 
                         
@@ -313,6 +313,134 @@ function generarexcel(){
     });   
 
 }
+
+function generartxt(){
+    var base_url = document.getElementById('base_url').value;
+    var opcion = document.getElementById('opcion').value;
+    var controlador = base_url+'factura/mostrar_facturas';    
+    var desde = document.getElementById('fecha_desde').value;
+    var hasta = document.getElementById('fecha_hasta').value; 
+
+     //parametro = document.getElementById('filtrar').value;   
+     //controlador = base_url+'ingreso/buscarallingreso/';
+    var showLabel = true;
+    
+    var reportitle = moment(Date.now()).format("DD/MM/YYYY H_m_s");
+    //document.getElementById('loader').style.display = 'block'; //muestra el bloque del loader
+
+    $.ajax({url: controlador,
+           type:"POST",
+           data:{desde:desde, hasta:hasta ,opcion:opcion},
+           success:function(result){
+                var factura = JSON.parse(result);
+                var tam = factura.length;
+              
+                var mensaje = "";
+                
+                html = "";
+                if (opcion==1){
+                  /* **************INICIO Generar Excel JavaScript************** */
+                    var CSV = '';
+                    //This condition will generate the Label/Header
+                    if (showLabel) {
+                        var row = "";
+
+                        
+
+                        //append Label row with line break
+                        CSV += row + '\r\n';
+                    }
+                    
+                    //1st loop is to extract each row
+                    for (var i = 0; i < tam; i++) {
+                        var row = "";
+                        //2nd loop will extract each column and convert it in string comma-seprated
+                        
+                            row += '3|';
+                            row += '1|';
+                            row += formato_fecha(factura[i]["factura_fecha"])+'|';
+                            row += factura[i]["factura_numero"]+'|';
+                            row += factura[i]["factura_autorizacion"]+'|';
+                            if(factura[i]["estado_id"]==1){
+                                row += 'V|';
+                            }
+                            else{
+                                row += 'A|';
+                            }
+                            row += factura[i]["factura_nit"]+'|';
+                            row += factura[i]["factura_razonsocial"]+'|';
+                            row += Number(factura[i]["factura_subtotal"]).toFixed(2)+'|';
+                            row += Number(factura[i]["factura_ice"]).toFixed(2)+'|';
+                            row += Number(factura[i]["factura_exento"]).toFixed(2)+'|';
+                            row += '0|';
+                            row += Number(factura[i]["factura_total"]).toFixed(2)+'|';
+                            row += Number(factura[i]["factura_descuento"]).toFixed(2)+'|';
+                            //row += '0,';
+                            row += Number(factura[i]["factura_total"]).toFixed(2)+'|';
+                            row += Number(factura[i]["factura_total"]*0.13).toFixed(2)+'|';
+                            row += factura[i]["factura_codigocontrol"];
+                            //row += '"' +factura[i]["venta_id"]+ '"|';
+                            
+
+                        
+                        row.slice(0, row.length - 1);
+
+                        //add a line break after each row
+                        CSV += row + '\r\n';
+                    }
+                    
+                    if (CSV == '') {        
+                        alert("Invalid data");
+                        return;
+                    }
+                    
+                    //Generate a file name
+                    var fileName = "Ventas_";
+                    //this will remove the blank-spaces from the title and replace it with an underscore
+                    fileName += reportitle.replace(/ /g,"_");   
+
+                    //Initialize file format you want csv or xls
+                    var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
+                    // Now the little tricky part.
+                    // you can use either>> window.open(uri);
+                    // but this will not work in some browsers
+                    // or you will not get the correct file extension    
+
+                    //this trick will generate a temp <a /> tag
+                    var link = document.createElement("a");    
+                    link.href = uri;
+
+                    //set the visibility hidden so it will not effect on your web-layout
+                    link.style = "visibility:hidden";
+                    link.download = fileName + ".txt";
+
+                    //this part will append the anchor tag and remove it after automatic click
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    /* **************F I N  Generar Excel JavaScript************** */
+                   
+                   
+                   
+                   
+                   //document.getElementById('loader').style.display = 'none';
+            }
+         //document.getElementById('loader').style.display = 'none'; //ocultar el bloque del loader
+        },
+        error:function(respuesta){
+           // alert("Algo salio mal...!!!");
+           html = "";
+           $("#tabla_factura").html(html);
+        },
+        complete: function (jqXHR, textStatus) {
+            //document.getElementById('loader').style.display = 'none'; //ocultar el bloque del loader 
+            //tabla_inventario();
+        }
+        
+    });   
+
+}
  
 function mostrar_facturas2() {
     var base_url = document.getElementById('base_url').value;
@@ -333,52 +461,54 @@ function mostrar_facturas2() {
                 if (opcion==2){
                     
                     html += "<table class='table table-striped' id='mitabla' >";
-                    html += "<th>ESPEC.</th>";
+                    html += "<th>ESPECIFICACION</th>";
                     html += "<th>N°</th>";
-                    html += "<th>FECHA DE LA FACTURA</th>";
+                    html += "<th>FECHA DE LA FACTURA O DUI</th>";
+                    html += "<th>NIT PROVEEDOR</th>";
+                    html += "<th>NOMBRE Y APELLIDOS/RAZON SOCIAL</th>";
                     html += "<th>N° DE LA FACTURA</th>";
+                    html += "<th>N° DE DUI</th>";
                     html += "<th>N° DE AUTORIZACION</th>";
-                    html += "<th>ESTADO NIT/CI CLIENTE</th>";
-                    html += "<th>NOMBRE O RAZON SOCIAL</th>";
-                    html += "<th>IMPORTE TOTAL DE LA VENTA</th>";
-                    html += "<th>IMPORTE ICE</th>";
-                    html += "<th>/IEHD/TASAS    EXPORTACIONES Y OPERACIONES EXENTAS</th>";  
-                    html += "<th>VENTAS GRAVADAS A TASA CERO</th>"; 
-                    html += "<th>SUBTOTAL</th>";    
-                    html += "<th>DESCUENTOS</th>"; 
-                    html += "<th>BONIFICACIONES Y REBAJAS OTORGADAS</th>";  
-                    html += "<th>IMPORTE BASE PARA DEBITO FISCAL</th>"; 
-                    html += "<th>DEBITO FISCAL</th>";   
+                    html += "<th>IMPORTE TOTAL DE LA COMPRA</th>";
+                    html += "<th>IMPORTE NO SUJETO A CREDITO FISCAL</th>";
+                    html += "<th>SUBTOTAL</th>";
+                    html += "<th>DESCUENTOS, BONIFICACIONES Y REBAJAS SUJETAS AL IVA</th>";  
+                    html += "<th>IMPORTE BASE PARA CREDITO FISCAL</th>"; 
+                    html += "<th>CREDITO FISCAL</th>";   
                     html += "<th>CODIGO DE CONTROL</th>";   
+                    html += "<th>TIPO COMPRA</th>";   
                     html += "<th>TRANSACCION</th>";
                     html += "</tr>";
                     html += "<tbody class='buscar'>";
                     
                     
                     
-                    for(var i = 0; i < tam; i++ ){                        
+                    for(var i = 0; i < tam; i++ ){     
+                    totalfinal += Number(factura[i]["factura_total"]);                   
                         html += "<tr>";
-                        html += "   <td>0</td>";
+                        html += "   <td>1</td>";
                         html += "   <td>"+Number(i+1)+"</td>";
                         html += "   <td>"+formato_fecha(factura[i]["factura_fecha"])+"</td>";
-                        html += "   <td>"+factura[i]["factura_numero"]+"</td>";
-                        html += "   <td>"+factura[i]["factura_autorizacion"]+"</td>";
                         html += "   <td>"+factura[i]["factura_nit"]+"</td>";
                         html += "   <td>"+factura[i]["factura_razonsocial"]+"</td>";
-                        html += "   <td>"+Number(factura[i]["factura_subtotal"]).toFixed(2)+"</td>";
-                        html += "   <td>"+Number(factura[i]["factura_ice"]).toFixed(2)+"</td>";
-                        html += "   <td>"+Number(factura[i]["factura_exento"]).toFixed(2)+"</td>";
+                        html += "   <td>"+factura[i]["factura_numero"]+"</td>";
+                        html += "   <td>0</td>";
+                        html += "   <td>"+factura[i]["factura_autorizacion"]+"</td>";
+                        html += "   <td>"+Number(factura[i]["factura_total"]).toFixed(2)+"</td>";
+                        //html += "   <td>"+Number(factura[i]["factura_ice"]).toFixed(2)+"</td>";
+                        //html += "   <td>"+Number(factura[i]["factura_exento"]).toFixed(2)+"</td>";
                         html += "   <td>0</td>";
                         html += "   <td>"+Number(factura[i]["factura_subtotal"]).toFixed(2)+"</td>";
                         html += "   <td>"+Number(factura[i]["factura_descuento"]).toFixed(2)+"</td>";
-                        html += "   <td>0</td>";
+                        //html += "   <td>0</td>";
                         html += "   <td>"+Number(factura[i]["factura_total"]).toFixed(2)+"</td>";
                         html += "   <td>"+Number(factura[i]["factura_total"]*0.13).toFixed(2)+"</td>";
                         html += "   <td>"+factura[i]["factura_codigocontrol"]+"</td>";
+                        html += "   <td>1</td>";
                         html += "   <td>"+factura[i]["compra_id"]+"</td>";
                         html += "</tr>";
                         
-                        totalfinal += Number(factura[i]["factura_total"]);
+                        
                         
                         
                     }
@@ -396,9 +526,8 @@ function mostrar_facturas2() {
                         html += "<th> </th> ";
                         html += "<th> </th> ";
                         html += "<th> </th> ";
-                        html += "<th> </th> ";
-                        html += "<th>"+formato_numerico(Number(totalfinal).toFixed(2))+"</th> ";
-                        html += "<th>"+formato_numerico(Number(debitofiscal).toFixed(2))+"</th> ";
+                        html += "<th>"+(Number(totalfinal).toFixed(2))+"</th> ";
+                        html += "<th>"+(Number(debitofiscal).toFixed(2))+"</th> ";
                         html += "<th> </th> ";
                         html += "<th> </th> ";
                         html += "<th> </th> ";
@@ -446,24 +575,23 @@ function generarexcel2(){
                         
 
                             //Now convert each value to string and comma-seprated
-                            row += 'ESPEC.' + ',';
+                            row += 'ESPECIFICACION' + ',';
                             row += 'N°' + ',';
                             row += 'FECHA DE LA FACTURA' + ',';
-                            row += 'N° DE FACT.' + ',';
+                            row += 'NIT PROVEEDOR' + ',';
+                            row += 'NOMBRE Y APELLIDOS/RAZON SOCIAL' + ',';
+                            row += 'N° DE LA FACTURA' + ',';
+                            row += 'N° DE DUI' + ',';
                             row += 'N° DE AUTORIZACION' + ',';
-                            row += 'NIT/CI CLIENTE' + ',';
-                            row += 'NOMBRE O RAZON SOCIAL' + ',';
-                            row += 'IMPORTE TOTAL DE LA VENTA' + ',';
-                            row += 'IMPORTE ICE' + ',';
-                            row += '/IEHD/TASAS    EXPORTACIONES Y OPERACIONES EXENTAS' + ',';
-                            row += 'VENTAS GRAVADAS A TASA CERO' + ',';
+                            row += 'IMPORTE TOTAL DE LA COMPRA' + ',';
+                            row += 'IMPORTE NO SUJETO A CREDITO FISCAL' + ',';
                             row += 'SUBTOTAL' + ',';
-                            row += 'DESC.' + ',';
-                            row += 'BONIF. Y REBAJAS OTORGADAS' + ',';
-                            row += 'IMPORTE BASE PARA DEBITO FISCAL' + ',';
-                            row += 'DEBITO FISCAL' + ',';
+                            row += 'DESCUENTOS, BONIFICACIONES Y REBAJAS SUJETAS AL IVA' + ','
+                            row += 'IMPORTE BASE PARA CREDITO FISCAL' + ',';
+                            row += 'CREDITO FISCAL' + ',';
                             row += 'CODIGO DE CONTROL' + ',';
-                            row += 'TRANS' + ',';
+                            row += 'TIPO COMPRA' + ',';
+                            //row += 'TRANS' + ',';
        
                         row = row.slice(0, -1);
 
@@ -476,24 +604,27 @@ function generarexcel2(){
                         var row = "";
                         //2nd loop will extract each column and convert it in string comma-seprated
                         
-                            row += '0,';
+                            row += '1,';
                             row += '1,';
                             row += '"' +formato_fecha(factura[i]["factura_fecha"])+ '",';
-                            row += '"' +factura[i]["factura_numero"]+ '",';
-                            row += '"' +factura[i]["factura_autorizacion"]+ '",';
                             row += '"' +factura[i]["factura_nit"]+ '",';
                             row += '"' +factura[i]["factura_razonsocial"]+ '",';
-                            row += '"' +Number(factura[i]["factura_subtotal"]).toFixed(2)+ '",';
-                            row += '"' +Number(factura[i]["factura_ice"]).toFixed(2)+ '",';
-                            row += '"' +Number(factura[i]["factura_exento"]).toFixed(2)+ '",';
+                            row += '"' +factura[i]["factura_numero"]+ '",';
                             row += '0,';
+                            row += '"' +factura[i]["factura_autorizacion"]+ '",';
+                            row += '"' +Number(factura[i]["factura_total"]).toFixed(2)+ '",';
+                            row += '0,';
+                            //row += '"' +Number(factura[i]["factura_ice"]).toFixed(2)+ '",';
+                            //row += '"' +Number(factura[i]["factura_exento"]).toFixed(2)+ '",';
+                            //row += '0,';
                             row += '"' +Number(factura[i]["factura_subtotal"]).toFixed(2)+ '",';
                             row += '"' +Number(factura[i]["factura_descuento"]).toFixed(2)+ '",';
-                            row += '0,';
+                            //row += '0,';
                             row += '"' +Number(factura[i]["factura_total"]).toFixed(2)+ '",';
                             row += '"' +Number(factura[i]["factura_total"]*0.13).toFixed(2)+ '",';
                             row += '"' +factura[i]["factura_codigocontrol"]+ '",';
-                            row += '"' +factura[i]["compra_id"]+ '",';
+                            row += '1,';
+                            //row += '"' +factura[i]["compra_id"]+ '",';
                             
 
                         
@@ -528,6 +659,130 @@ function generarexcel2(){
                     //set the visibility hidden so it will not effect on your web-layout
                     link.style = "visibility:hidden";
                     link.download = fileName + ".csv";
+
+                    //this part will append the anchor tag and remove it after automatic click
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    /* **************F I N  Generar Excel JavaScript************** */
+                   
+                   
+                   
+                   
+                   //document.getElementById('loader').style.display = 'none';
+            }
+         //document.getElementById('loader').style.display = 'none'; //ocultar el bloque del loader
+        },
+        error:function(respuesta){
+           // alert("Algo salio mal...!!!");
+           html = "";
+           $("#tabla_factura").html(html);
+        },
+        complete: function (jqXHR, textStatus) {
+            //document.getElementById('loader').style.display = 'none'; //ocultar el bloque del loader 
+            //tabla_inventario();
+        }
+        
+    });   
+
+}
+
+function generartxt2(){
+    var base_url = document.getElementById('base_url').value;
+    var opcion = document.getElementById('opcion').value;
+    var controlador = base_url+'factura/mostrar_facturas';    
+    var desde = document.getElementById('fecha_desde').value;
+    var hasta = document.getElementById('fecha_hasta').value; 
+
+     //parametro = document.getElementById('filtrar').value;   
+     //controlador = base_url+'ingreso/buscarallingreso/';
+    var showLabel = true;
+    
+    var reportitle = moment(Date.now()).format("DD/MM/YYYY H_m_s");
+    //document.getElementById('loader').style.display = 'block'; //muestra el bloque del loader
+
+    $.ajax({url: controlador,
+           type:"POST",
+           data:{desde:desde, hasta:hasta ,opcion:opcion},
+           success:function(result){
+                var factura = JSON.parse(result);
+                var tam = factura.length;
+              
+                var mensaje = "";
+                
+                html = "";
+                if (opcion==2){
+                  var CSV = '';
+                    //This condition will generate the Label/Header
+                    if (showLabel) {
+                        var row = "";
+
+                        
+
+                        //append Label row with line break
+                        CSV += row + '\r\n';
+                    }
+                    
+                    //1st loop is to extract each row
+                    for (var i = 0; i < tam; i++) {
+                        var row = "";
+                        //2nd loop will extract each column and convert it in string comma-seprated
+                        
+                            row += '1|';
+                            row += '1|';
+                            row += formato_fecha(factura[i]["factura_fecha"])+'|';
+                            row += factura[i]["factura_nit"]+'|';
+                            row += factura[i]["factura_razonsocial"]+'|';
+                            row += factura[i]["factura_numero"]+'|';
+                            row += '0|';
+                            row += factura[i]["factura_autorizacion"]+'|';
+                            row += Number(factura[i]["factura_total"]).toFixed(2)+'|';
+                            row += '0|';
+                            //row += '"' +Number(factura[i]["factura_ice"]).toFixed(2)+ '"|';
+                            //row += '"' +Number(factura[i]["factura_exento"]).toFixed(2)+ '"|';
+                            //row += '0|';
+                            row += Number(factura[i]["factura_subtotal"]).toFixed(2)+'|';
+                            row += Number(factura[i]["factura_descuento"]).toFixed(2)+'|';
+                            //row += '0|';
+                            row += Number(factura[i]["factura_total"]).toFixed(2)+'|';
+                            row += Number(factura[i]["factura_total"]*0.13).toFixed(2)+'|';
+                            row += factura[i]["factura_codigocontrol"]+'|';
+                            row += '1';
+                            //row += '"' +factura[i]["compra_id"]+ '"|';
+                            
+
+                        
+                        row.slice(0, row.length - 1);
+
+                        //add a line break after each row
+                        CSV += row + '\r\n';
+                    }
+                    
+                    if (CSV == '') {        
+                        alert("Invalid data");
+                        return;
+                    }
+                    
+                    //Generate a file name
+                    var fileName = "Compras_";
+                    //this will remove the blank-spaces from the title and replace it with an underscore
+                    fileName += reportitle.replace(/ /g,"_");   
+
+                    //Initialize file format you want csv or xls
+                    var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
+                    // Now the little tricky part.
+                    // you can use either>> window.open(uri);
+                    // but this will not work in some browsers
+                    // or you will not get the correct file extension    
+
+                    //this trick will generate a temp <a /> tag
+                    var link = document.createElement("a");    
+                    link.href = uri;
+
+                    //set the visibility hidden so it will not effect on your web-layout
+                    link.style = "visibility:hidden";
+                    link.download = fileName + ".txt";
 
                     //this part will append the anchor tag and remove it after automatic click
                     document.body.appendChild(link);

@@ -676,7 +676,7 @@ class Producto extends CI_Controller{
      
         $this->Compra_model->ejecutar($sql);
             
-             redirect('compra/edit/'.$compra_id.'/'.$bandera);
+             redirect('compra/registrar/'.$compra_id.'/'.$bandera);
         }
         else
         {
@@ -684,7 +684,7 @@ class Producto extends CI_Controller{
    
       echo'<script type="text/javascript">
         alert("Este Nombre y/o Codigo  de Producto ya Existe");
-        window.location.href="../compra/edit/'.$compra_id.'/'.$bandera.'";
+        window.location.href="../compra/registrar/'.$compra_id.'/'.$bandera.'";
         </script>';
         
         }

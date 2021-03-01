@@ -86,7 +86,7 @@ class Inscripcion_model extends CI_Model
                 ".$condicion." 
                 ".$estado."
                 
-            ORDER BY i.inscripcion_fechaini DESC 
+            ORDER BY i.inscripcion_fecha DESC 
         "
         )->result_array();
 

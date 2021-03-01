@@ -69,7 +69,7 @@ function toggle(source) {
     <div class="col-md-12">
       	<div class="card card-secondary">
             <div class="card-header with-border">
-              	<h3 class="box-title">registrar CLIENTE</h3>&nbsp;&nbsp;
+              	<h3 class="box-title">REGISTRAR CLIENTE</h3>&nbsp;&nbsp;
                 <!--<button type="button" class="btn btn-secondary btn-sm" onclick="cambiarcod(this);" title="Generar otro Código Cliente">
 			<i class="fa fa-barcode"></i> Generar Código
 		</button>-->
@@ -99,7 +99,7 @@ function toggle(source) {
                     <div class="col-md-2">
                             <label for="cliente_codigo" class="control-label">Código</label>
                             <div class="form-group">
-                                <input type="text" name="cliente_codigo" value="<?php echo $this->input->post('cliente_codigo'); ?>" class="form-control" id="cliente_codigo" placeholder="Seleccione una categoria" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                                <input type="text" name="cliente_codigo" value="<?php echo $this->input->post('cliente_codigo'); ?>" class="form-control" id="cliente_codigo" placeholder="Codigo de tarjeta" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                                     <span class="text-danger"><?php echo form_error('cliente_codigo');?></span>
                             </div>
                     </div>
@@ -134,7 +134,7 @@ function toggle(source) {
                             <select name="cliente_departamento" id="cliente_departamento" class="form-control">
                                 <option value="">- DEPARTAMENTO -</option>
                                 <option value="BENI"> BENI </option>
-                                <option value="COCHABAMBA"> COCHABAMBA </option>
+                                <option value="COCHABAMBA" selected> COCHABAMBA </option>
                                 <option value="CHUQUISACA"> CHUQUISACA </option>
                                 <option value="LA PAZ"> LA PAZ </option>
                                 <option value="ORURO"> ORURO </option>
@@ -244,11 +244,11 @@ function toggle(source) {
                                     <input type="text" name="cliente_razon" value="<?php echo ($this->input->post('cliente_razon') ? $this->input->post('cliente_razon') : 'SIN NOMBRE'); ?>" class="form-control" id="cliente_razon" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" hidden>
                             <label for="tipocliente_id" class="control-label"><span class="text-danger">*</span>Tipo</label>
                             <div class="form-group" style="display: flex">
                                     <select name="tipocliente_id" id="tipocliente_id" class="form-control" required>
-                                            <option value="">- TIPO CLIENTE -</option>
+                                            <!--<option value="">- TIPO CLIENTE -</option>-->
                                             <?php 
                                             foreach($all_tipo_cliente as $tipo_cliente)
                                             {
@@ -262,11 +262,11 @@ function toggle(source) {
                                 <i class="fa fa-plus-circle"></i></a>
                             </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" hidden>
                             <label for="categoriaclie_id" class="control-label"><span class="text-danger">*</span>Categoria</label>
                             <div class="form-group" style="display: flex">
-                                    <select name="categoriaclie_id" id="categoriaclie_id" class="form-control" onchange="codigo()" required>
-                                            <option value="">- CATEGORIA NEGOCIO -</option>
+                                    <select name="categoriaclie_id" id="categoriaclie_id" class="form-control"  required><!--onchange="codigo()"-->
+                                            <!--<option value="">- CATEGORIA NEGOCIO -</option>-->
                                             <?php 
                                             foreach($all_categoria_cliente as $categoria_cliente)
                                             {
@@ -298,7 +298,7 @@ function toggle(source) {
                                 <i class="fa fa-plus-circle"></i></a>
                             </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" hidden>
                         <label for="usuario_id" class="control-label">Cliente Asignado a:</label>
                         <div class="form-group">
                             <select name="usuario_id" class="form-control">

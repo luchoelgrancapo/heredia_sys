@@ -283,32 +283,33 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-                            
+                             <h4 class="modal-title" id="myModalLabel"><b>EMITIR FACTURA</b></h4>
+                                <!--<b>ADVERTENCIA: Seleccione la </b>-->                  
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                             </button>
-                            <center>
-                                <h4 class="modal-title" id="myModalLabel"><b>EMITIR FACTURA</b></h4>
-                                <!--<b>ADVERTENCIA: Seleccione la </b>-->                  
-                            </center>
+                         
+                               
+                        
                         
                             
-                            <div class="row">
-                                <div class="col">
+                            
+                            
+                    </div>
+                    <div class="modal-body" style="padding-top: 0px; font-family: Arial;">
+                        <div class="row">
+                                
                                     <div class="col-md-4">
                                     <b>NIT:</b><input type="text" id="generar_nit" value="0" class="form-control btn btn-xs btn-warning" style="text-align: left;">
 
                                     </div>
                                     <div class="col-md-8">
-                                    <b>RAZON SOCIAL:</b><input type="text" id="generar_razon" value="SIN NOMBRE" class="form-control btn btn-xs btn-warning" style="text-align: left;">
+                                    <b>RAZON SOCIAL:</b><input onKeyUp="this.value = this.value.toUpperCase();" type="text" id="generar_razon" value="SIN NOMBRE" class="form-control btn btn-xs btn-warning" style="text-align: left;">
 
                                     </div>
-                                </div>
+                               
                             </div>
 
-                            
-                    </div>
-                    <div class="modal-body" style="padding-top: 0px; font-family: Arial;">
                         <!--------------------- TABLA---------------------------------------------------->
                         
                         <div class="box-body table-responsive" style="font-family: Arial;">
@@ -350,7 +351,7 @@
                             
                             <div class="col-md-12" id="generar_detalle" name="generar_detalle"></div>
                             <!--<input type="text" id="generar_detalle" value="-" class="form-control btn btn-xs btn-default" style="text-align: left;">-->
-       
+                            <div class="row">
                             <div class="col-md-4">
                                 <label for="usuario_idx" class="control-label">TOTAL Bs</label>
 
@@ -365,7 +366,7 @@
                                     </div>
                             </div>
                                 
-                            <div class="col-md-4" id='botones'  style='display:block;'>
+                            <div class="col-md-4"  style='display:block;'>
                                     <!--<label for="opciones" class="control-label"></label>-->
                                     <div class="form-group">
                                         
@@ -374,7 +375,7 @@
                                         </button>
                                     </div>
                             </div>
-                            
+                            </div>      
                                 <!--------------------- inicio loader ------------------------->
                                 <div class="col-md-6" id='loaderinventario'  style='display: none;'>
                                     <center>
