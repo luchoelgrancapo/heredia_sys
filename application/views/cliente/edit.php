@@ -310,11 +310,11 @@ function toggle(source) {
                                 <i class="fa fa-plus-circle"></i></a>
                             </div>
                     </div>
-                    <!--<div class="col-md-3">
+                    <div class="col-md-3">
                             <label for="usuario_id" class="control-label">Cliente Asignado a:</label>
                             <div class="form-group">
                                     <select name="usuario_id" class="form-control">
-                                            <option value="">- USUARIO -</option>
+                                            <option value="">- VENDEDOR -</option>
                                             <?php 
                                             foreach($all_usuario_prev as $usuario_prev)
                                             {
@@ -351,7 +351,7 @@ function toggle(source) {
                                 <label>Domingo<input class="checkbox" type="checkbox" name="dom" value="1" id="dom" <?php echo $domcheck; ?> /></label>
 
                             </div>
-                    </div>
+                    </div><!--
                     <div class="col-md-2">
                         <label for="cliente_ordenvisita" class="control-label">Orden Visita</label>
                         <div class="form-group">

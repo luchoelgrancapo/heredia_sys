@@ -36,7 +36,7 @@
                 <input type="hidden" name="usu" id="usu">
                 <input type="hidden" name="feini" id="feini">
                 <input type="hidden" name="fefin" id="fefin">
-                <input type="hidden" name="esti" id="esti" value="8">
+                <input type="hidden" name="esti" id="esti" value="">
                 <input type="hidden" name="vendedor" id="vendedor" value="">
                 <?php if($rol[44-1]['rolusuario_asignado'] == 1){ ?>
                  <button class="btn btn-warning btn-md" style="float: right;margin-left: 10px"><span class="fa fa-print"></span> Imprimir</button>

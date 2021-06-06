@@ -72,21 +72,30 @@ class Inscripcion_model extends CI_Model
     {
 
        $inscripcion = $this->db->query("
-        SELECT
-               i.*, u.usuario_nombre, c.cliente_nombre, c.cliente_celular, s.serviciote_nombre, s.serviciote_duracion, f.forma_nombre
-            FROM
-                inscripcion i
+        SELECT  i.*, u.usuario_nombre, c.cliente_nombre, c.cliente_celular, s.serviciote_nombre, s.serviciote_duracion, f.forma_nombre
+FROM inscripcion i
             LEFT JOIN usuario u on i.usuario_id=u.usuario_id
             LEFT JOIN  cliente c on i.cliente_id=c.cliente_id
             LEFT JOIN  servicio_temporal s on i.serviciote_id=s.serviciote_id
             LEFT JOIN  forma_pago f on i.forma_id=f.forma_id
+INNER JOIN
+        (
+        SELECT
+            
+        MAX(inscripcion_fecha) as fecha, cliente_id
+            FROM
+                inscripcion
             WHERE
-                1=1
-               
+                1=1   
                 ".$condicion." 
                 ".$estado."
-                
-            ORDER BY i.inscripcion_fecha DESC 
+        GROUP BY cliente_id    
+            
+        ) AS p2
+        ON i.cliente_id = p2.cliente_id
+        AND i.inscripcion_fecha = p2.fecha
+        WHERE 1=1
+        ORDER BY i.inscripcion_fecha DESC 
         "
         )->result_array();
 

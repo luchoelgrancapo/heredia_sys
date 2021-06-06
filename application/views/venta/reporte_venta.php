@@ -47,7 +47,7 @@
 <div class="cuerpo">
                     <div class="columna_derecha">
                         <center> 
-                        <img src="<?php echo base_url('resources/images/empresas/'.$empresa[0]["empresa_imagen"].''); ?>"  style="width:80px;height:80px">
+                        <img src="<?php echo base_url('resources/images/empresas/'.$empresa[0]["empresa_imagen"].''); ?>"  style="width:100px;">
                     </center>
                     </div>
                     <div class="columna_izquierda">
@@ -65,8 +65,6 @@
 </div>
 <div class="row" >
     
-      
-<div class="panel panel-primary col-md-12 no-print" id='buscador_oculto' >
      <div class="col-md-4 no-print" >                     
       Cliente:
         <input id="cliente_id" type="text" class="form-control" placeholder="Ingresa el nombre del cliente, nit o razon social"  onkeypress="ventacliente(event)">
@@ -90,8 +88,8 @@
         </div>
         <div class="col-md-2 no-print">
             <br>
-            <button class="btn btn-facebook btn-sm" onclick="reportes()"><i class="fa fa-search"> Buscar</i></button>
-            <a onclick="imprimir()" class="btn btn-success btn-sm"><i class="fa fa-print"> Imprimir</i></a>
+            <button class="btn btn-primary btn-sm" onclick="reportes()"><i class="fa fa-search"> </i> Buscar</button>
+            <a onclick="imprimir()" class="btn btn-warning btn-sm"><i class="fa fa-print"> </i> Imprimir</a>
         </div>
         
   
@@ -107,7 +105,7 @@
            <input id="proveedor" type="hidden" class="form-control" > 
        </div>
             
-</div>
+
          <span id="desde"></span>
          <span id="hasta"></span>
        <div id="labusqueda">
@@ -128,7 +126,7 @@
                 <table class="table table-striped table-condensed" id="mitabla" >
                     <tr>
                         <tr>
-                        <th>#</th>
+                        <th>Nº</th>
                         <th>Cliente</th>
                         <th>Venta</th>
                         <th>Monto</th>
@@ -144,8 +142,8 @@
                         
         </div>
         <center>
-            <ul style="margin-bottom: -5px;margin-top: 35px;" >--------------------------------</ul>
-                     <ul style="margin-bottom: -5px;">RESPONSABLE</ul><ul>FIRMA - SELLO</ul>
+            <ul style="margin-bottom: -5px;margin-top: 35px;" >_________________________</ul>
+                     <ul style="margin-bottom: -5px;">RESPONSABLE</ul>
         </center>
     </div>
 </div>

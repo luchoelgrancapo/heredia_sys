@@ -21,29 +21,28 @@
           	<div class="card-body">
           		<div class="row clearfix">
 					<div class="col-md-3">
-						<label for="cliente_ci" class="control-label">C.I.</label>
+						<label for="cliente_ci" class="control-label">C.I.  (Buscar Cliente registrado)</label>
 						<div class="form-group">
 							<input onkeyup="insvalidar(event)" type="text" name="cliente_ci" value="<?php echo $this->input->post('cliente_ci'); ?>" class="form-control" id="cliente_ci" />
 							
 						</div>
-					</div>
-					<div class="col-md-3">
-						<label for="cliente_nombre" class="control-label">Cliente</label>
+					</div></div>
+
+					<?php echo form_open('reserva/add'); ?>
+					<div class="row clearfix">
+					<div class="col-md-6">
+						<label for="cliente_nombre" class="control-label">Cliente/Nombre</label>
 						<div class="form-group">
 							<input type="text" name="cliente_nombre" value="<?php echo $this->input->post('cliente_nombre'); ?>" class="form-control" id="cliente_nombre" />
 						</div>
 					</div>
 					<div class="col-md-3">
-						<label for="cliente_celular" class="control-label">Celular</label>
+						<label for="cliente_celular" class="control-label">Telefono/Celular</label>
 						<div class="form-group">
 							<input type="text" name="cliente_celular" value="<?php echo $this->input->post('cliente_celular'); ?>" class="form-control" id="cliente_celular" />
 						</div>
-					</div>
-					
-					</div>
-					<?php echo form_open('reserva/add'); ?>
-          		<div class="row clearfix">
-					<div class="col-md-2">
+					</div>          		
+					<div class="col-md-3">
 						<label for="reserva_tipo" class="control-label">Tipo</label>
 						<div class="form-group">
 							<select class="form-control" name="reserva_tipo" required>
@@ -99,11 +98,18 @@
 						</div>
 					</div>
 					<div class="col-md-2">
-						<label for="reserva_monto" class="control-label">Monto</label>
+						<label for="reserva_montototal" class="control-label">Monto Total</label>
+						<div class="form-group">
+							<input type="text" name="reserva_montototal" value="<?php echo $this->input->post('reserva_montototal'); ?>" class="form-control" id="reserva_montototal" required/>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<label for="reserva_monto" class="control-label">Monto Reserva</label>
 						<div class="form-group">
 							<input type="text" name="reserva_monto" value="<?php echo $this->input->post('reserva_monto'); ?>" class="form-control" id="reserva_monto" required/>
 						</div>
 					</div>
+
 					<div class="col-md-3" >
                         <label for="forma_id" class="control-label" >Forma Pago</label> 
                         <div class="form-group">                                      

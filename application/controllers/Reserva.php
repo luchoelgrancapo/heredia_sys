@@ -9,6 +9,9 @@ class Reserva extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Reserva_model');
+        $this->load->model('Empresa_model');
+        $this->load->model('Parametro_model');
+        $this->load->helper('numeros');
         $this->load->model('Forma_pago_model');
         $this->load->model('Cliente_model');
         if ($this->session->userdata('logged_in')) {
@@ -52,6 +55,7 @@ class Reserva extends CI_Controller{
          $fecha =  $this->input->post('reserva_fechaingreso');
         $hora = $this->input->post('reserva_horaingreso');
         $dia = $this->Reserva_model->get_dia_reserva($fecha,$hora);
+
         if (isset($dia['reserva_id'])) {
              echo'<script type="text/javascript">
         alert("Este horario no esta disponible, consulte el calendario");
@@ -67,11 +71,15 @@ class Reserva extends CI_Controller{
 				'usuario_id' => $usuario_id,
 				'reserva_glosa' => $this->input->post('reserva_glosa'),
 				'reserva_monto' => $this->input->post('reserva_monto'),
+                'reserva_montototal' => $this->input->post('reserva_montototal'),
+                'reserva_saldo' => ($this->input->post('reserva_montototal')-$this->input->post('reserva_monto')),
 				'reserva_periodo' => $this->input->post('reserva_periodo'),
 				'reserva_fechaingreso' => $this->input->post('reserva_fechaingreso'),
 				'reserva_fechasalida' => $this->input->post('reserva_fechaingreso'),//misma
 				'reserva_horaingreso' => $this->input->post('reserva_horaingreso'),
 				'reserva_horasalida' => $this->input->post('reserva_horasalida'),
+                'reserva_nombre' => $this->input->post('cliente_nombre'),
+                'reserva_numero' => $this->input->post('cliente_celular'),
 				//'reserva_fecha' => $this->input->post('reserva_fecha'),
                 'forma_id' => $this->input->post('forma_id'),
             );
@@ -107,6 +115,8 @@ class Reserva extends CI_Controller{
 					'usuario_id' => $usuario_id,
 					'reserva_glosa' => $this->input->post('reserva_glosa'),
 					'reserva_monto' => $this->input->post('reserva_monto'),
+                    'reserva_montototal' => $this->input->post('reserva_montototal'),
+                    'reserva_saldo' => ($this->input->post('reserva_montototal')-$this->input->post('reserva_monto')),
 					'reserva_periodo' => $this->input->post('reserva_periodo'),
 					'reserva_fechaingreso' => $this->input->post('reserva_fechaingreso'),
 					'reserva_fechasalida' => $this->input->post('reserva_fechaingreso'),//misma
@@ -121,6 +131,7 @@ class Reserva extends CI_Controller{
             }
             else
             {
+                $data['forma_pago'] = $this->Forma_pago_model->get_all_forma(); 
                 $data['cliente'] = $this->Cliente_model->get_cliente($data['reserva']['cliente_id']);
                 $data['_view'] = 'reserva/edit';
                 $this->load->view('layouts/main',$data);
@@ -128,7 +139,33 @@ class Reserva extends CI_Controller{
         }
         else
             show_error('The reserva you are trying to edit does not exist.');
-    } 
+    }
+
+    function recibo($reserva_id)
+    {
+                   
+        $data['parametro'] =  $parametros = $this->Parametro_model->get_parametros();
+        $data['reserva'] = $this->Reserva_model->get_reserva($reserva_id);
+        $data['empresa'] = $this->Empresa_model->get_empresa(1);    
+        $data['_view'] = 'reserva/recibo';
+        $this->load->view('layouts/main',$data);          
+    }
+
+    function pagar($reserva_id)
+    {
+                   
+        $monto = $this->input->post('reserva_monto');
+        
+        
+        $sql = "UPDATE reserva SET 
+        reserva_saldo=reserva_saldo-".$monto.",
+        reserva_monto=reserva_monto+".$monto."
+        WHERE reserva_id=".$reserva_id." ";
+        $this->db->query($sql);
+
+                //$notave_id = $this->Venta_departamento_model->add_nota_ventadepartamento($params);            
+                redirect('reserva/lista');
+    }
 
     /*
      * Deleting reserva

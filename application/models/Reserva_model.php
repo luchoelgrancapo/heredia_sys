@@ -16,7 +16,23 @@ class Reserva_model extends CI_Model
      */
     function get_reserva($reserva_id)
     {
-        return $this->db->get_where('reserva',array('reserva_id'=>$reserva_id))->row_array();
+        $reserva = $this->db->query("
+        SELECT
+               r.*, u.usuario_nombre, c.cliente_nombre, c.cliente_celular, f.forma_nombre
+            FROM
+                reserva r
+            LEFT JOIN usuario u on r.usuario_id=u.usuario_id
+            LEFT JOIN  cliente c on r.cliente_id=c.cliente_id
+            
+            LEFT JOIN  forma_pago f on r.forma_id=f.forma_id
+            WHERE
+                
+               r.reserva_id=".$reserva_id."
+            
+        "
+        )->row_array();
+
+        return $reserva;
     }
         
     /*
@@ -35,7 +51,7 @@ class Reserva_model extends CI_Model
             LEFT JOIN  forma_pago f on r.forma_id=f.forma_id
             WHERE
                 
-                date(reserva_fechasalida) >= date(now())
+                month(reserva_fechasalida) >= month(now())
             ORDER BY r.reserva_id DESC 
         "
         )->result_array();
@@ -56,8 +72,10 @@ class Reserva_model extends CI_Model
             LEFT JOIN  forma_pago f on r.forma_id=f.forma_id
             WHERE
                 
-                month(reserva_fechasalida) = month(now())
-            ORDER BY r.reserva_id DESC 
+                month(reserva_fechasalida) >= month(now())
+                and year(reserva_fechasalida) >= year(now())
+
+            ORDER BY r.reserva_fechaingreso ASC 
         "
         )->result_array();
 

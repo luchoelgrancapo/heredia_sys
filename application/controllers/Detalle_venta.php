@@ -50,6 +50,14 @@ class Detalle_venta extends CI_Controller{
         $this->load->view('layouts/main',$data);
     }
 
+    function entregas()
+    {
+        
+        $data['venta_entrega'] = $this->Detalle_venta_model->get_venta_entrega(3);
+        $data['_view'] = 'detalle_venta/entregas';
+        $this->load->view('layouts/main',$data);
+    }
+
     /*
      * Listing of detalle_venta
      */
@@ -514,6 +522,19 @@ class Detalle_venta extends CI_Controller{
         }
         else{
             echo json_encode(null);
+        }        
+    }
+
+    function ver_detalle()
+    {
+        if ($this->input->is_ajax_request()){
+            $venta_id = $this->input->post('venta_id');
+            $detalle = "SELECT d.detalleven_cantidad, p.producto_nombre FROM detalle_venta d, inventario p WHERE venta_id=".$venta_id." and d.producto_id=p.producto_id ";
+            $datos = $this->db->query($detalle)->result_array();
+             echo json_encode($datos);
+        }
+        else{
+            echo json_encode("null");
         }        
     }
 }

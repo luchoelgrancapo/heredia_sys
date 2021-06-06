@@ -6,25 +6,12 @@
     });
 </script>-->
 <!----------------------------- script buscador --------------------------------------->
-<script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 
-<script type="text/javascript">
-        $(document).ready(function () {
-            (function ($) {
-                $('#filtrar').keyup(function () {
-                    var rex = new RegExp($(this).val(), 'i');
-                    $('.buscar tr').hide();
-                    $('.buscar tr').filter(function () {
-                        return rex.test($(this).text());
-                    }).show();
-                })
-            }(jQuery));
-        });
-</script> 
-
+<!----------------------------- fin script buscador --------------------------------------->
+<!------------------ ESTILO DE LAS TABLAS ----------------->
+<!--<link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">-->
 <style type="text/css">
-
-
+    
 
 div {
 margin-top: 0px;
@@ -34,69 +21,71 @@ margin-left: 10px;
 margin: 0px;
 }
 
-
-table{
+    table{
 width : 7cm;
 margin : 0 0 0px 0;
 padding : 0 0 0 0;
 border-spacing : 0 0;
 border-collapse : collapse;
 font-family: Arial;
-font-size: 10px;  
-
-} td {
+font-size: 8pt;  
+}
+ td {
+  border: none !important;
 border:hidden;
-}
-}
-
-td#comentario {
-vertical-align : bottom;
-border-spacing : 0;
-}
-div#content {
-background : #ddd;
-font-size : 8px;
-margin : 0 0 0 0;
-padding : 0 5px 0 5px;
-border-left : 1px solid #aaa;
-border-right : 1px solid #aaa;
-border-bottom : 1px solid #aaa;
+padding: 5px !important;
 }
 </style>
-<!----------------------------- fin script buscador --------------------------------------->
-<!------------------ ESTILO DE LAS TABLAS ----------------->
-<!--<link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">-->
-
 <!-------------------------------------------------------->
 <?php $tipo_factura = $parametro[0]["parametro_altofactura"]; //15 tamaño carta 
       $ancho = $parametro[0]["parametro_anchofactura"];
-      $margen_izquierdo = "col-xs-".$parametro[0]["parametro_margenfactura"];;
+      $margen_izquierdo = $parametro[0]["parametro_margenfactura"]."cm";
 ?>
-
-<div class="<?php echo $margen_izquierdo; ?>" style="padding: 0; max-width:5cm;">
+<br>
+<br>
+<br>
+<table class="table" >
+<tr>
+<td style="padding: 0;border: 0; width: <?php echo $margen_izquierdo; ?>" >
     
-</div>
-<div class="col-xs-10" style="padding: 0;">
-<table class="table" style="width: <?php echo $ancho;?>cm; padding: 0;" >
+</td>
+<td style="padding: 0;border: 0">
+<table class="table" style="width: <?php echo $ancho;?>cm; padding: 0; border: 0" >
     <tr>
-        <td style="width: 6cm; padding: 0" >
-                
-            <center>
-                               
-                    <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="100" height="60"><br>
-                    <font size="3" face="Arial"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
-                    <!--<font size="2" face="Arial"><b><?php /*echo $empresa[0]['empresa_eslogan']; ?></b></font><br>-->
-                    <!--<font size="1" face="Arial"><b><?php echo "De: ".$empresa[0]['empresa_propietario']; ?></b></font><br>-->
-                    <!--<font size="1" face="Arial"><?php echo $factura[0]['factura_sucursal'];*/ ?><br>-->
-                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_direccion']; ?><br>
-                    <font size="1" face="Arial"><?php echo $empresa[0]['empresa_telefono']; ?></font><br>
-                    <!--<font size="1" face="Arial"><?php //echo $empresa[0]['empresa_ubicacion']; ?></font>-->
-                
+       <td style="width: <?php echo $ancho / 3;?>cm;  padding: 0; line-height: 10px;border: 0" colspan="3">
 
-            </center>                      
-        </td>
-                   
-        <td style="width: 6cm; padding: 0" > 
+                        <center>
+                          <img src="<?php echo base_url('resources/images/empresas/').$empresa[0]['empresa_imagen']; ?>" width="80" ><br>
+                                <font size="3" face="Arial black"><b><?php echo $empresa[0]['empresa_nombre']; ?></b></font><br>
+                                <?php if (isset($empresa[0]['empresa_eslogan'])){ ?>
+                                
+                                <?php } ?>
+                                
+                                <?php if (isset($empresa[0]['empresa_propietario'])){ ?>
+                                <font style="font-family: Arial; font-size: 8pt"><b><small>
+                                    
+                                
+                                    <?php  echo "<b> DE: ".$empresa[0]['empresa_propietario'] ; ?>
+                                    
+                                    </small>
+                                    </b></font><br>
+                                <?php } ?>
+                                    
+                                        
+                                <font style="font-family: Arial; font-size: 8pt">
+                                <small>
+                                   
+                                    <?php echo $empresa[0]['empresa_direccion']; ?><br>
+                                    <?php echo $empresa[0]['empresa_zona']; ?><br>
+                                    <?php echo $empresa[0]['empresa_telefono']; ?><br>
+                                    <?php echo $empresa[0]['empresa_ubicacion']; ?>
+                                </small>                                
+                                </font>                
+                                    
+
+                        </center>                      
+                    </td>    
+        <td style="width: 6cm; padding: 0; border: 0" > 
             <center>
             
                     <?php if($venta[0]['venta_tipodoc']==1){ $titulo1 = "FACTURA"; $subtitulo = "ORIGINAL"; }
@@ -107,7 +96,7 @@ border-bottom : 1px solid #aaa;
                 <font size="1" face="arial"><b><?php echo $venta[0]['venta_fecha']." ".$venta[0]['venta_hora']; ?></b></font> <br>
             </center>
         </td>
-        <td style="width: 6cm; padding: 0" >
+        <td style="width: 6cm; padding: 0; border: 0" >
                 _______________________________________________                
                    
                 <br> 
@@ -116,8 +105,8 @@ border-bottom : 1px solid #aaa;
                   ?>    
                     <b>LUGAR Y FECHA: </b><?php echo $empresa[0]['empresa_departamento'].", ".$fecha_d_m_a; ?> <br>
                     <b>CODIGO: </b><?php echo $venta[0]['cliente_codigo']." / NIT: ".$venta[0]['cliente_nit']; ?> <br>
-                    <b>SEÑOR(ES): </b><?php echo $venta[0]['cliente_razon'].""; ?><br>
-                    <b>DIRECCIÓN: </b><?php echo $venta[0]['cliente_direccion'].""; ?><br>
+                    <b>SEÑOR(ES): </b><?php echo $venta[0]['cliente_razon'].""; ?>
+                                        <!--<b>DIRECCIÓN: </b><?php echo $venta[0]['cliente_direccion'].""; ?><br>
                     <b>ZONA: </b><?php echo $venta[0]['zona_nombre'].""; ?><br>
                     <?php
                     $guion = "";
@@ -125,13 +114,13 @@ border-bottom : 1px solid #aaa;
                         $guion = " - ";
                     }
                     ?>
-                    <b>TELEFONOS: </b><?php echo $venta[0]['cliente_telefono'].$guion.$venta[0]['cliente_celular'].""; ?>
+                    <b>TELEFONOS: </b><?php echo $venta[0]['cliente_telefono'].$guion.$venta[0]['cliente_celular'].""; ?>-->
                 <br>_______________________________________________
         </td>
     </tr>
      
 </table>
-    <table class="table" style="width: <?php echo $ancho;?>cm; padding: 0;" >
+    <table class="table" style="width: <?php echo $ancho;?>cm; padding: 0; margin: 0" >
        <!--<table class="table table-striped table-condensed"  style="width: 20cm;" >-->
            <tr  style="border-top-style: solid; border-bottom-style: solid">
                 <td align="center" style="padding: 0"><b>CANT</b></td>
@@ -172,7 +161,7 @@ border-bottom : 1px solid #aaa;
            <?php } ?>
        </table>
 
-<table class="table" style="width: <?php echo $ancho;?>cm; padding: 0;" >
+<table class="table" style="width: <?php echo $ancho;?>cm; padding: 0; font-size: 12px" >
 <!--<table class="table" style="max-width: 20cm;">-->
     <tr style="border-top-style: solid">
         
@@ -185,8 +174,8 @@ border-bottom : 1px solid #aaa;
                 COD.: <b><?php echo $venta[0]['venta_id']; ?></b><br>
                 <?php } ?>
                 TRANS.: <b><?php echo $venta[0]['tipotrans_nombre']; ?></b><br>
-                CUOTA INIC. Bs: <b><?php echo number_format($venta[0]['credito_cuotainicial'],2,'.',','); ?></b><br>
-                SALDO Bs: <b><?php echo number_format($venta[0]['venta_total']-$venta[0]['credito_cuotainicial'],2,'.',','); ?></b><br>                
+                CUOTA INIC. Bs.: <b><?php echo number_format($venta[0]['credito_cuotainicial'],2,'.',','); ?></b><br>
+                SALDO Bs.: <b><?php echo number_format($venta[0]['venta_total']-$venta[0]['credito_cuotainicial'],2,'.',','); ?></b><br>                
         </td>
         <td align="right">
 <!--            <center>
@@ -201,26 +190,20 @@ border-bottom : 1px solid #aaa;
         </td>
         <td align="right"  style="padding: 0">
             
-            <font size="1">
-                <b><?php echo "SUB TOTAL Bs ".number_format($venta[0]['venta_subtotal'],2,'.',','); ?></b><br>
-            </font>
             
-
-            <font size="1">
-                <?php echo "TOTAL DESCUENTO Bs ".number_format($venta[0]['venta_descuento'],2,'.',','); ?><br>
-            </font>
-            <font size="2">
+                <b><?php echo "SUB TOTAL Bs. ".number_format($venta[0]['venta_subtotal'],2,'.',','); ?></b><br>
+           
+                <?php echo "TOTAL DESCUENTO Bs. ".number_format($venta[0]['venta_descuento'],2,'.',','); ?><br>
+            
             <b>
-                <?php echo "TOTAL FINAL Bs: ".number_format($venta[0]['venta_total'] ,2,'.',','); ?><br>
+                <?php echo "TOTAL FINAL Bs. ".number_format($venta[0]['venta_total'] ,2,'.',','); ?><br>
             </b>
-            </font>
-            <font size="1" face="arial narrow">
+            
                 <?php echo "SON: ".num_to_letras($total_final,' Bolivianos'); ?><br>            
-            </font>
-            <font size="1">
-                <?php echo "EFECTIVO Bs ".number_format($venta[0]['venta_efectivo'],2,'.',','); ?><br>
-                <?php echo "CAMBIO Bs ".number_format($venta[0]['venta_cambio'],2,'.',','); ?>
-            </font>
+           
+                <?php echo "EFECTIVO Bs. ".number_format($venta[0]['venta_efectivo'],2,'.',','); ?><br>
+                <?php echo "CAMBIO Bs. ".number_format($venta[0]['venta_cambio'],2,'.',','); ?>
+            
             
         </td>          
     </tr>
@@ -235,15 +218,15 @@ border-bottom : 1px solid #aaa;
 <table class="table" style="width: <?php echo $ancho;?>cm; padding: 0;" >
 <!--<table class="table" style="width: 20cm;">-->
         <tr>
-            <td  style="padding: 0">
+            <td  style="padding: 0; border: 0">
                 <center>
                     __________________________<br>
                             ENTREGE CONFORME
                 </center>  
             </td>
-            <td style="padding: 0">
+            <td style="padding: 0; border: 0">
             </td>
-            <td  style="padding: 0">
+            <td  style="padding: 0; border: 0">
                 <center>
                     __________________________<br>
                             RECIBI CONFORME
@@ -251,4 +234,4 @@ border-bottom : 1px solid #aaa;
             </td>
         </tr>
     </table>
-</div>
+</table>

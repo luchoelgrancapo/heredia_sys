@@ -54,7 +54,7 @@
                 <?php if($rolusuario[27-1]['rolusuario_asignado'] == 1){ ?>
                 <button class="btn btn-primary btn-sm" onclick="tabla_inventario()" type="button"><span class="fa fa-list"></span> Mostrar todo</button>
 
-                <button class="btn btn-info btn-sm" onclick="tabla_inventario_existencia()" type="button"><span class="fa fa-list-ol" title="Ver Produtos con Existencia"></span> Con Existencia</button>
+                <button class="btn bg-navy btn-sm" onclick="tabla_inventario_existencia()" type="button"><span class="fa fa-list-ol" title="Ver Produtos con Existencia"></span> Toma de Inventario</button>
                 <?php } if($rolusuario[28-1]['rolusuario_asignado'] == 1){ ?>
                 <button class="btn btn-secondary btn-sm" onclick="mostrar_duplicados()" type="button"><span class="fa fa-copy"></span> Prod. Duplicados</button>
                 
@@ -96,3 +96,39 @@
             </div>
 </div>
 </div>
+<!--OBSERVACIONES: _______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+<br>
+<br>
+<table align="center">
+    <tr>
+            <td style="line-height: 8px;" colspan="2"> 
+                    <br><br>
+                    <br><br>
+                    <center>
+
+                        <?php echo "-----------------------------------------------------"; ?><br>
+                        <?php echo "RESPONSABLE"; ?><br>
+
+                    </center>
+                    
+                </td>
+                <td style="width: 3cm">
+
+                </td>
+               
+
+                <td style="line-height: 8px;" colspan="2"> 
+                    <br><br>
+                    <br><br>
+                    <center>
+
+                        <?php echo "-----------------------------------------------------"; ?><br>
+                        <?php echo "ADMINISTRADOR"; ?><br>   
+
+                    </center>
+                </td>
+        </tr>   
+
+    </table>

@@ -15,7 +15,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Reserva Edit</h3>
+              	<h3 class="box-title">Editar Reserva </h3>
             </div>
 			
 			<div class="box-body">
@@ -23,27 +23,27 @@
 					<div class="col-md-3">
 						<label for="cliente_ci" class="control-label">C.I.</label>
 						<div class="form-group">
-							<input onkeyup="insvalidar(event)" type="text" name="cliente_ci" value="<?php echo $cliente['cliente_ci']; ?>" class="form-control" id="cliente_ci" readonly/>
+							<input onkeyup="insvalidar(event)" type="text" name="cliente_ci" value="<?php if(isset($cliente)){ echo $cliente['cliente_ci']; } else { echo ''; }  ?>" class="form-control" id="cliente_ci" readonly/>
 							
 						</div>
 					</div>
 					<div class="col-md-3">
 						<label for="cliente_nombre" class="control-label">Cliente</label>
 						<div class="form-group">
-							<input type="text" name="cliente_nombre" value="<?php echo $cliente['cliente_nombre']; ?>" class="form-control" id="cliente_nombre" readonly/>
+							<input type="text" name="cliente_nombre" value="<?php if(isset($cliente)){ echo $cliente['cliente_nombre']; } else { echo $reserva['reserva_nombre']; }  ?>" class="form-control" id="cliente_nombre" readonly/>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<label for="cliente_celular" class="control-label">Celular</label>
 						<div class="form-group">
-							<input type="text" name="cliente_celular" value="<?php echo $cliente['cliente_celular']; ?>" class="form-control" id="cliente_celular" readonly/>
+							<input type="text" name="cliente_celular" value="<?php if(isset($cliente)){ echo $cliente['cliente_celular']; } else { echo $reserva['reserva_numero']; }  ?>" class="form-control" id="cliente_celular" readonly/>
 						</div>
 					</div>
 					
 					</div>
 					<?php echo form_open('reserva/edit/'.$reserva['reserva_id']); ?>
 				<div class="row clearfix">
-					<div class="col-md-2">
+					<div class="col-md-4">
 						<label for="reserva_tipo" class="control-label">Tipo</label>
 						<?php
                                 $basquet =""; $futsal =""; $voleibol ="";
@@ -114,11 +114,31 @@
 						</div>
 					</div>
 					<div class="col-md-2">
-						<label for="reserva_monto" class="control-label"> Monto</label>
+						<label for="reserva_montototal" class="control-label">Monto Total</label>
+						<div class="form-group">
+							<input type="text" name="reserva_montototal" value="<?php echo ($this->input->post('reserva_montototal') ? $this->input->post('reserva_montototal') : $reserva['reserva_montototal']); ?>" class="form-control" id="reserva_montototal" required/>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<label for="reserva_monto" class="control-label"> Monto Reserva</label>
 						<div class="form-group">
 							<input type="text" name="reserva_monto" value="<?php echo ($this->input->post('reserva_monto') ? $this->input->post('reserva_monto') : $reserva['reserva_monto']); ?>" class="form-control" id="reserva_monto" />
 						</div>
 					</div>
+					<div class="col-md-2" >
+                        <label for="forma_id" class="control-label" >Forma Pago</label> 
+                        <div class="form-group">                                      
+                        <select id="forma_id"  name="forma_id" class="form-control" >
+                            <?php
+                                foreach($forma_pago as $forma){ 
+                                	$selected = ($forma['forma_id'] == $reserva['forma_id']) ? ' selected="selected"' : "";
+
+                                                    echo '<option value="'.$forma['forma_id'].'" '.$selected.'>'.$forma['forma_nombre'].'</option>';                                                 
+                            } ?>
+                                                                                    
+                         </select>
+                        </div>
+                    </div>
 					<div class="col-md-6">
 						<label for="reserva_glosa" class="control-label">Nota</label>
 						<div class="form-group">

@@ -302,7 +302,7 @@ function toggle(source) {
                         <label for="usuario_id" class="control-label">Cliente Asignado a:</label>
                         <div class="form-group">
                             <select name="usuario_id" class="form-control">
-                                <option value="">- USUARIO -</option>
+                                <option value="">- VENDEDOR -</option>
                                 <?php 
                                 foreach($all_usuario_prev as $usuario_prev)
                                 {
@@ -327,7 +327,7 @@ function toggle(source) {
                             <span class="text-danger"><?php echo form_error('rcliente_clave');*/ ?></span>
                         </div>
                     </div>-->
-                    <!--<div class="col-md-5">
+                    <div class="col-md-5">
                         <label for="dias_visita" class="control-label">Dias de Visita</label><input type="checkbox" id="select_all" onClick="toggle(this)" /> Todos
                             <div class="form-group">
                                 <label>Lunes<input class="checkbox" type="checkbox" name="lun" value="1" id="lun" /></label>&nbsp;&nbsp;&nbsp;
@@ -338,7 +338,7 @@ function toggle(source) {
                                 <label>Sábado<input class="checkbox" type="checkbox" name="sab" value="1" id="sab" /></label>&nbsp;&nbsp;&nbsp;
                                 <label>Domingo<input class="checkbox" type="checkbox" name="dom" value="1" id="dom" /></label>
                             </div>
-                    </div>
+                    </div><!--
                     <div class="col-md-2">
                         <label for="cliente_ordenvisita" class="control-label">Orden Visita</label>
                         <div class="form-group">

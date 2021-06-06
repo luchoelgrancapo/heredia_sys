@@ -218,12 +218,15 @@ function tabla_inventario(){
                     html += "	<th>Categoría</th>";                    
                     html += "	<th>Unidad</th>";
                     html += "	<th>Costo</th>";
+                    html += "   <th>Precio</th>";
+                    html += "   <th>Rotación</th>";
+                    html += "   <th>Margen Rent.</th>";
 //                    html += "	<th>Compras</th>";
 //                    html += "	<th>Ventas</th>";
 //                    html += "	<th>Pedidos</th>";
                     html += "	<th>Saldo</th>";
                     html += "	<th>Total</th>";
-                    html += "	<th colspan='6'>Saldos/Presentaciones</th>";
+                    //html += "	<th colspan='6'>Saldos/Presentaciones</th>";
                     html += "</tr>";
                     html += "<tbody class='buscar'>";
                            
@@ -256,9 +259,12 @@ function tabla_inventario(){
                         html += "             	<td "+margen+"><center>"+ inv[i]["producto_unidad"]+"</center> </td>";
 
                         html += "	<td "+margen+"><center>"+ Number(inv[i]["producto_costo"]).toFixed(2)+"</center></td>";
+                        html += "   <td "+margen+"><center>"+ Number(inv[i]["producto_precio"]).toFixed(2)+"</center></td>";
+                        html += "   <td "+margen+"><center>"+ Number(inv[i]["producto_precio"]).toFixed(2)+"</center></td>";
+                        html += "   <td "+margen+"><center>"+ Number(((inv[i]["producto_precio"]-inv[i]["producto_costo"])/inv[i]["producto_precio"])*100).toFixed(2)+"</center></td>";
                         html += "             	<td "+margen+"><center> <b>"+ existencia.toFixed(2)+"</b></center></td>";
                         html += "             	<td "+margen+"><center> <b>"+ total.toFixed(2)+"</b></center></td>";
-
+/*
                         factor = 0;
                         producto_factor = 0;
                         unidadfactor = "";
@@ -339,7 +345,7 @@ function tabla_inventario(){
                             html += "<td "+margen+" ></td>";
                         }
 
-
+*/
     //                    html += "             	<td "+margen+" ><center style='line-height:70%'> <sub> "+ existencia +"<br>"+inv[i]["producto_unidad"]+"</sub></center></td>";
 
                         html += "<td> <a href='"+base_url+"inventario/kardex/"+inv[i]["producto_id"]+"' target='_blank' class='btn btn-warning btn-xs no-print'><fa class='fas fa-exchange-alt'> </fa> Kardex</a></small> </td>";
@@ -362,6 +368,8 @@ function tabla_inventario(){
                 html += "	<th> </th>";
                 html += "	<th> </th>";
                 html += "	<th> </th>";
+                html += "   <th> </th>";
+                html += "   <th> </th>";
 //                html += "	<th> </th>";
 //                html += "	<th></th>";
 //                html += "	<th></th>";
@@ -400,6 +408,7 @@ function tabla_inventario_existencia(){
     var base_url = document.getElementById("base_url").value;
     var parametro = document.getElementById("filtrar").value;
     var controlador = base_url+"inventario/mostrar_inventario_existencia";
+    //var controlador = base_url+"inventario/mostrar_inventario";
     
     document.getElementById('loader').style.display = 'block'; //muestra el bloque del loader
     
@@ -531,14 +540,14 @@ function tabla_inventario_existencia(){
                     html += "    <th>Descripción</th>";
                     html += "    <th>Código</th>";
                     html += "    <th>Categoría</th>";                    
-                    html += "    <th>Unidad</th>";
-                    html += "    <th>Costo</th>";
+                    //html += "    <th>Unidad</th>";
+                    //html += "    <th>Costo</th>";
 //                    html += "    <th>Compras</th>";
 //                    html += "    <th>Ventas</th>";
 //                    html += "    <th>Pedidos</th>";
                     html += "    <th>Saldo</th>";
-                    html += "    <th>Total</th>";
-                    html += "    <th colspan='6'>Saldos/Presentaciones</th>";
+                    html += "    <th>Observación</th>";
+                //    html += "    <th colspan='6'>Saldos/Presentaciones</th>";
                     html += "</tr>";
                     html += "<tbody class='buscar'>";
                            
@@ -556,7 +565,7 @@ function tabla_inventario_existencia(){
                    
                     //alert('dentra aqui: '+i+"/"+tamanio);
                     if (categoria != inv[i]["categoria_nombre"]){                        
-                        html += "<tr><td colspan='13'><b>"+inv[i]["categoria_nombre"]+"<b></tr>";
+                        html += "<tr><td colspan='6'><b>"+inv[i]["categoria_nombre"]+"<b></tr>";
                     }   
 
                         html += "<tr "+margen+">";
@@ -568,12 +577,13 @@ function tabla_inventario_existencia(){
                         html += "                 <td "+margen+">"+ inv[i]["producto_nombre"]+"";
                         html += "                 <td "+margen+" style='background: red'><center>"+inv[i]["producto_codigo"]+" </center></td>";
                         html += "                 <td "+margen+"><center>"+ inv[i]["categoria_nombre"]+"</center> </td>";
-                        html += "                 <td "+margen+"><center>"+ inv[i]["producto_unidad"]+"</center> </td>";
+                       // html += "                 <td "+margen+"><center>"+ inv[i]["producto_unidad"]+"</center> </td>";
 
-                        html += "    <td "+margen+"><center>"+ Number(inv[i]["producto_costo"]).toFixed(2)+"</center></td>";
+                        //html += "    <td "+margen+"><center>"+ Number(inv[i]["producto_costo"]).toFixed(2)+"</center></td>";
                         html += "                 <td "+margen+"><center> <b>"+ existencia.toFixed(2)+"</b></center></td>";
-                        html += "                 <td "+margen+"><center> <b>"+ total.toFixed(2)+"</b></center></td>";
-
+                        html += "                 <td style='padding:0; width: 10cm'><center></center></td>";
+                        //html += "                 <td "+margen+"><center> <b>"+ total.toFixed(2)+"</b></center></td>";
+/*
                         factor = 0;
                         producto_factor = 0;
                         unidadfactor = "";
@@ -654,10 +664,10 @@ function tabla_inventario_existencia(){
                             html += "<td "+margen+" ></td>";
                         }
 
-
+*/
     //                    html += "                 <td "+margen+" ><center style='line-height:70%'> <sub> "+ existencia +"<br>"+inv[i]["producto_unidad"]+"</sub></center></td>";
 
-                        html += "<td> <a href='"+base_url+"inventario/kardex/"+inv[i]["producto_id"]+"' target='_blank' class='btn btn-warning btn-xs no-print'><fa class='fas fa-exchange-alt'> </fa> Kardex</a></small> </td>";
+                        //html += "<td> <a href='"+base_url+"inventario/kardex/"+inv[i]["producto_id"]+"' target='_blank' class='btn btn-warning btn-xs no-print'><fa class='fas fa-exchange-alt'> </fa> Kardex</a></small> </td>";
                         //html += "<td><a href='"+base_url++"'>kardex</a></td>";
                         html += "</tr>";
                    
@@ -669,7 +679,7 @@ function tabla_inventario_existencia(){
             } //end if (inv != null){
                 
                 html += "</tbody>";
-                html += "<tr>";
+                /*html += "<tr>";
                 html += "    <th> </th>";
                 html += "    <th> </th>";
                 html += "    <th> </th>";
@@ -686,7 +696,7 @@ function tabla_inventario_existencia(){
                 html += "    <th></th>";
                 html += "    <th></th>";
                 html += "    <th></th>";
-                html += "</tr>    ";
+                html += "</tr>    ";*/
                 html += "</table>";            
                 $("#tabla_inventario").html(html);
                                 
@@ -885,6 +895,18 @@ function mostrar_kardex(producto_id){
             var ocultar = "";
             var saldox = 0;
             var cont = 1;
+           // var sumasaldos = 0;
+            var sumaimportes = 0;
+            
+            var saluno = Number(k[0]['unidad_comp']) + Number(k[0]['unidad_vend']);
+            //var salultimo = Number(k[tam-1]['unidad_comp']) + Number(k[tam-1]['unidad_vend']);
+            if(Number(k[0]['costoc_unit'])>0){ 
+                var uno = saluno * k[0]['costoc_unit']; }
+            else {  
+            var uno = saluno * k[0]['costov_unit'];  }
+            
+            
+            
             for(var i=0; i<tam; i++){
             
                 if( Date.parse(k[i]['fecha'])>=Date.parse(fecha_desde) && Date.parse(k[i]['fecha'])<=Date.parse(fecha_hasta)){
@@ -913,9 +935,11 @@ function mostrar_kardex(producto_id){
                     ocultar = "style='display:none;'";
                 }
             
+                    
                     saldo += Number(k[i]['unidad_comp']) - Number(k[i]['unidad_vend']);
                     total_compras += Number(k[i]['unidad_comp']);
                     total_ventas += Number(k[i]['unidad_vend']);
+                    sumaimportes += Number((k[i]['costov_unit']*k[i]['unidad_vend']));
                     
                     html += "    <tr align='center' "+ocultar+">";
                     html += "            <td style='padding:0'>"+formato_fecha(k[i]['fecha'])+" - "+k[i]['hora']+"</td>";
@@ -952,7 +976,7 @@ function mostrar_kardex(producto_id){
                     html +="</td>";
                     
                     html +="            <td style='padding:0'>";
-                                if (k[i]['importe_salida'] != 0)  html += Number(k[i]['importe_salida']).toFixed(2);
+                                if (k[i]['importe_salida'] != 0)  html += Number(k[i]['costov_unit']*k[i]['unidad_vend']).toFixed(2);
                     html +="</td>";
                     html +="            <td style='padding:0'><b>"+Number(saldo).toFixed(2)+"</b></td>";
                     html +="            <td style='padding:0'>";
@@ -961,12 +985,13 @@ function mostrar_kardex(producto_id){
                         else {  saldox = saldo * k[i]['costov_unit']; }
                         
                     html += saldox.toFixed(2)+"</td>";
+                    //sumasaldos += Number(saldox);
                     html +="            <td style='padding:0'>"+k[i]['detalleobs']+"</td>";
                     html +="            ";
                     html +="        </tr>";
                 
             }
-
+                    var unoultdos = Number((uno+saldox)/2);
                     html +="    <tr>";
                     html +="    <th style='padding:0'></th>";
                     html +="    <th style='padding:0'></th>";
@@ -976,10 +1001,11 @@ function mostrar_kardex(producto_id){
                     html +="    <th style='padding:0'></th>";
                     html +="    <th style='padding:0'><small>SALIDAS</small><br><h5><b>"+total_ventas.toFixed(2)+"</b></h5></th>";
                     html +="    <th style='padding:0'></th>";
-                    html +="    <th style='padding:0'></th>";
+                    html +="    <th style='padding:0'><small>TOTAL</small><br><h5><b>"+sumaimportes.toFixed(2)+"</b></h5></th>";
                     html +="    <th style='padding:0'><small>SALDOS</small><br><h5><b>"+saldo.toFixed(2)+"</b></h5></th>";
-                    html +="    <th style='padding:0'></th>";
                     html +="     <th style='padding:0'></th>";
+                    html +="    <th style='padding:0'><small>ROTACIÓN</small><br><h5><b>"+Number((12)/(sumaimportes/unoultdos)).toFixed(2)+"</b></h5></th>";
+                    
                     html +="    </tr>";
                     
                     $("#tabla_kardex").html(html);

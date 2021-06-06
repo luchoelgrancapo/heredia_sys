@@ -1484,7 +1484,11 @@ function nota($compra_id){
         
     }
     if ($este == 'NORMAL') {
+        if ($data['compra'][0]['tipotrans_id']==3) {
+        $data['_view'] = 'detalle_compra/nota';
+        }else{
         $data['_view'] = 'compra/reciboCompra';
+        }
         $this->load->view('layouts/main',$data);
     }else{
         $data['_view'] = 'compra/boucher';

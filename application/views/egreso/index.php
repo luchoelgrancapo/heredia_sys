@@ -180,7 +180,7 @@
                         </tr>
                            <tbody class="buscar" id="fechadeegreso">
                        
-                </table>
+            </table>
                 
             </div>
             <div class="pull-right">

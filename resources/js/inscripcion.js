@@ -131,10 +131,9 @@ function fechadeinscripcion(filtro)
                        // html += " <a href='"+base_url+"inscripcion/imprimir/"+registros[i]["inscripcion_id"]+"' title='Carta' target='_blank' class='btn btn-success btn-xs'><span class='fa fa-print'></a>";
                         //html += " <a href='"+base_url+"inscripcion/imprimir/"+registros[i]["inscripcion_id"]+"' title='Carta' target='_blank' class='btn btn-danger btn-xs'><span class='fa fa-ban'></a>";
                        
-                        /*
-                        if (registros[i]["factura_id"]>0) {
-                        html += "<a href='"+base_url+"factura/imprimir_factura_id/"+registros[i]["factura_id"]+"/2' title='Factura' target='_blank' class='btn btn-warning btn-xs'><span class='fa fa-list'></a>";
-                        }*/
+                        
+                        html += " <a href='"+base_url+"inscripcion/recibo/"+registros[i]["inscripcion_id"]+"' title='Recibo' target='_blank' class='btn btn-warning btn-xs'><span class='fa fa-print'></a>";
+                        
                         html += " <a href='"+base_url+"inscripcion/edit/"+registros[i]["inscripcion_id"]+"' title='Editar' class='btn btn-info btn-xs'><span class='fas fa-edit'></a>";
                         html += " <a class='btn bg-danger btn-xs' data-toggle='modal' data-target='#myModal"+registros[i]['inscripcion_id']+"' title='Eliminar'><span class='fas fa-ban'></span></a>";
                         html += "<!------------------------ INICIO modal para confirmar eliminación ------------------->";
@@ -183,6 +182,7 @@ function fechadeinscripcion(filtro)
                         html += "</tr>";
                     } 
                         html += "<tr>";
+                        html += "<td></td>";
                         html += "<td></td>";
                         html += "<td></td>";
                         html += "<td></td>";

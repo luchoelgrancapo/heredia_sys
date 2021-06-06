@@ -69,17 +69,17 @@ class Credito_model extends CI_Model
     {
         $deuda = $this->db->query("
             SELECT
-                c.*, p.*, co.*, e.*, u.*,cc.total
+                c.*, p.proveedor_nombre, co.*, e.*, u.*,cc.total
 
             FROM
-                credito c, proveedor p, compra co, estado e, usuario u, conssaldocredito cc
-
+                credito c
+            LEFT JOIN conssaldocredito cc ON c.credito_id=cc.credito_id 
+            LEFT JOIN compra co ON c.compra_id = co.compra_id 
+            LEFT JOIN proveedor p ON p.proveedor_id = co.proveedor_id  
+            LEFT JOIN estado e ON c.estado_id = e.estado_id    
+            LEFT JOIN usuario u ON co.usuario_id = u.usuario_id
             WHERE
-                c.credito_id=cc.credito_id
-                and c.compra_id = co.compra_id
-                and p.proveedor_id = co.proveedor_id
-                and c.estado_id = e.estado_id
-                and co.usuario_id = u.usuario_id
+            1=1
                 ".$filtro."
                 ".$condicion." 
 

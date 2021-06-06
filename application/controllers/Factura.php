@@ -435,8 +435,11 @@ class Factura extends CI_Controller{
         $data['parametro'] = $this->Parametro_model->get_parametros();
    
         $this->load->helper('numeros_helper'); // Helper para convertir numeros a letras
-  
+        if ($data['venta'][0]['tipotrans_id']==3) {
+        $data['_view'] = 'factura/nota_entrega';
+        }else{
         $data['_view'] = 'factura/recibo_carta';
+        }
         $this->load->view('layouts/main',$data);       
 
         		

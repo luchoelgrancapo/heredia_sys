@@ -301,8 +301,7 @@ class Pedido_model extends CI_Model
     
     function get_mis_pedidos($usuario_id)
     {
-        $sql = "select p.*,c.cliente_nombre,c.cliente_codigo,c.cliente_nombrenegocio,e.estado_descripcion,e.estado_color, 
-                c.cliente_latitud, c.cliente_longitud, c.cliente_direccion, c.cliente_foto
+        $sql = "select p.*,c.*,e.estado_descripcion,e.estado_color
                from pedido p, estado e, cliente c 
                where 
                 p.estado_id = e.estado_id

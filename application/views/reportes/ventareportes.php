@@ -14,7 +14,7 @@
                 <div class="icon">
                   <i class="ion ion-calendar"></i>
                 </div>
-                <a href="../detalle_venta/reportes" class="small-box-footer">Ver Reportes <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url('detalle_venta/reportes')?>" class="small-box-footer">Ver Reportes <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div>
         <div class="col-lg-3 col-xs-6">
@@ -27,12 +27,25 @@
                 <div class="icon">
                   <i class="fa fa-users"></i>
                 </div>
-                <a href="../detalle_venta/repocliente" class="small-box-footer">Ver Reportes <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url('detalle_venta/repocliente')?>" class="small-box-footer">Ver Reportes <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div>
         <div class="col-lg-3 col-xs-6">
               <!-- small box -->
               <div class="small-box bg-blue">
+                <div class="inner">
+                  <h4><b>SIMPLE</b></h4>
+                  <p>-----------</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-cube"></i>
+                </div>
+                <a href="<?php echo base_url('reportes/reporte_agrupado')?>" class="small-box-footer">Ver Reportes <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-navy">
                 <div class="inner">
                   <h4><b>GENERAL</b></h4>
                   <p>-----------</p>
@@ -40,7 +53,7 @@
                 <div class="icon">
                   <i class="ion ion-cube"></i>
                 </div>
-                <a href="../reportes/reporte_agrupado" class="small-box-footer">Ver Reportes <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url('detalle_venta/reporte_generalventa')?>" class="small-box-footer">Ver Reportes <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div>
 </div>

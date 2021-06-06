@@ -149,7 +149,7 @@ borderColor    : '#f56954',
     var colore='#283593';
   }
 var evento =   {  
-title : all_reservas[i]['cliente_nombre'],
+title : all_reservas[i]['reserva_nombre'],
 start : reserva_fechaingreso+" "+reserva_horaingreso,
 end : reserva_fechasalida+" "+reserva_horasalida,
 backgroundColor : colore,

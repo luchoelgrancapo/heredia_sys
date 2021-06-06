@@ -9,6 +9,9 @@ class Inscripcion extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Inscripcion_model');
+        $this->load->model('Empresa_model');
+        $this->load->model('Parametro_model');
+        $this->load->helper('numeros');
         $this->load->model('Servicio_temporal_model');
         $this->load->model('Forma_pago_model');
         $this->load->model('Reserva_model');
@@ -172,6 +175,16 @@ class Inscripcion extends CI_Controller{
                     echo json_encode($datos);                        
 
                 }
+    }
+
+    function recibo($inscripcion_id)
+    {
+                   
+        $data['parametro'] =  $parametros = $this->Parametro_model->get_parametros();
+        $data['inscripcion'] = $this->Inscripcion_model->get_inscripcion($inscripcion_id); 
+        $data['empresa'] = $this->Empresa_model->get_empresa(1);    
+        $data['_view'] = 'inscripcion/recibo';
+        $this->load->view('layouts/main',$data);          
     }
 
     

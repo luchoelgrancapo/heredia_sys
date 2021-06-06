@@ -56,7 +56,7 @@ function detallecoti(){
                         html += "<td><input id='detallecot_descuento"+registros[i]["detallecot_id"]+"' name='descuento' size='3' type='text' class='form-control' onkeypress='actualizadetalle(event,"+registros[i]["detallecot_id"]+","+registros[i]["producto_id"]+","+cotizacion_id+")' value='"+Number(registros[i]["detallecot_descuento"]).toFixed(2)+"' ></td>";
                         html += "<td><center><font size='3'> <b>"+Number(registros[i]["detallecot_total"]).toFixed(2)+"</b></font> <br>";
                         html += "</center></td>";
-                        html += "<td><button type='button' onclick='actualizarDetalle("+registros[i]["detallecot_id"]+","+registros[i]["producto_id"]+","+cotizacion_id+")' title='Guardar' class='btn btn-success btn-sm'><i class='fa fa-floppy-o'></i></button>";
+                        html += "<td><button type='button' onclick='actualizarDetalle("+registros[i]["detallecot_id"]+","+registros[i]["producto_id"]+","+cotizacion_id+")' title='Guardar' class='btn btn-success btn-sm'><i class='fa fa-save'></i></button> ";
                         html += "<button type='button' onclick='quitardetallec("+registros[i]["detallecot_id"]+")' title='Quitar' class='btn btn-danger btn-sm'><span class='fa fa-trash'></span></button></td>";
 
                       
